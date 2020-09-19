@@ -1,0 +1,174 @@
+<ion-view title="" id="billPay" drag-content="false">
+
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>
+        <h4 class="title" translate="label.eDonation"></h4>
+        <!--<a class="button button-clear" side="right" ng-click="goNextPage()" translate="button.next"-->
+           <!--ng-if="isShowNext"></a>-->
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false"
+                 has-bouncing="false">
+        <div style="min-height: calc(90vh - 90px)">
+            <ion-item class="item-divider selectFromAccountItem" ng-if="account == null">
+                <div class="selectFromAccountItemButt" style="text-align: center;">
+                    <button class="button  button-light" ng-click="openAccountList()"
+                            translate="label.selecFromAccounts"
+                            ng-class="fontLabel"></button>
+                </div>
+            </ion-item>
+
+            <!--account selected detail-->
+            <ion-item class="item-divider fundTransGreyTopArea" ng-if="account!=null" ng-click="openAccountList()">
+                <div>{{account.myAccountAliasName}}</div>
+                <div>{{account.myAccountNumber}}</div>
+                <span translate="label.availableBalance"></span>
+                <span>{{account.myAvailableBalance | currency : ""}}</span>
+                <span translate="label.currency"></span>
+            </ion-item>
+            <div class="transferaccount txtCenterAlign">
+                <label class="item item-input themeDarkBlueBGColor">
+                    <input bind-virtual-keyboard
+                           vkmodel="amountModel.amount"
+                           vkoption="virtualKeyboardAmount.option"
+                           onvkkeyup="virtualKeyboardAmount.onkeyup()"
+                           onvkblur="virtualKeyboardAmount.onblur()"
+                           onvkfocus="virtualKeyboardAmount.onfocus()"
+                           type="text"
+                           class="font-clanOt-header whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox"
+                           ng-model="amountModel.amount"
+                           placeholder="{{placeholderAmount}}"/>
+                </label>
+                <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+            </div>
+
+            <!-- 	/////////////////////////// biller detail ///////////////////////////////////// -->
+            <div class="padding15px margin-Top-20px" ng-if="biller!=null" ng-class="fontDisplay">
+                <div class="row icon-row paddingNone"
+                     ng-click="isFromQRScannerPage ? return : openBillerList('reopen')">
+                    <div class="col col-90 transferTxnPad">
+                        <a class="item item-thumbnail-left item-icon-right paddingNone" href="#">
+                            <img class="tranCompImg" style="background-color: #594F74;"
+                                 ng-src="{{biller.logoCompany || defaultBillerLogo}}">
+                            <div class="thumbnail-detail" ng-class="fontMain">
+                                <div class="themeGreyTextColor text-ellipsis">{{biller.aliasName}}</div>
+                                <div class="text-ellipsis">{{displayBillerName(biller)}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="padd-left5px">
+                    <div ng-if="!isNewBiller || isScanBiller" class="paddingNone">
+                        <div class="row">
+                            <div class="col col-37 paddingNone marginNone font-bold">
+                                {{displayRefName(biller.refInfos[0])}}
+                            </div>
+                            <div class="col col-67 paddingNone marginNone">{{biller.refInfos[0].value}}</div>
+                        </div>
+                    </div>
+                    <div ng-if="isNewBiller && !isScanBiller">
+                        <div class="row">
+                            <div class="col col-40 paddingNone marginNone font-bold"
+                                 translate="label.billerCategory"></div>
+                            <div ng-if="lang == 'en'" class="col col-60 paddingNone marginNone">{{biller.categoryEn}}
+                            </div>
+                            <div ng-if="lang == 'th'" class="col col-60 paddingNone marginNone">{{biller.categoryTh}}
+                            </div>
+                        </div>
+                        <div ng-if="biller.promptPayBillerId" class="row">
+                            <div class="col col-40 paddingNone marginNone font-bold" translate="label.billerId"></div>
+                            <div class="col col-60 paddingNone marginNone">{{biller.promptPayBillerId}}</div>
+                        </div>
+                        <div class="row" style="margin-top: 13px;">
+                            <div class=" col col-25 paddingNone  marginNone font-bold">
+                                {{displayRefName(biller.refInfos[0])}}
+                            </div>
+                            <div class=" col col-75 paddingNone marginNone">
+                                <label class="item item-input item-stacked-label">
+                                    <input class="memo" ng-model="biller.refInfos[0].value" type="text" maxlength="100">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col col-25 paddingNone  marginNone font-bold" translate="label.note"></div>
+                        <div class=" col col-75 paddingNone marginNone">
+                            <label class="item item-input item-stacked-label">
+                                <input class="memo" type="text" ng-model="memo.txt" maxlength="50">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="padding10px margin-Top-10px list list-inset" ng-class="fontDisplay" style="margin-bottom:5px">-->
+                <!--<div class="row">-->
+                    <!--<div class=" col col-25 paddingNone  marginNone font-bold" translate="label.note"></div>-->
+                    <!--<div class=" col col-75 paddingNone marginNone">-->
+                        <!--<label class="item item-input item-stacked-label">-->
+                            <!--<input class="memo" type="text" ng-model="memo.txt" maxlength="50">-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+            <div class="padding10px themeGreyTextColor" ng-if="isShowSendToRevenueDepartment()">
+                <span class="txtBlue fontSize16px" translate="label.eDonation.sendToRevenueDepartment"></span>&nbsp;
+                <div class="row margin-Bottom-11px">
+                    <div class="col">
+                        <div class="row icon-row traddBillerPromptPayansferTxnPad"
+                             ng-click="sendToRevenueDepartment(true)">
+                            <a href="" class="col paddingNone textNOStyle">
+		          	<span id="fundTrasnPhoneCircleIconID" class="transferDrawCircle"
+                          ng-class="{greyTextColor : !isSendToRD}">
+		          		<i class="ion-checkmark fontSize20px"></i>
+		          	</span>
+                            </a>
+                            <a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span class="themeDarkGreyTextColor fontSize14px"
+                                  translate="label.eDonation.yesSendTo"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row icon-row transferTxnPad" ng-click="sendToRevenueDepartment(false)">
+                            <a href="" class="col paddingNone textNOStyle">
+		          	<span id="fundTrasnEmailCircleIconID" class="transferDrawCircle"
+                          ng-class="{greyTextColor : isSendToRD}">
+		          		<i class="ion-checkmark fontSize20px"></i>
+		          	</span>
+                            </a>
+                            <a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span class="themeDarkGreyTextColor fontSize14px"
+                                  translate="label.eDonation.noSendTo"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="txtCenterAlign borderTop1Px padd-top10px themeGreyTextColor" ng-class="fontLabel">
+                <span translate="label.eDonation.donationDate"></span>
+            </div>
+            <ion-item class="item-divider todayLaterItem">
+                <div class="row icon-row">
+                    <div class="col text-center selectedBtnBGColor">
+                        <button class="button button-block button-custom" ng-class="fontLabel">
+                            <span translate="{{paymentDate.ui.day_label}}"></span>
+                            &nbsp;{{paymentDate.ui.date}}&nbsp;
+                            <span translate="{{paymentDate.ui.month_label}}"></span>
+                            &nbsp;{{paymentDate.ui.year}}
+                            <div ng-show="showCalenda" class="txtCenterAlign"></div>
+                        </button>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="button.next"
+                    ng-click="goNextPage()" ng-if="isShowNext">
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

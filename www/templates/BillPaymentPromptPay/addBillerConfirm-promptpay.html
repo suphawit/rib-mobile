@@ -1,0 +1,79 @@
+<ion-view>
+  <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+      	<i class="button button-clear" ng-click="backToAddbillerDetail()" translate="label.back"></i>		 
+	    <h4 class="title" translate="label.addBiller"></h4>
+	    <!--<i class="button button-clear" side="right" ng-click="submitConfirmAddBiller()"   ng-disabled ="checked && payInfoModelConfirm.isFromAddNewAfterPayBill !== true" translate="button.confirm"></i>-->
+  </ion-header-bar>
+
+  <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar " translate="label.billerDetail" ng-class="fontHeader"></h2>
+			<div class="paddingRightUnderline">
+				<h5 class="addMyAccountLable" translate="label.billerAliasName"  ng-class="fontLabel" > </h5>
+				<p class="confirmDeleteAddMyAccountPadAccount fontSize14px" style = "padding-left :20px;">{{ payInfoModelConfirm.billerAliasName }}</p>
+			</div>
+
+			<div class="list-bank-add">
+				<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor ">
+					<img ng-src="{{payInfoModelConfirm.logoCompany || getDefaultBillerImage(payInfoModelConfirm)}}" class="tranCompImg" style="background-color: #594F74;"/>
+					<div ng-if ="lang == 'en'" class="thumbnail-detail-add-other-acc padding-Top13px" ng-class="fontDisplay">
+						<div  class="bankName-other-acc" style="padding-top: 15px">
+							{{ payInfoModelConfirm.billerNameEn }}
+						</div>
+						<!-- <div  class="bankName-other-acc">{{ payInfoModelConfirm.categoryEn }} </div> -->
+					</div>
+					<div ng-if ="lang == 'th'" class="thumbnail-detail-add-other-acc padding-Top5px" ng-class="fontDisplay">
+						<div  class="bankName-other-acc" style="padding-top: 15px">
+							{{ payInfoModelConfirm.billerNameTh }}
+						</div>
+						<!-- <div  class="bankName-other-acc">{{ payInfoModelConfirm.categoryTh }} </div> -->
+					</div>
+				</div>
+			</div> 
+			<div class="paddingRightUnderline">
+				<h5 class="addMyAccountLable" translate="label.billerCategory"  ng-class="fontLabel" > </h5>
+				<p ng-if="lang == 'en'" class="confirmDeleteAddMyAccountPadAccount fontSize14px" style = "padding-left :20px;">
+					{{ payInfoModelConfirm.categoryEn }}
+				</p>
+				<p ng-if="lang == 'th'" class="confirmDeleteAddMyAccountPadAccount fontSize14px" style = "padding-left :20px;">
+					{{ payInfoModelConfirm.categoryTh }}
+				</p>
+			</div>
+
+			<div ng-repeat="billerInfo in refInfos track by $index"  class=" paddingRightUnderline" ng-if="!billerInfo.isHideRef" >
+				<h5 ng-if ="lang == 'th'" class="addMyAccountLable"  ng-class="fontLabel" > {{billerInfo.textTh}}</h5>
+				<h5  ng-if ="lang == 'en'" class="addMyAccountLable" ng-class="fontLabel"> {{billerInfo.textEn}}</h5>
+				<p class="confirmDeleteAddMyAccountPadAccount  fontSize14px" style = "padding-left :20px;">{{billerInfo.value}}</p>
+			</div>
+					
+			<div ng-hide="payInfoModelConfirm.isFromAddNewAfterPayBill === true">
+<!--			<div ng-hide="isRequireOtp == false">-->
+				<h5 class="padd-left15px padd-top10px" translate=label.input.otp ng-class="fontLabel"></h5>
+				<div class=" row padd-left10px" style = "padding : 15px;">
+					<label class="item item-input addotherAccountCustomBorder"> <i
+						class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+						<input bind-virtual-keyboard vkmodel="resultOTP.otp" vkoption="virtualKeyboardOTP.option" class="whiteBGColor" type="password"
+						ng-model="resultOTP.otp" placeholder="{{resultOTP.referenceNo}}"  maxlength="6">
+					</label>
+					<button class="button getOTPTransfer" ng-disabled="isDisableBtn" ng-class="fontLabel" ng-click="requestOTP()" translate=label.getOtp></button>
+				</div>
+				<div class=" otp-section-desc"  style = "padding : 15px;" ng-show="resultOTP.referenceNo">
+					<div class="row">
+						<span translate="otp.desc.mobileno"></span>
+						<strong><span class="font-color-kkblue">&nbsp;{{resultOTP.mobileNumber}}</span></strong>
+					</div>
+					<div class="row">
+						<span translate="otp.desc.validity"></span>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+			ng-click="submitConfirmAddBiller()"   ng-disabled ="checked && payInfoModelConfirm.isFromAddNewAfterPayBill !== true" translate="button.confirm">
+				<!--			ng-click="submitConfirmAddBiller()"   ng-disabled ="!isEnableConfirm" translate="button.confirm">-->
+			</button>
+		</div>
+
+   </ion-content>
+</ion-view>

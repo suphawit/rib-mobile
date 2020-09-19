@@ -1,0 +1,26 @@
+<ion-modal-view id="accListModal" class="listModal"> 	
+	<ion-header-bar class="darkHeadBar">		 
+		<h4 class="title"></h4> 		
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a> 		
+	</ion-header-bar>        
+
+	<div class = "row paddingNone marginNone" > 			
+		<div class="col item-input-inset themeDarkBlueBGColor"  >               
+			<label class="item-input-wrapper whiteBGColor whiteBGColor" > 				
+				<i class="icon ion-ios-search placeholder-icon"></i> 		
+				<!-- <input class="searchbiller" type="text" placeholder="AMC And FundList" ng-model="txtval.fundList" ng-model-options="{ debounce: 500 }"/> 			 -->
+			</label>                   	
+		</div>       
+	</div>
+
+ <ion-content class="has-header" locking="false" padding="false" padding="false" overflow-scroll="false" has-bouncing="false" >       
+	<ion-list ng-repeat = "bankAccount in fundObj.unitHolderInfo.bankAccount  " class="externalAccList paddingNone">
+		<ion-item class = "paddinng" ng-click="userSelectedBankAccount(bankAccount)" >
+			<div> 				
+				<span class="padd-left4px font-clanOt-news  fontSize15px"> {{bankAccount}}</span> 	
+			</div> 	
+		</ion-item> 
+	</ion-list>      
+</ion-content>  
+
+ </ion-modal-view> 

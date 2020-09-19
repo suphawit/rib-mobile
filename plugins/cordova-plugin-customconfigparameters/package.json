@@ -1,0 +1,62 @@
+{
+  "_from": "cordova-plugin-customconfigparameters@3.0.0",
+  "_id": "cordova-plugin-customconfigparameters@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-nOa63LrU1s4nSW8fzqBgjaZCyFs=",
+  "_location": "/cordova-plugin-customconfigparameters",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-customconfigparameters@3.0.0",
+    "name": "cordova-plugin-customconfigparameters",
+    "escapedName": "cordova-plugin-customconfigparameters",
+    "rawSpec": "3.0.0",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-customconfigparameters/-/cordova-plugin-customconfigparameters-3.0.0.tgz",
+  "_shasum": "9ce6badcbad4d6ce27496f1fcea0608da642c85b",
+  "_spec": "cordova-plugin-customconfigparameters@3.0.0",
+  "_where": "/Users/itribdev6/Documents/workspace/frontend/rib-mobile",
+  "author": {
+    "name": "Deepak Yadav"
+  },
+  "bugs": {
+    "url": "https://github.com/experiencecommerce/cordova-plugin-customconfigparameters/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-customconfigparameters",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Custom Config Parameters Plugin",
+  "homepage": "https://github.com/experiencecommerce/cordova-plugin-customconfigparameters#readme",
+  "keywords": [
+    "cordova",
+    "settings",
+    "customconfigparameters",
+    "dyd",
+    "ionic",
+    "secure",
+    "store data",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-customconfigparameters",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/experiencecommerce/cordova-plugin-customconfigparameters.git"
+  },
+  "version": "3.0.0"
+}

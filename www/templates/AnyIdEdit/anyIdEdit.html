@@ -1,0 +1,50 @@
+<ion-view title="">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="button.back"></a>
+		<h3 class="title" translate="label.amendAnyId"></h3>
+		<!--<a class="button button-clear" ng-class="fontHeader" translate="button.next" ng-click="AnyIDRegisterSubmit()" ng-if="isShowNext"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<div class="list-bank marginTop15Px">
+				<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor">
+					<img ng-src="{{anyIDIcon}}" class="tranCompImg" ng-style="{ 'background-color': anyIDIconColor }" />
+					<div class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+						<div class="min-height-m bankName-other-acc margin-Top5px">{{anyIDName}}</div>
+						<div>{{anyIDValue}}</div>
+					</div>
+				</div>
+			</div>
+			<h5 class="row fontLabel list-edit-anyid margin-Top0px" translate="label.currentAccountNo"></h5>
+			<p class="row list-edit-anyid">{{accountAliasName}}</p>
+			<p class="row list-edit-anyid">{{accountNo}}</p>
+			<h5 class="row fontLabel list-edit-anyid" translate="label.changetoAccountNo"></h5>
+			<div class="row paddingNone ">
+				<div class="col paddingNone ">
+					<div class="item-divider selectAcoountItem-anyID-Register margin-Top0px">
+						<button class="button button-light" ng-if="showSelectBtn" ng-class="fontLabel" translate="label.selectAcct" ng-click="selectAnyIDAccount()"></button>
+						<div ng-click="selectAnyIDAccount()" ng-if="!showSelectBtn">{{myAccountAliasName}}
+							<br>{{myAccountNumber}}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row margin-Top5px">
+				<div class="col text-center ">
+					<a class="button button-block button-term-and-conditions" ng-class="(isTermAndCondAccept == true ? 'active' : '')"
+					ng-click="termsAndCondChecked()">
+						<i class="icon ion-checkmark"></i>&nbsp;&nbsp;{{'label.termAndConditionsBtn' | translate}}</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a class="termAgreeandConditionStyle" ng-click="showTermAndConditions()" translate="label.viewTermAndConditions"></a>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="AnyIDRegisterSubmit()" ng-if="isShowNext">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="" drag-content="false">
+	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+ 	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="event.goBackPage()" translate="button.back" ng-if="event.isShowBack"></a>
+	    <h4 class="title" translate="header.userAuthentication"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="verifyProductForm.doSubmit()" translate="button.next" ng-if="event.isShowNext"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false" ng-class="fontHeader">
+		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar" translate="header.usingkkproduct"></h2>
+			<verify-product-form onaction="verifyProductForm.onaction(value)" control="verifyProductForm" isshowbutton="verifyProductForm.isShowButton" country="verifyProductForm.countryData" product="verifyProductForm.productData"></verify-product-form>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next"
+			ng-click="verifyProductForm.doSubmit()" ng-if="event.isShowNext">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+<ion-view title="" drag-content="false" ng-init="init()"> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>
+		<h4 class="title" translate="label.kkpNdidServices"></h4>	    
+	</ion-header-bar> 
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<ion-list>
+				<ion-item class="paddingNone" >
+					<div class="row margin-bottom20px">
+						<div class="col padd-bottom fontSize12px themeBlueTextColor">
+							{{authenResult.transactionDate}}
+						</div>
+					</div>
+					<div class="row fontBold padd-left15px padd-Right15px">
+						<div class="col col-25 paddingNone txtRightAlign">
+							<span translate="button.accept"></span>
+						</div>
+						<div class="col col-50 paddingNone txtCenterAlign">
+							{{authenResult.countAccept}}
+						</div>
+						<div class="col col-25 paddingNone">
+							<span translate="label.transaction"></span>
+						</div>
+					</div>
+					<div class="row fontBold padd-left15px padd-Right15px margin-bottom20px">
+						<div class="col col-25 paddingNone txtRightAlign">
+							<span translate="button.reject"></span>
+						</div>
+						<div class="col col-50 paddingNone txtCenterAlign">
+							{{authenResult.countReject}}
+						</div>
+						<div class="col col-25 paddingNone">
+							<span translate="label.transaction"></span>
+						</div>
+					</div>
+					
+				</ion-item>
+				
+			</ion-list>
+			<div style="margin-left: 3vw;margin-right: 3vw;">
+				<button 
+					class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor margin-Top0px" 
+					ng-click="submitRequest()" 
+					translate="button.confirm">
+				</button>
+			</div>
+			
+		</div>
+	</ion-content>
+</ion-view>

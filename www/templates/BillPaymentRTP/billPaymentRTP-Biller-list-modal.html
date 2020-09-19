@@ -1,0 +1,34 @@
+<ion-modal-view id="selectBillModal" class="listModal">
+	<ion-header-bar class="darkHeadBar">		 
+		<h4 class="title" translate="label.selectBiller"></h4>
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="closeBillerListModel()"></a>
+	</ion-header-bar>
+	<ion-header-bar align-title="center" class="bar bar-subheader paddingNone selectBarBGColor" ng-if="!isShowNoBiller">
+		<div class="headerDropdownBar">
+			<div dropdown-select="billerCategoryList" 
+				dropdown-model="selectedCategory" 
+				dropdown-item-label="categoryName" 
+				dropdown-onchange="onChangeCategory(selected)">
+			</div> 	 
+		</div>  
+	</ion-header-bar>
+	<ion-content  class="has-header has-subheader"  overflow-scroll="false" has-bouncing="false">
+		<div ng-if="isShowNoBiller" class="col col-80 col-offset-10 txtCenterAlign" translate="label.nobillerrecordBillpayments"></div>
+		<div ng-repeat="bpBiller in billerlistsFilter" class="paddingNone"  ng-click ="selectBiller(bpBiller)">	
+			<ion-list class="externalAccList paddingNone min-height50">				 
+				<ion-item class="item-stable item-icon-right item-thumbnail-left paddingNone min-height50">
+					<div class="row paddingNone">
+						<img ng-src="{{bpBiller.logoCompany || getDefaultBillerImage(bpBiller)}}"
+							class="externalMenuListImg" 
+							style="background-color: #594F74;">
+						<div class="col-80 padd-left10px">
+							<p class="padd-top5px text-ellipsis">{{bpBiller.aliasName}}</p>
+							<p class="text-ellipsis"m>{{displayBillerName(bpBiller)}}</p>
+						</div>							
+					</div>	
+				</ion-item>
+			</ion-list>
+		</div>
+		<div class="heightSpaceModal"></div>
+	</ion-content>
+</ion-modal-view>

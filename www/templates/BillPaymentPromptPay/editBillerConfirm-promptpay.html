@@ -1,0 +1,67 @@
+<ion-view >
+
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+      	<i class="button button-clear" ng-click="backEditBiller()" translate="label.back" ></i>		 
+	    <h4 class="title" translate="label.editBiller"></h4>
+	    <!--<i class="button button-clear" side="right" ng-click="submitConfirmEditBiller()"  translate="button.confirm" ></i>-->
+	</ion-header-bar>
+   
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false" >
+ 		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar fontSize18px" translate="header.billerDetail" ng-class="fontHeader"></h2>
+				<div class="list list-inset manage-bill-padd">
+						<div class="padd-left5px">
+							<div class="editBillerConfirm" ng-class="fontLabel" translate=label.billerAliasName></div>
+							<div class="confirmDeleteAddMyAccountPadAccount padd-top5px padd-bottom10px fontSize14px text-ellipsis">
+								{{edit_confirm_data.aliasName}}
+							</div>
+							
+							
+						<ion-list class="padd-top0Px">
+							<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor ">
+								<img ng-src="{{edit_confirm_data.logoCompany || getDefaultBillerImage(edit_confirm_data)}}" class="tranCompImg" style="background-color: #594F74;"/>
+								<div  ng-if ="lang == 'en'"  class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+								<div class="min-height-m bankName-other-acc padding-Top5px text-ellipsis" style="padding-top: 15px">
+										{{edit_confirm_data.billerNameEn}}
+								</div>
+								</div>
+
+								<div  ng-if ="lang == 'th'"  class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+									<div class="min-height-m bankName-other-acc padding-Top5px text-ellipsis" style="padding-top: 15px">
+										{{edit_confirm_data.billerNameTh}}
+									</div>
+								</div>
+							</div>
+						</ion-list>
+
+						<div class="editBillerConfirm" ng-class="fontLabel" translate=label.billerCategory style="margin-top: 25px"></div>
+						<div ng-if ="lang == 'en'" 
+							class="confirmDeleteAddMyAccountPadAccount padd-top5px padd-bottom10px fontSize14px"
+							style="padding-bottom: 0px">
+							{{edit_confirm_data.categoryEn}}
+						</div>
+						<div ng-if ="lang == 'th'" 
+							class="confirmDeleteAddMyAccountPadAccount padd-top5px padd-bottom10px fontSize14px" 
+							style="padding-bottom: 0px">
+							{{edit_confirm_data.categoryTh}}
+						</div>
+								
+						<div ng-repeat="billerEditConfirm in edit_confirm_data.refInfos track by $index">
+							<h5 ng-if ="lang == 'en' && !billerEditConfirm.isHideRef" class="editBillerConfirm" ng-class="fontLabel">{{billerEditConfirm.textEn}}</h5>
+							<h5 ng-if ="lang == 'th' && !billerEditConfirm.isHideRef" class="editBillerConfirm" ng-class="fontLabel">{{billerEditConfirm.textTh}}</h5>
+							<div class="bankName-other-acc padd-Right18px" ng-if="!billerEditConfirm.isHideRef">
+								{{billerEditConfirm.value}}
+							</div>
+							<!-- <div class="confirmDeleteAddMyAccountPadAccount padd-top5px fontSize14px" ng-class="fontLabel">{{billerEditConfirm.value}}</div> -->
+						</div>
+					</div>
+					<p style="color:red;">{{errorMsg}}</p>
+				</div>
+ 		</div>
+		 <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="submitConfirmEditBiller()"  translate="button.confirm" >
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

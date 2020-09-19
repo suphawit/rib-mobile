@@ -1,0 +1,59 @@
+<ion-view>
+
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<i class="button button-clear" ng-click="goBackPage()" translate="label.back" ></i>
+        <h4 class="title" translate="label.requestToPay"></h4>
+	    <!--<i class="button button-icon icon ion-ios-gear" ng-click="gotoPage()"></i>-->
+	</ion-header-bar>
+	
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <ion-item class="item-divider transConfirmHeadBlck ">
+                <div class= "font-bold fontSize19px blackTextColor"  style="padding-top: 20px;">{{::requestToPayDetail.data.requesterFrom || ""}}</div>
+            </ion-item>
+        
+            <div class="col transferaccount transConfrmAmoutDiv" >
+                <div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+                    <span class="whiteTextColor font-clanOt-header" >{{::requestToPayDetail.data.amount | currency : ""}}</span>
+                    <span class="currencySpan" ng-class="fontLabel">{{::requestToPayDetail.data.currencyCode || ""}}</span>
+                </div>
+            </div>
+            
+            <div class = "padd-top0Px borderTop0Px padd-bottom padd-left20px">
+                <div  class="row icon-row" >
+                    <img ng-show="!isAnyID" ng-src="images/bank/069.png" class="bankImage" style="background-color: #594F74;"/>
+                    <div ng-show="isAnyID" class="icon-fontello icon-anyid-tumb {{anyIDIconClass}}"></div>
+                </div>
+                <div  class="col padd-top0Px padd-left10px text-ellipsis">
+                    <strong>{{::requestToPayDetail.data.receiverAccountName || ""}}</strong> <br/>
+                    <strong>{{::requestToPayDetail.data.receiverIdValue || ""}}</strong> 
+                </div>
+            </div>
+            <div class="divTable">
+                <div class="divRow">
+                    <div class="divCell"translate="lable.fundschedule.ref"></div>
+                    <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.rtpreference || ""}}</div>
+                    <div class="divCell" translate="label.transDate"></div>
+                    <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.createdDate || ""}}</div>
+                    <div class="divCell" translate="label.paymentDate"></div>
+                    <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.expiryDate.date || ""}}&nbsp;<span translate="">{{::requestToPayDetail.data.expiryDate.month || ""}}</span>&nbsp;{{::requestToPayDetail.data.expiryDate.year || ""}}</div>
+                    <div class="divCell" translate="label.referenece1" ng-if="requestToPayDetail.data.billReference1"></div>
+                    <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference1">{{::requestToPayDetail.data.billReference1 || ""}}</div>
+                    <div class="divCell" translate="label.referenece2" ng-if="requestToPayDetail.data.billReference2"></div>
+                    <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference2">{{::requestToPayDetail.data.billReference2 || ""}}</div>
+                    <div class="divCell" translate="label.referenece3" ng-if="requestToPayDetail.data.billReference3"></div>
+                    <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference3">{{::requestToPayDetail.data.billReference3 || ""}}</div>	               	
+                    <div class="divCell" translate="label.input.Status"></div>
+                    <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.statusDesc || ""}}</div>	               	
+                    <div class="divCell" ng-if="requestToPayDetail.data.additionalNote" translate="lable.fundschedule.note"></div>
+                    <div class="divCellValue themeGreyTextColor memoDivCellValue" ng-if="requestToPayDetail.data.additionalNote">{{::requestToPayDetail.data.additionalNote || ""}}</div>
+                    <div class="divCell" ></div>
+                    </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.edit" ng-click="gotoPage()">
+			</button>
+		</div>
+    </ion-content>
+</ion-view>

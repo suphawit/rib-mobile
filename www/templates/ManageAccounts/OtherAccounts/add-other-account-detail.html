@@ -1,0 +1,65 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>		 
+	    <h4 class="title" translate="label.addAcc"></h4>
+	    <!--<a class="button button-clear"  ng-click="submitOTP(otpData)" ng-disabled="!isReqOTP" translate="button.confirm"></a>	-->
+	</ion-header-bar>
+	<!-- <div class="row addOtherAccount bar bar-subheader-sub backgroundColor454B59"> 
+		<h2 class="colorWhite padd-top3px" translate="label.otherAccDetail"></h2>
+	</div> -->
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false" ng-class="fontHeader">
+	<div style="min-height: calc(90vh - 110px)">
+		<div ng-class="fontLabel">
+		
+			<h2 class="addMyAccountDetailTitleBar fontSize18px" translate="label.otherAccDetail" ></h2>
+			<div class="padd-left15px padd-Right15px">
+				<p class="confirmDeleteAddMyAccountPad" translate=label.acctAliasName></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{confirmInfo.acctAliasName}}</p>
+				<div class="padd-left0px marginPadding-Bottompx">
+				<div class="marginPadding-Bottompx">
+					<div  class=" row paddingNone ">
+						<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor" style="width:100%">
+							<img ng-src="{{confirmInfo.anyidTypeImage === '' ? getBankCodeImg(confirmInfo.bankCode, 'image') : confirmInfo.anyidTypeImage}}" class="tranCompImg" ng-style="{ 'background-color': confirmInfo.anyidTypeImage === '' ? getBankCodeImg(confirmInfo.bankCode, 'color') : confirmInfo.anyidTypeIconColor }"/>
+							<div class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+								<div class="bankName-other-acc">{{confirmInfo.bankName}}</div>
+								<div>{{confirmInfo.acctName}}</div>
+								<div>{{confirmInfo.acctNo}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="confirmDeleteAddMyAccountPad" translate=label.accCategory></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{confirmInfo.categoryName}}</p>
+				<p class="confirmDeleteAddMyAccountPad" translate=label.mobileNo ng-show="confirmInfo.mobile"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount" ng-show="confirmInfo.mobile">{{confirmInfo.mobile}}</p>
+				<p class="confirmDeleteAddMyAccountPad" translate=label.email ng-show="confirmInfo.email"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount" ng-show="confirmInfo.email">{{confirmInfo.email}}</p>
+				<div ng-show="isRequireOtp">
+					<h5 class="padd2px" ng-class="fontLabel" translate=label.input.otp></h5>
+					<div class="row">
+						<label class="item item-input addotherAccountCustomBorder padd-left0px">
+							<i class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+							<input bind-virtual-keyboard vkmodel="otpData.pin" vkoption="virtualKeyboardOTP.option" class="whiteBGColor" type="password" ng-model="otpData.pin" placeholder="{{otpData.referenceNo}}" maxlength = "6">
+						</label>
+						<button class="button getOTPTransfer" ng-disabled="isDisableBtn" ng-class="fontLabel" translate="label.getOtp" ng-click="requestOTP()"></button>
+					</div>
+					<div class="otp-section-desc" ng-show="otpData.referenceNo">
+						<div class="row">
+							<span translate="otp.desc.mobileno"></span>
+							<strong><span class="font-color-kkblue">&nbsp;{{otpData.mobileNumber}}</span></strong>
+						</div>
+						<div class="row">
+							<span translate="otp.desc.validity"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="submitOTP(otpData)" ng-disabled="!isReqOTP" translate="button.confirm">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

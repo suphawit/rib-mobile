@@ -1,0 +1,137 @@
+<ion-view id="rtprequest" drag-content="false">
+
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="goBackPage()" translate="button.back" ng-if="isShowBack"></a>
+        <h4 class="title" translate="label.requestToPay"></h4>
+        <!--<a class="button button-clear" side="right" ng-click="goNextPage()" translate="button.next" ng-if="isShowNext"></a>-->
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <div id="divBtn" class="margin-bottom15px">
+                <div ng-show="isShowRequestTo">
+                    <div class="row txtCenterAlign">
+                        <div class="col themeGreyTextColor" ng-class="fontLabel" translate="label.requestTo"></div>
+                    </div>
+                    <div class="row icon-row">
+                        <div class="col text-center scheduleBtns">
+                            <button class="button button-block button-custom themeGreyTextColor" ng-class="fontLabel" ng-click="openNewAccount()" translate="label.rtpNewAccount">
+                            </button>
+                        </div>
+                        <div class="col text-center scheduleBtns">
+                            <button class="button button-block button-custom themeGreyTextColor" ng-class="fontLabel" ng-click="openFromList()" translate="label.fromList">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col row" ng-show="isShowNewAccount">
+                    <div class="row padZero">
+                        <div class="col padd-Right10px txtRightAlign">
+                            <i class="icon ion-ios-close-outline msgIcon fontSize25px" ng-click="closeAnyIDTypeSelection()"></i>
+                        </div>
+                    </div>
+                    <div class="row col margin-Top-35px">
+                        <h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel" translate="label.typeAnyID"></h5>
+                        <any-id-type-list-swiper override-parameters="anyIdTypeListSwiper.overrideParams" active-item="{{anyIdTypeListSwiper.activeItem}}"
+                            items="anyIdTypeList" on-data-updated="anyIdTypeListSwiper.invokes(value)">
+                        </any-id-type-list-swiper>
+                        <div align="center" class="themeGreyTextColor line-bottom" ng-class="fontLabelSmall">
+                            {{anyidTypeDescriptionName}}
+                        </div>
+                        <h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel"> {{anyidTypeLabelName}}</h5>
+                    </div>
+
+                    <div class="item item-input marginLeft20Px addotherAccountCustomBorder addMyAccountEditDetailUnderLine" style="width:95%">
+                            <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                            <div ng-if="isStringDataType" style="width:100%">
+                                <input type="text" ng-model="accountModel.accountNo"  maxlength="{{accountModel.anyidTypeLength}}" />
+                            </div>
+                            <div ng-if="!isStringDataType" style="width:100%">
+                                <input bind-virtual-keyboard vkmodel="accountModel.accountNo" 
+                                    vkoption="virtualKeyboardAccount.option" 
+                                    type="text" 
+                                    class="margin-account-input font-clanOt-label" 
+                                    ng-model="accountModel.accountNo"/>
+                            </div>
+                            <i class="icon icon-c32 icon-address-book-o style-icon-contact-phone"  ng-if="selectedAnyIDType == 'MSISDN'" ng-click="getContactPhone()"></i>  
+                    </div>
+                </div>
+                <div class="row padd-left20px padd-Right20px" ng-if="isShowOtherAnyIdAccountDetail" style="padding-top: 20px">
+                    <div class="col col-90" ng-click="openFromList()">
+                        <a class="item item-thumbnail-left item-icon-right paddingNone" href="#">
+                            <img ng-src="{{ getAnyIDIcon(otherAnyIdAccount.anyIDType) }}" class="tranCompImg" 
+                            style="background-color: #594F74"/>
+                            <div class="thumbnail-detail themeGreyTextColor" ng-class="fontMain">
+                                <div class="themeGreyTextColor">{{otherAnyIdAccount.acctAliasName}}</div>
+                                <div class="thumbnail-acc-no ">{{otherAnyIdAccount.acctNo}}</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col" style="text-align: right;">
+                        <i class="icon ion-ios-close-outline msgIcon fontSize25px" ng-click="closeOtherAccoutDetail()"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="transferaccount txtCenterAlign">
+                <label class="item item-input themeDarkBlueBGColor">
+                    <input bind-virtual-keyboard 
+                        vkmodel="amountModel.amount" 
+                        vkoption="virtualKeyboardAmount.option" 
+                        onvkkeyup="virtualKeyboardAmount.onkeyup()"
+                        onvkblur="virtualKeyboardAmount.onblur()"
+                        onvkfocus="virtualKeyboardAmount.onfocus()"
+                        type="text" 
+                        class="font-clanOt-header whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox" 
+                        ng-model="amountModel.amount" 
+                        placeholder="{{placeholderAmount}}" />
+                </label>
+                <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+            </div>
+
+            <ion-item class="item-divider selectmypromptpayAccount" ng-if="myAccount == null">
+                <center class="selectFromAccountItemButt">
+                    <button class="button  button-light" style="margin-top: 0px;" ng-click="openMyPromptpayAccount()" translate="label.transferMyPromptPay" ng-class="fontLabel">
+                    </button>
+                </center>
+            </ion-item>
+
+            <ion-item class="item-divider selectmypromptpayAccount" ng-if="myAccount!=null" ng-click="openMyPromptpayAccount()">
+                <div class="col paddingNone">
+                    <div class="fontSize16px">{{myAccount.accountAliasName}}</div>
+                    <div class="fontSize16px">{{getAnyIDLabelName(myAccount.anyIDType)}}</div>
+                    <div class="fontSize16px">{{myAccount.anyIDValue}}</div>
+                </div> 
+            </ion-item>
+            <div class="list list-inset" ng-class="fontDisplay">
+                <div class="row">
+                    <div class=" col col-25 padd-top6px  marginNone font-bold" translate="label.note"></div>
+                    <div class=" col col-75 paddingNone marginNone">
+                        <label class="item item-input item-stacked-label">
+                            <input class="memo" type="text" ng-model="memo.txt" maxlength = "40">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="txtCenterAlign borderTop1Px padd-top10px padd-bottom5px themeGreyTextColor" ng-class="fontLabel">
+                <span translate="label.requestDate"></span>
+            </div>
+            <ion-item class="item-divider todayLaterItem">
+                <div class="row icon-row">
+                    <div class="col text-center scheduleBtns selectedBtnBGColor">
+                        <button class="button button-block button-custom" ng-class="fontLabel">
+                            <span translate="{{today.day_label}}"></span> &nbsp;
+                            {{today.date}}&nbsp;
+                            <span translate="{{today.month_label}}"></span> &nbsp;
+                            {{today.year}}
+                        </button>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+            ng-click="goNextPage()" translate="button.next">
+			</button>
+		</div>
+    </ion-content>
+</ion-view>

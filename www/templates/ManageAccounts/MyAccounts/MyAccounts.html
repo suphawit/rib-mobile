@@ -1,0 +1,82 @@
+<ion-view ng-init="initIdleStateChecker()" title="" id="myAccount">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+		<h4 class="title" ng-if="isFromMyAccount" translate="label.myDeposit"></h4>
+		<h4 class="title" ng-if="isFromMyANYIDAccount" translate="label.myKKPromptPay"></h4>
+	    <!--<a class="button button-icon icon ion-plus" side="right" ng-if="isFromMyAccount" ng-click="navigateToAddMyAccounts()"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+        <div ng-repeat="groupsavingaccount in ownAccountGroups track by $index" ng-if="groupsavingaccount">
+			<div class="group-list">
+               	<ion-list>
+                    <ion-item class="item-stable item-icon-right dasboardAccord padd-left0px padding-right5px item-header-height" ion-affix data-affix-within-parent-with-class="group-list" ng-click="toggleGroupSavingAccount(groupsavingaccount)"
+                   	 ng-class="{active: isGroupShownSavingAccount(groupsavingaccount)}" >
+                       <i class="icon fontSize25px whiteTextColor padd-right2px" ng-class="isGroupShownSavingAccount(groupsavingaccount) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+						&nbsp;
+						<label ng-class="fontHeader"><span translate="{{groupsavingaccount.labelType}}"></span>&nbsp;(<span translate="label.currency"></span>)</label>
+                    </ion-item>
+					<ion-item ng-repeat="groupsavingaccountitem in groupsavingaccount.items track by $index" class="dashboard-accordion" ng-if="isGroupShownSavingAccount(groupsavingaccount)" >
+						
+						<div ng-if="groupsavingaccountitem.statusCode == 1"  class = "row padd-bottom padd-top-zero padd-Right10px" ng-click="navigateToMyAccountsDetail(groupsavingaccountitem)">
+							
+							<div class="col col-60 myAccItemName">
+								<div class="myAccountAliasName themeGreyTextColor font-clanOt-menu-header wordBreak padd-bottom7px">{{groupsavingaccountitem.myAccountAliasName}}</div>
+								<div class="fontSize14px themeGreyTextColor wordBreak">{{groupsavingaccountitem.myAccountNumber}}</div>
+							</div>								 
+							<div class="col col-40 web-tblrow-data-leftbar tblAmountCol myAccItemAmount">
+								<span class="fontSize16px wordBreak lineHeightCurrency font-clanOt-menu-header">{{groupsavingaccountitem.myAvailableBalance | currency : ""}}</span>								
+							</div>	
+						</div>	
+						
+						<div  ng-if="groupsavingaccountitem.statusCode != 1"  class = "row padd-bottom padd-top-zero padd-Right10px">
+							
+							<div class="col col-60" style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+								<div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="themeGreyTextColor font-clanOt-menu-header wordBreak">{{groupsavingaccountitem.myAccountAliasName}}</div>
+								<div class="fontSize14px themeGreyTextColor wordBreak">{{groupsavingaccountitem.myAccountNumber}}</div>
+							</div>								 
+							<div class="col col-40 web-tblrow-data-leftbar tblAmountCol" style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+								<span class="fontSize16px wordBreak lineHeightCurrency font-clanOt-menu-header">{{groupsavingaccountitem.myAvailableBalance | currency : ""}}</span>								
+							</div>	
+						</div>	
+						
+						<div  ng-if="groupsavingaccount.typeCount > 1 || groupsavingaccount.items.length > 1">
+						 	<ion-option-button class="button-assertive" ng-click="deleteAccount(groupsavingaccountitem)" translate="label.delete"> </ion-option-button>
+						</div>							
+					</ion-item>
+				</ion-list>
+            </div>
+		</div>
+		<div ng-repeat="groupAccount in anyIdAccountGroup track by $index" ng-if="groupAccount">
+			<div class="group-list">
+               	<ion-list>
+                    <ion-item class="item-stable item-icon-right dasboardAccord padd-left0px padding-right5px item-header-height" ion-affix data-affix-within-parent-with-class="group-list" ng-click="toggleGroupSavingAccount(groupAccount)" 
+                   	 ng-class="{active: isGroupShownSavingAccount(groupAccount)}" >
+                       <i class="icon fontSize25px whiteTextColor padd-right2px" ng-class="isGroupShownSavingAccount(groupAccount) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+						&nbsp;
+						<label ng-class="fontHeader" ><span translate="{{groupAccount.labelType}}"></span></label>
+                    </ion-item>
+					<ion-item ng-repeat="account in groupAccount.items track by $index" class="dashboard-accordion" ng-if="isGroupShownSavingAccount(groupAccount)" >
+						<div class="row padd-bottom padd-top-zero padd-Right10px" ng-click="selectAnyIdDetail(account)">
+							<div class="col myAccItemName">
+								<div class="myAccountAliasName themeGreyTextColor font-clanOt-menu-header wordBreak padd-bottom7px" style="font-weight: bold;">{{account.promptPayName}}</div>
+								<div class="fontSize14px themeGreyTextColor wordBreak">{{account.anyIDValue}}</div>
+							</div>
+						</div>
+						<div ng-if="false">
+						 	<ion-option-button class="button-assertive" translate="label.delete"> </ion-option-button>
+						</div>
+					</ion-item>
+				</ion-list>
+            </div>
+		</div>
+		<div ng-if="noMyAnyIDAccount" class="col col-80 col-offset-10 txtCenterAlign"
+		translate="label.myKKPromptPay.noData"></div>
+		<div ng-if="noMyAccount" class="col col-80 col-offset-10 txtCenterAlign"
+		translate="label.myAccount.noData"></div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button ng-if="isFromMyAccount" class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.add" ng-click="navigateToAddMyAccounts()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

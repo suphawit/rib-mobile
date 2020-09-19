@@ -1,0 +1,42 @@
+<ion-view title="">   
+     
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<a class="button button-clear" ng-click="backToMyAccountsDetail()" translate="label.back"></a>
+	    <h4 class="title" translate="label.editMyAcc"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="navigateToEditMyAccountsDetail()" translate="button.next"></a>-->
+	</ion-header-bar>
+      
+<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" has-bouncing="false" ng-class="fontHeader" >  
+	<div style="min-height: calc(90vh - 110px)">	 
+		<h2 class="title-content-bar" translate="label.myAccDetail"></h2>
+		
+			<div class="list list-inset addMyAccountDetailList">
+				
+			<form ng-submit='navigateToEditMyAccountsDetail()' ng-class="fontLabel" >
+					
+					<p class="addMyAccountfont" translate="label.plsInpUrInfo"> </p>
+						
+						<h5 class="addMyAccountLable" translate="label.acctNo"> </h5>
+						
+						<label class="item item-input addotherAccountCustomBorder borderNone padd-left0px">
+							<i class="icon ion-person placeholder-icon fontSize25px"></i>
+						{{selectedAccountDataInfo.myAccountNumber}}
+						</label>
+						
+						<h5 class="addMyAccountLable" translate="label.acctAliasName"> </h5>
+						<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLineEdit ">
+							<i class="icon ion-android-lock placeholder-icon fontSize25px"></i>
+							<input type="text" class="padd-left4px" maxlength="30" ng-model="ownAccData.aliasNameTextField"
+									ng-blur="validationAliasName(ownAccData.aliasNameTextField)" maxlength="30">
+						</label>
+						
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>		
+				</form>
+			</div>
+	</div>
+	<div style="margin-left: 3vw;margin-right: 3vw;">
+		<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="navigateToEditMyAccountsDetail()">
+		</button>
+	</div>	
+</ion-content> 
+</ion-view>

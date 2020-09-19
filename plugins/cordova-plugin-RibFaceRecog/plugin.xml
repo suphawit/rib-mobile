@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-RibFaceRecog" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>RibFaceRecog</name>
+    <js-module name="RibFaceRecog" src="www/RibFaceRecog.js">
+        <clobbers target="cordova.plugins.RibFaceRecog" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="RibFaceRecog">
+                <param name="android-package" value="com.kkebanking.facerecog.plugin.RibFaceRecog" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/RibFaceRecog.java" target-dir="src/com/kkebanking/facerecog/plugin/RibFaceRecog" />
+
+        <resource-file src="src/android/facerecog.aar" target="libs/facerecog.aar"/>
+        <resource-file src="src/android/PALicense2.1.0.aar" target="libs/PALicense2.1.0.aar"/>
+        <resource-file src="src/android/PALiveDetect4.4.0.3.aar" target="libs/PALiveDetect4.4.0.3.aar"/>
+		
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.kiatnakinbank.facelivenessdetection.MainActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:screenOrientation="portrait" />
+			<activity android:name="com.kiatnakinbank.facelivenessdetection.views.activity.FaceLivenessDetectionActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:screenOrientation="portrait" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-permission android:name="android.hardware.camera.autofocus"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+        </config-file>
+        <framework src="src/android/facerecog.gradle" custom="true" type="gradleReference"/>
+    </platform>
+     <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="RibFaceRecog">
+        <param name="ios-package" value="CDVRibFaceRecog"/>
+      </feature>
+    </config-file>
+    <!-- frameworks -->
+    <framework src="AssetsLibrary.framework" />
+    <framework src="SystemConfiguration.framework" />
+    <framework src="LocalAuthentication.framework" />
+    <framework src="CoreMedia.framework" />
+    <framework src="CoreGraphics.framework" />
+    <framework src="CoreFoundation.framework" />
+    <framework src="CoreVideo.framework" />
+    <framework src="Accelerate.framework" />
+    <framework src="libz.tbd" />
+    <framework src="libz.1.tbd" />
+    <framework src="libc++.tbd" />
+
+    <resource-file src="src/ios/SDK/ACEFaceKit.bundle" framework="true"/>
+    <source-file src="src/ios/SDK/libPAAuthorizationKit/libPAAuthorizationKit.a" framework="true"/>
+    <source-file src="src/ios/SDK/libPAAuthorizationKit/PAAuthorizationKit.h"/>
+    <source-file src="src/ios/SDK/PAFaceDetectSDK/libPAFaceDetectSDK.a" framework="true"/>
+    <source-file src="src/ios/SDK/PAFaceDetectSDK/PAFaceConfig.h"/>
+    <source-file src="src/ios/SDK/PAFaceDetectSDK/PAFaceDetectorManager.h"/>
+    <source-file src="src/ios/SDK/PAFaceDetectSDK/PAFaceDetectorSetting.h"/>
+    <header-file src="src/ios/CDVRibFaceRecog.h" />
+    <source-file src="src/ios/CDVRibFaceRecog.m" />
+  </platform>
+</plugin>

@@ -1,0 +1,67 @@
+<ion-view title="" drag-content="false" id="requestBureauPage"> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="button.back"></a>
+		<h4 class="title" translate="label.checkNCB"></h4>	    
+    </ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="true" has-bouncing="false">
+        <div class="container">
+            <div class="row lineHeight1 " ng-class="fontLabelMedium">	
+                <div class="col col-30">
+                    <p translate="label.inspectorName"></p>
+                    <p translate="label.eDonation.card2"></p>
+                </div>
+                <div class="col col-70 txtRightAlign">
+                    <p>{{ (lang === "th" ? customerData.titleNameTh+"&nbsp;"+customerData.firstNameTh+"&nbsp;"+customerData.lastNameTh : 
+                                                customerData.titleNameEn+"&nbsp;"+customerData.firstNameEn+"&nbsp;"+customerData.lastNameEn).slice(0, 50) }}</p>
+                    <p>{{customerData.cardId}}</p>
+                </div>
+            </div>
+            <div class="row lineHeight1 chooseBureauType" ng-class="fontLabelMedium">	
+                <div class="col">
+                    <p translate="label.NCBType"></p>
+                </div>
+            </div>
+            
+            <div class='bureauList'>
+                <ion-list ng-show ="ncbPackageList.length" ng-class="fontLabel">
+                    <label for="{{ item.packageId }}" ng-repeat="item in ncbPackageList track by $index" class="checkbox-container"
+                        ng-class="{ 'active' : item.isActive }">
+                        <span class="txt" ng-class="fontLabelMedium">
+                            <span translate="label.option"></span> 
+                            {{$index+1}} <br />{{lang === "th" ? item.packageNameTh : item.packageNameEn}}
+                            <br />
+                            {{lang === "th" ? item.packageDescTh : item.packageDescEn}}
+                        </span>
+                        <input id="{{ item.packageId }}" type="radio" ng-model="form.packageItem" ng-click="setActiveChoice($index, item.packageId)" ng-value="{{item}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </ion-list>
+            </div>
+            <div class="row lineHeight1 marginTop10px">
+                <div class="col">
+                    <p class="fontSize16px fontFamilyQuark-bold" translate="label.accountFee"></p>
+                </div>
+            </div>
+            <div class="accountButton" ng-if="account == null">
+                <button class="button button-block button-specify-account-fee" translate="button.specifyAccountFee" ng-click="openAccountList()">
+                </button>
+            </div>
+            
+            <!--account selected detail-->
+            <ion-item class="item-divider fundTransGreyTopArea accountListDetails" ng-if="account!=null" ng-click="openAccountList()">
+                <div>{{account.myAccountAliasName}}</div>
+                <div>{{account.myAccountNumber}}</div>
+            </ion-item>
+            
+            <div class="row lineHeight1 sendRequestBureauInfo">
+                <div class="col">
+                    <center><span class="fontSize14px" translate="label.sendRequestBureauInfo"></span></center>
+                </div>
+            </div>
+        </div>
+		<div class="buttonContainer">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="gotoNextPage()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

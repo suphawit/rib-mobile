@@ -1,0 +1,73 @@
+<ion-view title="">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="goBackPage()" translate="button.back"></a>
+        <h3 class="title" translate="label.amendAnyId"></h3>
+        <!--<a class="button button-clear" ng-class="fontHeader" translate="button.next" ng-click="submit()" ng-if="isShowNext"></a>-->
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <div class="list-bank marginTop15Px">
+                <div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor">
+                    <img ng-src="{{anyIDIcon}}" class="tranCompImg" ng-style="{ 'background-color': anyIDIconColor }" />
+                    <div class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+                        <div class="min-height-m bankName-other-acc margin-Top5px">{{anyIDName}}</div>
+                        <div>{{anyIDValue}}</div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="row fontLabel list-edit-anyid margin-Top0px" translate="label.currentAccountNo"></h5>
+            <p class="row list-edit-anyid">{{fromAccountAliasName}}</p>
+            <p class="row list-edit-anyid">{{fromAccountNo}}</p>
+            <h5 class="row fontLabel list-edit-anyid" translate="label.changetoAccountNo"></h5>
+            <div class="row paddingNone ">
+                <div class="col paddingNone ">
+                    <div class="item-divider selectAcoountItem-anyID-Register margin-Top0px">
+                        <div>{{toAccountAliasName}}
+                            <br>{{toAccountNo}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-Top5px">
+                <div class="col text-center ">
+                    <a class="button button-block button-term-and-conditions" ng-class="'active'"
+                    ng-click="termsAndCondChecked()">
+                        <i class="icon ion-checkmark"></i>&nbsp;&nbsp;{{'label.termAndConditionsBtn' | translate}}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="termAgreeandConditionStyle" translate="label.viewTermAndConditions"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5 class="padd-left15px padd-topq10px themeGreyTextColor" translate=label.input.otp ng-class="fontLabel"></h5>
+                    <div class="row padd-left10px">
+                        <label class="item item-input addotherAccountCustomBorder">
+                            <i class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+                            <input bind-virtual-keyboard vkmodel="otpModel.otp" vkoption="virtualKeyboardOTP.option" class="whiteBGColor" type="password"
+                                ng-model="otpModel.otp" placeholder="{{requestOTPResponse.referenceNo}}" maxlength="6">
+                        </label>
+                        <button class="button getOTPTransfer" ng-class="fontLabel" ng-click="requestOTP()" ng-disabled="isDisableBtn" translate=label.getOtp></button>
+                    </div>
+                    <div class="otp-section-desc" ng-show="requestOTPResponse.referenceNo">
+                        <div class="row">
+                            <span translate="otp.desc.mobileno"></span>
+                            <strong>
+                                <span class="font-color-kkblue">&nbsp;{{requestOTPResponse.mobileNo}}</span>
+                            </strong>
+                        </div>
+                        <div class="row">
+                            <span translate="otp.desc.validity"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="submit()" ng-disabled="!isShowNext">
+			</button>
+		</div>
+    </ion-content>
+</ion-view>

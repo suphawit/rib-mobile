@@ -1,0 +1,111 @@
+<ion-view id="billPayResult">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear title-result" ng-if="isExistingBiller == false" ng-click="addNewBiller()"
+           translate="label.addBiller"></a>
+        <h4 class="title title-result" translate="label.eDonation"></h4>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false"
+                 has-bouncing="false">
+        <div style="min-height: calc(85vh - 130px)">
+            <div class="dasboardAccord padding15px txtCenterAlign">
+                <span class="fontSize18px">{{showDataConfirmComplete.submitStatusDesc}}</span>
+            </div>
+
+            <div>
+                <ion-item class="item-divider transConfirmHeadBlck" ng-class="fontDisplay">
+                    <div class="font-bold fontSize19px blackTextColor">{{::showDataConfirmComplete.accountAliasName}}
+                    </div>
+                    <div> {{::showDataConfirmComplete.fromAccountNumber}}</div>
+                    <span translate="label.availableBalance"></span>
+                    <span> {{::showDataConfirmComplete.availableBalance | currency : ""}}</span>
+                    <span translate="label.currency"></span>
+                </ion-item>
+
+                <div class="transferaccount transConfrmAmoutDiv">
+                    <div class=" themeDarkBlueBGColor borderNone txtCenterAlign">
+                        <span class="whiteTextColor font-clanOt-header">{{::showDataConfirmComplete.payAmount | currency : ""}} </span>
+                        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col bill-img-panel " ng-class="fontDisplay">
+                <div class="item item-thumbnail-left item-icon-right paddingNone">
+                    <img class="tranCompImg" style="background-color: #594F74;"
+                         ng-src="{{showDataConfirmComplete.logoCompany || defaultBillerLogo}}">
+                    <div class="thumbnail-detail" ng-class="fontMain">
+
+                        <p class="themeGreyTextColor text-ellipsis">{{showDataConfirmComplete.billerAliasName}}</p>
+                        <p class="text-ellipsis">{{showDataConfirmComplete.billerName}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="line-bottom"></div>
+
+            <div class="marginNone list list-inset padd-left20px themeGreyTextColor" ng-class="fontDisplay">
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.referenceNO"></div>
+                    <div class="col col-67 paddingNone marginNone">{{showDataConfirmComplete.transactionRef || showDataConfirmComplete.referenceNo}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+                    <div class="col col-67 paddingNone marginNone">
+                        {{showDataConfirmComplete.txnDate.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.txnDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.txnDate.year}}&nbsp;
+                        {{showDataConfirmComplete.txnDate.time}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold"
+                         translate="label.eDonation.result.donationDate"></div>
+                    <div class="col col-67 paddingNone marginNone">
+                        {{showDataConfirmComplete.paymentDate.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.paymentDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.paymentDate.year}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.input.feeamount"></div>
+                    <div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.feeAmount | currency :
+                        ""}}
+                        <span translate="label.currency"></span></div>
+                </div>
+
+                <div class="row" ng-if="ref.value!=null && ref.value!='' && ref.isHideRef != true&&!($index == 1 && ref.value==0)"
+                     ng-repeat="ref in showDataConfirmComplete.refInfos track by $index">
+                    <div class="col col-33 paddingNone marginNone font-bold">{{displayRefName($index)}}</div>
+                    <div class=" col col-67 paddingNone marginNone">{{displayRefValue($index)}}</div>
+                </div>
+
+                <div class="row">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.donateStatus"></div>
+                    <div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.paymentStatusDisPlay}}
+                    </div>
+                </div>
+
+                <div class="row" ng-if="showDataConfirmComplete.noteMemo">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.note"></div>
+                    <div class=" col col-67 paddingNone  marginNone">{{showDataConfirmComplete.noteMemo}}</div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="button.capture"  ng-disabled="isWaitToSaveSlip" style="opacity: 1;"
+                    ng-click="showReceiptPage()" ng-if="showDataConfirmComplete.canPrintSlip">
+            </button>
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="btn.share"
+                    ng-click="shareReceipt()" ng-if="showDataConfirmComplete.canPrintSlip">
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
+<!-- for save slip without show modal -->
+<!--<div style="left: -9999px;position: relative;" ng-include="'templates/eDonation/slipTemplate.html'"></div>-->

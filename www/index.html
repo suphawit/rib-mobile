@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+     <head>
+       <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">  -->
+        <meta charset="UTF-8"/>
+        <title>Kiatnakin Phatra Bank</title>
+        <meta name="viewport" content="viewport-fit=cover, width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+        <!--
+          <link rel="shortcut icon" href="images/favicon.png">
+          <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
+        -->
+        <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+       <link rel="stylesheet" href="lib/ionic/css/ionic.min.css"/>
+       <!-- build:css -->
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/override.css"/>
+        <link rel="stylesheet" href="css/common.css"/>  
+        <link rel="stylesheet" href="css/mediaqueries.css"/>
+
+       <!-- endbuild -->
+
+      <link rel="stylesheet" href="lib/swip/swiper.min.css"/>
+        <script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+        <script type="text/javascript" src="lib/angularjs/angular-translate.min.js"></script>
+        <script type="text/javascript" src="lib/angular-ui-unique/unique.js"></script>
+      <!-- build:js -->
+
+
+      <script type="text/javascript" src="js/translation/translations-error.js"></script>
+      <script type="text/javascript" src="js/translation/translations-label.js"></script>
+        <!-- Controller -->
+
+       <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/controllers/MainCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MenuCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/LoginCtrl.js"></script>
+          
+        <script type="text/javascript" src="js/controllers/ManageAccountCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManageAccountConfirmCtrl.js"></script>
+
+        <script type="text/javascript" src="js/controllers/AnyIDCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/GeneralControls.js"></script>
+        <script type="text/javascript" src="js/controllers/ScheduleCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/ScheduleBillpaymentCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/LocateUsCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFundCtrl1.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFundCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/ScheduleFundtransferCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/HistoryCtrl.js"></script>  
+         
+        <script type="text/javascript" src="js/controllers/MyAccountCtrl.js"></script> 
+        
+        <script type="text/javascript" src="js/controllers/FundTransferCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/FundTransferConfirmCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/FundTransferCompleteCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/OtherAccountCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/AddOtherAccountCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/AddOtherAccountDetailCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/EditOtherAccountCtrl.js"></script>  
+                    
+        <script type="text/javascript" src="js/controllers/ManageBillerPromptPayCtrl.js"></script>  
+        <script type="text/javascript" src="js/controllers/billPaymentRTP/billPaymentRTPCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/billPaymentRTP/billPaymentRTPConfirmOTPCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/billPaymentRTP/billPaymentRTPResultCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ChangeTermCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/HistoryRequestToPayCtrl.js"></script>  
+        <script type="text/javascript" src="js/controllers/RequestToPayInComingCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RequestToPayOutGoingCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RTPRequest/RTPRequestCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RTPRequest/RTPRequestConfirmOTPCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RTPRequest/RTPRequestResultCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/QRScannerCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/QRGeneratorCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/QRGeneratorCompleteCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RequestToPayBlockListCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/create/createPinUsingUserCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/create/createPinUsingDebitcardCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/create/createPinPortalCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/create/createPinUsingProductCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/reset/resetPinPortalCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/reset/resetPinUsingUserCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/reset/resetPinUsingDebitcardCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/reset/resetPinUsingProductCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/RequestToPayBlockListCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/NotificationCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/AnyIdEdit/anyIdEditCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/AnyIdEdit/anyIdEditConfirmCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/AnyIdEdit/anyIdEditCompleteCtrl.js"></script>
+		    <script type="text/javascript" src="js/controllers/SuitabilityScoreCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/SuitabilityQuestion.js"></script> 
+        <!-- <script type="text/javascript" src="js/controllers/MyMutualFundCtrl.js"></script>  -->
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundPurchaseCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundPurchaseConfirmCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundPurchaseResultCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundRedeemCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundRedeemConfirmCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundRedeemResultCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundSwitchCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundSwitchConfirmCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundSwitchResultCtrl.js"></script>  
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundHistoryCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundSearchCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/eDonation/eDonationCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/eDonation/eDonationConfirmCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/eDonation/eDonationResultCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/verifyQRDetail/QRVerifyDetailCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/manageDevice/ManageDeviceCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/MutualFund/mutualFundNewsCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/NDIDAuthen/NDIDAuthenListCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/NDIDAuthen/NDIDAuthenConfirmCtrl.js"></script> 
+        <script type="text/javascript" src="js/controllers/NDIDAuthen/NDIDAuthenResult.js"></script>
+        <script type="text/javascript" src="js/controllers/NDIDAuthen/NDIDAuthenFaceDetectCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/ManagePin/newuser/newUserAuthenticationCtrl.js"></script>
+        <script type="text/javascript" src="js/controllers/LoginSettingCtrl.js"></script>
+        <!-- Service -->
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/ngservices/commonService.js"></script>
+        <script type="text/javascript" src="js/ngservices/deviceService.js"></script>    
+        <script type="text/javascript" src="js/ngservices/invokeService.js"></script>
+        <script type="text/javascript" src="js/ngservices/loginService.js"></script>
+        <script type="text/javascript" src="js/ngservices/accountService.js"></script>
+        <script type="text/javascript" src="js/ngservices/myAccountTermDepositService.js"></script>
+        <script type="text/javascript" src="js/ngservices/billPaymentService.js"></script>
+        <script type="text/javascript" src="js/ngservices/billPaymentRTPService.js"></script>
+        <script type="text/javascript" src="js/ngservices/scheduleService.js"></script>
+        <script type="text/javascript" src="js/ngservices/myAccountService.js"></script>
+        <script type="text/javascript" src="js/ngservices/fundtransferService.js"></script>
+        <script type="text/javascript" src="js/ngservices/historyService.js"></script>
+        <script type="text/javascript" src="js/ngservices/otherAccountService.js"></script>
+        <script type="text/javascript" src="js/ngservices/virtualKeyBoardService.js"></script>
+        <script type="text/javascript" src="js/ngservices/mutualFundService.js"></script>
+        <script type="text/javascript" src="js/ngservices/otpService.js"></script>
+        <script type="text/javascript" src="js/ngservices/AnyIDService.js"></script>
+        <script type="text/javascript" src="js/ngservices/cordovaConverterService.js"></script>
+        <script type="text/javascript" src="js/ngservices/requestToPayInComingService.js"></script>
+        <script type="text/javascript" src="js/ngservices/manageBillerPromptPayService.js"></script>
+        <script type="text/javascript" src="js/ngservices/requestToPayOutGoingService.js"></script>
+        <script type="text/javascript" src="js/ngservices/rtprequestService.js"></script>
+        <script type="text/javascript" src="js/ngservices/notificationService.js"></script>
+        <script type="text/javascript" src="js/ngservices/QRScannerService.js"></script>
+        <script type="text/javascript" src="js/ngservices/subscriptionService.js"></script>
+        <script type="text/javascript" src="js/ngservices/managePinService.js"></script>
+        <script type="text/javascript" src="js/ngservices/requestToPayBlocklistService.js"></script>
+        <script type="text/javascript" src="js/ngservices/qrcodeBarcodeInfoService.js"></script>
+        <script type="text/javascript" src="js/ngservices/notificationSetDetailService.js"></script>
+        <script type="text/javascript" src="js/ngservices/amendAnyIDService.js"></script>
+		    <script type="text/javascript" src="js/ngservices/suitabilityScoreService.js"></script>
+        <script type="text/javascript" src="js/ngservices/eDonationService.js"></script>
+        <script type="text/javascript" src="js/ngservices/manageDeviceService.js"></script>
+        <script type="text/javascript" src="js/ngservices/ndidAuthenService.js"></script>
+        
+        <!-- Directive -->
+        <script type="text/javascript" src="js/directives.js"></script>
+        <script type="text/javascript" src="js/directives/commonDirective.js"></script>
+        <script type="text/javascript" src="js/directives/displayWhenDirective.js"></script>
+        <script type="text/javascript" src="js/directives/virtualKeyboardDirective.js"></script>
+        <script type="text/javascript" src="js/directives/banklistsSwiperDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyUsernameFormDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyDebitcardFormDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/pinPortalDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyTermAndCondDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyPinDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyProductFormDirective.js"></script>
+        <script type="text/javascript" src="js/directives/ManagePin/verifyOtpDirective.js"></script>
+
+       <script type="text/javascript" src="js/constants.js"></script>
+       <!-- endbuild -->
+      <!-- build:templates -->
+      <!-- endbuild -->
+       <script type="text/javascript" src="cordova.js"></script>
+	</head>
+	
+<body ng-controller="MainCtrl" id="indexPage" ng-class="fontContent">
+   
+    <ion-nav-view></ion-nav-view>
+    <virtual-keyboard></virtual-keyboard>
+    <script type="text/javascript">
+      if(navigator.platform === 'Win32' || navigator.platform === 'MacIntel'){
+        // alert('1');
+        $('head').append('<link rel="stylesheet" type="text/css" href="lib/sweet-alert/sweetalert.css">');
+        $.getScript("lib/sweet-alert/sweetalert.min.js", function(){});
+        $.getScript('/plugins/cordova-plugin-advanced-http/www/advanced-http.js', function(){});
+
+       $.getScript("js/initOptions.js", function(){});
+       $.getScript("js/main.js", function(){});
+        // $.getScript("/node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js", function(){});
+        // $.getScript("/node_modules/ibm-mfp-web-sdk/ibmmfpf.js", function(){
+        //
+        //   $.getScript("/node_modules/sjcl/sjcl.js", function(){});
+        //   $.getScript("/node_modules/jssha/src/sha.js", function(){});
+        //   $.getScript("js/initOptions.js", function(){});
+        //   $.getScript("js/main.js", function(){});
+        // });
+        
+      }else{
+        // $.getScript("js/initOptions.js", function(){});
+        // $.getScript("js/main.js", function(){});
+        $.getScript("lib/cordova-plugins/Screenshot.js", function(){});
+        $.getScript("lib/cordova-plugins/keyboard.js", function(){});
+        $.getScript("lib/cordova-plugins/android/DatePickerAndroid.js", function(){});
+        $.getScript("lib/cordova-plugins/android/rootdetection.js", function(){});
+        $.getScript("lib/cordova-plugins/ios/DatePicker.js", function(){});
+        $.getScript("lib/cordova-plugins/ios/jailbreakdetection.js", function(){});
+      }
+  </script>
+
+
+         
+    <link rel="stylesheet" href="lib/customdropdown/angular-dropdowns.css"/>
+    <script type="text/javascript" src="lib/customdropdown/angular-dropdowns.js"></script>
+  	<script type="text/javascript" src="lib/swip/swiper.js"></script>
+    <script type="text/javascript" src="lib/swip/angular-swiper.js"></script> 
+    <script type="text/javascript" src="lib/ngidle/angular-idle.min.js"></script> 
+    <script type="text/javascript" src="lib/affix/ion-affix.js"></script>  
+
+    <script type="text/javascript" src="lib/angular-moment/moment.js"></script>  
+    <script type="text/javascript" src="lib/angular-moment/locale/th.js"></script>  
+    <script type="text/javascript" src="lib/angular-moment/locale/en.js"></script>  
+    <script type="text/javascript" src="lib/angular-moment/angular-moment.min.js"></script>
+
+    <script type="text/javascript" src="lib/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="lib/dist/Chart.PieceLabel.min.js"></script>
+
+    <script type="text/javascript" src="lib/cordova-plugins/SSLCertificateChecker.js"></script>
+    <script type="text/javascript" src="lib/qrcode-generator/qrcode.js"></script>
+    <script type="text/javascript" src="lib/qrcode-generator/qrcode_UTF8.js"></script>
+    <script type="text/javascript" src="lib/angular-qrcode/angular-qrcode.js"></script>
+    <script type="text/javascript" src="lib/dom-to-image/dom-to-image.js"></script>
+</body>
+</html>

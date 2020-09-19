@@ -1,0 +1,72 @@
+<ion-view title=""> 
+ 	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<i class="button button-clear" ng-click="navigateToManageBillPay()" translate="label.back"  ></i>
+	    <h4 class="title" translate="label.billerDetail"></h4>
+		<!-- <i class=" button button-icon icon ion-ios-gear" side="right" ng-click="editBiller()"></i> -->
+	</ion-header-bar>
+	<ion-content has-header="true" scroll="false" overflow-scroll="false" has-bouncing="false"> 
+		<div style="min-height: calc(90vh - 110px)">
+			<div class="list list-inset manage-bill-padd margin-Bottom-0px">
+				<p class="confirmDeleteAddMyAccountPadAccount" translate=label.billerAliasName  ng-class="fontLabel"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{billerListDetail.aliasName}}</p> 
+				
+				<div>
+						<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor  ">
+							<img ng-src="{{billerListDetail.logoCompany || getDefaultBillerImage(billerListDetail)}}" class="tranCompImg" style="background-color: #594F74;"/>
+								<div ng-if ="lang == 'en'" class="thumbnail-detail-add-other-acc padding-Top5px" ng-class="fontDisplay">
+									<div class="bankName-other-acc text-ellipsis" style="padding-top: 13px">
+										{{billerListDetail.billerNameEn }}
+									</div>
+									<!-- <div class="bankName-other-acc text-ellipsis">{{ billerListDetail.categoryEn }}</div> -->
+								</div>
+
+								<div ng-if ="lang == 'th'" class="thumbnail-detail-add-other-acc padding-Top5px" ng-class="fontDisplay">
+									<div class="bankName-other-acc text-ellipsis" style="padding-top: 13px">
+										{{ billerListDetail.billerNameTh }}
+									</div>
+									<!-- <div class="bankName-other-acc text-ellipsis">{{billerListDetail.categoryTh }}</div> -->
+								</div>
+						</div>
+				</div>
+
+				<p class="confirmDeleteAddMyAccountPadAccount" translate=label.billerCategory  ng-class="fontLabel" style="margin-top: 15px"></p>
+				<p ng-if ="lang == 'en'" class="confirmDeleteAddMyAccountPadAccount">
+					{{billerListDetail.categoryEn}}
+				</p>
+				<p ng-if ="lang == 'th'" class="confirmDeleteAddMyAccountPadAccount">
+					{{billerListDetail.categoryTh}}
+				</p> 
+
+				<div class="confirmDeleteAddMyAccountPadAccount padding-Top5px"  ng-repeat="billerDetail in refInfos track by $index">
+						<p  ng-if ="lang == 'th'" class="confirmDeleteAddMyAccountPadAccount"  ng-class="fontLabel">{{billerDetail.textTh}} </p>
+						<p  ng-if ="lang == 'en'" class="confirmDeleteAddMyAccountPadAccount"  ng-class="fontLabel">{{billerDetail.textEn}} </p>
+						<p class="confirmDeleteAddMyAccountPadAccount" >{{billerDetail.value}}</p>
+				</div>
+
+			</div>
+			<div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative">
+				<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor"  ng-click="manageFavourite()"
+				icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ng-class="isFavouriteStyleClass(billerListDetail.isFavourite)"> 
+				<i class="icon ion-ios-star billerDetailListIcons" ></i>
+				<span translate="label.favourite" class="fontSize11px fontQuarkBold padding-Top5px" > </span>
+				</a>
+			
+				<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" ng-click="gotoBillpayment()" title="Bill Payment"
+				icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline"> 
+				<i class="icon icon-w icon-bill-payment padding-Top5px" ></i>
+				<span translate="label.subBillPayment" class="fontSize11px fontQuarkBold"> </span>
+				</a> 
+				
+				<a ng-if="!isEDonationCategory()" nav-clear class="tab-item disable-user-behavior activated whiteTextColor"  ng-click="gotoSchedule()" title="My Account"
+				icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline"> 
+				<i class="icon icon-w icon-schedule padding-Top5px"></i>
+				<span translate="button.schedule" class="fontSize11px fontQuarkBold"> </span>
+				</a>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.edit" ng-click="editBiller()">
+			</button>
+		</div>
+	</ion-content> 
+</ion-view>

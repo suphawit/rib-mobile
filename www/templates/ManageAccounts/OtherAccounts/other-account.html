@@ -1,0 +1,70 @@
+<ion-view id="otherAccount">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<h4 class="title" translate="menu.manageExternalAccount"></h4>		 
+	    <!--<a class="button button-icon icon ion-plus" side="right" ng-click="showAddExtScreen()"></a>-->
+	</ion-header-bar>
+	<div  id="content" ng-show ="showPageOtherAccount" class="row paddingNone bar bar-subheader-sub headerDropdownBar"> 
+		<div class="headerDropdownBar" style = "padding : 0px;" scroll="false">
+			<div dropdown-select="accountCategoryList" 
+				dropdown-model="cataegorySelected" 
+				dropdown-item-label="catName" 
+				dropdown-onchange="showOtherAccountsCategory(selected.catId,selected.catName)" 
+				on-touch="clearDeleteButton()"></div>
+        </div>
+	</div>
+	
+	<ion-content class="has-header has-subheader " ng-class="hasSubheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 150px)">
+			<div ng-show="!showPageOtherAccount" class="padd-top15px">
+				<div ng-if="isNotShowData" class="col col-80 col-offset-10 txtCenterAlign" translate="label.ohterAccount.noData"></div>
+			</div>
+			<ion-list ng-show ="showPageOtherAccount" class="externalAccList" >
+				<ion-item 
+					ng-repeat="item in accountListSelected.items track by $index" 
+					class="item item-thumbnail-left" ng-style="{ 'border-bottom': '1px solid ' +''+ getBankCodeImg(item.bankCode, 'color') }" 
+					ng-click="showMenuDetail($index,item)">
+					<img ng-src="{{anyIDService.isAnyID(item.anyIDType) ? anyIDService.getAnyIDinfo(item.anyIDType).icon : getBankCodeImg(item.bankCode, 'image')}}" 
+						ng-style="{ 'background-color': anyIDService.isAnyID(item.anyIDType) ? anyIDService.getAnyIDinfo(item.anyIDType).iconColor : getBankCodeImg(item.bankCode, 'color')}" 
+						class="ohterAccountListImg" />
+					<p class="padding-Left60px" style="margin-top: 4px;">{{item.acctAliasName}}</p>
+					<p class="padding-Left60px" style="margin-top: 4px;">{{item.acctNo}}</p>
+					<ion-option-button class="button-assertive" translate="label.delete" ng-click="deleteExtAccount(item)"></ion-option-button>
+						<div class="item-accordion  dasboardAccord min-height50" ng-show="item.acctNo == selection">
+							<div class="tabs tabs-icon-top min-height50 accActionTabs paddTopZeroTabs">
+								<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" ng-click="transferFunds(item)">
+									<i class="icon icon-w icon-fund-transfer extAccTabListIcons"></i><!-- <i class="icon ion-social-bitcoin extAccTabListIcons"></i> -->
+									<span translate="label.transferFunds"></span>
+								</a>
+								<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" 
+									ng-if="item.anyIDType != 'ACCTNO'"
+									ng-click="goCreateRTP(item)">
+									<i class="icon icon-w icon-request-to-pay03 extAccTabListIcons"></i>
+									<span translate="menu.requestTopay"></span>
+								</a>
+								<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" 
+									ng-click="manageFavourite(item)" 
+									icon-on="ion-ios7-filing" 
+									icon-off="ion-ios7-filing-outline">
+									<i class="icon ion-ios-star extAccTabListIcons" ng-class="isFavouriteClass(item.isFavourite)"></i>
+									<span translate="label.favourite"></span>
+								</a>
+								<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" 
+									icon-on="ion-ios7-filing" 
+									icon-off="ion-ios7-filing-outline" 
+									ng-click="changeExternalAccountDetails(item)">
+									<i class="icon icon-w icon-setting extAccTabListIcons"></i>
+									<span translate="label.edit"></span>
+								</a>
+							</div>
+					</div>  
+				</ion-item>
+				
+			</ion-list>
+		</div>
+		<div ng-if="isNotShowData" style="margin-top:40px"></div> 
+		<div id="bottomBtn" style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.add" ng-click="showAddExtScreen()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,102 @@
+<ion-view>  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" >		 
+	    <h4 class="title" ng-class="fontHeader" translate="label.RTPHist"></h4>
+	</ion-header-bar>
+	
+	<div class="row paddingNone bar bar-subheader-sub headerDropdownBar"> 
+		<div class="headerDropdownBar" style = "padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem" dropdown-item-label="monthYear" 
+				dropdown-onchange="getHistoryRTP(selected.value)"></div>    
+        </div>		
+   </div>
+
+<ion-content class="has-header has-subheader-sub">
+	<div ng-if="isNotShowData" class="row">
+		<div  class="col col-80 col-offset-10 txtCenterAlign" translate="label.history.rtp.noData" ></div>
+	</div>
+	<div ng-if="isShowData" class="row" ng-repeat="rtp_history_list_item in rtp_history_list"  ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+		
+		<div class="col col-10">
+			<button class="hButton button-circle">{{rtp_history_list_item.date}}</button>
+		</div>
+			
+		<div class="col col-90">
+			<div class="hist-trans-data item-divider fontSize12px" ng-repeat="transaction in rtp_history_list_item.transactions">
+				<div class="row padding2px">
+						<div class="col padding2px">
+							<span ng-if = "transaction.rtpMsgType === 'INCOMING'"><span translate="label.hisRTPReceive"></span></span>
+							<span ng-if = "transaction.rtpMsgType === 'OUTGOING'"><span translate="label.hisRTPRequest"></span></span>
+							</span></div>
+						<div class="col text-right padding2px">
+							<span class="label"><span translate="lable.fundschedule.status"></span>&nbsp;:&nbsp;{{transaction.statusDesc}}</span>
+						</div>
+				</div> 
+				<div class="row padding2px">
+						<div class="col padding2px">
+							<span class="label"  ng-if = "transaction.rtpMsgType === 'INCOMING'"> <span translate="label.requestFrom"></span>&nbsp;:&nbsp;{{transaction.requesterAccountName}} <span ng-if = "transaction.requesterIdType !== 'BILLERID'">({{transaction.requesterIdValue}})</span></span>
+							<span class="label"  ng-if = "transaction.rtpMsgType === 'OUTGOING'"> <span  translate="label.requestTo"></span>&nbsp;:&nbsp;{{transaction.receiverAccountName}} <span ng-if = "transaction.requesterIdType !== 'BILLERID'">({{transaction.receiverIdValue}})</span></span>	
+						</div>
+				</div> 
+			
+				<div class="hist-trans-data-sub">              
+						<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span class="label"><span translate="label.history.type"></span>&nbsp;:&nbsp;{{transaction.requesterIdTypeLabel}}</span>
+								</div>
+								<div class="col text-right padding2px">
+									<span>{{transaction.amount | currency : ""}}&nbsp;:&nbsp;<span  translate="label.currency"></span></span>
+								</div>
+						</div>
+						<div class="row padding2px">
+								<div class="col col-70 padding2px">
+									<span class="label"><span translate="label.PayAlertRef"></span>&nbsp;:&nbsp;
+									<span ng-if="transaction.rtpreference != null">{{transaction.rtpreference}}</span>
+									<span ng-if="transaction.rtpreference == null">-</span>
+									</span>
+								</div>
+								
+						</div>
+						
+						<div class="row padding2px">
+								<span translate="label.transDate"></span>
+								&nbsp;:&nbsp;
+								<div ng-if = "transaction.transactionDate != ''" >
+									{{::transaction.transactionDate.date}}&nbsp;
+									<span translate="">{{transaction.transactionDate.month}}</span>
+									&nbsp;{{transaction.transactionDate.year}}
+								</div>
+								<span ng-if = "transaction.transactionDate == ''"> - </span>
+						</div>
+						
+						<div class="row padding2px">
+								<span translate="label.expiredDate"></span>
+								&nbsp;:&nbsp;
+								<div ng-if = "transaction.expiryDate != ''" >
+									{{::transaction.expiryDate.date}}&nbsp;
+									<span translate="">{{transaction.expiryDate.month}}</span>
+									&nbsp;{{transaction.expiryDate.year}}
+								</div>
+								<span ng-if = "transaction.expiryDate == ''"> - </span>
+						</div>
+
+						<div class="row padding2px" ng-if = "transaction.requesterIdType == 'BILLERID'">
+								<div class="col padding2px">
+										<div class="label"  ng-if = "transaction.billReference1 !== null"> <span translate="label.referenece1"></span>&nbsp;:&nbsp;{{::transaction.billReference1}}&nbsp;</div>
+										<div class="label"  ng-if = "transaction.billReference2 !== null"> <span translate="label.referenece2"></span>&nbsp;:&nbsp;{{::transaction.billReference2}}&nbsp;</div>
+										<div class="label"  ng-if = "transaction.billReference3 !== null"> <span translate="label.referenece3"></span>&nbsp;:&nbsp;{{::transaction.billReference3}}&nbsp;</div>
+									
+								</div>
+						</div>
+					
+						<div class="row padding2px" >
+								<div class="col padding2px"><span translate="lable.fundtrfreciept.note"></span>&nbsp;:&nbsp;{{transaction.additionalNote || '-'}}</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</ion-content>
+</ion-view>
+
+

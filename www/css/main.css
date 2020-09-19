@@ -1,0 +1,243 @@
+/*	 Licensed Materials - Property of IBM
+	 5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.
+	 US Government Users Restricted Rights - Use, duplication or
+     disclosure restricted by GSA ADP Schedule Contract with IBM Corp. */
+     
+ion-view{
+	  background: #1146aa;
+	
+}
+
+.center{
+	text-align: center;
+}
+
+.left{
+	text-align: left;
+	
+}
+
+.right-Position{
+	text-align: right;
+	width :80px;
+	height:50px;
+}
+.th-lang-img{
+	float:right;
+	background-image: url("../images/th_lang.png");
+    width:32px;
+    height:20px;
+}
+.en-lang-img{
+	float:right;
+	background-image: url("../images/en_lang.png");
+     width:32px;
+    height:20px; 
+}
+
+#logo{
+	
+	background-image: url("../images/BG.png");
+ /*   background-repeat: no-repeat; */
+  	 background-position: top;
+}
+
+
+.background{
+	background-color: #99CCFF;	
+}
+
+.logo2{
+	
+	background-image: url("../images/logo2.png");
+  	background-repeat: no-repeat;
+  	 background-position: left top;
+  	/*   background-size: 120px 120px; */
+}	
+ 
+
+ .logo{
+	 background-image: url("../images/kk_img.png");
+  	 background-repeat: no-repeat;
+  	 background-position: center top;
+  	 background-size: 120px 120px; 
+  	
+}
+.logo-height{
+	width:120px;
+ 	height:120px;
+ 	margin: auto;
+ 	margin-bottom: 30px;
+}
+	
+ 
+.logo-img{
+	max-width:100%;
+	height:auto;
+}
+ .logo3{
+	 background-image: url("../images/LOGO_KK-Bank_th.jpg");
+  	 background-repeat: no-repeat;
+  	 background-position: center top;
+  	 /* background-size: 120px 120px;  */
+}	
+  
+
+ .bgkk{
+	
+	background-image: url("../images/bgkk.png");
+  	background-repeat: no-repeat;
+  	 background-position: center;
+  	 
+}	
+ 
+ 
+.promotionimg {
+	 background-image: url("../images/promotionpic.jpg");
+  	 background-repeat: no-repeat;
+  	 background-position: center;
+  		 background-size: 200px 120px; 
+	
+} 
+ 
+.round-button {
+    display:block;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#ffffff;
+    text-align:center;
+    text-decoration:none;
+    background: #158aff;
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold;
+}
+.round-button:hover {
+    background: #1146aa;
+}
+
+
+.round-circle {
+    display:block;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#0b1a57;
+    text-align:center;
+    text-decoration:none;
+    background: #158aff;
+    box-shadow: 0 0 3px gray;
+  
+}
+.blue-green-bg{
+	
+	background-color: rgb(16, 136, 186);
+}
+ 
+
+
+.btnnew {
+      font-size:0.875em;
+      display:block;
+      left:-60px;
+      margin-top:35px;
+      width:50%;
+}
+
+.bgtextbox {
+	background: #e8e8ff;
+	width:80%;
+	
+	border-width: 10px;
+	border-color: red;
+	margin-left: 100px;
+}
+	
+
+ion-header-bar{
+	background: rgba(175,228,240,1);
+	
+}
+
+ion-toggle{
+	 background: #1146aa;
+}
+
+#bghead{
+	background: rgba(175,228,240,1);
+
+}  
+
+
+/**massage Validate Error///////////////////**/
+.has-error input[type=text], 
+.has-error input[type=email], 
+.has-error select {
+  border-color: #2f2f2f;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  color: red;
+}
+
+.toggle input:checked + .track {
+  border-color: #a82315 !important;
+  background-color: #e74c3c !important;
+}
+.padding {
+  padding: 10px;
+}
+
+.locateUs-table{
+	width: 100%;
+	height: 350px;
+}
+
+.locateUs-img{
+	width: 20px;
+}
+
+
+
+.locateUs-heading {
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.locateUs-content{
+	border-left: 1px solid #000;
+    margin-left: -30px;
+    font-weight: 900;
+}
+
+.locateUs-content-padding{
+	margin-left: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.text-blue{
+	color: blue;
+} 
+
+.header-badge{
+	position: relative;
+	top: -35px !important;
+	left: -17px !important;
+}
+.btn-footer{
+	height: 74px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+.btn-footer button{
+	border-color: #594F74;
+	background-color: #594F74;
+	color: #fff;
+	
+}

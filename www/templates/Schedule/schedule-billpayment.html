@@ -1,0 +1,41 @@
+<div ng-controller='ScheduleBillpaymentCtrl'>
+	<div ng-if="isNotShowData" class="row">
+		<div ng-if="isNotConnectService" class="col col-80 col-offset-10 txtCenterAlign" translate="label.schedule.billpayment.noData" ></div>
+	</div>	 			
+    <div ng-if="isShowData" ng-repeat="result in accountListcount" class="group-list">
+		    <ion-item class="textSchduleHeader dashboardmainmenucolor" ion-affix data-affix-within-parent-with-class="group-list">
+		     <div class="fontSize16px">{{::result.d.date}}&nbsp<span translate="">{{result.d.month}}</span>&nbsp{{result.d.year}}</div></ion-item>
+		   	<ion-list>
+		    	<ion-item class="dashboard-accordion padd-left0px padd-Right0px borderNone" ng-repeat="record in result.items">
+					<div class="row padd-bottom padd-left5px padd-Right10px "  ng-click="navigationToScheduleBillpaymentDetail(record)">
+					    <div  style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="col col-50 scheduleMargintop scheduleCommonMargin">
+					    	
+					    <div class="displayBlock wordBreak fontSize14px themeGreyTextColor " style = "font-family: ClanOT-Bold;">{{::record.fromAccountNumber || ""}}</div>
+						    <div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis ;font-family: ClanOT-Book;" class="fontSize14px  wordBreak " >{{::record.fromAliasName || ""}}</div>
+						</div>
+						
+						<div class="col col-10 scheduleArrowIconmargin">
+						   <a class="ion-arrow-right-b scheduleArrowIcon"  ng-click= "navigationToScheduleBillpaymentDetail(record)"></a>
+						</div>							 
+					    
+					    <div  style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"class="col  paddingNone">
+							<div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis ;font-family: ClanOT-Bold;" class="themeGreyTextColor  wordBreak  wordBreak fontSize14px" >{{::record.billerName || ""}}</div>
+							<div   class="wordBreak scheduleFontSizeAlias">{{::record.billerAliasName || ""}}</div>
+							<ion-option-button class="button-assertive" ng-click="deleteAccountForSchedule(record)" translate="label.delete"> </ion-option-button>
+					    </div>	
+				    </div>
+				          
+				    <div class = "row padd-bottom padd-left5px padd-Right10px scheduleBGcolorTitleBar">
+				        <div class="col scheduleMargintop scheduleCommonMargin">  
+						   <span class="wordBreak scheduleFontSize">{{::record.recurringType || ""}}&nbsp<span ng-if='record.recurringTimes'>({{::record.recurringTimes || ""}})</span></span>
+					    </div>
+															 
+					 	<div class="col tblAmountColSchedulefundTrf paddingNone scheduletitleBarMargin" align="right">
+						<span class="wordBreak fontSize14px scheduleAmountLeftMargin">{{::record.payAmount| currency : ""}}&nbsp<span translate="label.currency"></span></span>
+					   </div>
+				  </div>
+				  				   						
+		    </ion-item>  
+		</ion-list>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="login-template-css" ng-controller="LoginCtrl">
+		<form id="login" class="card login-card" name="frmLogin" ng-submit="doLogin(loginData)">
+			<div class="list list-inset login-div-box">
+			  <label class="item item-input login-common-label">
+			  	<i class="icon ion-person placeholder-icon login-usr-icon"></i>
+			    <input class="login-padding login-common-placeholder" ng-class="fontLabelMedium" type="text" placeholder="{{userNamePlaceholder}} " ng-focus="focusToHideTab(true)" ng-blur = "focusToHideTab(false)" ng-model="loginData.username" maxlength="30">
+			  </label>
+			  
+			  <!-- <span><p class="padding errorLabelRed login-error-msg" ng-show="isErrUsr">{{errorMsgUserName}}</p></span> -->
+			  <label class="item item-input login-common-label">
+			  	<i class="icon ion-android-lock placeholder-icon login-pwd-icon"></i>
+			    <input class="login-padding login-common-placeholder" ng-class="fontLabelMedium" type="password"  placeholder="{{passwordPlaceholder}}"  ng-focus="focusToHideTab(true)" ng-blur = "focusToHideTab(false)" ng-model="loginData.password" maxlength="20">
+			  </label>
+			  <span><p class="padding errorLabelRed login-error-msg" ng-show="isErrPwd">{{errorMsgPassword}}</p></span>
+			  <span><p class="padding errorLabelRed login-error-msg" ng-show="isErr">{{errorMsg}}</p></span>
+			</div>
+			<button class="button button-block button-kkcolor login-submit-btn marginNone" ng-class="fontLabel" type="submit" translate="button.login">
+			</button>
+		</form>
+		<br/><br/>
+		<a ng-if="isShowBack" ng-click="stateGo('pin','login')" style="margin-top: 5px;color:#594F74;" translate="label.back"></a>
+</div>

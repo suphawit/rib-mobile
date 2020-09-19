@@ -1,0 +1,9 @@
+<ks-swiper-container override-parameters="overrideParameters" on-ready="onReadySwiper(swiper)">
+	<ks-swiper-slide class="swiper-slide" ng-repeat="item in items track by $index">
+		<img id="{{item.type}}" 
+			class="defaultBankImgBGColor"
+			name="{{item.type}}"
+			ng-src="{{item.icon}}"
+			 />
+	</ks-swiper-slide>
+</ks-swiper-container>

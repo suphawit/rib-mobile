@@ -1,0 +1,38 @@
+<ion-view ng-init="init()">  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+		<!-- <a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a> -->
+	    <h4 class="title" translate="label.kkpNdidServices"></h4>
+	</ion-header-bar>
+  	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		
+		<div ng-if="errorMessage" style="min-height: calc(90vh - 110px)">
+            <div class="row">
+				<div class="textAlignCenter col padd-top-zero white-space-normal breakWord">
+					<h4>{{errorMessage}}</h4>
+				</div>
+			</div>
+			<div ng-if="canRetry" class="row">
+				<div class="col col-50 paddingNone">
+					<button class="button button-block font-quark-header themeBlueTextColor whiteBGColor border-blue-Color"
+						translate="label.eDonation.noSendTo"
+						ng-click="gotoNDIDAuthenPage()"></button>
+				</div>
+				<div class="col col-50 paddingNone">
+					<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+						translate="label.eDonation.yesSendTo"
+						ng-click="openFaceLivenessDetection()"></button>
+				</div>
+			</div>
+			<div ng-if="!canRetry" class="row">
+				<div class="col paddingNone">
+					<button 
+						class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+						translate="button.ok"
+						ng-click="gotoNDIDAuthenPage()">
+					</button>
+				</div>
+			</div>
+        </div>
+	 </ion-content>
+  </ion-view>
+

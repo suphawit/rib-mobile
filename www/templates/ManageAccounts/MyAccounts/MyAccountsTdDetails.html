@@ -1,0 +1,99 @@
+<ion-view> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader"> 
+		<a class="button button-clear" ng-click="navigateToMyAccounts()" translate="label.back"></a>
+		<h4 class="title" translate="label.myDeposit"></h4>
+		<!--<a class="button button-icon icon ion-ios-gear" side="right" ng-click="navigateToEditMyAccounts()"></a> -->
+	</ion-header-bar> 
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<div class="group-list">
+				<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor" ion-affix data-affix-within-parent-with-class="group-list">
+					<div class="row">
+						<div style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="font-clanOt-label">
+							<span class="font-clanOt-label">{{tdAccountDetail.myAccountAliasName}}</span>
+						</div>&nbsp;
+						<div>
+							<span class="themeMediumGreyTextColor" class="font-clanOt-label-display">{{tdAccountDetail.myAccountNumber}}</span>
+						</div>
+					</div>
+				</ion-item>
+				<div class="txtCenterAlign">
+					<h5 class="fontSize18px wordBreak lineHeight2 themeBlueTextColor font-clanOt-news tddetailsstatement">{{::tdAccountDetail.myAvailableBalance  | currency : ""}} <span translate="label.currency" ng-class="fontMain"></span> </h5>								
+				</div>
+				<div class="row lineHeight1" ng-class="fontLabel">
+					<div class="col col-50 ">
+						<p translate="lable.td.AccountType"></p>
+						<p translate="lable.td.LedgerBalance"></p>
+						<p translate="lable.td.LastUpdate"></p>
+					</div>
+					<div class="col col-50 txtRightAlign">
+						<p class="fontSize13px">{{accountType || " "}}</p>
+						<p>
+							{{tdAccountDetail.myLedgerBalance | currency : ""}} <span
+								translate="label.currency"></span>
+						</p>
+						<p>{{tdAccountDetail.lastUpdatedDate || " "}}</p>
+					</div>
+				</div>
+				<div class="tabs tabs-icon-top accActionTabs padding-left5px positRelative paddTopZeroTabs">
+					<!-- <a nav-clear style="text-overflow: clip;" 
+						class="tab-item disable-user-behavior whiteTextColor myAccountTdDetail activated"
+						icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline"
+						ng-click="navigateToChangeTerm()"> <i class="icon ion-compose"></i>
+						<span class="fontSize10px" translate="label.changeTerm"></span>
+					</a> -->
+					
+					<a nav-clear style="text-overflow: clip;" class="tab-item disable-user-behavior activated whiteTextColor myAccountTdDetail" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ng-click="navigateToChangeTerm()"  >
+					<i class="icon ion-compose padding-Top5px"></i>
+					<span translate="label.changeTerm" class="fontSize11px fontQuarkBold"> </span>
+					</a>
+					
+				</div>
+			</div>
+			<div ng-controller="TdStatementCtrl" class="group-list">
+				<div class="item-divider themeDarkBlackBGColor whiteTextColor txtCenterAlign"  ng-class="fontLabel" ion-affix data-affix-within-parent-with-class="group-list" 
+					translate="label.statement"></div>
+				<div class=" myAccountDetailStatementDetail" 
+					ng-repeat="statements in tdStatementDetail"
+					ng-if="hasTdStatementDetail">
+					<div class="row tddetailsstatement">
+						<div class="col col-50">
+							<p translate="label.tdstatement.depNo"></p>
+							<p translate="label.tdstatement.Date"></p>
+							<p translate="label.tdstatement.Term"></p>
+							<p translate="label.tdstatement.Amount"></p>
+							<p translate="label.tdstatement.InterestRate"></p>
+							<p translate="label.tdstatement.MaturityDate"></p>
+							<p translate="label.tdstatement.InterestCondition"></p>
+							<p translate="lable.td.AccountInterest"> </p>
+						</div>
+						<div class="col col-50 txtRightAlign">
+							<p>{{statements.depNo}}</p>
+							<p>{{statements.date}}</p>
+							<p>{{statements.term_description}}</p>
+							<p>
+								{{statements.balAvailable | currency : ""}}&nbsp;<span
+									translate="label.currency"></span>
+							</p>
+							<p>
+								{{statements.interest}}&nbsp;<span
+									translate="label.tdstatement.percent"></span>
+							</p>
+							<p>{{statements.dateMaturity}}</p>
+							<p>{{statements.interestCondition}}</p>
+							<p>{{statements.benefitAcc}}</p>
+						</div>
+					</div>
+				</div>
+				<div ng-if="!hasTdStatementDetail">
+					<div class="col col-80 col-offset-10 txtCenterAlign"
+						translate="label.statement.noData"></div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.edit" ng-click="navigateToEditMyAccounts()">
+			</button>
+		</div>
+	</ion-content> 
+</ion-view>

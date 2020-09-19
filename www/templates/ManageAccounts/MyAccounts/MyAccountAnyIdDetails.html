@@ -1,0 +1,44 @@
+<ion-view title="">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+		<a class="button button-clear" href="#/myAnyIDAccount" ng-click="navigateToMyAnyIDAccounts()" translate="label.back"></a>		 
+	    <h4 class="title" translate="label.myKKPromptPayDetail"></h4>
+	    <!--<a class="button button-icon icon ion-ios-gear" side="right" ng-click="navigateToEditAccounts()"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false"> 
+		<div style="min-height: calc(90vh - 110px)">
+			<div class="pageContentsScroll">
+					<div class="row lineHeight1" ng-class="fontLabel">	
+						<div class="col col-50">
+							<p translate="label.promptpayID"></p>
+							<p translate="label.typeAnyID"></p>		 
+							<p translate="label.ACCTNO"></p>
+						</div>
+						<div class="col col-50 txtRightAlign">
+							<p>{{anyIdAccount.anyIDValue}}</p>
+							<p>{{anyIdAccount.promptPayName}}</p>		 
+							<p>{{anyIdAccount.accountNo}}</p>
+						</div>
+					</div>
+					<div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative paddTopZeroTabs" >
+							<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" href="#/rtpRequest"  >
+								<i class="icon icon-w icon-request-to-pay03 padding-Top5px"></i>
+								<span translate="label.requestToPay" class="fontSize11px fontQuarkBold"></span>
+							</a>
+							<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" href="#/QRGenerator"  >
+								<i class="icon icon-w icon-qr padding-Top5px"></i>
+								<span translate="label.QRGeneratorMenu" class="fontSize11px fontQuarkBold"></span>
+							</a>
+							<!--<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" href="#/anyIdEdit"  >
+								<i class="icon icon-w icon-setting padding-Top5px"></i>
+								<span translate="label.edit.myPromptpay" class="fontSize11px fontQuarkBold"></span>
+							</a>-->
+					</div>
+				</div>
+		</div>	
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			translate="btn.edit" href="#/anyIdEdit" >
+			</a>
+		</div>
+	 </ion-content>
+ </ion-view>

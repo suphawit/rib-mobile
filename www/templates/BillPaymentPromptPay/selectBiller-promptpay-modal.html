@@ -1,0 +1,40 @@
+<ion-modal-view id="accListModal" class="listModal"> 	
+	<ion-header-bar class="darkHeadBar">		 
+		<h4 class="title" translate="label.billerDetail"></h4> 		
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a> 		
+	</ion-header-bar>        
+	<ion-content class="has-header "  padding="true" overflow-scroll="false" >          	
+	<!-- <div class = "row" style = "padding:0px; margin:0px;"> 			
+		<div class="col item-input-inset" style = "background-color:#594F74!important;">               
+			  <label class="item-input-wrapper" style ="background-color:white!important;"> 				
+				<i class="icon ion-ios-search placeholder-icon"></i> 		
+				<input class="searchbiller" type="text" placeholder="Search Category Name,Company Name" ng-model="txtval.biller" ng-model-options="{ debounce: 500 }"/> 			
+				</label>                   	
+		</div>       
+	</div>         	 -->
+		<ion-list ng-repeat="billerList in bpBillerListInfo track by $index"     class="externalAccList paddingNone">                 
+			<ion-item class="item-stable item-icon-right dasboardAccord  padding-left5px padding-right5px" ng-class="fontLabel"> 		
+				<div> 				
+				<span ng-if ="lang == 'en'" class="padd-left4px">{{ billerList.categoryEn }}</span> 	
+				<span ng-if ="lang == 'th'" class="padd-left4px">{{ billerList.categoryTh }}</span> 				
+				</div> 			
+			</ion-item> 	
+			<ion-item  
+				ng-repeat="biller in billerList.resultValue track by $index"  
+				ng-click ="selectBillerPayInfoAdd(biller)"  
+				class="item-stable item-icon-right item-thumbnail-left paddingNone"
+				style="min-height: 50px; height: 50px"> 		
+				<div class="row paddingNone"> 						
+						<img  ng-src="{{biller.logoCompany || defaultBillerLogo}}" class="externalMenuListImg"  style="background-color: #594F74;"> 
+						<div class="col-80 padd-left10px padd-top15px" ng-if ="lang == 'th'"> 		
+							<p >{{ biller.billerNameTh }}</p> 		
+						</div>	
+						<div class="col-80 padd-left10px padd-top15px" ng-if ="lang == 'en'"> 		
+							<p >{{ biller.billerNameEn }}</p> 
+						</div>							
+				</div>	 			
+			</ion-item> 	
+		</ion-list>      
+		<div  style="height:200px;"></div>     
+	</ion-content>      
+ </ion-modal-view> 

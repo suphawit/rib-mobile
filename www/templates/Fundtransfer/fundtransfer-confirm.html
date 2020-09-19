@@ -1,0 +1,155 @@
+ <ion-view title="">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" href="#/fundTransfer" translate="label.back" ng-hide="isShowOtpChangeModal"></a>
+	    <h4 class="title" translate="label.transfer"></h4>
+	    <!--<a class="button button-clear" ng-click="fundtransferConfirm()" ng-disabled="isReqOTP==false"  translate="button.confirm"></a>-->
+	</ion-header-bar>
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+       <div style="min-height: calc(90vh - 110px)">
+		<ion-item class="item-divider fundTransGreyTopArea"  >
+					{{selectedFromName}} <br/>
+					{{fundTransferRequest.fromAccount}} <br/>
+					<span translate="label.availableBalance"></span>
+					{{selectedFromTotalActBalance | currency : ""}}
+					<span translate="label.currency"></span>
+		</ion-item>
+			<div class="transferaccount transConfrmAmoutDiv" >
+				<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+					<span class="whiteTextColor font-clanOt-header" >{{fundTransferRequest.amount | currency : ""}} </span>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				</div>
+			</div>
+      <ion-item class="padd-top0Px borderTop0Px padd-bottom padd-left20px">
+	      	<div class = "row icon-row">
+	          <div><img class="tranCompImg" ng-src="{{isAnyID ? anyIDIcon : clientImgUrl}}" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(fundTransferRequest.toBankCode, 'color') }"/></div>
+				<div class = "padd-left10px" ng-class="fontMain" >
+					<div class="themeGreyTextColor text-ellipsis">{{toAccountName}}</div>
+					<div class="thumbnail-acc-no">{{fundTransferRequest.toAccount}}</div>
+					<div class="thumbnail-to-bank">{{toBankName}}</div>
+	          </div>
+	        </div>
+		</ion-item>
+		<div class = "marginNone list list-inset padd-left20px" ng-class="fontDisplay">
+			<div class="row">
+					<div class="col col-33 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+					<div class="col col-67 paddingNone marginNone">{{::txnDate.date}}&nbsp<span translate="">{{txnDate.month}}</span>&nbsp{{txnDate.year}}</div>
+			</div>
+			<div ng-if="rtpReferenceNo" class="row">
+					<div class="col col-33 paddingNone marginNone font-bold" translate="label.PayAlertRef"></div>
+					<div class="col col-67 paddingNone marginNone">{{::rtpReferenceNo}}</div>
+	      </div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+					<div class="col col-33 paddingNone marginNone font-bold" translate="label.deductDate"></div>
+					<div class="col col-67 paddingNone marginNone">{{::deducedDateTD.date}}&nbsp<span translate="">{{deducedDateTD.month}}</span>&nbsp{{deducedDateTD.year}}</div>
+	      </div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+					<div class="col col-33 paddingNone marginNone font-bold" translate="label.receiveDate"></div>
+					<div class="col col-67 paddingNone marginNone">{{::receiveDateTD.date}}&nbsp<span translate="">{{receiveDateTD.month}}</span>&nbsp{{receiveDateTD.year}}</div>
+			</div>
+				<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.feeAmount"></div>
+				<span class=" col col-67 paddingNone marginNone">0.00&nbsp;<span translate="label.currency"></span></span>
+	     </div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="lable.tdstatement.Term"></div>
+	         	<div class="col col-67 paddingNone marginNone">{{objTD.fcconTdTermType.term}}&nbsp;<span translate="label.tdstatement.month"></span></div>
+	      	</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="lable.tdstatement.InterestRate"></div>
+				<div class="col col-67 paddingNone marginNone">{{objTD.interestRate}}<span ng-show="objTD.interestRate"> %</span></div>
+			</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="label.tdstatement.InterestCondition"></div>
+				<div class="col col-67 paddingNone marginNone">{{objTD.interestCon}}</div>
+	      	</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="lable.td.AccountInterest"></div>
+				<div class="col col-67 paddingNone marginNone">{{objTD.benefitAcc}}</div>
+			</div>  
+
+			<div ng-if="fundTransferTDShow == false" class="row" ng-show="recurringType === 'Y'">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="label.recurring" ></div>
+	    	<div class=" col col-67 paddingNone marginNone lineBreak">{{recurring}}</div>
+	     </div>
+
+			<div class="row icon-row" ng-if="fundTransferRequest.alertSMS">
+				<div class="col  col-33 paddingNone marginNone font-bold" translate="label.mobileNo"></div>
+	     	<div class=" col col-67 paddingNone marginNone">{{fundTransferRequest.alertSMS}}</div>
+	     </div>
+
+			<div class="row" ng-if="fundTransferRequest.alertEmail">
+				<div class="col col-33 paddingNone marginNone font-bold" translate="label.email"></div>
+	     	<div class=" col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.alertEmail}}</div>
+	     </div>
+
+
+
+	     <div class="row">
+	    	 <div class=" col col-33 paddingNone marginNone font-bold" translate="lable.fundtrfreciept.note"></div>
+				<div class=" col col-67 paddingNone padd-Right5px marginNone">
+					<label class="item item-input item-stacked-label">
+						<input type="text" ng-model="reference.note" maxlength="40">
+					</label>
+    		</div>
+	      </div>
+	  </div>
+		<div ng-if="fundTransferTDShow == false" ng-click="showOTPChargesModal()">
+				<div class="row padd-left20px">
+					<label translate="lable.fundschedule.selectTransOptions"></label>
+				</div>
+				<div class = "row padd-bottom fontSize12px padd-left5px padd-Right10px"  >
+
+	         	<table class="table btnWhiteBorder marginNone paddingNone" ng-class="fontDisplay">
+						<tbody>
+							<tr class="themeGradient">
+							<td class="web-tblrow-data-link" style="vertical-align: middle;">
+									<span ng-class="{'alertSmartFundTransfer': showSmartColor}">
+										<span class="wordBreak" translate="lable.fundtrfreciept.ReceiveDate"></span>&nbsp;<span>{{selectedOTPChargeDetail.atsSummaryFee.receiveDateDisplay.date}}&nbsp<span translate="">{{selectedOTPChargeDetail.atsSummaryFee.receiveDateDisplay.month}}</span>&nbsp{{selectedOTPChargeDetail.atsSummaryFee.receiveDateDisplay.year}}</span>
+										<span>{{selectedOTPChargeDetail.atsSummaryFee.displayMoment}}</span>
+									</span>
+									<br/>
+									<span class="wordBreak" translate="lable.fundtrfreciept.DeducedDate"></span>&nbsp;<span>{{selectedOTPChargeDetail.atsSummaryFee.transferDateDisplay.date}}&nbsp<span translate="">{{selectedOTPChargeDetail.atsSummaryFee.transferDateDisplay.month}}</span>&nbsp{{selectedOTPChargeDetail.atsSummaryFee.transferDateDisplay.year}}</span>
+								</td>
+								<td class="web-tblrow-data-leftbar tableHeaderWhiteLineFullSize txtmiddle" width="40%">
+									<div>
+										<span>{{selectedOTPChargeDetail.atsSummaryFee.displayTransferType}}</span>
+									</div>
+									<div>
+										<span translate="label.fundTrfCnfm.feeAmount"></span>
+										<span>{{selectedOTPChargeDetail.atsSummaryFee.summaryFee | currency : ""}} <span translate="label.currency"></span></span>
+									</div>
+								</td>
+							<td class="chevronRight"><i class="icon ion-chevron-right"></i></td>
+						</tr>
+						</tbody>
+					</table>
+			</div>
+	   </div>
+<!--	   <div ng-show="isRequireOtp == true">-->
+<!--			<h5 class="padd-left20px" ng-class="fontLabel" translate="label.input.otp"></h5>-->
+<!--			<div class="row">-->
+<!--					<label class="item item-input addotherAccountCustomBorder">-->
+<!--						<i class="icon ion-android-lock placeholder-icon fontSize20px"></i>-->
+<!--						<input bind-virtual-keyboard vkmodel="otpData.pin" vkoption="virtualKeyboardOTP.option" class="whiteBGColor" type="password" ng-model="otpData.pin" placeholder="{{otpData.referenceNo}}" maxlength = "6">-->
+<!--					</label>-->
+<!--					<a class="button getOTPTransfer" ng-disabled="isDisableBtn" g-class="fontLabel" translate="label.getOtp" ng-click="requestForOTP()"></a>-->
+<!--			</div>-->
+<!--			<div class="otp-section-desc" ng-show="otpData.referenceNo">-->
+<!--				<div class="row">-->
+<!--					<span translate="otp.desc.mobileno"></span>-->
+<!--					<strong><span class="font-color-kkblue">&nbsp;{{otpData.mobileNumber}}</span></strong>-->
+<!--				</div>-->
+<!--				<div class="row">-->
+<!--					<span translate="otp.desc.validity"></span>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!-- 	<br/>-->
+       </div>
+	   <div style="margin-left: 3vw;margin-right: 3vw;">
+			<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+			ng-click="confirmPin()" translate="button.confirm" ng-disabled="isDisableConfirmBtn">
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

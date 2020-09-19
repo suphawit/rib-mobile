@@ -1,0 +1,19 @@
+{
+  "name": "RIB-Mobile",
+  "integrations": {
+    "gulp": {}
+  },
+  "type": "ionic1",
+  "documentRoot": "./",
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "proxies": [
+    {
+      "path": "/mfp",
+      "proxyUrl": "http://10.217.11.141:9080/mfp"
+    }
+  ]
+}

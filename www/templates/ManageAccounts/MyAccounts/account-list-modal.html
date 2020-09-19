@@ -1,0 +1,35 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">		 
+	    <span class="title" >{{accListlabelTitle|translate}}</span>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false" class="has-header">
+      <div ng-repeat="groupsavingaccount in ownAccountGroups track by $index" ng-if="groupsavingaccount" >
+      
+        <ion-item class="item-stable item-icon-right dasboardAccord  padding-left5px padding-right5px" ng-class="fontHeader" ng-if="groupsavingaccount.accountType === 'SA'"> 
+       		<span class="padd-left4px" translate="label.account.savingsaccount"></span>
+       		(<span translate="label.currency"></span>)		
+         </ion-item>
+         <ion-item class="item-stable item-icon-right dasboardAccord  padding-left5px padding-right5px" ng-class="fontHeader" ng-if="groupsavingaccount.accountType === 'CA'"> 
+       		<span class="padd-left4px" translate="label.currentAccounts"></span>
+       		(<span translate="label.currency"></span>)		
+         </ion-item>
+ 
+			<div ng-repeat="account in groupsavingaccount.items track by $index" class="dashboard-accordion padd-left0px padd-Right0px borderNone"   >
+          	
+			   <ion-item class = "row padd-bottom padd-left5px padd-Right10px bordoerBottom" ng-click="userSelectedFromAccount( account)" ng-class="{'selectedRow':$index == selectedFromAccountIndex}">
+					<div class="col" style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+						<div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="themeGreyTextColor font-clanOt-menu-header  wordBreak">{{account.myAccountAliasName}}</div>
+						<div class="fontSize14px themeGreyTextColor wordBreak">{{account.myAccountNumber}}</div>
+					</div>								 
+					<div class="col web-tblrow-data-leftbar tblAmountCol paddingNone" style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+						<span class="fontSize18px wordBreak lineHeightCurrency font-clanOt-menu-header">{{account.myAvailableBalance | currency : ""}}</span></span>								
+					</div>	
+								
+			   </ion-item> 	 
+			</div> 
+		
+		</div>	
+		<div class="heightSpaceModal"></div>
+    </ion-content>
+  </ion-modal-view>

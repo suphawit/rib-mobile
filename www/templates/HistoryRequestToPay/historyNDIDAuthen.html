@@ -1,0 +1,49 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <h4 class="title" translate="label.kkpNdidServices"></h4>
+    </ion-header-bar>
+
+    <div class="row paddingNone bar bar-subheader-sub headerDropdownBar">
+        <div class="headerDropdownBar" style="padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem"
+                 dropdown-item-label="monthYear"
+                 dropdown-onchange="getHistoryNDIDAuthen(selected.value)"></div>
+        </div>
+    </div>
+
+    <ion-content class="has-header has-subheader-sub">
+        <div ng-if="isNotShowData" class="row">
+            <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.history.noData"></div>
+        </div>
+        <ion-list ng-if="isShowData" ng-repeat="item in ndidAuthenHistoryList"  ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+            <ion-item ng-repeat="transaction in item.transactions" ng-click="openDetail(transaction)" class="padd-left10px padd-top0Px padd-bottom padd-Right5px">
+                <div class="row">
+                    <div class="col fontBold padding-Top5px">
+                        <button class="hButton button-circle">{{item.date}}</button>
+                    </div>
+                    <div class="col col-90 fontBold fontSize14px">
+                        <div class="row">
+                            <div class="col col-50">
+                                <span translate="label.digitalAuthen"></span>
+                            </div>
+                            <div class="col col-50 txtRightAlign">
+                                <span translate="label.input.Status"></span>: {{getRequestStatus(transaction)}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-90" style="line-height: 15px;">
+                                <span
+                                    class="text-ellipsis"
+                                    translate="label.ndidHistoryDetail" 
+                                    translate-values="{ refCode: transaction.refCode, requestMessage: transaction.requestMessage, requestorName: getRequestorName(transaction) }">
+                                </span><br/><span translate="label.transactionDate"></span>: {{transaction.transactionDateTime}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
+

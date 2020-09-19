@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-biometric-authen",
+  "version": "0.0.3",
+  "description": "KKP e-Banking Biometric Authentication",
+  "cordova": {
+    "id": "cordova-plugin-biometric-authen",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "KK RIB Team",
+  "license": "KK RIB"
+}

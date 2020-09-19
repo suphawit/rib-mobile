@@ -1,0 +1,138 @@
+<ion-modal-view id="reciept" title="">
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true">
+        <ion-nav-title>
+            <img src="images/Bank_KK.png" class="appTitleIcon" ng-click="closeReceiptModal()"/>
+        </ion-nav-title>
+    </ion-nav-bar>
+
+    <ion-content class="has-header fundTransferBgimage" scroll="false" overflow-scroll="false"  ng-class="fontContent" has-bouncing="false">
+        <div class="has-header fundTransferReciept-height padd-left0px slipMarginTop" data-ng-init="">
+            <div scroll="false" class="fundTrfBGremove">
+
+                <div class="dasboardAccord-reciept padding10px boxOfSummitedStatus txtCenterAlign margin-Top5px z-index-2 center90Box">
+                    <span class="fontSize18px">{{showDataConfirmComplete.submitStatusDesc}}</span>
+                </div>
+
+                <div class="row icon-row slipMarginTop center90Box padZero">
+                    <img ng-src="images/Bank_KK.png" class="billPayImgReceipt"/>
+                    <div class="col fundTrfRecieptBorderBlue " style="border-color: #594F74;">
+                        <div style="width: 67vw" class="text-ellipsis">
+                            <strong>{{showDataConfirmComplete.fromAccountName}}</strong>
+                        </div>
+                        <span>{{::showDataConfirmComplete.fromAccountNumberMark}}</span>
+                        <div class ="fontSize11px">{{::showDataConfirmComplete.fromBankName}}</div>
+                    </div>
+                </div>
+
+                <div class="row transferaccount-amount amount-reciept padd-top30px z-index-2 slipMarginTop center90Box">
+                    <div class="borderNone txtCenterAlign z-index-2" style="width:100%">
+                        <span class="whiteTextColor font-clanOt-header">{{::showDataConfirmComplete.payAmount | currency : ""}} </span>
+                        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                    </div>
+                </div>
+
+                <div class="row icon-row center90Box slipMarginTopTo marginToAccount padZero" ng-class="fontDisplay">
+                    <div>
+                        <img
+                                class="billPayImgReceipt col blackTextColor"
+                                style="background-color: #594F74;"
+                                ng-src="{{showDataConfirmComplete.logoCompany || defaultBillerLogo}}">
+                    </div>
+                    <div class=" item col fundTrfRecieptBorderBlue"
+                         style="background-color: transparent; border-color: rgb(209, 211, 212);">
+                        <div style="width: 67vw" class="text-ellipsis">
+                            <strong>{{showDataConfirmComplete.billerName}}</strong>
+                        </div>
+                        <p class="set-small-font" ng-repeat="ref in showDataConfirmComplete.refInfos"
+                           ng-if="ref.value!=null && ref.value!='' && ref.showRef == true">
+                            {{displayRefName(ref)}} : {{ref.value}}
+                        <p/>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="padd-slip-left" ng-class="fontDisplay">
+                <div class="row">
+                    <div class="col col-40 paddingNone   marginNone font-bold" translate="label.referenceNO"></div>
+                    <div class="col col-60 paddingNone marginNone">{{showDataConfirmComplete.transactionRef ||
+                        showDataConfirmComplete.referenceNo}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-40 paddingNone   marginNone font-bold" translate="label.txnDate"></div>
+                    <div class="col col-60 paddingNone marginNone">
+                        {{showDataConfirmComplete.txnDateReciept.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.txnDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.txnDateReciept.year}}&nbsp;
+                        {{showDataConfirmComplete.txnDateReciept.time}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-40 paddingNone   marginNone font-bold" translate="label.paymentDate"></div>
+                    <div class="col col-60 paddingNone marginNone">
+                        {{showDataConfirmComplete.paymentDate.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.paymentDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.paymentDate.year}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col col-40 paddingNone   marginNone font-bold" translate="label.input.feeamount"></div>
+                    <span class=" col col-60 paddingNone marginNone">
+						{{showDataConfirmComplete.feeAmount |  currency : ""}}  
+						<span translate="label.currency"></span>
+                    </span>
+                </div>
+                <!--<div class="row" ng-if="ref.value!=null&&ref.value!=''" ng-repeat="ref in showDataConfirmComplete.refInfos">-->
+                <!--<div class="row" ng-if="ref.value!=null && ref.value!='' && ref.isHideRef != true">-->
+                <!--<div class=" col col-40 paddingNone   marginNone font-bold lineBreak">{{displayRefName(ref)}}</div>-->
+                <!--<span class=" col col-60 paddingNone marginNone">{{ref.value}} </span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="row" ng-if="showDataConfirmComplete.recurringType === 'Y'">
+                    <div class="col col-40 paddingNone  marginNone font-bold" translate="label.biller.recurring"></div>
+                    <div class="col col-60 paddingNone marginNone">
+                        {{displayScheduleType(showDataConfirmComplete.scheduleType)}}&nbsp;,
+                        {{displayRecurringTime(showDataConfirmComplete.recurringTimes)}}
+                    </div>
+                </div>
+                <div class="row" ng-if="showDataConfirmComplete.rtpReferenceNo">
+                    <div class=" col col-40 paddingNone   marginNone font-bold lineBreak" translate="label.PayAlertRef"></div>
+                    <div class=" col col-60 paddingNone   marginNone">{{showDataConfirmComplete.rtpReferenceNo}}</div>
+                </div>
+                <!--<div class="row" ng-if="showDataConfirmComplete.noteMemo">
+                    <div class=" col col-40 paddingNone   marginNone font-bold" translate="label.note"></div>
+                    <div class=" col col-60 paddingNone marginNone lineBreak">{{showDataConfirmComplete.noteMemo}}</div>
+                </div>-->
+                <div class="row paddingNone margin-Top-10px">
+                    <div class="col col-60 paddingNone" style="padding-left: 3px !important">
+                        <div class="row" ng-if="showDataConfirmComplete.noteMemo">
+                            <div class=" col col-50 paddingNone marginNone font-bold" translate="label.note"></div>
+                        </div>
+                        <div ng-if="showDataConfirmComplete.noteMemo" class="lineBreak schedulePadd-left margin-Top-8px">{{showDataConfirmComplete.noteMemo}}</div>
+                    </div>
+                    <div class="col col-40 txtCenterAlign">
+                        <div id="qrSection" ng-if="showDataConfirmComplete.qrData">
+                            <div  translate="label.verifyQR.labelQR"></div>
+                            <qrcode id="qr" image="image" data="{{showDataConfirmComplete.qrData}}" size="100" download></qrcode>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div id="qrSection" ng-if="showDataConfirmComplete.qrData">
+                <div style="text-align: center;" translate="label.verifyQR.labelQR"></div>
+                <qrcode id="qr" style="padding-left: 25px" image="image" data="{{showDataConfirmComplete.qrData}}"
+                        size="100" download></qrcode>
+            </div>-->
+        </div>
+    </ion-content>
+</ion-modal-view>
+<!--for save slip without show modal-->
+<!--<ion-modal-view id="reciept" title="" class="fundTransferBgimage">-->
+<!--<div has-header="true" scroll="false" overflow-scroll="false">-->
+<!--<div id="recieptDiv">-->
+<!--<div ng-include="'templates/eDonation/slipTemplate.html'"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</ion-modal-view>-->

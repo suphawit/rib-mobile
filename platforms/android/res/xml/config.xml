@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="20124" id="com.kiatnakinbank.kkebanking" version="4.11.0" xmlns="http://www.w3.org/ns/widgets">
+    <feature name="DatePickerPlugin">
+        <param name="android-package" value="com.plugin.datepicker.DatePickerPlugin" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Contacts">
+        <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
+    </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <feature name="UniqueDeviceID">
+        <param name="android-package" value="hu.dpal.phonegap.plugins.UniqueDeviceID" />
+    </feature>
+    <feature name="RootDetection">
+        <param name="android-package" value="ru.trykov.root.RootDetection" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Canvas2ImagePlugin">
+        <param name="android-package" value="org.devgeeks.Canvas2ImagePlugin.Canvas2ImagePlugin" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Permissions">
+        <param name="android-package" value="com.android.plugins.Permissions" />
+    </feature>
+    <feature name="Badge">
+        <param name="android-package" value="de.appplant.cordova.plugin.badge.Badge" />
+    </feature>
+    <feature name="SSLCertificateChecker">
+        <param name="android-package" value="nl.xservices.plugins.SSLCertificateChecker" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="IRoot">
+        <param name="android-package" value="de.cyberkatze.iroot.IRoot" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="PushNotification">
+        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
+    </feature>
+    <feature name="SaveImageGallery">
+        <param name="android-package" value="com.agomezmoron.saveImageGallery.SaveImageGallery" />
+    </feature>
+    <feature name="Screenshot">
+        <param name="android-package" value="com.darktalker.cordova.screenshot.Screenshot" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="CordovaHttpPlugin">
+        <param name="android-package" value="com.silkimen.cordovahttp.CordovaHttpPlugin" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="CustomConfigParameters">
+        <param name="android-package" value="org.apache.cordova.customconfigparameters.CustomConfigParameters" />
+    </feature>
+    <feature name="RibFaceRecog">
+        <param name="android-package" value="com.kkebanking.facerecog.plugin.RibFaceRecog" />
+    </feature>
+    <feature name="BiometricAuthen">
+        <param name="android-package" value="com.kkebanking.biometricauthen.BiometricAuthen" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Open">
+        <param name="android-package" value="com.disusered.Open" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="RareloopAppVersion">
+        <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
+    </feature>
+    <feature name="DecryptResource">
+        <param name="android-package" value="com.tkyaji.cordova.DecryptResource" />
+        <param name="onload" value="true" />
+    </feature>
+    <description>
+        KKP e-Banking application.
+    </description>
+    <author email="developer@kiatnakin.co.th" href="https://ebanking.kiatnakin.co.th/ebanking">
+        KKP RIB Team
+    </author>
+    <content src="/+++/index.html" />
+    <access origin="*" />
+    <access launch-external="yes" origin="mailto:*" />
+    <access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="sms:*" />
+    <access origin="*.google.com" />
+    <access origin="*.googleapis.com" />
+    <access origin="*.gstatic.com" />
+    <access origin="*.kiatnakin.co.th" />
+    <access origin="*.kkpfg.com" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <name short="KKPeBanking">KKPeBanking</name>
+    <allow-intent href="market:*" />
+    <icon src="res/icon/android/icon-96-xhdpi.png" />
+    <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+    <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+    <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+    <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+    <splash src="res/screen/android/splash.9.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="srvendpoint" value="https://ebankingapi.kkpfg.com/mobileapi" />
+    <preference name="srvendpointversion" value="v1" />
+    <preference name="openssl" value="true" />
+    <preference name="urlpinning" value="https://ebankingapi.kkpfg.com/pinning" />
+    <preference name="FadeSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="android-minSdkVersion" value="23" />
+    <preference name="android-targetSdkVersion" value="28" />
+</widget>

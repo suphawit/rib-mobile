@@ -1,0 +1,45 @@
+<ion-view id =""  drag-content="false"> 
+		
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+			<a class="button button-clear" href="#/mutualFundHistory" translate="label.back" ></a>
+			<h4 class="title" translate="menu.todayTransaction"></h4>	
+			<a class="button button-clear" side="right" ng-click="goNextPage()" translate="button.next"  ng-if="isShowNext"></a>    
+		</ion-header-bar> 
+	
+		<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false"> 
+		<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding" >
+			<div class = "row font-clanOt-label" >
+					<span  translate="label.unitholderNo"></span>&nbsp;
+					<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="themeMediumGreyTextColor positionRight padd-Right15px">{{ dataTransectionDetail.unitHolder }}000000000001111xxxxx</span> 							
+			</div>
+		</ion-item>
+		<div class="pageContentsScroll">
+		
+	  		<div class="row lineHeight1 padding" ng-class="fontLabel" style= "padding-top:20px!important;">	
+				<div class="col col-50 ">
+					<p translate="">Fund Code</p>
+					<p translate="tableHead.Amount"> </p>		 
+					<p translate="label.mutualFund.unit"> </p>
+					<p translate="">To Fund Code </p>
+					<p translate="">To Fund Name </p>
+					<p translate="">ประเภทรายการ </p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ dataTransectionDetail.fundCode }}</p>
+					<p>{{ dataTransectionDetail.amount }} <span translate="label.currency"></span></p>
+					<p>{{ dataTransectionDetail.unit }}  <span translate="label.mutualFund.unit"> </span></p>	
+					<p>{{ dataTransectionDetail.toFundCode }}xxxx </p>
+					<p>{{ dataTransectionDetail.toFundName }}xxxxx</p>		 	 
+					<p>{{ dataTransectionDetail.transType }}</p>
+				</div>
+			</div>
+			<div class="row paddingNone ">
+				<div class="col paddingNone ">
+					<div class="item-divider selectAcoountItem-anyID-Register">
+						<button class="button button-light" ng-class="fontLabel" translate="button.cancel" ng-click="cancelTransaction()"></button>
+					</div>	
+				</div>
+			</div>
+	 	</div>
+		</ion-content> 
+</ion-view>

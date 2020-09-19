@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-RibFaceRecog",
+  "version": "0.0.1",
+  "description": "RIB Face Recognition",
+  "cordova": {
+    "id": "cordova-plugin-RibFaceRecog",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC"
+}

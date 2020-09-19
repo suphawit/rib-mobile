@@ -1,0 +1,45 @@
+ <ion-view title="">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+	    <h4 class="title" translate="menu.mutualFundNews"></h4>
+	</ion-header-bar>
+	<div  class="row paddingNone bar bar-subheader-sub headerDropdownBar"> 
+		<div class="headerDropdownBar" style = "padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem" dropdown-item-label="monthYear" 
+				dropdown-onchange="getFundDividendByMonth(selected.value)"></div>    
+        </div>
+   </div>
+    <ion-content class="has-header has-subheader-sub" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div ng-if="isNotShowData" class="row">
+				<div  class="col col-80 col-offset-10 txtCenterAlign" translate="label.new.mutualFund.noData" ></div>
+			</div>
+		<ion-list ng-if="isShowData" ng-repeat="dividenData in dividendList track by $index"   ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+            <ion-item ng-repeat="item in dividenData.item" class="padd-left10px padd-top0Px padd-bottom padd-Right5px">
+                <div class="row">
+                    <div class="fontBold padding-Top5px">
+                        <button class="hButton button-circle">{{item.annouceDateShow.date}}</button>
+                    </div>
+                    <div class="col">
+						<div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+                            <span translate="lbl.annouceDate"></span>&nbsp;:&nbsp;{{item.annouceDateShow.date}}&nbsp;<span  translate="{{item.annouceDateShow.month}}"></span>&nbsp;{{item.annouceDateShow.year}}
+                        </div>
+                        <div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+                            <span translate="label.mutualFund"></span>&nbsp;:&nbsp;{{item.fundCode}}
+                        </div>
+						<div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+                            <span translate="lbl.bookClosingDate"></span>&nbsp;:&nbsp;{{item.bookClosedDateShow.date}}&nbsp;<span  translate="{{item.bookClosedDateShow.month}}"></span>&nbsp;{{item.bookClosedDateShow.year}}
+                        </div>
+						<div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+                            <span translate="lbl.divdendDate"></span>&nbsp;:&nbsp;{{item.paymentDateShow.date}}&nbsp;<span  translate="{{item.paymentDateShow.month}}"></span>&nbsp;{{item.paymentDateShow.year}}
+                        </div>
+						<div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+							<span translate="lbl.dividendRate"></span>&nbsp;(<span translate="lbl.bahtperunit"></span>)&nbsp;:&nbsp;{{item.dividendRate}}&nbsp;
+                        </div>
+                    </div>
+                    <!--<div class="col col-10 pull-right padding-Top20px">
+                        <span class="chevronRight font-color-kkblue"><i class="icon ion-chevron-right"></i></span>
+                    </div>-->
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

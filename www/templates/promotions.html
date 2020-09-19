@@ -1,0 +1,25 @@
+<ion-view title="">
+ <ion-content has-header="false" scroll="true" overflow-scroll="false" has-bouncing="false">
+ 
+ <ion-item class="item-stable item-icon-right whiteBGColor padding5px ">		 
+		<i class="myaccBackBtn blackTextColor" ng-click="goBackPage()" translate="label.back"></i>
+		<h4 class="themeBlueTextColor txtCenterAlign fontFamilyClanOt-narrowMedium titleOneBtnCenterAlign fontSize18px margin-Top0px" translate="menu.promotions"></h4>
+	 </ion-item>
+ 
+ 	<div>		
+		<ion-slide-box on-slide-changed="" class="promotionBannerCicle">
+		
+		  <ion-slide ng-repeat="img in promoArrayList track by $index">
+		    <div class="box blue txtCenterAlign">
+		    	<a ng-href='' ng-click="openInExternalWindow(img.url)" >
+		    		<img ng-src="{{img.src}}" class="promotionBannerImg"/>
+		    	</a> 
+		    </div>
+		  </ion-slide>
+		   
+		</ion-slide-box>
+	</div>  
+	 	 
+	
+</ion-content> 
+</ion-view> 

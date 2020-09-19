@@ -1,0 +1,16 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">		 
+	    <span class="title" translate="label.selectBenefitAcct"></span>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="closeBenefitAcctModal()"></a>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false" class="has-header">
+			<div ng-repeat="account in benefitAccountList track by $index" class="dashboard-accordion padd-left0px padd-Right0px borderNone">
+			   <ion-item class ="row padd-bottom padd-left5px padd-Right10px bordoerBottom" ng-click="selectedBenefitAccount(account)">
+						<div class="col">
+							<div class="fontSize14px themeGreyTextColor wordBreak">{{account}}</div>
+						</div>	
+			   </ion-item> 	 
+			</div>	
+			<div class="heightSpaceModal"></div>
+    </ion-content>
+  </ion-modal-view>

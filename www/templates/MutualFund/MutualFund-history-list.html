@@ -1,0 +1,107 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<h4 class="title" translate="label.mutualFundHist"></h4>
+	</ion-header-bar>
+
+	<div  class="row paddingNone bar bar-subheader-sub headerDropdownBar"> 
+		<div class="headerDropdownBar" style = "padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem" dropdown-item-label="monthYear" 
+				dropdown-onchange="getHistoryMutualFund(selected.value)"></div>    
+        </div>
+   </div>
+
+	<ion-content class="has-header has-subheader-sub" locking="false" overflow-scroll="false" padding="false" has-bouncing="false"> 
+		
+			<div ng-if="isNotShowData" class="row">
+				<div  class="col col-80 col-offset-10 txtCenterAlign" translate="label.history.mutualFund.noData" ></div>
+			</div>
+
+					
+			<div ng-if="!isNotShowData" class="row" ng-repeat="ft_history_list_item in fundListScheduleShow track by $index"  ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+				<div ng-if= "fundListScheduleShow[$index].date !==  fundListScheduleShow[$index -1].date" class="col col-10">
+					<button class="hButton button-circle">{{ft_history_list_item.date}}</button>
+				</div>
+					
+				<div class="col col-90">
+					<div class="hist-trans-data item-divider fontSize12px" ng-repeat="transaction in ft_history_list_item.transactions">
+					
+						<div class="hist-trans-data-sub">  
+							
+							<div  class="row padding2px">
+								<div class="col padding2px"><span class="label"><span ng-if="transaction.transType === 'Switch'" translate="label.from"></span><span ng-if="transaction.transType === 'Switch'">&nbsp;:</span>&nbsp;{{transaction.fundCode}}</span></div>
+							</div>
+							<div ng-if = "transaction.transType == 'Switch'"  class="row padding2px">
+								<div class="col padding2px"><span class="label"> </span><span ng-if="transaction.transType === 'Switch'" translate="label.to"></span>&nbsp;:&nbsp;{{transaction.toFundCode}} </div>
+							</div>   
+
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span class="label"><span translate="label.history.bill.referenceNO"></span>&nbsp;:&nbsp;{{transaction.mutualFundref !== null  ? transaction.mutualFundref : transaction.referenceNo}}</span>
+								</div>
+								<div ng-if = "transaction.amount !== '0'"  class="col col-30 text-right padding2px">
+									<span>{{transaction.amount | currency : ""}}&nbsp;<span  translate="label.currency"></span></span>
+								</div>
+								<div ng-if = "transaction.unit !== '0'" class="col col-30 text-right padding2px">
+									<span>{{transaction.unit | currency : "" : 4}}&nbsp;<span  translate="label.mutualFund.unit"></span></span>
+								</div>
+							</div>
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span translate="label.transDate"></span>&nbsp;:&nbsp;{{transaction.orderDateShow.date}}&nbsp;<span  translate="{{transaction.orderDateShow.month}}"></span>&nbsp;{{transaction.orderDateShow.year}} {{transaction.orderDateShow.time}}
+								</div>
+							
+							</div>
+
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span translate="label.deductMutualFund"></span>&nbsp;:&nbsp;{{transaction.effectiveDateShow.date}}&nbsp;<span  translate="{{transaction.effectiveDateShow.month}}"></span>&nbsp;{{transaction.effectiveDateShow.year}}
+								</div>
+							</div>
+							<div class="row padding2px">
+									<div class="col col-60 padding2px">
+										<span translate="label.txnType"></span>&nbsp;:&nbsp;{{transaction.transType}}
+									</div>
+							</div>
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span translate="label.biller.status"></span>&nbsp;:&nbsp;{{transaction.transStatus}}
+								</div>
+							</div>
+							<div ng-if="transaction.transStatus && transaction.transStatus === 'Allotted'">
+								<div class="row padding2px">
+									<div class="col col-50 padding2px">
+										<span translate="label.date"></span>&nbsp;:&nbsp;{{transaction.confirmedDateShow.date}}&nbsp;<span  translate="{{transaction.confirmedDateShow.month}}"></span>&nbsp;{{transaction.confirmedDateShow.year}}
+									</div>
+									<div class="col col-50 text-right padding2px">
+										NAV</span>&nbsp;:&nbsp;{{transaction.confirmedNav | currency : "" : 4 || '-'}}&nbsp;<span translate="label.currency"></span>
+									</div>
+								</div>
+								<div class="row padding2px">
+									<div class="col col-50 padding2px">
+										<span translate="label.headerListAmount"></span>&nbsp;:&nbsp;{{transaction.confirmedAmount | currency : "" : 2|| '-'}}&nbsp;<span translate="label.currency"></span>
+									</div>
+									<div class="col col-50 text-right padding2px">
+										<span translate="label.units"></span>&nbsp;:&nbsp;{{transaction.confirmedUnit | currency : "" : 4 || '-'}}&nbsp;<span translate="label.mutualFund.unit"></span>
+									</div>
+								</div>
+						</div>
+
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span translate="label.channel.name"></span>&nbsp;:&nbsp;{{transaction.channelName}}
+								</div>
+							</div>
+					</div>
+				</div>
+			
+		</div>
+			
+				<ion-infinite-scroll
+				ng-if=" canWeloadMoreContent()"
+						on-infinite="poppulateList()"
+						distance="10%">
+				</ion-infinite-scroll> 
+				
+	</ion-content>
+</ion-view>
+			     

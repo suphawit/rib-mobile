@@ -1,0 +1,1212 @@
+/* --- This file holds only media queries related classes --- */
+/* ------   small devices ----- */
+@media only screen and (max-height: 320px) and (orientation : portrait)	{
+	.pageContentsScroll {
+		height: 400px;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 32px !important;
+		height: 25px !important;
+	}
+	
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+
+	 .device-margin-buttom20px {
+		 padding-bottom: 60px!important;
+	 }
+
+	
+	
+}
+
+/* ------ Below media query supports following devices ------*/
+/*  
+	Apple iPhone 3G , iPhone 3GS,	iPhone 4, iPhone 4S	iPhone 5,iPod Touch, 
+	BlackBerry Bold 9360, Bold 9790 , Curve 9320 , Curve 9380 , Torch 9800 , Torch 9810, Curve 9300
+	HP Veer,HTC 7 Mozart, 7 Trophy,	Desire,	Desire C, Desire HD, Legend, One V,	Titan 4G, Wildfire S, Windows Phone 8X
+	Huawei U8650,LG Optimus 2X,	LG Optimus L3
+	Motorola Defy,	Motorola Milestone, 	Nexus S, Lumia 610,	Lumia 710, Lumia 800, Lumia 820, Lumia 900,	Lumia 920
+	Samsung Galaxy Ace,	Galaxy Ace 2,Galaxy S2,	Sony Xperia E Dual
+*/
+
+@media screen and (max-device-width:320px) and (max-device-height:480px){
+	
+	.kk-logo {
+		background-size: 80px 80px;
+		width: 80px !important;
+		height: 80px !important;
+	}
+	.pinTemplateContainer {
+    	bottom: 40px !important;
+	}
+
+	 .device-margin-buttom20px {
+		 padding-bottom: 60px!important;
+	 }
+
+}
+
+@media only screen and (max-width: 360px) and (orientation : portrait) {
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.pinTxtHeight {
+		line-height: 50px !important;
+		height: 50px !important;
+	}
+	.pageContentsScroll {
+		height: 500px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	/*  .addMyAccountDetailTitleBar , .addMyAccountDetailTitleBar {
+	 	    padding-top: 45px !important;
+	 } */
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	 .languageMenuIcon, .changePasswordMenuIcon {
+		width: 35px !important;
+    	height: 23px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+
+	 .device-margin-buttom20px {
+		 padding-bottom: 60px!important;
+	 }
+
+	
+}
+
+/* -----------  Samsung Galaxy s4 ----------- */
+@media only screen and (max-width: 360px) and (device-height : 640px) and (orientation : portrait) {
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.pinTxtHeight {
+		line-height: 50px !important;
+		height: 50px !important;
+	}
+	.pageContentsScroll {
+		height: 500px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	/*  .addMyAccountDetailTitleBar, .addMyAccountDetailTitleBar , .addMyAccountDetailTitleBar {
+	 	    padding-top: 45px !important;
+	 } */
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 34px !important;
+    	height: 23px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+
+}
+/* ------ iPhone 6 ----- */
+@media only screen and (min-device-width: 375px) and (orientation : portrait) and (max-device-width : 667px) 
+    and (width : 375px) and (height : 559px) and (-webkit-min-device-pixel-ratio : 2) { 
+    
+    .kk-logo {
+		width: 100px;
+		height: 100px;
+		margin-top: -20px;
+	}
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 32px !important;
+		height: 25px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	/* #tab.tabs .tabs {
+		bottom: 20px !important;
+	} */
+	#footer {
+		bottom: 0px;
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.changePasswordMenuIcon {
+		background-image: url("../images/Change-Password.png");
+		background-size: cover;
+		width: 38px ! important;
+		height: 25px;
+		display: inline-block;
+	}
+	.languageMenuIcon {
+		background-image: url("../images/Language.png");
+		background-size: cover;
+		width: 38px ! important;;
+		height: 25px;
+		display: inline-block;
+	}
+	.pageContentsScroll {
+		height: 500px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;		 
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.fundTrfCenter {
+		padding-right: 100px; 
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {		
+		padding-right: 35px;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.headerBtnTopPadding{
+		padding-top: 60px;
+	}
+	.bodyContentTopPadding{
+		padding-top: 50px;
+	}
+
+	.device-margin-buttom20px {
+		 padding-bottom: 60px!important;
+	 }
+
+
+    
+}
+/* ------ 375px Android Devices ----- */
+@media only screen and (min-device-width: 375px) and (orientation : portrait) { 
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 32px !important;
+		height: 25px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	/* #tab.tabs .tabs {
+		bottom: 20px !important;
+	} */
+	#footer {
+		bottom: 0px;
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	/* .tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	} */
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.changePasswordMenuIcon {
+		background-image: url("../images/Change-Password.png");
+		background-size: cover;
+		width: 38px ! important;
+		height: 25px;
+		display: inline-block;
+	}
+	.languageMenuIcon {
+		background-image: url("../images/Language.png");
+		background-size: cover;
+		width: 38px ! important;;
+		height: 25px;
+		display: inline-block;
+	}
+	.pageContentsScroll {
+		height: 500px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.headerBtnTopPadding{
+		padding-top: 40px;
+	}
+	.bodyContentTopPadding{
+		padding-top: 30px;
+	}
+
+	.device-margin-buttom20px {
+		 padding-bottom: 60px!important;
+	 }
+
+}
+
+/* ------ iPhone 6 Plus ----- */
+@media only screen and (min-device-width : 414px) and (max-device-width
+	: 736px) and (device-width : 414px) and (device-height : 736px) and
+	(orientation : portrait) and (-webkit-min-device-pixel-ratio : 3) and
+	(-webkit-device-pixel-ratio : 3) {
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 28px !important;
+		height: 25px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 33px !important;
+		height: 22px !important;
+	}
+	.menuAllTabIcon {
+		width: 33px !important;
+		height: 36px !important;
+	}
+	/* #tab.tabs {
+		bottom: 20px;
+	} */
+	#footer {
+		/* bottom: 10px; */
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.addOtherAccDetailsTitleLabelIphone6 {
+		padding-left: 50px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+
+	
+}
+
+/* ------ Tablets - LADSCAPE ONLY ----- */
+/*  
+	Apple iPad ,Apple iPad 2,Apple iPad 3 (and 4),	Apple iPad Mini
+	Archos 80G9 ,BAUHN AMID-972XS,HP Touchpad,Panasonic Toughpad A1,Acer Iconia Tab A101
+	Archos 70b (it2),Arnova 10b G3,	BlackBerry PlayBook
+	Samsung Galaxy Tab 2 7.0,Samsung Galaxy Tab 7,	Ainol Novo 7 Elf 2
+*/
+@media only screen and (max-width: 1024px) and (orientation : landscape)
+	{
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 33px !important;
+		height: 30px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 35px !important;
+		height: 30px !important;
+	}
+	.transferaccount text,.transferaccount-amount text {
+		width: 200px;
+	}
+	.slipMarginTop{
+		margin-top: 25px !important;
+	}
+	.slipMarginTopTo{
+		margin-top: 50px !important;
+	}
+	.padd-slip-left{
+		padding-left: 45px;
+	}
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 38px !important;
+		height: 26px !important;
+	}
+	.menuAllTabIcon {
+		width: 35px !important;
+		height: 40px !important;
+	}
+	.memoDivCellValue{
+		width: 35vw;
+	}
+	/* #tab.tabs {
+		bottom: 20px;
+	} */
+	#footer {
+		/* bottom: 10px; */
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.pageContentsScroll {
+		height: 668px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.addOtherAccToOtherTitleIpad {
+		padding-left: 310px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.confirmDeleteAddMyAccountPad {
+		padding-left: 1px;
+	}
+	.confirmDeleteAddMyAccountPadAccount {
+		padding-left: 1px;
+	}
+	.padd-left30px {
+		padding-left: 4px;
+	}
+	.addMyAccountfont {
+		color: #8F8F8F !important;
+		padding-left: 8px;
+	}
+	.addMyAccountLable {
+		margin-left: 6px !important;
+		padding: 1px;
+	}
+	
+	.themeDarkBlueBGColor {
+    background-color: #594F74 !important;
+    /* width: 84%; */
+    /* padding-left: 20%; */
+    /* margin-left: 9%; */
+    /* padding-left: 10px; 
+    top: 8px;*/
+    /* bottom: 0px; */
+    /* padding-bottom: 9px; */
+    /* margin-bottom: 9px; */
+   /*  border-color: white; */
+}
+
+
+.transferaccount:before, .transferaccount-amount:before{
+	height: 110%;
+}
+
+.transferaccount:after, .transferaccount-amount:after {
+	height: 110%;
+}
+#funtransfer .item-input, #billPay .item-input, #rtprequest .item-input {
+    /* width: 70%; */
+    top: 15px;
+}
+.modal.bottom-sheet {
+	bottom: 0;
+	min-height: initial;
+	top: initial;
+	height: 50%;
+	border-width: 1px;
+	border-style: solid;
+	margin-left: -13%;
+}
+
+.transferaccount span,.transferaccount-amount span {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 16px;
+    /* top: 20px; */
+}
+.fundtrfRecieptLogoPadding {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    padding-top: 10px;
+}
+.scheduleDetailColumn20 {
+	padding-left: 14px;
+    max-width: 10%;
+}
+.schedulePadd-left {
+	  padding-left: 7px !important;
+}
+.column20Tablet{
+	 max-width: 10%;
+}
+.column80Tablet{
+	 max-width: 90%;
+}		
+
+.tablet-margin-top25px{
+	 margin-top: 25px;
+}
+
+
+.tablet-inputAmout-top5px{
+	top : 5px!important;
+}
+
+
+
+
+}
+
+/* Large desktops and laptops */
+@media ( min-width : 1200px) {
+}
+
+/* ------ tab 7 inch ----- */
+@media only screen and (min-device-width: 1280px) and
+	(max-device-height: 800px) and (min-resolution: 192dpi) and
+	(-webkit-device-pixel-ratio:2) and (orientation : landscape) {
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 33px !important;
+		height: 30px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 35px !important;
+		height: 30px !important;
+	}
+	.transferaccount text, .transferaccount-amount text  {
+		width: 200px;
+	}
+	.slipMarginTop{
+		margin-top: 25px !important;
+	}
+	.slipMarginTopTo{
+		margin-top: 50px !important;
+	}
+	.padd-slip-left{
+		padding-left: 45px;
+	}
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 38px !important;
+		height: 26px !important;
+	}
+	.menuAllTabIcon {
+		width: 35px !important;
+		height: 40px !important;
+	}
+	/* #tab.tabs {
+		bottom: 20px;
+	} */
+	#footer {
+		/* bottom: 10px; */
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.pageContentsScroll {
+		height: 668px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.addOtherAccToOtherTitleIpad {
+		padding-left: 310px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.confirmDeleteAddMyAccountPad {
+		padding-left: 1px;
+	}
+	.confirmDeleteAddMyAccountPadAccount {
+		padding-left: 1px;
+	}
+	.padd-left30px {
+		padding-left: 4px;
+	}
+	.addMyAccountfont {
+		color: #8F8F8F !important;
+		padding-left: 8px;
+	}
+	.addMyAccountLable {
+		margin-left: 6px !important;
+		padding: 1px;
+	}
+	.themeDarkBlueBGColor {
+    background-color: #594F74 !important;
+    /* width: 84%; */
+    /* padding-left: 20%; */
+    /* margin-left: 9%; */
+    /* padding-left: 10px; 
+    top: 14px;*/
+    /* bottom: 0px; */
+    /* padding-bottom: 9px; */
+    /* margin-bottom: 9px; */
+    /* border-color: white; */
+}
+
+
+.transferaccount:before,.transferaccount-amount:before  {
+	height: 110%;
+}
+
+.transferaccount:after,.transferaccount-amount:after {
+	height: 110%;
+}
+
+.modal.bottom-sheet {
+	bottom: 0;
+	min-height: initial;
+	top: initial;
+	height: 50%;
+	border-width: 1px;
+	border-style: solid;
+	margin-left: -13%;
+}
+
+.transferaccount span,.transferaccount-amount span {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 16px;
+    top: 20px;
+}
+.fundtrfRecieptLogoPadding {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    padding-top: 10px;
+}
+.scheduleDetailColumn20 {
+	padding-left: 14px;
+    max-width: 10%;
+}
+.schedulePadd-left {
+	  padding-left: 7px !important;
+}
+.column20Tablet{
+	 max-width: 10%;
+}
+.column80Tablet{
+	 max-width: 90%;
+}	
+
+.tablet-margin-top25px{
+	 margin-top: 25px;
+}
+
+
+.tablet-inputAmout-top5px {
+	top : 5px!important;
+}
+
+
+
+}
+
+/* ----------- Galaxy Tab 10.1 ----------- */
+/* Landscape */
+@media only screen and (max-device-width: 1280px)  and (orientation:landscape) {
+	.kk-logo {
+		width: 100px;
+		height: 100px;
+		/* margin-top: -20px; */
+	}
+	.promotionTabIcon, .locatUsTabIcon, .contactUsTabIcon, .FAQTabIcon,	.settingsTabIcon  {
+		width: 33px !important;
+		height: 30px !important;
+	}
+	.languageMenuIcon, .changePasswordMenuIcon {
+		width: 40px !important;
+    	height: 28px !important;
+	}
+	.transferaccount text,.transferaccount-amount text {
+		width: 200px;
+	}
+	.slipMarginTop{
+		margin-top: 25px !important;
+	}
+	.slipMarginTopTo{
+		margin-top: 50px !important;
+	}
+	.padd-slip-left{
+		padding-left: 45px;
+	}
+	.pinTxtHeight {
+		line-height: 60px !important;
+		height: 60px !important;
+	}
+	.fontSize50px {
+		font-size: 40px !important;
+	}
+	.fundTransTabIcon, .billPayTabIcon, .myAccountTabIcon {
+		width: 38px !important;
+		height: 26px !important;
+	}
+	.menuAllTabIcon {
+		width: 35px !important;
+		height: 40px !important;
+	}
+	/* #tab.tabs {
+		bottom: 20px;
+	} */
+	#footer {
+		/* bottom: 10px; */
+	}
+	#footer .tabs {
+		padding-top: 10px;
+	}
+	.tabs-icon-bottom.tabs .tab-item, .tabs-icon-bottom>.tabs .tab-item,
+		.tabs-icon-top.tabs .tab-item, .tabs-icon-top>.tabs .tab-item {
+		font-weight: bold !important;
+	}
+	.tabs-striped .tab-item.activated, .tabs-striped .tab-item.active,
+		.tabs-striped .tab-item.tab-item-active {
+		border: none;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.contactUsLocatUsTab, .contactUsEmailTab, .contactUsContactUsTab {
+		margin: 3px auto;
+	}
+	.pageContentsScroll {
+		height: 668px;
+	}
+	.pinTemplateContainer {
+		bottom: 20px;
+		position: relative;
+	}
+	.bar.bar-stable .title {
+		left: 0 !important;
+		right: 0 !important;
+		text-align: center;
+	}
+	.addOtherAccToOtherTitleIpad {
+		padding-left: 310px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fontSize18px {
+		font-size: 18px !important;
+	}
+	.fontFamilyClanOt-narrowMedium {
+		font-family: 'ClanOt-narrowMedium';
+	}
+	.confirmTitleLabel {
+		padding-right: 20px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTrfCenter {
+		padding-right: 100px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.fundTraAddNewAccTitleLabel {
+		padding-right: 35px;
+		color: #594F74;
+		font-weight: bold;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.confirmDeleteAddMyAccountPad {
+		padding-left: 1px;
+	}
+	.confirmDeleteAddMyAccountPadAccount {
+		padding-left: 1px;
+	}
+	.padd-left30px {
+		padding-left: 4px;
+	}
+	.addMyAccountfont {
+		color: #8F8F8F !important;
+		padding-left: 8px;
+	}
+	.addMyAccountLable {
+		margin-left: 6px !important;
+		padding: 1px;
+	}
+	
+	.themeDarkBlueBGColor {
+    background-color: #594F74 !important;
+    /* width: 84%; */
+    /* padding-left: 20%; */
+    /* margin-left: 9%; */
+    /* padding-left: 10px; 
+    top: 14px;*/
+    /* bottom: 0px; */
+    /* padding-bottom: 9px; */
+    /* margin-bottom: 9px; */
+   /*  border-color: white; */
+}
+
+
+.transferaccount:before,.transferaccount-amount:before {
+	height: 110%;
+}
+
+.transferaccount:after,.transferaccount-amount:after {
+	height: 110%;
+}
+
+.modal.bottom-sheet {
+	bottom: 0;
+	min-height: initial;
+	top: initial;
+	height: 50%;
+	border-width: 1px;
+	border-style: solid;
+	margin-left: -13%;
+}
+
+.transferaccount span,.transferaccount-amount span {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 16px;
+    top: 20px;
+}
+.fundtrfRecieptLogoPadding {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    padding-top: 10px;
+}
+
+.scheduleDetailColumn20 {
+	padding-left: 14px;
+    max-width: 10%;
+}
+ .schedulePadd-left {
+	  padding-left: 7px !important;
+}
+.column20Tablet{
+	 max-width: 10%;
+}
+.column80Tablet{
+	 max-width: 90%;
+}
+.marginAlign{
+	margin-top: 25px !important;
+	margin-bottom: 40px !important;
+}	
+
+
+
+.tablet-margin-top25px{
+	 margin-top: 25px;
+
+}
+}
+
+/* portrait */
+@media screen and (orientation:portrait) {
+    .bar.modal-footer.bar-footer{
+		position: fixed !important;
+	}
+}
+
+/* landscape */
+@media screen and (orientation:landscape) {
+    .bar.modal-footer.bar-footer{
+		position: inherit !important;
+	}
+}
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) { 
+
+	.appTitleIcon {
+		margin-top: 6px !important;
+		width: 46px !important;
+		height: 41px !important;
+	}
+	#tab.tabs {
+		margin-bottom: 18px;
+	}
+}
+/* 1792x828px at 326ppi */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 896px) 
+    and (-webkit-device-pixel-ratio : 2) { 
+	
+	.appTitleIcon {
+		margin-top: 9px !important;
+		width: 43px !important;
+		height: 38px !important;
+	}
+	#tab.tabs {
+		margin-bottom: 18px;
+	}
+}
+/* 2688x1242px at 458ppi */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 896px) 
+    and (-webkit-device-pixel-ratio : 3) { 	
+	.appTitleIcon {
+		margin-top: 6px !important;
+		width: 46px !important;
+		height: 41px !important;
+	}
+	#tab.tabs {
+		margin-bottom: 18px;
+	}
+}
+

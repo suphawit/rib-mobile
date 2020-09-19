@@ -1,0 +1,109 @@
+
+<ion-view id="otherAccount">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>
+        <h4 class="title" translate="label.addAcc"></h4>
+        <!--<a class="button button-clear" ng-click="showAddExtConfirmScreen()" translate="button.next"></a>-->
+	</ion-header-bar>
+	
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false" ng-class="fontHeader">
+	<div style="min-height: calc(90vh - 110px)">
+		<div ng-class="fontLabel" class="group-list">
+			<h2 class="addMyAccountDetailTitleBar fontSize18px" translate="label.otherAccDetail" ion-affix data-affix-within-parent-with-class="group-list" ></h2>
+			<h5 class="addMyAccountfont" translate="label.plsInpUrInfo"> </h5>
+			<div class="padd-left18px">
+				<h5 translate=label.acctAliasName></h5>
+				<div class="item item-input addOtherAccountUnderLine">
+					<i class="icon ion-android-lock placeholder-icon fontSize25px"></i>
+					<input type="text"ng-model="extAccDetails.accAliasName"  maxlength="30" />
+				</div>
+			</div>
+			<div ng-if="isShowAnyIDTypeButton"  class=" col row addOtherAccountCat">
+				<h5 translate="label.typeAnyID"></h5>
+				<any-id-type-list-swiper override-parameters="anyIdTypeListSwiper.overrideParams" 
+										active-item="{{anyIdTypeListSwiper.activeItem}}" 
+										items="anyIdTypeList"
+										on-data-updated="anyIdTypeListSwiper.invokes(value)"></any-id-type-list-swiper>
+				<div align="center" class="wordBreak themeGreyTextColor line-bottom" ng-class="fontLabelSmall">{{extAccDetails.anyidTypeDescriptionName}}</div> 
+			</div>
+		<div>
+				<div ng-show="isShowSwiper && !anyIDInfo.isAnyID(extAccDetails.anyIDType)" class=" col row addOtherAccountCat">
+					<h5 translate="label.bankIssue"></h5>		       	
+					<banklist-swiper override-parameters="bankListSwiper.overrideParams" 
+									active-item="{{bankListSwiper.activeItem}}" 
+									items="banksList" 
+									on-data-updated="bankListSwiper.invokes(value)"></banklist-swiper>		       	
+					
+					<div align="center" class="wordBreak themeGreyTextColor line-bottom" ng-class="fontLabelSmall">{{displaySelectedBankName}}</div> 
+				</div>
+				
+				<div class="padd-left18px" ng-if="isShowAnyIDTypeButton">
+		
+					<h5 class="margin-Top5px">{{extAccDetails.anyidTypeLabelName}}</h5>
+					<div class="item item-input addOtherAccountUnderLine">
+						<i class="icon ion-person placeholder-icon fontSize25px"></i>
+						<div ng-if="isStringDataType" style="width:100%">
+							<input type="text" ng-model="extAccDetails.accNo"  maxlength="{{extAccDetails.anyidTypeLength}}" />
+						</div>
+						<div ng-if="!isStringDataType" style="width:85%">
+							<input bind-virtual-keyboard vkmodel="extAccDetails.accNo" vkoption="virtualKeyboardAccount.option" type="text" ng-model="extAccDetails.accNo"/>
+						</div>
+						<i class="icon icon-c32 icon-address-book-o style-icon-contact-phone" ng-if="extAccDetails.anyIDType == anyIDType.MOBILE_NO" ng-click="getContactPhone()"></i>               
+					</div>
+				</div>
+				
+				<div ng-if="!anyIDInfo.isAnyID(extAccDetails.anyIDType) && isShowAccountName" class="padd-left18px" >
+				<h5 class="margin-Top5px" translate="label.accName"></h5>
+					<div class="item item-input addOtherAccountUnderLine">
+						<i class="icon ion-person placeholder-icon fontSize25px"></i>
+						<input type="text" account-name-validation ng-model="extAccDetails.acctName" maxlength="40" />
+					</div>
+				</div>
+			</div>
+		
+			<div ng-if="!isShowSwiper" class="list-bank marginTop15Px">
+				<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor">
+					<img ng-src="{{anyIDInfo.isAnyID(extAccDetails.anyIDType) ? extAccDetails.anyidTypeImage : TOimgUrl}}" class="externalMenuListImg" 
+						ng-style="{ 'background-color': anyIDInfo.isAnyID(extAccDetails.anyIDType) ? extAccDetails.anyidTypeIconColor : getBankCodeImg(bankCode, 'color') }" />
+					<div class="thumbnail-detail-add-other-acc col" ng-class="fontDisplay">
+						<span ng-if="!anyIDInfo.isAnyID(extAccDetails.anyIDType)">{{displaySelectedBankName}}</span>	            
+					<p>{{extAccDetails.accNo}} </p>
+					</div>
+				</div>
+			</div>
+			
+			<h5 class="padd-left18px" translate="label.accCategory"></h5>
+			<ion-scroll overflow-scroll="false" has-bouncing="false" overflow-scroll="true" direction="x" class="wide-as-needed addOtherAccountDetailsScrollCat animated slideInRight">  
+				<a ng-repeat="options in accCatList track by $index" class="displayInline">
+						<button class="addCategoryBtns" ng-class="{'themeDarkGreyBGColor whiteTextColor': isActiveAccCatgry(options.catId)}" 
+							ng-click="setActiveAccCatgry(options.catId)" ng-model="extAccDetails.accCategory"><span ng-class="fontLabel">{{options.catName}}</span>
+						</button>
+					</a>
+			</ion-scroll>
+			
+		<div class="padd-left18px margin-bottom15px">
+			<h5 translate="label.mobileNo"></h5>
+			<div class="item item-input addOtherAccountUnderLine">
+				<i class="icon ion-ios-telephone placeholder-icon fontSize25px"></i>
+				<input bind-virtual-keyboard vkmodel="extAccDetails.mobile" vkoption="virtualKeyboardMobileNo.option" type="text" ng-model="extAccDetails.mobile"   maxlength="10" />
+				<i class="icon icon-c32 icon-address-book-o style-icon-contact-phone" ng-click="getContactPhoneForMobile()"></i>   
+			</div>
+
+			<h5 translate="label.email"></h5>
+			<div class="item item-input addOtherAccountUnderLine">
+				<i class="icon ion-email placeholder-icon fontSize25px"></i>
+				<input type="text" ng-model="extAccDetails.email" maxlength="40" />
+			</div>
+		</div>
+		</div>
+		<div  style="height:50px;"></div>   
+	</div>
+	<div style="margin-left: 3vw;margin-right: 3vw;">
+		<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+		ng-click="showAddExtConfirmScreen()" translate="button.next">
+		</button>
+	</div>
+	</ion-content>
+</ion-view>
+
+

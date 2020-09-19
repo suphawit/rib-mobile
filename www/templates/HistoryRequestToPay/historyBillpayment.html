@@ -1,0 +1,39 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <h4 class="title" translate="label.billPaymentHist"></h4>
+    </ion-header-bar>
+
+    <div class="row paddingNone bar bar-subheader-sub headerDropdownBar">
+        <div class="headerDropdownBar" style="padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem"
+                 dropdown-item-label="monthYear"
+                 dropdown-onchange="getHistoryBillpayment(selected.value)"></div>
+        </div>
+    </div>
+
+    <ion-content class="has-header has-subheader-sub">
+        <div ng-if="isNotShowData" class="row">
+            <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.history.bill.noData"></div>
+        </div>
+        <ion-list ng-if="isShowData"  ng-repeat="bp_history_list_item in bp_history_list"
+                  ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+            <ion-item ng-repeat="transaction in bp_history_list_item.transactions"
+                      ng-click="openDetail(transaction)" class="padd-left10px padd-top0Px padd-bottom padd-Right5px">
+                <div class="row">
+                    <div class="fontBold padding-Top5px">
+                        <button class="hButton button-circle">{{bp_history_list_item.date}}</button>
+                    </div>
+                    <div class="col fontBold">
+                        <div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;"><span translate="label.to"></span>&nbsp;:&nbsp;{{transaction.billerAliasName || transaction.billerName}}</div>
+                        <div class="col padding2px"><span translate="label.Amount"></span>&nbsp;:&nbsp;{{transaction.payAmount | currency : ""}}&nbsp;<span  translate="label.currency"></span></span></div>
+                    </div>
+                    <div class="col col-10 pull-right padding-Top20px">
+                        <span class="chevronRight font-color-kkblue"><i class="icon ion-chevron-right"></i></span>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
+

@@ -1,0 +1,73 @@
+<ion-view> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="backToOtherAccounts()" translate="label.back"></a>
+	    <h4 class="title" translate="label.editAcc"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="navigateToEditOtherAccountsDetail()" translate="button.next"></a>-->
+	</ion-header-bar>
+	
+ 	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" ng-class="fontHeader" has-bouncing="false">
+ 		<div style="min-height: calc(90vh - 110px)">
+			<div ng-class="fontLabel">
+			<h2 class="title-content-bar" translate="label.otherAccDetail"></h2>
+			<h5 class="addMyAccountfont"  translate="label.info"></h5>
+			<div class="list-bank">  
+				<h5 translate="label.acctAliasName"></h5>
+				<label class="item item-input addotherAccountCustomBorder addOtherAccountUnderLine widt100">
+				<i class="icon ion-person placeholder-icon fontSize25px"></i>
+				<input type="text" placeholder="{{currentSelectedAccount.acctAliasName}}" maxlength="30" ng-model="currentSelectedAccount.acctAliasName">
+				</label>
+			</div>
+			<div class="list-bank">
+				<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor" >
+					<img ng-src="{{isAnyID ? anyIDIcon : getBankCodeImg(bankCode, 'image')}}" class="tranCompImg" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(bankCode, 'color') }"/> 
+					<div class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+						<div class="min-height-m bankName-other-acc">{{currentSelectedAccount.bankName}}</div>
+						<div>{{currentSelectedAccount.acctNo}}</div>
+					</div>
+					</div>
+			</div>
+			
+			
+			<div class="list-bank" ng-show="isShowAcctName()">  
+				<h5 translate="label.input.acctName"></h5>
+				<label class="item item-input addotherAccountCustomBorder addOtherAccountUnderLine widt100">
+				<i class="icon ion-person placeholder-icon fontSize25px"></i>
+				<input type="text" account-name-validation placeholder="{{currentSelectedAccount.acctName}}" maxlength="50" ng-model="currentSelectedAccount.acctName">
+				</label>
+			</div>
+			
+			
+			<div class="list-bank" >
+				<h5 translate="label.accountCategory"></h5>
+				<ion-scroll overflow-scroll="false" has-bouncing="false" overflow-scroll="true" direction="x" class="wide-as-needed addOtherAccountDetails animated slideInRight">
+					<div ng-repeat="extAccCategory in editCategoryList track by $index " class="displayInline">
+					<div class="button" ng-class="{'button-custom': isActiveCategory(extAccCategory.catName)}" 
+						ng-click="setCategoryID(  extAccCategory )"  ng-model="extAccCategory.catName">{{extAccCategory.catName || ""}}
+					</div>
+					</div>
+				</ion-scroll>
+			</div> 
+			<div class="list-bank">
+					<h5 translate="label.mobileNo"></h5>
+				<div class="item item-input addotherAccountCustomBorder addOtherAccountUnderLine widt100">
+					<i class="icon ion-ios-telephone placeholder-icon fontSize25px"></i>
+					<input bind-virtual-keyboard vkmodel="currentSelectedAccount.mobile" vkoption="virtualKeyboardMobileNo.option" type="text" ng-model="currentSelectedAccount.mobile"   maxlength="10"></input>
+					<i class="icon icon-c32 icon-address-book-o" ng-click="getContactPhoneForMobile()"></i>   
+						<!--  <input type="text" placeholder="{{currentSelectedAccount.mobile}}" ng-model="currentSelectedAccount.mobile" maxlength="10"> -->
+				</div>
+			</div>
+			<div class="list-bank">
+				<h5 translate="label.email"></h5>
+				<label class="item item-input addotherAccountCustomBorder addOtherAccountUnderLine widt100">
+					<i class="icon ion-email placeholder-icon fontSize25px"></i>
+					<input type="text" placeholder="{{currentSelectedAccount.email}}" ng-model="currentSelectedAccount.email" maxlength="40">
+				</label>	
+			</div>
+		</div>
+	</div>
+	<div style="margin-left: 3vw;margin-right: 3vw;">
+		<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="navigateToEditOtherAccountsDetail()">
+		</button>
+	</div>
+</ion-content>
+</ion-view>

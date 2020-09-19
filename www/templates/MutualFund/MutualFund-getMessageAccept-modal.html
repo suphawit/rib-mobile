@@ -1,0 +1,28 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">
+        <h4 class="title noneLeftRight" translate="header.acceptMessage"></h4>
+        <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right"
+           ng-click="selectClose()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <div class="pageContentsScroll">
+            <div class="padding fontLabel fontSize14px " style="margin-bottom: 50%;">
+                <div ng-repeat="itemMessage in validateMessageValue"  style="padding: 5px !important;">
+                    <div> - {{itemMessage.acceptRiskMessage}}</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+   
+
+       <ion-footer-bar align-title="left" class="modal-footer">
+            <div class="col text-center scheduleBtns selectedBtnBGColor"  id="TransTodayScheduleDate">
+                <button class="button button-block button-custom" ng-class="fontLabel" translate="button.ok"
+                            ng-click="getPrepare()"></button>
+            </div>
+            <div class="col text-center scheduleBtns selectedBtnBGColor"  id="TransFutureScheduleDate">
+                <button class="button button-block button-custom" ng-class="fontLabel" translate="label.cancel"
+                            data-backdrop="static" data-keyboard="false" ng-click="selectClose()"></button>
+            </div>
+        </ion-footer-bar>
+</ion-modal-view>

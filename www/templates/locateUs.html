@@ -1,0 +1,38 @@
+<ion-view>
+	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>
+	    <h4 class="title" translate="menu.locateUs"></h4>
+	</ion-header-bar>
+
+  <ion-content class="has-header has-subheader" locking="false" overflow-scroll="true" padding="false" has-bouncing="false">
+	   <div class="bordoerBottom">
+	   	<input type="text" class="googlesearchtxtbox" ng-model="mapAdressFilterTxt" placeholder="Search"/>
+	   	<span class="borderLeft1px"></span>
+	    	<a ng-click="SearchLocation()" class="googlesearchicon">
+	       	<ng-md-icon icon="search" style="fill:#C7C7C7" size="30"></ng-md-icon>
+	    	</a>
+	   </div>
+
+	   <div id="map" class="locateUs-table googlemaps"></div>
+	   <ion-scroll class="mapaddresscontainer" >
+	       <ion-list>
+	          <ion-item ng-repeat="address in details | filterMapAddress: mapAdressFilterTxt" class="dashboard-accordion padd-left0px
+	             padd-Right0px bordoerBottom animated slideInDown" ng-click="updateAddressMap(address)" >
+
+	             <div class = "row padd-bottom padd-left5px padd-Right10px">
+	                <div class="col">
+	                   <strong class="displayBlock fontSize14px wordBreak themeBlueTextColor">{{address.title}}</strong>
+	                   <span class="fontSize14px wordBreak">{{address.province}}</span>
+	                </div>
+	             </div>
+	          </ion-item>
+	       </ion-list>
+	        <br/> <br/> <br/>
+	   </ion-scroll>
+  </ion-content>
+</ion-view>

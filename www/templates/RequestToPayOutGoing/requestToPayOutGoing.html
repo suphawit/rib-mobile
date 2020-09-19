@@ -1,0 +1,44 @@
+<ion-view> 
+	 <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+	    <h4 class="title" translate="submenu.myRequest"></h4>
+         <!--<a class="button button-icon icon ion-plus" side="right" ng-click="addMyRTP()" ></a>-->
+	</ion-header-bar>
+
+    <ion-content class="has-header"  locking="false" overflow-scroll="false"  has-bouncing="false"> 
+		 <div style="min-height: calc(90vh - 110px)">
+            <div ng-if="requestToPayList.firstLoad" class="row">
+                <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.rtp.noData" ></div>
+            </div>	 
+
+            <div ng-if="!requestToPayList.firstLoad" ng-repeat="result in requestToPayList.data" class="group-list">
+                <ion-item class="textSchduleHeader dashboardmainmenucolor" ion-affix data-affix-within-parent-with-class="group-list">
+                    <div class="fontSize16px">{{::result.d.date}}&nbsp;<span translate="">{{result.d.month}}</span>&nbsp{{result.d.year}}</div>
+                </ion-item>
+                <ion-list>
+                    <ion-item class="dashboard-accordion padd-left0px padd-Right0px" ng-repeat="record in result.items">
+                        <div class="row padd-bottom padd-left5px padd-Right10px " ng-click="navigationToDetail(record)">
+                            <div style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="col col-75 scheduleMargintop scheduleCommonMargin">
+                                <div class="displayBlock wordBreak fontSize14px themeGreyTextColor " style = "font-family: ClanOT-Bold;">{{::record.receiverAccountName}} ({{record.receiverIdValue}})</div>
+                                <div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis ;font-family: ClanOT-Book;" class="fontSize14px wordBreak" >{{::record.receiverIdTypeLabel || ""}}</div>
+                            </div>
+                            <div style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"class="col paddingNone">
+                                <div class="wordBreak scheduleFontSizeAlias txtRightAlign">{{::record.statusDesc || ""}}</div>
+                                <!--<ion-option-button class="button-assertive" ng-click="deleteRow(record)" translate="label.delete"> </ion-option-button>-->
+                            </div>	
+                        </div>
+                            
+                        <div class = "row padd-bottom padd-left5px padd-Right10px scheduleBGcolorTitleBar">                              
+                            <div class="col tblAmountColSchedulefundTrf paddingNone scheduletitleBarMargin" align="right">
+                                <span class="wordBreak fontSize14px scheduleAmountLeftMargin">{{::record.amount | currency : ""}}&nbsp<span translate="label.currency"></span></span>
+                            </div>
+                        </div>                                    
+                    </ion-item>  
+                </ion-list>
+            </div>
+		 </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.add" ng-click="addMyRTP()">
+			</button>
+		</div>
+    </ion-content> 
+</ion-view>

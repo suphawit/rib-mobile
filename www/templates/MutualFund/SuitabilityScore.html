@@ -1,0 +1,39 @@
+<ion-view title="" cache-view="false">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+	
+		<h4 class="title" translate="menu.riskProfile"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false"> 
+	
+		<div ng-if="!isUnitHolderExist && isShowScreen" ng-class="fontLabel" style = "height: 400px">
+     			<span class="col col-80 col-offset-10 txtCenterAlign padd-top15px" translate="label.mutualFund.noUnitHolder"></span>
+     		</div>
+		<div ng-if="isUnitHolderExist" class="pageContentsScroll padding-Top5px">
+				<div class="row lineHeight1" ng-class="fontLabel">	
+					<div class="col col-50">
+						<p translate="label.scorelevel"></p>
+						<p translate="label.lisklevel"></p>	
+						<p translate="label.mostSuitableFund"></p>
+						<p translate="label.createDateRisk"></p>		 	
+						<p translate="label.endDateLisk"></p>
+					</div>
+					<div class="col col-50 txtRightAlign">
+						<p>{{ (suitScoreResult.totalScore) ? suitScoreResult.totalScore : '-' }}</p>
+						<p>{{ (suitScoreResult.riskProfile) ? suitScoreResult.riskDescription : '-'}}</p>	
+						<p>{{ (suitScoreResult.riskLevel) ? suitScoreResult.riskLevel : '-' }}</p>			 
+						<p>{{ (suitScoreResult.createDate) ? suitScoreResult.createDate : '-' }}</p>		 
+						<p>{{ (suitScoreResult.expiryDate) ? suitScoreResult.expiryDate : '-' }}</p>
+					</div>
+				</div>
+
+				<div class = "padding-Top5px padding"><a href="#"  ng-click="getTableSuitPDF()"/><span translate="label.linkLabelSuit"></span></a></div>
+				
+				<div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative paddTopZeroTabs" >
+					<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" href="#/suitabilityQuestion"  >
+						<i class="icon icon-w icon-risk-assessment padding-Top5px"></i>
+						<span translate="label.updateLiskButton" class="fontSize11px fontQuarkBold"></span>
+					</a>
+				</div>
+			</div>
+	 </ion-content>
+ </ion-view>

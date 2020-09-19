@@ -1,0 +1,14 @@
+<form class="paddingRightUnderline" name="frmVerifyDebitcard" ng-submit="doSubmit(input)">
+    <h5 class="addMyAccountfont" translate="input.debitcardno"></h5>
+    <label id="lblATMNo" class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100">
+        <i class="icon ion-card placeholder-icon fontSize25px"></i>
+        <!--<input type="text" ng-model="input.value.atmNumber" maxlength="30">-->
+    </label>
+    <h5 class="addMyAccountfont" translate="input.atmpin"></h5>
+    <label id="lblATMPin" class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100">
+        <i class="icon ion-android-lock placeholder-icon fontSize25px"></i>
+        <!--<input type="password" ng-model="input.value.atmPin" maxlength="6">-->
+    </label>
+    <button ng-show="isShowSubmitButton" class="button button-block button-kkcolor widt100 marginLeft20Px" ng-class="fontLabel" type="submit" translate="button.next">
+    </button>
+</form>

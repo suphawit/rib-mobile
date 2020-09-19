@@ -1,0 +1,52 @@
+<ion-view title="" drag-content="false" ng-init="init()"> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="inquiryRequestListByCifNo()" translate="label.refresh"></a>
+		<h4 class="title" translate="label.kkpNdidServices"></h4>
+	</ion-header-bar> 
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<div ng-if="firstLoad" class="row">
+				<div class="col col-80 col-offset-10 txtCenterAlign" translate="label.rtp.noData" ></div>
+			</div>
+			<ion-list ng-if="listAuthenRequest.length > 0">
+				<ion-item 
+					ng-class="{ 'greyBGColor border-white-1px': !request.requestSupport }"
+					ng-repeat="request in listAuthenRequest track by $index"
+					class="fontLabel positRelative padd5px padd-bottom" 
+					ng-click="event.gotoDetail($index, request)">
+						
+					<div class="row">
+						<div class="col paddingNone fontSize12px themeBlueTextColor">
+							{{request.requestDateTime}}
+						</div>
+					</div>
+					<div class="row padd-bottom">
+						<div class="col col-90 fontSize14px padding-none-right5px">
+							<span
+								class="text-ellipsis"
+								translate="label.authenMsg" 
+								translate-values="{ refcode: request.refCode, reqmsg: request.requestMessage }">
+							</span><span style="vertical-align: super;">&nbsp;&nbsp;<i class="icon ion-ios-arrow-forward fontSize18px"></i></span>
+						</div>
+						<div class="col col-10 padding-none-right5px txtRightAlign">
+							<span 
+								ng-if="request.requestSupport"
+								class="transferDrawCircle circle30px positAbslt pos-top25-right10"
+								ng-class="style.checkMark(request.requestResult)">
+								<i class="fontSize20px" ng-class="style.iconCheck(request.requestResult)"></i>
+							</span>
+						</div>
+					</div>
+				</ion-item>
+				<div style="margin-left: 3vw;margin-right: 3vw;">
+					<button 
+						ng-disabled="event.isDisableBtn"
+						class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+						translate="button.confirm"
+						ng-click="event.goNextPage()">
+					</button>
+				</div>
+			</ion-list>
+		</div>
+	</ion-content>
+</ion-view>

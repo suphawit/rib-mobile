@@ -1,0 +1,148 @@
+<ion-view id ="rtprequest"  drag-content="false"> 
+		
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+			<a class="button button-clear"ng-click="goBackPage()" translate="label.back" ng-if="isShowNext"></a>	 
+			<h4 class="title" translate="menu.purchase"></h4>	
+		</ion-header-bar> 
+	
+		<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+			<div style="min-height: calc(90vh - 110px)">
+			<ion-item class="padd-bottom  borderNone txtCenterAlign" ng-if="showFundListBtn" >
+					<div class="row icon-row" > 
+							<div class="col col-100 padd-bottom padd-top5px" >
+								<button 
+									class="button button-block button-custom themeGreyTextColor font-quark-label margin-Top5px whiteBGColor"  
+									style="border-color: #dedede;" 
+									ng-click="openSearchFundListModal()" 
+									translate="label.fundName">
+								</button>
+							</div>
+					</div>
+			</ion-item>
+
+			<ion-item  class="paddingNone txtCenterAlign padd-top10px" ng-if="!showFundListBtn" ng-click="openSearchFundListModal()">
+					<center class="row icon-row"> 
+						<div class="col col-100 padd-top-zero"  style = "font-size: 12px;">
+							<div class="col  col-33 padding   marginNone font-bold " ></div> 
+
+							<div class= "text-ellipsis padd-bottom10px " style="font-size: 13px !important; font-weight: bold;">{{fundObj.fundListInfoShow.fundCode}} </div>
+							<div ng-if="!showFundListBtn"  class = "paddingNone">
+									<div>NAV: {{fundObj.fundListInfoShow.navValue}} Baht/Unit (as of {{fundObj.fundListInfoShow.navDateFormat.date}}&nbsp;<span  translate="{{fundObj.fundListInfoShow.navDateFormat.month}}"></span>&nbsp;{{fundObj.fundListInfoShow.navDateFormat.year}}) </div>
+							</div>
+							
+							<div  ng-if="fundObj.fundListInfoShow.firstLowBuyValue == 0"><span translate="label.initialPurchase"></span>:  - <span translate="label.currency" ></span></div>
+							<div  ng-if="fundObj.fundListInfoShow.nextLowBuyValue == 0"><span translate="label.AdditionPurchase"></span>:  - <span translate="label.currency" ></span></div>
+							<div  ng-if="fundObj.fundListInfoShow.firstLowBuyValue !== 0"><span translate="label.initialPurchase"></span>:  {{fundObj.fundListInfoShow.firstLowBuyValue | currency : ""}} <span translate="label.currency" ></span></div>
+							<div  ng-if="fundObj.fundListInfoShow.nextLowBuyValue !== 0"><span translate="label.AdditionPurchase"></span>:  {{fundObj.fundListInfoShow.nextLowBuyValue | currency : ""}} <span translate="label.currency" ></span></div>
+
+						</div>
+					</center>
+			</ion-item>
+
+			<ion-item class="padd-top-zero" ng-if="showUnitHolderBtn">
+					<div class="row icon-row" > 
+						<div class="col col-100  padd-bottom">
+							<button 
+								ng-disabled="showFundListBtn"
+								class="whiteBGColor button button-block button-custom themeGreyTextColor font-quark-label margin-Top5px "  
+								style=" border-color: #dedede;" 
+								ng-click="openUnitHolderModal()" 
+								translate="label.unitholderNo">
+							</button>
+						</div>
+					</div>
+			</ion-item>
+
+			<ion-item style=" margin-top:10px;  border-top: 1px solid #ddd;" class="padd-bottom10px paddingNone txtCenterAlign" ng-if="!showUnitHolderBtn" 	ng-click="openUnitHolderModal()"  >
+					<center class="row icon-row"> 
+						<div class="col col-100 padd-top-zero padd-bottom text-ellipsis" style="font-size: 13px; font-weight: bold;">
+							<div class="col  col-33 padding   marginNone font-bold " ><span ng-if="showUnitHolderBtn" ></span></div>
+							{{fundObj.unitHolderData.unitHolderId}}<span ng-if="fundObj.unitHolderData.unitHolderName != '-' && fundObj.unitHolderData.unitHolderName != null" style = " word-break: break-all!important;">&nbsp;-&nbsp;{{fundObj.unitHolderData.unitHolderName}}</span>
+						</div>
+					</center>
+			</ion-item>
+				
+			<div class="transferaccount txtCenterAlign">
+					<label class="item item-input themeDarkBlueBGColor">
+						<input bind-virtual-keyboard 
+							vkmodel="fundObj.amount" 
+							vkoption="virtualKeyboardAmount.option" 
+							onvkkeyup="virtualKeyboardAmount.onkeyup(value)"
+							onvkblur="virtualKeyboardAmount.onblur()"
+							onvkfocus="virtualKeyboardAmount.onfocus()"
+							type="text" class="whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox font-clanOt-header "
+							ng-model="fundObj.amount" placeholder="{{placeholderAmount}}" />
+					</label>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+			 </div>	
+				
+			<ion-item class="item-divider selectmypromptpayAccount" style = " padding-top: 50px!important; padding-bottom: 20px;"  style = "	font-size: 13px; min-height: 155px !important;"  ng-if="showSelectFromAccountDetails" ng-click="selectAccount()">
+				<div class = "padding  tablet-margin-top25px"  style = "text-align : center!important; ">
+						<div>{{fundObj.accountData.selectedFromName}}</div>
+						<div>{{fundObj.accountData.selectedFromAccNo}}</div>
+						<span translate="label.availableBalance"></span>
+						<span>{{fundObj.accountData.selectedFromTotalActBalance | currency : ""}}</span> 
+						<span translate="label.currency"></span>
+				</div>
+			</ion-item>
+		
+		
+			<ion-item class="item-divider selectmypromptpayAccount"  style = " padding-top: 50px!important;"   ng-if="showSelectBtn">
+				<center class="selectFromAccountItemButt padding padd-top10px padding-Top20px  tablet-margin-top25px ">
+
+					<button class="button button-block button-custom " 	style="margin-bottom :20px !important;  	background-color: #949599;	border-color: #dedede;	  color: #ffffff;" 	 
+					 ng-click="selectAccount()" translate="label.selectDebitAccount" ng-class="fontLabel"></button>
+				</center>
+				
+			</ion-item>
+
+			<div class = "padding font-bold fontHeader fontSize16px" ng-if="fundListTypeCheckStatus">  
+				<div ng-if="['LTF','RMF','SSF','SSFX'].includes(fundListInfoShow.taxType)" class="row icon-row  text-overflow: ellipsis; white-space: initial;">
+					<span translate="label.fundConnext.AllTaxType"></span>
+				</div>
+				<div class="row" ng-if="fundListTypeCheckStatus">
+					<div class="col">
+						<div class="row icon-row traddBillerPromptPayansferTxnPad" ng-click="setSelectedAnswer('accept')">
+							<a href="" class="col paddingNone textNOStyle">
+		          	<span class="transferDrawCircle"
+						  ng-class="{greyTextColor : !fundObj.LTF_Condition || fundObj.LTF_Condition == '0'}">
+		          		<i class="ion-checkmark fontSize20px"></i>
+		          	</span>
+							</a>
+							<a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span class="themeDarkGreyTextColor fontSize14px"
+								  translate="label.acceptFund"></span>
+							</a>
+						</div>
+					</div>
+					<div class="col">
+						<div class="row icon-row transferTxnPad" ng-click="setSelectedAnswer('declare')">
+							<a href="" class="col paddingNone textNOStyle">
+		          	<span class="transferDrawCircle"
+						  ng-class="{greyTextColor : !fundObj.LTF_Condition || fundObj.LTF_Condition == '1'}">
+		          		<i class="ion-checkmark fontSize20px"></i>
+		          	</span>
+							</a>
+							<a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span class="themeDarkGreyTextColor fontSize14px"
+								  translate="label.denialFund"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			</div>
+			<div style="margin-left: 3vw;margin-right: 3vw;">
+				<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+				   ng-click="goNextPage()" translate="button.next">
+				</a>
+			</div>
+		
+<!--		</ion-content> -->
+<!--		   <ion-footer-bar align-title="left" class="modal-footer" style = "height: 70px;">-->
+<!--          		<button style="margin-left: 3vw;margin-right: 3vw; " class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next"    ng-click="goNextPage()">-->
+<!--				</button>-->
+<!--       		 </ion-footer-bar>	-->
+
+</ion-view>

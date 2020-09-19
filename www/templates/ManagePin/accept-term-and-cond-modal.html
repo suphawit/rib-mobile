@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class="darkHeadBar">		 
+        <h4 class="title noneLeftRight" translate="label.viewTermAndConditions"></h4>
+        <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="acceptTermAndCond.closeModal()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-class="fontDisplay">
+            <div class="row">
+                <div class="col" ng-bind-html="acceptTermAndCond.html"></div>
+                <div style="height:88px;"></div>
+            </div>
+            <ion-list ng-if="acceptTermAndCond.html">
+                <ion-checkbox ng-model="acceptTermAndCond.isAccept">{{'label.termAndConditionsBtn'|translate}}</ion-checkbox>
+                <div class="row row-two-button">
+                    <div class="col col-50 paddingNone">
+                        <button class="button button-block font-quark-header themeBlueTextColor whiteBGColor border-blue-Color button-accept-term"
+                            translate="button.disAgree"
+                            ng-click="acceptTermAndCond.doSubmit('disagree')"></button>
+                    </div>
+                    <div class="col col-50 paddingNone">
+                        <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor button-accept-term"
+                            translate="button.agree"
+                            ng-click="acceptTermAndCond.doSubmit('agree')"
+                        ></button>
+                    </div>
+                </div>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-modal-view>

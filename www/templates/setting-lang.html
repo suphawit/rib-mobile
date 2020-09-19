@@ -1,0 +1,24 @@
+<ion-view title="" class="setting-lang">
+	
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+	    	<h4 class="title" translate="header.setting"></h4>
+			<!--  <i class="icon fontSize25px themeBlueTextColor" ></i>  -->
+		</ion-header-bar>
+	 	
+	<ion-content overflow-scroll="false" has-bouncing="false">
+	    <div class="list">
+		  <a class="item item-icon-right contactUsTopPlaceHolder" href="#">
+		    <span  translate="item.language" ng-class="fontLabel"></span>
+		    <button id="btn-lang" class="button" style="float: right; margin-right: -45px; " ng-click="ChangeLanguage(lang)">
+				  {{langLabel}}
+			</button>
+		  </a>
+		  <a class="item item-icon-right" href="#" style="line-height: 31px;">
+		    <span translate="item.appVErsion" ng-class="fontLabel"></span>
+		    <span style="float: right; margin-right: -45px">
+				  {{appVersion}}
+			</span>
+		  </a>
+		 </div>
+	</ion-content>
+</ion-view>

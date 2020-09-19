@@ -1,0 +1,117 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-appversion": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-uniquedeviceid": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-root-detection": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-jailbreak-detection": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "org.devgeeks.Canvas2ImagePlugin": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-sslcertificatechecker": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-iroot": {
+            "ENABLE_BUSYBOX_CHECK": "false",
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "phonegap-plugin-push": {
+            "FCM_VERSION": "11.0.1",
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-save-image-gallery": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "com.darktalker.cordova.screenshot": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-advanced-http": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-customconfigparameters": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-crypt-file": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-RibFaceRecog": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-biometric-authen": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-open": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        }
+    },
+    "dependent_plugins": {
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.kiatnakinbank.kkebanking"
+        }
+    }
+}

@@ -1,0 +1,114 @@
+<ion-view title="" id="confirmNCBRequest"> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="button.back"></a>
+		<h4 class="title" translate="label.checkNCB"></h4>	    
+	</ion-header-bar> 
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+		<div class="container">
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+					<p translate="label.debitFrom"></p>
+				</div>
+                <div class="col col-50 txtRightAlign">
+					<p>{{customerCache.account.myAccountName}}</p>
+					<p>{{customerCache.account.myAccountNumber}}</p>
+				</div>
+            </div>
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col">
+					<p class="bureauReport blackTextColor">{{customerCache.packageName}} <span class="oneissue" translate="label.1issue"></span></p>
+                </div>
+            </div>
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col">
+                    <p class="sendECreditReportEmail fontBold blackTextColor" translate="label.sendECreditReportEmail"></p>
+				</div>
+            </div>
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+                    <p translate="label.inspectorName"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{ lang === "th" ? customerCache.customerData.titleNameTh+"&nbsp;"+customerCache.customerData.firstNameTh+"&nbsp;"+customerCache.customerData.lastNameTh : 
+						customerCache.customerData.titleNameEn+"&nbsp;"+customerCache.customerData.firstNameEn+"&nbsp;"+customerCache.customerData.lastNameEn }}</p>
+				</div>
+            </div>
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+                    <p translate="label.eDonation.card2"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{customerCache.customerData.cardId}}</p>
+				</div>
+            </div>
+            <div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+					<p translate="label.mailAddress"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{customerCache.customerData.address}}</p>
+				</div>
+			</div>
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+                    <p translate="label.mobileECreditReport"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{customerCache.customerData.mobileNo}}</p>
+				</div>
+			</div>
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+                    <p translate="label.emailECreditReport"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{customerCache.customerData.email}}</p>
+				</div>
+			</div>
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+                    <p translate="label.input.feeamount"></p>
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{customerCache.packagePrice | currency : ''}} <span translate="label.thb"></span></p>
+				</div>
+			</div>
+            
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-50">
+					<p translate="label.txnDate"></p>
+				</div>
+                <div class="col col-50 txtRightAlign">
+					<p><span>{{today.date}}</span>&nbsp;<span translate={{today.monthLabel}}></span>&nbsp;<span>{{today.year}}</span></p>
+                </div>
+			</div>
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col col-33">
+					<p translate="label.note"></p>
+				</div>
+                <div class="col col-67 txtRightAlign">
+					<textarea class="bureauNote" ng-model="form.bureauNote" maxlength="50"></textarea>
+				</div>
+			</div>
+			<div class="row lineHeight1" ng-class="fontLabelMedium">	
+                <div class="col">
+					<p translate="label.txnDate"></p>
+				</div>
+			</div>
+			<div class="row lineHeight1 description" ng-class="fontLabelMedium">	
+                <div class="col">
+					<p class="fontSize12px" translate="label.confirmAuthenToNCB"></p>
+					<p class="fontSize12px errorLabelRed" translate="label.eCreditReport"></p>
+					<p class="fontSize12px" translate="label.noReportPleaseContract"></p>
+					<p class="fontSize12px" translate="label.ecreditRebortCannotSendEmail"></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="buttonContainer">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.confirm" ng-click="NCBSlip()">
+			</button>
+		</div>
+		<div style="height: 14px;"></div>
+	</ion-content>
+</ion-view>

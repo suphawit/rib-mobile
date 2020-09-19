@@ -1,0 +1,61 @@
+<ion-view id="confirmPinModal" class="listModal">
+    <div style="min-height: calc(90vh - 110px)">
+        <div class="pinTemplateContainer">
+            <div class="kk-logo-confirm-pin"></div>
+            <div class="sub-title padd-left10px themeDarkGreyTextColor center" ng-class="fontMenuHeader"
+                 translate="{{suptitlePin}}"></div>
+
+
+            <div id="pinPanel" class="item item-input pin-pwd-label">
+                <div class="row">
+                    <div class="col" ng-repeat="n in [0, 1, 2, 3, 4, 5] track by $index">
+                        <div class="circle {{dotpins[n]}}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="padd-left30px padd-bottom25px">
+                <p class="padding errorLabelRed login-error-msg" ng-show="errorPinMessageEnable">
+                    {{errorPinMessage|translate}}
+                </p>
+            </div>
+
+            <div class="pin-btn-ctrl font-clanOt-pin-btn">
+                <div class="row pin-login-padding padding1px">
+                    <div class="col col-33 loginPinbtn padding1px" ng-repeat="r1 in [1, 2, 3] track by $index">
+                        <button class="button  button-stretch pinBtn " ng-click="add(r1)">{{r1}}<br></button>
+                    </div>
+                </div>
+                <div class="row pin-login-padding padding1px">
+                    <div class="col col-33 loginPinbtn padding1px" ng-repeat="r2 in [4, 5, 6] track by $index">
+                        <button class="button  button-stretch pinBtn" ng-click="add(r2)">{{r2}}<br></button>
+                    </div>
+                </div>
+                <div class="row pin-login-padding padding1px">
+                    <div class="col col-33 loginPinbtn padding1px" ng-repeat="r3 in [7, 8, 9] track by $index">
+                        <button class="button  button-stretch pinBtn" ng-click="add(r3)">{{r3}}<br></button>
+                    </div>
+                </div>
+
+
+                <div class="row padding1px">
+                    <div class="col col-33 padding1px ">
+                        <div ng-hide="isCreatePage">
+                            <button class="button button-stretch pinBtn" ng-click="closeConfirmPinModal()">
+                                <span ng-class="fontLabel" style="font-size: 16px" translate="label.cancel"></span>
+                            </button>
+                        </div>
+                        <div ng-show="isCreatePage">
+                            <button class="button  button-stretch pinBtn"></button>
+                        </div>
+                    </div>
+                    <div class="col col-33 padding1px">
+                        <button class="button  button-stretch pinBtn" ng-click="add(0)">0</button>
+                    </div>
+                    <div class="col col-33 padding1px">
+                        <button class="button ion-ios-close-outline button-stretch pinBtn" ng-click="del()"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

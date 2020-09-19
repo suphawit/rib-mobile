@@ -1,0 +1,21 @@
+ <ion-view>  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+	    <h4 class="title" translate="label.QRScannerMenu"></h4>
+	</ion-header-bar>
+  	<ion-content class="has-header has-subheader-sub" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<ion-item class="billerButtonSelectBill borderNone txtCenterAlign">
+			<div class="row icon-row paddingNone">
+				<div class="col .col-offset-50">
+					<button 
+						class="button button-block button-custom themeGreyTextColor "  
+						ng-class="fontLabel" 
+						style="background-color: White; border-color: #dedede; margin-top: 5px;" 
+						ng-click="scanQRCode()" 
+						translate="label.QRScannerMenu"  >
+					</button>
+				</div>
+			</div>
+		</ion-item>
+	 </ion-content>
+  </ion-view>
+

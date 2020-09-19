@@ -1,0 +1,124 @@
+<style>
+    @import url('fonts/Quark/Quark-Bold.otf');
+    @import url('fonts/Quark/Quark-Light.otf');
+</style>
+<div style="background-color: white;text-align:justify !important;height: 450px;">
+    <div id="slip" title="" class="fundTransferBgimage" style="background-color: white">
+        <div style="width: 100%; text-align: center;background-color: #594F74 !important">
+            <div>
+                <img src="images/Bank_KK.png" class="appTitleIcon" ng-click="closeReceiptModal()"/>
+            </div>
+        </div>
+        <div class="has-header" scroll="false" overflow-scroll="false" ng-class="" has-bouncing="false">
+            <div class="has-header fundTransferReciept-height padd-left0px marginTop15Px padd-top-zero" data-ng-init="">
+                <!-- content fundTrfBGremove -->
+                <div class="fundTrfBGremove paddRightNone">
+                    <div class="dasboardAccord-reciept padding15px boxOfSummitedStatus txtCenterAlign marginTop15Px">
+                        <span class="fontSize18px">{{showDataConfirmComplete.submitStatusDesc}}</span>
+                    </div>
+
+                    <div class="row icon-row padding-Top20px">
+                        <div><img ng-src="images/Bank_KK.png" class="billPayImgReceipt"/></div>
+
+                        <div class="col fundTrfRecieptBorderBlue " style="border-color: #594F74;">
+                            <div class="font-bold">{{::showDataConfirmComplete.accountAliasName}}</div>
+                            <p>{{::showDataConfirmComplete.fromAccountNumberMark}} </p>
+                        </div>
+                    </div>
+
+                    <div class="transferaccount amount-reciept transConfrmAmoutDiv marginTop35Px">
+                        <div class="borderNone txtCenterAlign">
+                            <span class="whiteTextColor font-clanOt-header">{{::showDataConfirmComplete.payAmount | currency : ""}} </span>
+                            <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                        </div>
+                    </div>
+
+                    <div class="row icon-row" style="margin-top: -20px">
+                        <div>
+                            <img
+                                    class="billPayImgReceipt col"
+                                    style="background-color: #594F74;"
+                                    ng-src="{{showDataConfirmComplete.logoCompany || defaultBillerLogo}}">
+                        </div>
+                        <div class=" item col fundTrfRecieptBorderBlue"
+                             style="  background-color: transparent; border-color: rgb(209, 211, 212);">
+                            <p class="text-ellipsis">{{showDataConfirmComplete.billerAliasName}}</p>
+                            <p class="text-ellipsis">{{showDataConfirmComplete.billerName}}
+                            <p/>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end content fundTrfBGremove -->
+
+                <div class="padd-left20px" ng-class="fontDisplay" style="margin-top: -10px">
+                    <div class="row">
+                        <div class="col col-40 paddingNone   marginNone font-bold" translate="label.referenceNO"></div>
+                        <div class="col col-60 paddingNone marginNone">{{showDataConfirmComplete.transactionRef || showDataConfirmComplete.referenceNo}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone   marginNone font-bold" translate="label.txnDate"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{showDataConfirmComplete.txnDateReciept.date}}&nbsp;
+                            <span translate="{{showDataConfirmComplete.txnDate.month}}"></span>&nbsp;
+                            {{showDataConfirmComplete.txnDateReciept.year}}&nbsp;
+                            {{showDataConfirmComplete.txnDateReciept.time}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone   marginNone font-bold"
+                             translate="label.eDonation.comfirm.donationDate"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{showDataConfirmComplete.paymentDate.date}}&nbsp;
+                            <span translate="{{showDataConfirmComplete.paymentDate.month}}"></span>&nbsp;
+                            {{showDataConfirmComplete.paymentDate.year}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col col-40 paddingNone   marginNone font-bold"
+                             translate="label.input.feeamount"></div>
+                        <span class=" col col-60 paddingNone marginNone">
+						{{showDataConfirmComplete.feeAmount |  currency : ""}}
+						<span translate="label.currency"></span>
+                    </span>
+                    </div>
+
+                    <div class="row">
+                        <div class=" col col-40 paddingNone   marginNone font-bold"
+                             translate="label.history.ref1"></div>
+                        <div class=" col col-60 paddingNone   marginNone">
+                            {{showDataConfirmComplete.resultVerifyBill.refInfos[0].value}}
+                        </div>
+                    </div>
+
+                    <div class="row"
+                         ng-if="showDataConfirmComplete.resultVerifyBill.refInfos[1].value && showDataConfirmComplete.resultVerifyBill.refInfos[1].value != '0'">
+                        <div class=" col col-40 paddingNone   marginNone font-bold"
+                             translate="label.history.edonation.ref2"></div>
+                        <div class=" col col-60 paddingNone   marginNone">
+                            {{showDataConfirmComplete.resultVerifyBill.refInfos[1].value}}
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="showDataConfirmComplete.rtpReferenceNo">
+                        <div class=" col col-40 paddingNone   marginNone font-bold lineBreak" translate="label.PayAlertRef"></div>
+                        <div class=" col col-60 paddingNone   marginNone">{{showDataConfirmComplete.rtpReferenceNo}}
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="showDataConfirmComplete.noteMemo">
+                        <div class=" col col-40 paddingNone   marginNone font-bold" translate="label.note"></div>
+                        <div class=" col col-60 paddingNone marginNone lineBreak">{{showDataConfirmComplete.noteMemo}}
+                        </div>
+                    </div>
+
+                    <div class="row" ng-if="isCitizenType() && showDataConfirmComplete.refInfos[1] && showDataConfirmComplete.refInfos[1].value != '0'">
+                        <span class="txtBlue fontFamilyQuark-bold fontSize18px margin-Top20Px lineBreak"
+                              translate="label.eDonation.receipt.transfer"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="appTitleIcon"></div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<ion-view title="">	   
+ 	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<i class="button button-clear" ng-click="goBackPage()" translate="label.back"></i>
+	    <h4 class="title" translate="menu.contactUs"></h4>
+	</ion-header-bar>
+	 
+ 	<ion-content class="has-header has-subheader contactUsBG" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+ 		<div class="group-list">
+	 	<div ion-affix data-affix-within-parent-with-class="group-list" >
+		 	<ion-item class="paddingNone">
+			 	<div class="contactUsTabs txtCenterAlign">
+			 		<img src="images/logoKK_contact.png" class="contactImgLogo" />	 	  
+			 	</div> 
+			</ion-item>
+			<ion-item class="contactUsTabs paddingNone">
+				<div class="tabs tabs-icon-top padding-left5px padding-right5px color_069"  ng-class="fontTabMenu" style = "position: relative">
+			        <a class="tab-item themeDarkBlueBGColor whiteTextColor padding-left5px padd-top5px" ng-click="openPhoneDailerWindow(contactUsDetails.contactCenterPhone)" >
+			          <i class="icon-w icon-mobile"></i><br/>
+			          <span translate="menu.contactUs"> </span>
+			        </a>
+			        <a class="tab-item themeDarkBlueBGColor whiteTextColor padd-top5px" href="mailto:{{mailTo}}" >
+			          <i class="icon-w icon-email"></i><br/>
+			          <span translate="label.email"> </span>
+			        </a>
+			        <a class="tab-item themeDarkBlueBGColor whiteTextColor padding-right5px padd-top5px" href="#/locateUs">
+			          <i class="icon-w icon-locate-us"></i><br/>
+			          <span translate="menu.locateUs"> </span>
+			        </a>        
+				</div>
+		 	</ion-item>	 
+		</div>
+		  <div class="contactUsBG padding15px">	  
+		  	<h3 translate="contact.contactUsBankName" ng-class="fontLabel"></h3>
+			<br> 			 
+			<list ng-repeat="contactUsAddr in contactUsAddrList" >
+				<h3 class="wordBreak" ng-class="fontLabel">{{::contactUsAddr.name}}</h3>					 
+				<div class="wordBreak fontSize14px">{{::contactUsAddr.detail}}</div>
+				<br/>				 
+			</list>			
+			<h3 translate="contact.kkcontcenter" ng-class="fontLabel"></h3>			
+			<div class="fontSize25px padd-top5px themeBlueTextColor" >{{::contactUsDetails.contactCenterPhone}}</div>
+			<br>
+			<p ng-bind-html="workingTimeMobile"></p>
+			</div>	 	 
+			<!--<div class="contactUsBG padding15px">	
+					<div ng-bind-html="contactDetail"></div>
+				</div>-->
+		</div>
+	</ion-content> 
+</ion-view> 

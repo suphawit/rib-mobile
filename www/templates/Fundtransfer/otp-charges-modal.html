@@ -1,0 +1,31 @@
+<ion-modal-view id="funtransferModal" class="listModal">
+    
+    <ion-header-bar class="darkHeadBar">		 
+	    <h4 class="title"></h4>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="closeOTPChargesModal()"></a>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false">
+		 <table class="table marginNone paddingNone">
+		  		<tbody class="blackTextColor ">
+					<tr ng-repeat="otp in optChargesArray" ng-click="selectedOTPChargesRow($index , otp );closeOTPChargesModal();" ng-class="{'selectedRow':$index == selectedOTPChargesIndex}" ng-class-odd="'tbleOddRows'" ng-class-even="'tbleEvenRows'" >
+						 <td class="web-tblrow-data-link-font-back " > 
+							<span class="wordBreak" translate="lable.fundtrfreciept.ReceiveDate"></span>&nbsp;<span>{{::otp.atsSummaryFee.receiveDateDisplay.date}}&nbsp<span translate="">{{otp.atsSummaryFee.receiveDateDisplay.month}}</span>&nbsp{{otp.atsSummaryFee.receiveDateDisplay.year}}</span>
+                             <span>{{otp.atsSummaryFee.displayMoment}}</span>
+							 <br/>
+							<span class="wordBreak" translate="lable.fundtrfreciept.DeducedDate"></span>&nbsp;<span>{{::otp.atsSummaryFee.transferDateDisplay.date}}&nbsp<span translate="">{{otp.atsSummaryFee.transferDateDisplay.month}}</span>&nbsp{{otp.atsSummaryFee.transferDateDisplay.year}}</span>
+						 </td>
+						<td class="web-tblrow-data-leftbar" width="40%" style="padding-left: 5px;">
+                            <div>
+                                <span>{{otp.atsSummaryFee.displayTransferType}}</span>
+                            </div>
+                            <div>
+                                <span translate="label.fundTrfCnfm.feeAmount"></span>
+                                <span>{{otp.atsSummaryFee.summaryFee | currency : ""}} <span translate="label.currency"></span></span>
+                            </div>
+			         	</td>
+					</tr>	
+	    		</tbody>
+			 </table> 
+		<div style="height:88px;"></div>
+    </ion-content>
+  </ion-modal-view>

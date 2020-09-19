@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  rib-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rib-nginx
+    volumes:
+      - ./:/usr/share/nginx/html
+    ports:
+      - 8070:8070

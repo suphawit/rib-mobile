@@ -1,0 +1,74 @@
+<ion-view title="" cache-view="false">
+	     
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<h4 class="title" translate="label.mutualFund"></h4>	    
+	</ion-header-bar> 
+	 
+<ion-content ng-style="{ 'top': mutualFundTop(),'margin-bottom': mutualFundMarginBottom()}" ng-class="fontHeader" class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+     
+     <div ng-if="isNotShowData && isShowScreen" ng-class="fontLabel">
+     	<span class="col col-80 col-offset-10 txtCenterAlign padd-top15px" translate="label.mutualFund.noData"></span>
+     </div>
+     <div ng-if="isShowData && isShowScreen" ng-class="fontLabel">
+            <div class="row lineHeight1 fontBold mutualFundHeaderDiv">	
+		        <div class="col col-50 " translate="label.myPortfolio" ng-class="fontHeader">
+		        </div>
+		        <div ng-repeat="lastTransDate in mutualFundPortDetails.listDetail | orderBy:'-navDate'| limitTo: 1" class="col col-50 txtRightAlign" ng-class="fontLabelMedium">
+					<span translate="label.asOf"></span> {{lastTransDate.navDate | date:'dd/MM/yyyy'}}
+			   </div>
+	       </div>
+	      
+	       <div>
+	       <div class="row fontSize12px lineHeight1 fontBold">	
+		      <div class="col col-50 ">
+			   <p translate="label.investmentAvailable"> </p>
+			   <p translate="label.investmentCost"> </p>		 
+			   <p translate="label.profitLoss"> </p>
+		      </div>
+		      <div class="col col-50 txtRightAlign">
+			   <p>{{mutualFundSummaryDetails.netAsset  | currency : ""}}</p>
+			    <p>{{mutualFundSummaryDetails.principal  | currency : ""}}</p>
+			    <p>{{mutualFundSummaryDetails.pl | currency : ""}}</p>
+			  </div>
+	       </div>
+	       </div>
+	       
+	       
+	       <div ng-repeat="mutualFundPortDetail in mutualFundPortDetails.listDetail">
+	       <ion-item class="item-stable item-icon-right padd-left0px padding-right5px smartLtfContnr" ng-click="navigateToMutualFundDetails(mutualFundPortDetail)">
+            	<i class="icon fontSize25px dasboardAccodIcon" ng-class="isGroupShownSavingAccount(groupsavingaccount) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+				&nbsp;
+				<span class="fontSize18px">{{mutualFundPortDetail.fundCode}}</span>
+				<div class="row fontSize12px lineHeight1">	
+		          <div class="col col-50 ">
+			      <p>{{mutualFundPortDetail.amcname}}</p>
+			      <p>{{mutualFundPortDetail.unitholder}}</p>		 
+		        </div>
+		        <div class="col col-50 txtRightAlign paddRight25">
+			      <p ng-class="mutualFundPortDetail.pl >= 0? 'smartLtfBlueClr' : 'smartLtfRedClr'" >{{mutualFundPortDetail.pl  | currency : ""}}</p>
+			      <p translate="label.profitLoss"> </p>
+			    </div>
+	            </div>
+          	</ion-item>
+	          <div class="row fontSize12px lineHeight1 mutualBorderBottom">	
+		      <div class="col col-50 ">
+			   <p translate="label.costUnit"> </p>
+			   <p translate="label.totalUnits"> </p>		 
+			   <p translate="label.investCost"> </p>
+			    <p translate="label.investTotal"> </p>
+			    <p translate="label.navPerUnit"> </p>
+		      </div>
+		      <div class="col col-50 txtRightAlign">
+			    <p>{{mutualFundPortDetail.avgCost  | number : 4}}</p>
+			    <p>{{mutualFundPortDetail.unit  | number : 4}}</p>
+			    <p>{{mutualFundPortDetail.principal  | currency : ""}}</p>
+			    <p>{{mutualFundPortDetail.netAsset  | currency : ""}}</p>
+			    <p>{{mutualFundPortDetail.navPerUnit  | number : 4}}</p>
+			  </div>
+	          </div>
+	          </div>
+	      
+	 </div>
+	 
+  </ion-content>
+</ion-view>

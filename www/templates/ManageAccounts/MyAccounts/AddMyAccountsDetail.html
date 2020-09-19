@@ -1,0 +1,55 @@
+<ion-view> 
+   
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<a class="button button-clear" ng-click="backAddMyAccount()" translate="label.back"></a>	 
+	    <h4 class="title" translate="label.addMyAcc"></h4>
+	    <!--<a class="button button-clear" ng-click="addMyAccount(otpData)" ng-disabled="!isReqOTP" translate="button.confirm"></a>	 -->
+	</ion-header-bar>
+
+<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" ng-class="fontHeader" has-bouncing="false"> 
+		<div style="min-height: calc(90vh - 110px)">
+		 <h2 class="title-content-bar" translate="label.myAccDetails"></h2> 
+		  
+			<div class="list list-inset" ng-class="fontLabel">
+				<p class="confirmDeleteAddMyAccountPad" translate="label.confirmAccNo"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{accountInfo.myAccountNumber}}</p>
+		
+				<p class="confirmDeleteAddMyAccountPad"	translate="label.confirmAccAlias"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{accountInfo.myAccountAliasName}}</p>
+		
+				<p class="confirmDeleteAddMyAccountPad"	translate="label.confirmAccName"></p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{accountInfo.myAccountName}}</p>
+		
+				<div ng-if="isRequireOtp">
+				<h5 class="padd2px" translate=label.input.otp></h5>
+				<div class="row">
+					<label class="item item-input addotherAccountCustomBorder paddingNone">
+						<i class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+						<input bind-virtual-keyboard vkmodel="otpData.pin" vkoption="virtualKeyboardOTP.option" type="password"
+						ng-model="otpData.pin" placeholder="{{otpData.referenceNo}}" maxlength="6">
+					</label>
+					
+					<button class="button button-custom addOtherAccountDetailOtpBtn"
+						style="background-color: #594F74; text-align: center; font-weight: bold; width: 200px; color: white; margin-left: 15px;"
+						ng-click="requestOTP()" ng-disabled="isDisableBtn" translate="label.getOtp" ng-class="fontLabel">
+					</button>
+				</div>
+				<div class="otp-section-desc" ng-show="otpData.referenceNo">
+					<div class="row">
+						<span translate="otp.desc.mobileno"></span>
+						<strong><span class="font-color-kkblue">&nbsp;{{otpData.mobileNumber}}</span></strong>
+					</div>
+					<div class="row">
+						<span translate="otp.desc.validity"></span>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			 ng-click="addMyAccount(otpData)" ng-disabled="!isReqOTP" translate="button.confirm">
+			</button>
+		</div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,34 @@
+<ion-modal-view id="funtransferModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">		 
+        <h4 class="title" translate="label.authenConfirm"></h4>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="modal.closeConfirmModal()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <div class="row">
+            <div class="col padd-bottom fontSize12px themeBlueTextColor">
+                {{modal.data.requestDateTime}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col padd-top-zero white-space-normal breakWord fontSize15px">
+                <span 
+                    translate="{{modal.template.id}}" 
+                    translate-values="modal.template.value">
+                </span>
+            </div>
+        </div>
+        <div ng-if="modal.data.requestSupport" class="row">
+            <div class="col col-50 paddingNone">
+                <button class="button button-block font-quark-header themeBlueTextColor whiteBGColor border-blue-Color"
+                    translate="button.reject"
+                    ng-click="modal.onClickConfirm('reject')"></button>
+            </div>
+            <div class="col col-50 paddingNone">
+                <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="button.accept"
+                    ng-click="modal.onClickConfirm('accept')"></button>
+            </div>
+        </div>
+        <div style="height:88px;"></div>
+    </ion-content>
+</ion-modal-view>

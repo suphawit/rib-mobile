@@ -1,0 +1,138 @@
+<ion-view title="" cache-view="false">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<h4 class="title" translate="label.myPortfolio"></h4>
+	</ion-header-bar>
+	<ion-content ng-style="{ 'top': mutualFundTop(),'margin-bottom': mutualFundMarginBottom()}" class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+	
+	<!-- accept consent -->
+	<div class="row"  ng-if="consentData && isShowConsentData">
+			<div class="col termAndCondMutualFund"  ng-bind-html="consentData"></div>
+	</div>
+	<!-- end accept consent-->
+	
+	<div ng-if="isShowScreen">
+		<div class="row paddingNone" ng-if="isUnitHolderExist">
+			<button class="col col-33 button fontQuarkBold fontSize18px button-mutualfund"
+			ng-click="navigateToMutualFundPurchase()" translate="button.purchase" ng-disabled="false">
+			</button>
+			<button ng-class="(isUnitHolderExist && !isOutstandingDataNotEmpty ? 'disabled' : '')" class="col col-33 button fontQuarkBold fontSize18px button-mutualfund" 
+			translate="button.redeem"  ng-disabled="isUnitHolderExist && !isOutstandingDataNotEmpty" ng-click="navigateToMutualFundRedeem()">
+			</button>
+			<button ng-class="(isUnitHolderExist && !isOutstandingDataNotEmpty ? 'disabled' : '')" class="col col-33 button fontQuarkBold fontSize18px button-mutualfund" 
+			ng-disabled="isUnitHolderExist && !isOutstandingDataNotEmpty" translate="button.switch" ng-click="navigateToMutualFundSwitch()">
+			</button>
+			</div>
+	
+		 <div ng-if="!isUnitHolderExist" ng-class="fontLabel" style = "height: 400px">
+			 <span class="col col-80 col-offset-10 txtCenterAlign padd-top15px" translate="label.mutualFund.noUnitHolder"></span>
+		 </div>
+	
+		 <div ng-if="isUnitHolderExist">
+			<div class="row headerGreyBG txtLeftAlign padd-left5px">
+				<div class="col col-50 font-quark-label-medium" translate="label.myPortfolio">
+				</div>
+				<div ng-repeat="lastTransDate in mutualFundPortDetails | orderBy:'-navDate'| limitTo: 1" class="col col-50 txtRightAlign" ng-class="fontLabelMedium">
+					<div class="mutualFundAsOf font-quark-label-small">
+						<div><span translate="label.asOf"></span> {{navDate.date}}&nbsp;<span  translate="{{navDate.month}}"></span>&nbsp;{{navDate.year}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-Top5px fontSize16px">
+				<div class="col col-60 ">
+					<p><span translate="label.investmentAvailable"></span><span class="fontSize12px"> (</span><span  class="fontSize12px" translate="label.currency"></span><span class="fontSize12px">) </span></p>		 
+					<p class="fontSize20px smartLtfBlueClr fontBold displyInlineBlock">
+						<span ng-if="isOutstandingDataNotEmpty">{{valueOfpl + dividend + principal | currency : ""}}</span>
+						<span ng-if="!isOutstandingDataNotEmpty">0.00</span>
+					</p>
+				</div>
+				<div class="col col-40 txtRightAlign">
+					<p><span translate="label.profitLoss"></span><span class="fontSize12px"> (</span><span  class="fontSize12px" translate="label.currency"></span><span class="fontSize12px">) </span></p>		 
+					<p ng-if="isOutstandingDataNotEmpty" class="smartLtfBlueClr fontBold displyInlineBlock" ng-class="sumProfitLoss >= 0? 'txtBlue' : 'txtRed'"> <span ng-if="sumProfitLoss > 0" class="txtBlue">+</span>{{sumProfitLoss | currency : ""}}</p>
+					<p ng-if="!isOutstandingDataNotEmpty" class="smartLtfBlueClr fontBold displyInlineBlock txtBlue">0.00</p>
+				</div>
+			</div>
+			 <div ng-if="isOutstandingDataNotEmpty"> 
+				<div class="row">
+					<div class="col col-20">
+					</div>
+					<div class="col">
+						<canvas id="myChart2"   width="100" height="100"></canvas>
+					</div>
+					<div class="col col-20">
+					</div>
+				</div>
+				<div class="headerGreyBG txtCenterAlign padding5px font-quark-label-medium">
+				<label translate="label.profitAndLoss" class="fontSize16px fontBold"></label>
+				<label translate="label.compareMarket" class="fontSize14px"></label>
+				<label translate="label.currencyBaht" class="fontSize12px"></label>
+				</div>
+				<div ng-repeat="portList in mutualFundPortDetails">
+					<div class="padd-left0px padding-right5px" ng-style="portList.borderStyle" ng-class="portList.availableAmount >=0? 'profitNumber' : 'lossNumber'" ng-click="nevigateToMutualFundPortDetails(portList)" >
+						<div class="rowNoPadding">
+							<div class="col col-50">
+								<label style="font-weight: bold;">{{portList.fundCode}}</label><br>
+								<label>{{portList.unitholderId}}</label>
+							</div>
+							<div class="col col-49 txtRightAlign">
+								<label style="font-weight: bold;">{{portList.availableAmount  | currency : ""}}</label><br/>
+								<label ng-class="(portList.isProfit) ? 'txtBlue' : 'txtRed'"><span ng-if="(portList.isProfit)" >+</span>{{portList.profitAmount | currency : ""}}</label>
+							</div>
+							<div class="padding5px" style="margin-top: 10px;">
+								<label><i class="icon ion-chevron-right"></i></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+			
+		<div ng-class="{ 'margin-top-50' : !isOutstandingDataNotEmpty}" ng-if=" isShowOrder && isUnitHolderExist && isShowScreen && orderPendings.length > 0" >
+				<div class="headerGreyBG txtCenterAlign padding5px">
+					<label translate="label.orderPending" class="fontSize18px fontBold"></label>
+				</div>
+				<div ng-if="isNotShowData && isShowOrder" class="row">
+					<div class="col col-80 col-offset-10 txtCenterAlign" translate="label.mutualFund.pending.noData" ></div>
+				</div>
+				<ion-list ng-if="!isNotShowData  && isShowOrder">
+					<ion-item class="dashboard-accordion padd-left0px padd-Right0px borderNone" ng-repeat="orderPending in orderPendings">
+						<div class="row rowNoPadding2 txtCenterAlign fontWhite" style="border-top: 0.5px solid #D1D3D4;font-size: 14px;">
+							<div class="col col-50 txtLeftAlign">
+								<span ng-if="orderPending.transType === 'Switch'" translate="label.from"></span><span ng-if="orderPending.transType === 'Switch'">  :  </span>{{orderPending.fundCode}}<br>
+								<div ng-if="orderPending.transType === 'Switch'"><span translate="label.to"></span>  :  {{orderPending.toFundCode}}</div>
+								<div class="txtBlue">{{orderPending.transType}}</div>
+								<span class=""><span translate="label.channel.name"></span>  : {{orderPending.channelName}}</span>
+							</div>
+							<!-- <div class="col col-50 txtRightAlignCenter responsive">{{orderPending.tranType}}</div>	 -->
+							<div  ng-if = "orderPending.amount !== '0'"    class="col col-50 txtRightAlign responsive themeMediumGreyTextColor" ><div class="txtBlue">{{orderPending.amount | currency : "" }} <span translate="label.currency"></span></div>{{orderPending.transStatus}}</div>
+							<div  ng-if = "orderPending.unit !== '0'"   class="col col-50 txtRightAlign responsive themeMediumGreyTextColor" ><div class="txtBlue">{{orderPending.unit | currency : "" : 4}} <span translate="label.mutualFund.unit"></span></div>{{orderPending.transStatus}}</div>
+							<div class="txtCenterAlign responsive"></div>
+							<ion-option-button class="button-assertive"
+								ng-click="cancelPending(orderPending)" translate="label.cancel">
+							</ion-option-button>
+						</div>
+					</ion-item>
+				</ion-list>
+		</div>
+		<ion-infinite-scroll
+		ng-if=" canWeloadMoreContent()"
+				on-infinite="poppulateList()"
+				distance="10%"
+				immediate-check="false">
+		</ion-infinite-scroll> 
+	  </ion-content>
+	  <!-- accept consent -->
+	  <ion-footer-bar ng-if="consentData && isShowConsentData" align-title="left" class="modal-footer">
+			<div class="col text-center scheduleBtns selectedBtnBGColor">
+				<button class="button button-block button-custom" ng-class="fontLabel" translate="button.ok"
+				ng-click="acceptConsent()"></button>
+			</div>
+			<div class="col text-center scheduleBtns selectedBtnBGColor">
+				<button class="button button-block button-custom" ng-class="fontLabel" translate="label.cancel"
+				ng-click="gotoDashbord()"></button>
+			</div>
+		</ion-footer-bar>
+		<!-- end accept consent -->
+	</ion-view>
+	

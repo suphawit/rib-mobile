@@ -1,0 +1,22 @@
+<ion-view title="" drag-content="false">
+	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+ 	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<!--<a class="button button-clear" ng-click="event.goBackPage()" translate="button.back" ng-if="event.isShowBack"></a>-->
+	    <h4 class="title" translate="header.managepin.create"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="event.goNextPage()" translate="button.confirm" ng-if="event.isShowNext"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<verify-pin onaction="verifyPin.onaction(value)" title="verifyPin.title" control="verifyPin"></verify-pin>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			 ng-click="event.goNextPage()" translate="button.confirm" ng-if="event.isShowNext">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

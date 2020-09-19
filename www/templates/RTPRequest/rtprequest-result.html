@@ -1,0 +1,68 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <h4 class="title" translate="label.requestToPay"></h4>
+        <!-- <a class="button button-clear" ng-click="addNewToAccount()" translate="label.addaccount"></a>  -->
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+
+        <div class="dasboardAccord padding15px txtCenterAlign">
+            <span class="fontSize18px" translate="label.success"></span>
+        </div>
+
+        <div id="divBtn" class="rtpBorderAccount">
+            <div class="row padd-left20px padd-Right20px" style="padding-top: 20px">
+                <div class="col col-90 transferTxnPad">
+                    <div class="item item-thumbnail-left rtprequestOtherAccBlock paddingNone">
+                        <img ng-src="{{ getAnyIDIcon(resultRTPConfirm.toAnyIdType) }}" class="tranCompImg" 
+                            ng-style="{ 'background-color': getAnyIDIconColor(resultRTPConfirm.toAnyIdType) }"/> 
+                        <div class="thumbnail-detail themeGreyTextColor" ng-class="fontMain">
+                            <div class="themeGreyTextColor" style="font-weight: bold">{{resultRTPConfirm.toAccountAliasName}}</div>
+                            <div class="thumbnail-acc-no ">{{resultRTPConfirm.toAccountAcctName}}</div>
+                            <div class="thumbnail-acc-no ">{{resultRTPConfirm.toAnyIdValue}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transferaccount transConfrmAmoutDiv">
+            <div class=" themeDarkBlueBGColor borderNone txtCenterAlign">
+                <span class="whiteTextColor font-clanOt-header">
+                    {{ resultRTPConfirm.amount }}
+                </span>
+                <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+            </div>
+        </div>
+        <ion-item class="transConfirmHeadBlck padd-bottom15px rtprequestMyAccountBlock marginTop35Px" ng-class="fontDisplay">
+            <div class="font-bold fontSize19px blackTextColor">{{resultRTPConfirm.fromAccountAliasName}}</div>
+            <div> {{getAnyIDLabelName(resultRTPConfirm.fromAnyIdType)}}</div>
+            <div> {{resultRTPConfirm.fromAnyIdValue}} </div>
+        </ion-item>
+        <div class="line-bottom"></div>
+
+        <div class="marginNone list list-inset padd-top10px padd-left20px themeGreyTextColor" ng-class="fontDisplay">
+            <div class="row">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.PayAlertRef"></div>
+			    <div class="col col-67 paddingNone marginNone">{{resultRTPConfirm.rtpRefNo}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+                <div class="col col-67 paddingNone marginNone">
+                    {{resultRTPConfirm.transactionDateUI.date}}
+					<span translate="{{resultRTPConfirm.transactionDateUI.month}}"></span>
+                    {{resultRTPConfirm.transactionDateUI.year}}
+                    <!--{{resultRTPConfirm.transactionDateUI.time}}-->
+                </div>
+            </div>
+            <div class = "row" ng-if="resultRTPConfirm.memo">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.note"></div>
+			    <div class="col col-67 paddingNone marginNone">{{resultRTPConfirm.memo}}</div>
+			</div>
+            <div class="row">
+                <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.input.Status"></div>
+                <div class=" col col-67 paddingNone   marginNone"  translate="label.success"></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

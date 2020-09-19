@@ -1,0 +1,58 @@
+<ion-view title="">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+	    <a class="button button-clear" translate="label.back" side="left" ng-click="navigateToMyAccountsDetail()"></a>
+	    <h4 class="title" translate="label.myDeposit"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" has-bouncing="false">
+		<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding">
+			<div class = "row">
+				<span class="font-quark-label-display" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{casaAccountDetail.myAccountAliasName}}</span>&nbsp;
+				<span class="themeMediumGreyTextColor positionRight padd-Right15px font-quark-label-display">{{casaAccountDetail.myAccountNumber}}</span>
+			</div>
+		</ion-item>
+		<div class="pageContentsScroll">
+			<div class="txtCenterAlign">
+				<h5 class="wordBreak lineHeight2 themeBlueTextColor font-clanOt-news fontSize18px tddetailsstatement1">{{::casaAccountDetail.myAvailableBalance  | currency : ""}} <span ng-class="fontMain" translate="label.currency"></span> </h5>
+			</div>
+			<div class="headerDropdownBar">
+				<div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem" dropdown-item-label="monthYear" dropdown-onchange="inquiryMyAccount(selected.value)"></div>
+			</div>
+			<div ng-show="isErr">
+				<div style="color:red;" colspan="6">{{ errorMsgInfo | translate }}</div>
+			</div>
+			<div ng-if="casaStatementDetail.length <= 0" class="row">
+				<div  class="col col-80 col-offset-10 txtCenterAlign" translate="label.rtp.noData" ></div>
+			</div>
+			<div  ng-if="casaStatementDetail.length > 0" ng-repeat="txnsByDate in casaStatementDetail">
+				<div class="group-list">
+						<div class = "txtCenterAlign tabGroupList" style ="margin-bottom:-6px;" ion-affix data-affix-within-parent-with-class="group-list">
+								<div><span>{{txnsByDate.str_fordate}}</span></div>
+						</div>
+
+						<ion-item  class="statementCASABGcolorTitleBar dataStatement-accordion1 borderNone"  ng-repeat="alltransaction in txnsByDate.transactions.alltransaction">
+								<div class="row padd-bottom padd-left0px padd-Right5px padd-top2px">
+										<div  style="width:27%;">
+												<div class="displayBlock wordBreak fontSize12px themeGreyTextColor txtCenterAlign">{{alltransaction.channel}}</div>
+												<div class="fontSize14px themeGreyTextColor wordBreak txtCenterAlign">{{alltransaction.transactionDate.substring(alltransaction.transactionDate.length-5, alltransaction.transactionDate.length)}}</div>
+										</div>
+										<div  style="width:73%;" class = "casastatement-line-rightbar">
+											<div  ng-hide ="alltransaction.transactionType == 'B/f'">
+											<div  ng-if = "alltransaction.debitAmount  != '0' && alltransaction.debitAmount > 0"  class="displayBlock wordBreak fontSize16px redTextColor font-bold" style = "text-align:right;"><span>-{{alltransaction.debitAmount | currency : ""}}</span>&nbsp;<span translate="label.currency"></span></div>
+											<div  ng-if = "alltransaction.creditAmount != '0'" class="displayBlock wordBreak fontSize16px themeBlueTextColor font-bold" style = "text-align:right;"><span>+{{alltransaction.creditAmount | currency : ""}}</span>&nbsp;<span translate="label.currency"></span></div>
+											<div class="fontSize14px themeGreyTextColor wordBreak " style = "text-align:right;"><span translate="label.balance"  ></span>{{alltransaction.balance | currency : ""}} &nbsp;<span translate="label.currency"></span></div>
+											</div>
+
+											<div ng-show ="alltransaction.transactionType == 'B/f'">
+												<div  class="fontSize14px themeGreyTextColor wordBreak " style = "text-align:right;"><span  translate="label.bringforward"  ></span><span class = " fontSize15px font-bold"> {{alltransaction.balance | currency : ""}}</span> &nbsp;<span translate="label.currency"></span></div>
+											</div>
+										</div>
+								</div>
+						</ion-item>
+				</div>
+			</div>
+			<ion-infinite-scroll on-infinite="loadMore()" distance="10%" immediate-check="false" ng-if="!isEndPage" icon="none"></ion-infinite-scroll>
+			<div style="height:30px;"></div>
+		</div>
+	</ion-content>
+</ion-view>      
+

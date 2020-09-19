@@ -1,0 +1,18 @@
+<div class="row container-anyid-type-select" >
+	<div class="col col-33 txtCenterAlign">
+		<div ng-class="{ active: anyIDTypeSelected === anyIDTypeData.ACCOUNT }" class="icon-fontello icon-anyid-selecbutton icon-passbook" ng-click="select(anyIDTypeData.ACCOUNT)"></div>
+		<div translate="label.bankAccount"></div>
+	</div>
+	<div class="col col-33 txtCenterAlign">
+		<div ng-class="{ active: anyIDTypeSelected === anyIDTypeData.ID_CARD }" class="icon-fontello icon-anyid-selecbutton icon-card-id" ng-click="select(anyIDTypeData.ID_CARD)"></div>
+		<div  ng-bind-html="'label.citizen' | translate"> </div>
+	</div>
+	<div class="col col-33 txtCenterAlign">
+		<div ng-class="{ active: anyIDTypeSelected === anyIDTypeData.MOBILE_NO }" class="icon-fontello icon-anyid-selecbutton icon-mobile-phone" ng-click="select(anyIDTypeData.MOBILE_NO)"></div>
+		<div translate="label.mobileNO"></div>
+	</div>
+	<div class="col col-33 txtCenterAlign">
+		<div ng-class="{ active: anyIDTypeSelected === anyIDTypeData.E_WALLET }" class="icon-fontello icon-anyid-selecbutton icon-wallet" ng-click="select(anyIDTypeData.E_WALLET)"></div>
+		<div translate="label.ewallet"></div>
+	</div>
+</div>

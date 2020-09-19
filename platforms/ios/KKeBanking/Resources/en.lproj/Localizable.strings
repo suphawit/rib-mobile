@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  KKeBanking
+
+  Created by itribdev2 on 18/7/2562 BE.
+  
+*/
+"pleaseFaceTheCamera" = "Please face the camera";
+"pleaseKeepASingleFace" = "Please keep a single face";
+"blurredImage"="Image is blurred, please adjust";
+"openMount"="Please open your mouth";
+"blink"="Please blink";
+"shakeHead"="Please shake your head";
+"shakeHeadToLeft"="Please shake your head to the left";
+"shakeHeadToRight"="Please shake your head to the right";
+"tooClose" = "Camera too close";
+"tooFar" = "Camera too far";
+"tooBright" = "The light is too bright, please adjust";
+"tooDark"="The light is too dark, please adjust";
+"timeOut"="Timeout Error";
+"timeOutDes"="Please follow the prompts to complete face recognition";
+"faceDetection"="Face Detection";

@@ -1,0 +1,81 @@
+<ion-view title="">
+
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom">
+        <i class="button button-clear" ng-click="backToChangeTermMain()" translate="label.back"></i>
+        <h4 class="title" translate="label.changeTerm"></h4>
+        <!--<i class="button button-clear" ng-click="changeTdTermConfirm()" translate="button.confirm"></i>-->
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+	    <div style="min-height: calc(90vh - 110px)">
+            <ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding">
+                <span> {{changeTermDepositData.myAccountAliasName}} </span>
+                <span class="themeMediumGreyTextColor"> {{changeTermDepositData.myAccountNumber}} </span>
+            </ion-item>
+                <div class="txtCenterAlign ">
+                    <h5 class="fontSize18px wordBreak lineHeight2 themeBlueTextColor font-clanOt-news tddetailsstatement">{{changeTermDepositData.myAvailableBalance  | currency : ""}} <span translate="label.currency" ng-class="fontMain"></span></h5>
+                </div>
+
+                <div class="row lineHeight1" ng-class="fontLabel">
+                    <div class="col col-50 ">
+                        <p translate="label.changeTerm.accountType"> </p>
+                        <p translate="label.changeTerm.legerBal"> </p>
+                    </div>
+
+                    <div class="col col-50 txtRightAlign">
+                        <p>{{accountTypeTerm}}</p>
+                        <p>{{changeTermDepositData.myLedgerBalance | currency : ""}} <span translate="label.currency"></span></p>
+                        <!-- <p>{{lastUpdate}}</p> -->
+                    </div>
+                </div>
+                <div class="item-divider themeDarkGreyBGColor whiteTextColor txtCenterAlign" translate="label.previousTerm"></div>
+
+                <div class="row fontSize12px lineHeight1 fontBold">
+                    <div class="col col-50 textGrayClr">
+                        <p translate="tableHead.valueDate"> </p>
+                        <p translate="tableHead.maturityDate"> </p>
+                        <p translate="tableHead.Term"> </p>
+                        <p translate="tableHead.Amount"> </p>
+                        <p translate="tableHead.InterestRate"> </p>
+                        <p translate="tableHead.InterestCondition"> </p>
+                        <p translate="lable.td.AccountInterest"> </p>
+                    </div>
+
+                    <div class="col col-50 txtRightAlign textGrayClr">
+                        <p>{{changeTermCondition.dateOpen}}</p>
+                        <p>{{changeTermCondition.dateMaturity}}</p>
+                        <p>{{changeTermCondition.term_description}}</p>
+                        <p>{{changeTermCondition.balAvailable | currency : ""}} <span translate="label.currency"></span></p>
+                        <p>{{changeTermCondition.interest}} %</p>
+                        <p>{{changeTermCondition.freqIntPay}}</p>
+                        <p>{{changeTermCondition.benefitAcc}}</p>
+                    </div>
+                </div>
+
+                <div class="item-divider themeDarkGreyBGColor whiteTextColor txtCenterAlign" translate="label.newTerm"></div>
+
+                <div class="row fontSize12px lineHeight1 fontBold">
+                    <div class="col col-50 textGrayClr">
+
+                        <p translate="tableHead.Term"> </p>
+                        <p translate="tableHead.InterestRate"> </p>
+                        <p translate="tableHead.InterestCondition"> </p>
+                        <p translate="label.td.SuggestionPrincipleBalance"> </p>
+                        <p translate="lable.td.AccountInterest"> </p>
+                    </div>
+
+                    <div class="col col-50 txtRightAlign textGrayClr">
+                        <p>{{selected_term_option.term_description}}</p>
+                        <p>{{ratesTerms.interestRate}} %</p>
+                        <p>{{selected_term_option.freq_description}}</p>
+                        <p>{{changeTermCondition.balPrincipal | currency : ""}} <span translate="label.currency"></span></p>
+                        <p>{{changeTermCondition.benefitAcc}}</p>
+                    </div>
+                </div>
+	    </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="changeTdTermConfirm()" translate="button.confirm">
+			</button>
+		</div>
+    </ion-content>
+</ion-view>

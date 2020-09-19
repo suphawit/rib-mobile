@@ -1,0 +1,11 @@
+<ion-modal-view id="accListModal" class="listModal ncbDoc">
+    <ion-header-bar align-title="center" class="darkHeadBar"> 
+		<h4 class="title noneLeftRight" translate="label.NCBDocumentDetail"></h4>
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="ncbDoc.modal.hide()"></a>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false" class="has-header">
+    	<div class="row">
+    		<div class="col" ng-bind-html="ncbDoc.text"></div>
+    	</div>
+    </ion-content>
+  </ion-modal-view>

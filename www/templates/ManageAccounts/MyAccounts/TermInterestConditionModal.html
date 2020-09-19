@@ -1,0 +1,48 @@
+ <ion-bottom-sheet-view>
+<div class = "text-center ">	
+		<div class="margin-Bottom-11px">
+			<!-- <div class = "row padd-bottom fontSize12px padd-left5px padd-Right10px bordoerBottom themeDarkGreyBGColor"  > -->
+				<div class="item-divider whiteBGColor margin-Top-8px whiteTextColor">
+	         	<table class="table btnWhiteBorder marginNone paddingNone">					 
+					<tbody>
+						<tr class="headerDropdownBar ">
+							<td class="web-tblrow-data-link txtCenterAlign width25" >
+							 	<span class="wordBreak" ></span><span translate="label.manageAcc.term"></span>
+							</td>
+							<td class="web-tblrow-data-leftbar tableHeaderWhiteLine txtCenterAlign">
+								<span translate="label.manageAcc.interestCondition"></span>
+							</td>
+						</tr>						 
+					</tbody>
+				</table>
+			</div>								
+	   </div>
+		<div class = "row fontSize12px bordoerBottom fundTransRecPeriodContnrModal "  >	
+			<table class="table btnWhiteBorder marginNone paddingNone">	  	
+		  		<tr class="paddingNone blackTextColor">
+					<td class="paddingNone">
+						<ion-list class="fundTransRecPeriodContnrModalHeight paddingNone" >
+						  <ion-item  ng-repeat="termMont in termMonthList.terms" ng-click="selectedTermsMonth($index,termMont)" ng-class="{'selectedRow':$index == selectedRecPeriodTypeIndex}" ng-class-odd="'tbleOddRows'" ng-class-even="'tbleEvenRows'" >
+						   <span  >{{termMont}}</span>
+						  </ion-item>
+						</ion-list>
+					
+					</td>
+					<td class="paddingNone">
+						<ion-list class="fundTransRecPeriodContnrModalHeight paddingNone" >
+						  <ion-item class="tableHeaderGrayLineTd" ng-repeat="termMont in termMonthList.desc[termIndex]" ng-click="selectedTermPeriod($index , termMont)" ng-class="{'selectedRow':$index == selectedRecPeriodTimesIndex}" ng-class-odd="'tbleOddRows'" ng-class-even="'tbleEvenRows'" >
+						  <span  ng-show="isSelectedLang=='th' " >{{termMont.freqIntPayDescTha}}</span>
+						  <span ng-show="isSelectedLang=='en' " >{{termMont.freqIntPayDescEng}}</span>				   
+						  </ion-item>
+						</ion-list>
+					</td>
+		
+				</tr> 	    
+			 </table>  	 	   		  
+		</div>
+	   <a class="button button-small button-block padding10px" ng-click="closeTermConditionModal()" ><span translate="anchor.done"></span></a>	 
+		<br/>
+		
+</div>	   
+ 
+</ion-bottom-sheet-view>

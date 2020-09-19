@@ -1,0 +1,88 @@
+<ion-view id="addOtherAcc">
+
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+        <a class="button button-clear" ng-click="cancelAddExternalAccount()" translate="label.back"></a>
+        <h4 class="title" translate="label.addAcc"></h4>
+        <!--<a class="button button-clear" ng-click="showAddExtConfirmScreen()" translate="button.next"></a>-->
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" ng-class="fontHeader" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+            <div ng-class="fontLabel">
+            <h2 class="addMyAccountDetailTitleBar fontSize18px" translate="label.otherAccDetail"></h2>
+
+            <h5 class="fontQuarkBold addMyAccountfont" translate="label.plsInpUrInfo"> </h5>
+
+            <div class="list list-inset addMyAccountDetailList">
+
+                <h5 class="padd-left7px " translate=label.acctAliasName></h5>
+                <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine">
+                    <i class="icon ion-android-lock placeholder-icon fontSize25px"></i>
+                    <input type="text" maxlength="20" ng-model="extAccDetails.accAliasName"
+                            ng-blur="validationAliasName(extAccDetails.accAliasName)">
+                </div>
+
+            </div>
+
+            <h5 class=" padd-left12px  addOtherAccountCat" translate="label.bankIssue"></h5>
+
+            <div class="row bounce">
+                <div class="col row margin-Top-10px">
+                    <banklist-swiper override-parameters="bankListSwiper.overrideParams" active-item="{{bankListSwiper.activeItem}}" items="banksList" on-data-updated="bankListSwiper.invokes(value)"></banklist-swiper>
+                    <!--  <ks-swiper-container override-parameters="swiper_override_params" on-ready="onReadySwiper(swiper)">
+                        <ks-swiper-slide class="swiper-slide" ng-repeat="options in banksList track by $index">
+                            <img ng-src="{{getBankCodeImg(options.bankCode, 'image')}}" class="defaultBankImgBGColor" id="{{options.bankCode}}" name="{{options.bankName}}" />
+                        </ks-swiper-slide>
+                    </ks-swiper-container>-->
+                    <h5 align="center" class="wordBreak themeGreyTextColor line-bottom" ng-class="fontLabelSmall">{{displaySelectedBankName}}</h5>
+                </div>
+            </div>
+
+            <div class="list list-inset addMyAccountDetailList">
+                <h5 class="padd-left7px " translate="label.acctNo"></h5>
+                <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine">
+                    <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                    <input bind-virtual-keyboard vkmodel="extAccDetails.accNo" vkoption="virtualKeyboardAccount.option" type="text" ng-model="extAccDetails.accNo" maxlength="30"></input>
+                </div>
+
+            </div>
+            <h5 class="padd-left12px  addOtherAccountCat" translate="label.accCategory"></h5>
+            <div class="row bounce">
+                <div class="col row margin-Top-10px">
+                <ion-scroll overflow-scroll="false" has-bouncing="false" overflow-scroll="true" direction="x" class="wide-as-needed addOtherAccountDetails animated slideInRight">
+                <div ng-repeat="options in accCatList track by $index " class="displayInline">
+                <div class="button addCategoryBtns" ng-class="{'themeDarkGreyBGColor whiteTextColor': isActiveAccCatgry(options.catId)}" 
+                    ng-click="setActiveAccCatgry(options.catId)" ng-model="extAccDetails.accCategory"><span ng-class="fontLabel">{{options.catName}}</span>
+                </div>
+                </div>
+                </ion-scroll>
+                </div>
+            </div>
+            <div>
+                <div class="list list-inset addMyAccountDetailList">
+                    <h5 class="padd-left7px" translate="label.mobileNo"></h5>
+                    <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine widt100">
+                        <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                        <input type="text" ng-model="extAccDetails.mobile" maxlength="10">
+                    </div>
+
+                    <h5 class="padd-left7px" translate="label.email"></h5>
+                    <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine widt100">
+                        <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                        <input type="text" ng-model="extAccDetails.email" maxlength="40">
+                        <br/>
+                    </div>
+
+                    <h5 class="padd-left7px"></h5>
+                </div>
+                <br/><br/><br/><br/>
+            </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="showAddExtConfirmScreen()">
+			</button>
+		</div>
+    </ion-content>
+
+</ion-view>

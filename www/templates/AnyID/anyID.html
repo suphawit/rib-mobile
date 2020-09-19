@@ -1,0 +1,66 @@
+<ion-view title="" ng-init="initialRegisteredAnyIDChecked()">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<h3 class="title" translate="menu.registerPromptpay"></h3>
+		<!--<a class="button button-clear"  ng-class="fontHeader" translate="button.next" ng-click = "AnyIDRegisterSubmit()" ng-if="showConfirmBtn"></a>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<div class="row marginTop15Px">
+				<div class="col"></div>
+				<div class="col-50">
+					<div class="row">
+						<div class="col text-center">
+							<!--<div class="button-registerType icon-fontello icon-anyid-register-tumb icon-register-anyid-container marginClearBoth" ng-click="registerAnyID(data.type)" ng-class="data.icon + ' ' + ((data.type !== registerType) ? 'inactive' : '')"></div>-->
+							<label class="label-registerType">{{data.label | translate}}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col"></div>
+			</div>
+		
+
+			<div class="row col margin-Top-35px" style="padding-left:20px;padding-right:20px">
+					<h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel" translate="label.typeAnyID"></h5>
+					<any-id-type-list-swiper override-parameters="anyIdTypeListSwiper.overrideParams" 
+										active-item="{{anyIdTypeListSwiper.activeItem}}" 
+										items="anyIdTypeList"
+										on-data-updated="anyIdTypeListSwiper.invokes(value)"></any-id-type-list-swiper>
+					<div align="center" class="wordBreak themeGreyTextColor line-bottom" ng-class="fontLabelSmall">{{extAccDetails.anyidTypeDescriptionName}}</div> 
+			</div> 
+
+
+			<div class="row marginTop35Px">
+				<div class="col"></div>
+				<div class="col col-75 textAlignCenter themeGreyTextColor" ng-class="fontLabel">
+					<span translate = "label.connection"></span>: {{anyIDValue}}
+				</div>
+				<div class="col"></div>
+			</div>
+
+
+			<div class="row paddingNone ">
+				<div class="col paddingNone ">
+					<div class="item-divider selectAcoountItem-anyID-Register" >
+						<button class="button button-light" ng-if="showSelectBtn" ng-class="fontLabel" translate="label.selectAcct" ng-click="selectAnyIDAccount()"></button>
+					<div ng-click="selectAnyIDAccount()" ng-if="showSelectFromAccountDetails">{{accountRegisterObj.selectedFromName}}<br> {{accountRegisterObj.selectedFromAccNo}}</div>
+				</div>	
+				</div>
+			</div>
+				
+			<div class="row margin-Top5px">
+				<div class="col text-center ">
+					<a class="button button-block button-term-and-conditions" ng-class="(termsAndConditionsChecked.checked == true ? 'active' : '')" ng-click="termsAndCondChecked()"><i class="icon ion-checkmark"></i>&nbsp;&nbsp;{{'label.termAndConditionsBtn' | translate}}</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a class = "termAgreeandConditionStyle" ng-click = "viewTermAndConditions()" translate = "label.viewTermAndConditions"></a>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click = "AnyIDRegisterSubmit()" ng-if="showConfirmBtn">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>	  

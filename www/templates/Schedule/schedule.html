@@ -1,0 +1,25 @@
+ <ion-view>  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back" ng-if="isShowBack"></a>		 
+	    <h4 class="title" translate="menu.schedule"></h4>
+	    <!--<a class="button button-icon icon ion-plus" side="right" ng-click="otherGotoFund()"></a>-->
+	</ion-header-bar>
+	<div class="row paddingNone bar bar-subheader-sub"> 
+		<div class="col col-50 tab" ng-class="{'tabActive': scheduleFundShow}" ng-click="changeScheduleTabShow('scheduleFundtransfer')">
+			<span class="fontQuarkBold fontSize18px" translate="label.transfer"> </span>	
+		</div>
+		<div class="col col-50 tab" ng-class="{'tabActive': !scheduleFundShow}" ng-click="changeScheduleTabShow('scheduleBillpayment')">
+			<span class="fontQuarkBold fontSize18px" translate="label.billPayment"> </span>	
+		</div>
+	</div>
+  	<ion-content class="has-header has-subheader-sub" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 135px)">
+			<div ng-if='scheduleFundShow' ng-include="scheduleFundtransfer.url" ></div>
+			<div ng-if='!scheduleFundShow' ng-include="scheduleBill.url" ></div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.add" ng-click="otherGotoFund()">
+			</button>
+		</div>
+     </ion-content>
+  </ion-view>

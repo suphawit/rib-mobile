@@ -1,0 +1,101 @@
+<!--<ion-view title="" drag-content="false" ng-init="init()"> -->
+<!--	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">-->
+<!--        <a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>-->
+<!--		<h4 class="title" translate="label.digitalAuthen"></h4>	    -->
+<!--	</ion-header-bar> -->
+<!--	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">-->
+<!--		<div style="min-height: calc(90vh - 110px)">-->
+<!--			<h5 class="padd-left15px padd-topq10px" translate=label.input.otp ng-class="fontstyle.label"></h5>-->
+<!--            <div class="row padd-left10px">-->
+<!--                <label id="view" class="item item-input addotherAccountCustomBorder">-->
+<!--                    <i class="icon ion-android-lock placeholder-icon fontSize20px"></i>-->
+<!--                    <input bind-virtual-keyboard vkmodel="otp.data.otp" vkoption="virtualKeyboardOTP.option" class="whiteBGColor" type="password" ng-model="otp.data.otp" placeholder="{{otp.data.referenceNo}}"  maxlength="6"/>-->
+<!--                </label>-->
+<!--                <button class="button getOTPTransfer"-->
+<!--                    ng-class="fontLabel" ng-disabled="otp.isDisabled" ng-click="requestOTP()" translate=label.getOtp></button>-->
+<!--            </div>-->
+<!--            <div class="otp-section-desc" ng-show="otp.data.referenceNo">-->
+<!--                <div class="row">-->
+<!--                    <span translate="otp.desc.mobileno"></span>-->
+<!--                    <strong><span class="font-color-kkblue">&nbsp;{{otp.data.mobileNumber}}</span></strong>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <span translate="otp.desc.validity"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div style="margin-left: 3vw;margin-right: 3vw;">-->
+<!--                <button-->
+<!--                    class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"-->
+<!--                    ng-click="verifyOTP()"-->
+<!--                    translate="button.next">-->
+<!--                </button>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--	</ion-content>-->
+<!--</ion-view>-->
+<ion-view title="" drag-content="false" ng-init="init()">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>
+        <!-- <h4 class="title" translate="label.kkpNdidServices"></h4> -->
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <div class="pinTemplateContainer">
+                <div class="sub-title padd-left10px themeDarkGreyTextColor center" ng-class="fontMenuHeader"
+                     translate="{{suptitlePin}}"></div>
+
+
+                <div id="pinPanel" class="item item-input pin-pwd-label">
+                    <div class="row">
+                        <div class="col" ng-repeat="n in [0, 1, 2, 3, 4, 5] track by $index">
+                            <div class="circle {{dotpins[n]}}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="padd-left30px padd-bottom25px">
+                    <p class="padding errorLabelRed login-error-msg" ng-show="errorPinMessageEnable">
+                        {{errorPinMessage|translate}}
+                    </p>
+                </div>
+
+                <div class="pin-btn-ctrl font-clanOt-pin-btn">
+                    <div class="row pin-login-padding padding1px">
+                        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r1 in [1, 2, 3] track by $index">
+                            <button class="button  button-stretch pinBtn " ng-click="add(r1)">{{r1}}<br></button>
+                        </div>
+                    </div>
+                    <div class="row pin-login-padding padding1px">
+                        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r2 in [4, 5, 6] track by $index">
+                            <button class="button  button-stretch pinBtn" ng-click="add(r2)">{{r2}}<br></button>
+                        </div>
+                    </div>
+                    <div class="row pin-login-padding padding1px">
+                        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r3 in [7, 8, 9] track by $index">
+                            <button class="button  button-stretch pinBtn" ng-click="add(r3)">{{r3}}<br></button>
+                        </div>
+                    </div>
+
+
+                    <div class="row padding1px">
+                        <div class="col col-33 padding1px ">
+                            <div ng-hide="isCreatePage">
+                                <button class="button button-stretch pinBtn">
+                                </button>
+                            </div>
+                            <div ng-show="isCreatePage">
+                                <button class="button  button-stretch pinBtn"></button>
+                            </div>
+                        </div>
+                        <div class="col col-33 padding1px">
+                            <button class="button  button-stretch pinBtn" ng-click="add(0)">0</button>
+                        </div>
+                        <div class="col col-33 padding1px">
+                            <button class="button ion-ios-close-outline button-stretch pinBtn" ng-click="del()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

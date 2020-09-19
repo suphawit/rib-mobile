@@ -1,0 +1,72 @@
+<ion-view id="rtprequest"  drag-content="false"> 
+		
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+			<a class="button button-clear" href="#/mutualFundPurchase" translate="label.back" ng-hide="isHidebackConfirmMutualFund"></a>	 
+			<h4 class="title" translate="menu.purchase"></h4>	
+			
+		</ion-header-bar> 
+
+
+		<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+			<div style="min-height: calc(90vh - 110px)">
+			<ion-item class="paddingNone  txtCenterAlign padd-top10px"  >
+				<center class="row icon-row"> 
+					<div class="col col-100 padd-top-zero" >
+						<div class="col  col-33 padding   marginNone font-bold" ></div>
+						<div  class= "text-ellipsis" style="font-size: 13px; font-weight: bold;" >{{fundConfirmInfo.fundListDetail}} </div>
+					</div>
+				</center>
+			</ion-item>
+
+			
+			<ion-item style="  margin-top:10px;  border-top: 1px solid #ddd;" class=" padd-bottom10px paddingNone  txtCenterAlign" >
+				<center class="row icon-row"> 
+					<div class="col col-100 padd-top-zero padd-bottom10px" style="font-size: 13px; font-weight: bold;">
+						<div class="col  col-33 padding  marginNone font-bold" ></div>
+						<div class= "text-ellipsis ">{{fundConfirmInfo.resultSubmitPrepair.unitholderId}}
+							<span ng-if="fundConfirmInfo.resultSubmitPrepair.unitholderName != '-' && fundConfirmInfo.resultSubmitPrepair.unitholderName != null">&nbsp;-&nbsp;{{fundConfirmInfo.resultSubmitPrepair.unitholderName}}</span></div>
+					</div>
+				</center>
+			</ion-item>
+			
+
+				<div class="transferaccount txtCenterAlign">
+						<label class="item item-input themeDarkBlueBGColor">
+							<span class="whiteTextColor   font-clanOt-header tablet-inputAmout-top5px" style  = "margin-top: 10px; width: 100%; ">
+									{{fundConfirmInfo.resultSubmitPrepair.amount | currency : ""}} 
+							</span>
+						</label>
+						<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				 </div>	
+
+					
+			<div class= "padding  padding-left20px tablet-margin-top25px" ng-class="fontDisplay">
+					<div class = "padd-top15px">
+						<div class="row"  >
+							<div class=" col col-37 paddingNone    font-bold" translate="label.accNo"></div>
+							<div class=" col col-67 paddingNone   ">{{fundConfirmInfo.resultSubmitPrepair.accountNo}}</div>
+						</div>
+
+						<div class="row">
+							<div class="col col-37 paddingNone  font-bold"  translate="label.orderDate"></div>
+							<div class="col col-67 paddingNone ">{{orderDate.date}}&nbsp;<span  translate="{{orderDate.month}}"></span>&nbsp;{{orderDate.year}}</div>
+						</div>
+
+						<div class="row"  ng-class="{'alertSmartFundTransfer': checkIsSameDate() }">
+							<div class="col col-37 paddingNone  font-bold"  translate="label.deductMutualFund"></div>
+							<div class="col col-67 paddingNone ">{{effectiveDate.date}}&nbsp;<span  translate="{{effectiveDate.month}}"></span>&nbsp;{{effectiveDate.year}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="margin-left: 3vw;margin-right: 3vw;">
+				<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+				   ng-click="goNextPage()" translate="button.confirm">
+				</a>
+			</div>
+		</ion-content> 
+<!--		 <ion-footer-bar align-title="left" class="modal-footer" style = "height: 70px;">-->
+<!--          		<a style="margin-left: 3vw;margin-right: 3vw; " class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.confirm"   ng-click="goNextPage()">-->
+<!--					</a>-->
+<!--       	 </ion-footer-bar>	-->
+</ion-view>

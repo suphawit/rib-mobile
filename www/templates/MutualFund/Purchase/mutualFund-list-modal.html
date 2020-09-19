@@ -1,0 +1,80 @@
+<ion-modal-view id="accListModal" class="listModal"> 	
+		<ion-header-bar class="darkHeadBar">
+			<h4 class="title" translate="label.fundName"></h4> 		
+			<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a> 		
+		</ion-header-bar>        
+
+		<ion-content class="has-header " locking="false" padding="false" padding="false" overflow-scroll="false" has-bouncing="false" >          	
+			<div ng-If="fundListInfo.length < 1 && mutualFundType === 'redeem' && isFinishLoadingFundList" style="text-align: center;padding: 20px;margin: 0 auto;margin-top: 10px; font-size: large;"> <span translate="label.noFundlistFound"></span></div>
+			<div ng-If="fundListInfo.length < 1 && mutualFundType === 'switch' && isFinishLoadingFundList" style="text-align: center;padding: 20px;margin: 0 auto;margin-top: 10px; font-size: large;"> <span translate="label.noDataFound"></span></div>
+			<div ng-If="fundListInfo.length > 0">
+				<div class="row paddingNone marginNone">
+						<div class="col item-input-inset themeDarkBlueBGColor">
+							<label class="item-input-wrapper whiteBGColor whiteBGColor">
+								<i class="icon ion-ios-search placeholder-icon"></i>
+								<input class="searchbiller" type="text" placeholder="Fund code" ng-model="fundSearch.fundCode"
+										ng-model-options="{ debounce: 500 }"/>
+							</label>
+						</div>
+					</div>
+			
+					<ion-list ng-repeat="fundListItem in fundListInfo  | filter:fundSearch"
+			
+								class="externalAccList paddingNone">
+						<ion-item class="item-stable item-icon-right dasboardAccord  padding-left5px padding-right5px"
+									ng-class="{active: isGroupShown(fundListItem)}"
+									ng-click="toggleGroup(fundListItem)">
+									<!--ng-click="onSelectfundListDatail(fundListItem)">-->
+			
+							<i class="icon fontSize25px whiteTextColor padd-right2px"
+								ng-class="isGroupShown(fundListItem) ?'ion-chevron-down' : 'ion-chevron-right' ">
+							</i>
+			
+							
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == '0'">TOP PICK</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == '1'">SSF</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == '2'">SSFX</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == '3'">LTF</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == '4'">RMF</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == 'F'">Fixed Income</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == 'E'">Equity</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == 'M'">Mixed</span>
+							</div>
+							<div>
+								<span class="padd-left4px font-clanOt-news" ng-if = "fundListItem[0].fundPolicySort == 'O'">Other</span>
+							</div>
+						</ion-item>
+						<ion-item  ng-repeat="item in fundListItem  | filter:fundSearch"  ng-if = "isGroupShown(fundListItem)"  class=" padding-left5px padding-right5px fontLabel" ng-click ="onSelectfundListDatail(item)" >
+							<div>
+								<span class="padd-left4px font-clanOt-news mutualFundNameLabel">{{ item.fundCode }}</span>
+							</div>
+			
+							<div  ng-if="curlang == 'th'" >
+								<span style="font-size: 12px;"  class="padd-left4px font-clanOt-news mutualFundNameLabel">{{ item.fundNameTh }}</span>
+							</div>
+			
+							<div   ng-if="curlang == 'en'" >
+								<span style="font-size: 12px;" class="padd-left4px font-clanOt-news mutualFundNameLabel">{{ item.fundNameEn }}</span>
+							</div>
+						</ion-item>
+					</ion-list>
+			</div>
+		
+		<div  class ="spaceMutualFund"></div>     
+	</ion-content>      
+	 </ion-modal-view> 

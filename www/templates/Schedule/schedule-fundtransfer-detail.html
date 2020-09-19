@@ -1,0 +1,68 @@
+<ion-view>  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>
+	    <h4 class="title" translate="menu.schedule"></h4>
+	    <!--<a class="button button-icon icon ion-ios-gear" ng-click="changeFTSchedule(scheduleDetailList)"></a>-->
+	</ion-header-bar>
+	
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<ion-item class="item-divider transConfirmHeadBlck " ng-class="fontMain">
+				<div class= "themeGreyTextColor">{{::scheduleDetailList.fromAliasName || ""}}</div>  
+				<div > {{::scheduleDetailList.fromAccountNumber || ""}} </div>
+			</ion-item>
+			<div class="col transferaccount transConfrmAmoutDiv" >
+				<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+					<span class="whiteTextColor font-clanOt-header" >{{::scheduleDetailList.amount | currency : ""}} </span>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				</div>
+			</div>
+			<ion-item class="padd-top0Px borderTop0Px padd-bottom10px padd-left20px">		  	   
+				<div class = "row icon-row"> 
+				<img ng-src="{{anyIDService.isAnyID(scheduleDetailList.anyIDType) ? anyIDService.getAnyIDinfo(scheduleDetailList.anyIDType).icon : imageURL}}" class="bankImage" ng-style="{'background-color':anyIDService.isAnyID(scheduleDetailList.anyIDType) ? anyIDService.getAnyIDinfo(scheduleDetailList.anyIDType).iconColor : imageColor}" />
+				<div class = "padd-left10px column80Table warpText" ng-class="fontMain">
+					<div class="themeGreyTextColor warpText font-clanOt-label">{{::scheduleDetailList.toAliasName || ""}}</div>
+					<div class="thumbnail-acc-no">{{::scheduleDetailList.bankName || ""}}</div>
+					<div class="thumbnail-to-bank">{{::scheduleDetailList.toAccountNumber || ""}}</div>
+				</div>	          
+				</div>
+			</ion-item>
+		
+				<p class="scheduleFundTrfDetailLine padding5px">{{::scheduleDetailList.recurringType || ""}}&nbsp;{{::scheduleDetailList.recurringTimes || ""}}&nbsp;<span ng-if='scheduleDetailList.recurringTimes' translate="label.schedule.times"></span></p>
+					<div class="divTable">
+						<div class="divRow">
+							<div class="divCell"translate="lable.fundschedule.ref"></div>
+							<div class="divCellValue themeGreyTextColor">{{scheduleDetailList.transactionRef || scheduleDetailList.referenceNumber}}</div>
+							<div class="divCell"translate="label.transDate"></div>
+							<div class="divCellValue themeGreyTextColor">{{::scheduleDetailList.transactionDate.date || ""}}&nbsp;<span translate="">{{::scheduleDetailList.transactionDate.month || ""}}</span>&nbsp;{{::scheduleDetailList.transactionDate.year || ""}}</div>
+							<div class="divCell" translate="lable.fundschedule.DeducedDate"></div>
+							<div class="divCellValue themeGreyTextColor">{{::scheduleDetailList.debitDate.date || ""}}&nbsp;<span translate="">{{::scheduleDetailList.debitDate.month || ""}}</span>&nbsp;{{::scheduleDetailList.debitDate.year || ""}}</div>
+							<div class="divCell" translate="lable.fundschedule.ReceiveDate"></div>
+							<div class="divCellValue themeGreyTextColor">{{::scheduleDetailList.creditDate.date || ""}}&nbsp;<span translate="">{{::scheduleDetailList.creditDate.month || ""}}</span>&nbsp;{{::scheduleDetailList.creditDate.year || ""}}</div>
+							<div class="divCell" translate="lable.fundschedule.fee"></div>
+							<div class="divCellValue themeGreyTextColor">{{::fees || "0.00" | currency : ""}}&nbsp;<span translate="label.currency"></span></div>		                
+							<div class="divCell" translate="lable.fundschedule.status"></div>
+							<div class="divCellValue themeGreyTextColor">{{::scheduleDetailList.status || ""}}</div>
+							<div class="divCell" ng-if="scheduleDetailList.memo" translate="lable.fundschedule.note"></div>
+							<div class="divCellValue themeGreyTextColor memoDivCellValue" ng-if="scheduleDetailList.memo">{{::scheduleDetailList.memo || ""}}</div>		            	
+							<div class="divCell">&nbsp;</div>
+							<div class="divCellValue themeGreyTextColor">&nbsp;</div>
+							<div class="divCell" ng-if="scheduleDetailList.toMobileNumber || scheduleDetailList.toEmail" translate="label.alertTo"></div>
+							<div class="divCellValue themeGreyTextColor">&nbsp;</div>		            	
+							<div class="divCell" ng-if="scheduleDetailList.toMobileNumber" translate="label.mobileNo"></div>
+							<div class="divCellValue themeGreyTextColor" ng-if="scheduleDetailList.toMobileNumber">{{::scheduleDetailList.toMobileNumber || ""}}</div>
+							<div class="divCell" ng-if="scheduleDetailList.toEmail" translate="lable.fundschedule.eMail"></div>
+							<div class="divCellValue themeGreyTextColor" ng-if="scheduleDetailList.toEmail" class="lineBreak">{{::scheduleDetailList.toEmail || ""}}</div>
+							
+							
+							
+							
+						</div>
+					</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.edit" ng-click="changeFTSchedule(scheduleDetailList)">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

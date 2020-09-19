@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DirectionsForUseVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="使用指引_IOS" translatesAutoresizingMaskIntoConstraints="NO" id="M3l-Iq-5Im">
+                    <rect key="frame" x="0.0" y="84" width="375" height="666"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="M3l-Iq-5Im" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3C8-eQ-PjS"/>
+                <constraint firstItem="M3l-Iq-5Im" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="eWn-Tn-SzI"/>
+                <constraint firstItem="M3l-Iq-5Im" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.82" id="h6v-1s-meS"/>
+                <constraint firstItem="M3l-Iq-5Im" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ks5-w4-kGM"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="使用指引_IOS" width="743" height="1408"/>
+    </resources>
+</document>

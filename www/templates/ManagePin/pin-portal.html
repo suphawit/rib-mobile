@@ -1,0 +1,24 @@
+<ion-item class="borderNone txtCenterAlign">
+    <div class="row icon-row paddingNone">
+        <div class="col">
+            <button class="button button-block button-custom themeGreyTextColor {{labelclass}}"  style="background-color: White; border-color: #dedede; margin-top: 5px;" ng-click="selectMethod('username')" 
+                translate="button.username"  >
+            </button>
+        </div>
+    </div>
+    <div class="row icon-row paddingNone">
+        <div class="col">
+            <button class="button button-block button-custom themeGreyTextColor {{labelclass}}" style="background-color: White; border-color: #dedede; margin-top: 5px;" ng-click="selectMethod('debitcard')" 
+                translate="button.debitcard"  >
+            </button>
+        </div>
+    </div>
+    <div ng-if="showmypin" class="row icon-row paddingNone">
+        <div class="col">
+            <button class="button button-block button-custom themeGreyTextColor {{labelclass}}" style="background-color: White; border-color: #dedede; margin-top: 5px;" ng-click="selectMethod('mypin')" 
+                translate="button.authmypin"  >
+            </button>
+        </div> 
+        
+    </div>
+</ion-item>

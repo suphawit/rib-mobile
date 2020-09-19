@@ -1,0 +1,163 @@
+<ion-view id="rtprequest"  drag-content="false"> 
+	
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+				<a class="button button-clear" ng-click="goBackPage()" translate="label.back"  ng-if="isShowNext"></a>	 
+			<h4 class="title" translate="label.mutualFundRedeem"></h4>	
+		
+		</ion-header-bar> 
+
+		<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+			<div style="min-height: calc(90vh - 110px)">
+		<ion-item  class="padd-bottom  borderNone txtCenterAlign" ng-if="showFundListBtn" >
+				<div class="row icon-row" > 
+					<div class="col col-100 padd-bottom padd-top5px" >
+						<button 
+							class="button button-block button-custom themeGreyTextColor font-quark-label  margin-Top5px whiteBGColor"  
+							ng-class="fontLabel" 
+							style=" border-color: #dedede; " 
+							ng-click="openSearchFundListModal()" 
+							translate="label.fundName">
+						</button>
+					</div>
+				</div>
+		</ion-item>
+
+
+		<ion-item  class="paddingNone   txtCenterAlign padd-top10px" ng-if="!showFundListBtn" 	ng-click="openSearchFundListModal()" >
+				<center class="row icon-row" > 
+					<div class="col col-100 padd-top-zero "   style = "font-size: 12px; ">
+						<div class="col  col-33 padding   marginNone font-bold" ></div>
+						<div class= "text-ellipsis padd-bottom10px"  style="font-size: 13px !important; font-weight: bold;">{{fundObj.fundListInfoShow.fundCode}} </div>
+
+						<div ng-if="!showFundListBtn"  class = "paddingNone">
+							<div>NAV: {{fundObj.fundListInfoShow.navValue}} Baht/Unit (as of {{fundObj.fundListInfoShow.navDate.date}}&nbsp;<span  translate="{{fundObj.fundListInfoShow.navDate.month}}"></span>&nbsp;{{fundObj.fundListInfoShow.navDate.year}})  </div>
+						</div>
+		
+						<div ng-if="fundObj.fundListInfoShow.lowSellValue !== 0"><span translate="label.minRedemptionAmount"></span>:  {{fundObj.fundListInfoShow.lowSellValue | currency : ""}} <span translate="label.currency" ></span></div>
+						<div ng-if="fundObj.fundListInfoShow.lowSellValue == 0"><span translate="label.minRedemptionAmount"></span>:  - <span translate="label.currency" ></span></div>
+						<div><span translate="label.minRedemptionUnit"></span>:  {{fundObj.fundListInfoShow.lowSellUnit || "-"}} <span translate="label.mutualFund.unit" ></span></div>
+					
+
+					</div>
+				</center>
+		</ion-item>
+
+			
+			<ion-item class="padd-top-zero " ng-if="showUnitHolderBtn">
+					<div class="row icon-row" > 
+						<div class="col col-100 padd-top-zero padd-bottom" >
+							<button 
+							    ng-disabled="showFundListBtn"
+								class="button button-block button-custom themeGreyTextColor font-quark-label whiteBGColor margin-Top5px"  
+								ng-class="fontLabel" 
+								style=" border-color: #dedede;" 
+								ng-click="openUnitHolderModal()" 
+								translate="label.unitholderNo">
+							</button>
+						</div>
+					</div>
+			</ion-item>
+
+
+				
+			<ion-item style=" margin-top:10px;  border-top: 1px solid #ddd;" class="padd-bottom10px paddingNone txtCenterAlign" ng-if="!showUnitHolderBtn" 	ng-click="openUnitHolderModal()"  >
+					<center class="row icon-row"> 
+						<div class="col col-100 padd-top-zero padd-bottom text-ellipsis" style="font-size: 13px; font-weight: bold;">
+							<div class="col  col-33 padding   marginNone font-bold"><span ng-if="showUnitHolderBtn" translate="label.unitholderNo"></span></div>
+							<!-- <div class= "text-ellipsis ">7670057004 TREETIP CHATURATIPPRADAP</div>  -->
+							{{fundObj.unitHolderData.unitHolderId}}<span ng-if="fundObj.unitHolderData.unitHolderName != '-' && fundObj.unitHolderData.unitHolderName != null">&nbsp;-&nbsp;{{fundObj.unitHolderData.unitHolderName}}</span>
+						</div>
+					</center>
+
+
+					<center> 
+
+						<div ng-if="!showFundListBtn" class = "paddingNone padd-bottom10px"   style = "	font-size: 12px; ">
+							<div><span translate="label.available"></span> : {{dataOutStanding.availableBalanceUnitForSell | currency : "" : 4}} <span translate="label.mutualFund.unit"></span> 
+							<span translate="label.or"></span> {{dataOutStanding.availableBalanceAmountForSell | currency : "" : 2}} <span translate="label.currency"></span> </div>
+							<div> (as of {{dataOutStanding.navDate.date}}&nbsp;<span  translate="{{dataOutStanding.navDate.month}}"></span>&nbsp;{{dataOutStanding.navDate.year}}) </div>
+							
+						</div>
+				</center>
+			</ion-item>
+			
+		<ion-item class="item-divider todayLaterItem" style = "margin-bottom: 20px; ">
+				<div class = "row icon-row">
+					<div class = "col text-center scheduleBtns " ng-class="selectMutualFundPerCer" id="TransTodayScheduleDate">
+						<button class="button button-block button-custom" ng-class="fontLabel" translate="label.thb" ng-click="mutualFundPerCer()"></button>
+					</div>
+					<div class = "col text-center scheduleBtns " ng-class="selectMutualFundPerUnit" id="TransFutureScheduleDate">
+						<button class="button button-block button-custom" ng-class="fontLabel" translate="label.mutualFund.unit" ng-click="mutualFundPerUnit()"></button>
+					</div>
+					<div   class = "col text-center scheduleBtns" ng-class="selectMutualFundAll" id="TransFutureScheduleDate">
+						<button   ng-disabled="showFundListBtn"  class = "button button-block button-custom" ng-class="fontLabel" translate="label.mutualFund.redeemAll" ng-click="mutualFundAll()"></button>
+					</div>
+				</div> 	     
+		</ion-item>
+
+		
+		<div class="transferaccount txtCenterAlign">
+						<label class="item item-input themeDarkBlueBGColor">
+						<input bind-virtual-keyboard 
+					vkmodel="fundObj.amount" ng-disabled="selectMutualFundAll   === SELECTED_BTN_BG_COLOR"
+					vkoption="virtualKeyboardAmount.option" 
+					onvkkeyup="virtualKeyboardAmount.onkeyup(value)"
+					onvkblur="virtualKeyboardAmount.onblur()"
+					onvkfocus="virtualKeyboardAmount.onfocus()"
+					type="text" class="whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox font-clanOt-header"
+					ng-model="fundObj.amount" placeholder="{{placeholderAmount}}" />
+						</label>
+						<span class="currencySpan" ng-class="fontLabel" >{{fundObj.unitRedeem | translate}}</span>
+		</div>	
+	
+
+
+		<ion-item class="item-divider selectmypromptpayAccount"  style = " padding-top: 50px!important;"  >	
+			<!--<div ng-if="!showFundListBtn" class = "paddingNone padd-bottom10px tablet-margin-top25px"   style = "	font-size: 12px; " >	
+				<span translate="label.minimum"></span> {{fundObj.fundListInfoShow.lowSellValue | currency : ""}} <span translate="label.currency" ></span> 
+				<span translate="label.or"></span> {{fundObj.fundListInfoShow.lowSellUnit || "0.0000"}} <span translate="label.mutualFund.unit" ></span>			
+					
+			</div>-->
+
+			<div ng-if="!showUnitHolderBtn" style = " padding-top: 20px!important; padding-bottom: 20px;"  >
+					<span ng-if="fundObj.unitHolderData.bankAccount != '-' && fundObj.unitHolderData.bankAccount != null">{{fundObj.unitHolderData.bankAccount}}</span><br>
+					<span ng-if="fundObj.unitHolderData.bankName != '-' && fundObj.unitHolderData.bankName != null" >{{fundObj.unitHolderData.bankName}}</span>
+					<span ng-if="fundObj.unitHolderData.bankAccount == '-' || fundObj.unitHolderData.bankAccount == null"  translate="label.noaccountRedeem"></span>
+					
+			</div>
+
+			<center  ng-if="showFundListBtn "  class="tablet-margin-top25px selectFromAccountItemButt padding padding-Top20px "  >
+				<button class="button button-block button-custom" ng-disabled="showUnitHolderBtn"  	style="margin-top :-5px; margin-bottom :20px !important;  	background-color: #949599;	border-color: #dedede;	  color: #ffffff;" 	  ng-click="selectAccount()" translate="label.selectToAccount" ng-class="fontLabel"></button>
+			</center>
+		
+		</ion-item> 
+
+		
+		<div class = "padding font-bold fontHeader fontSize16px" ng-if="fundListTypeCheckStatus">  
+			<div ng-if = "fundListInfoShow.taxType  === 'LTF' "class="row icon-row  text-overflow: ellipsis; white-space: initial;">
+				<span translate="label.fundConnext.LTF"></span>
+			</div>
+			<div ng-if = "fundListInfoShow.taxType  === 'RMF' " class="row icon-row  text-overflow: ellipsis; white-space: initial;">
+				<span translate="label.fundConnext.RMF"></span>
+			</div>
+			<div ng-if="fundListTypeCheckStatus">
+				<div ng-if="fundListTypeCheckStatus" class = "padding">  <input type="radio" ng-model="checkRadioButton" value="accept" ng-change="setSelectedAnswer('accept')">&nbsp;<span translate="label.acceptFund"></span>	</div>
+				<div ng-if="fundListTypeCheckStatus" class = "padding">	<input type="radio" ng-model="checkRadioButton" value="declare" ng-change="setSelectedAnswer('declare')">&nbsp;<span translate="label.denialFund"></span>	</div>
+			</div>
+		</div>
+
+			</div>
+			<div style="margin-left: 3vw;margin-right: 3vw;">
+				<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+				   ng-click="goNextPage()" translate="button.next">
+				</a>
+			</div>
+		</ion-content> 
+
+<!--		  <ion-footer-bar align-title="left" class="modal-footer" style = "height: 70px;">-->
+<!--          		<button style="margin-left: 3vw;margin-right: 3vw; " class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next"    ng-click="goNextPage()">-->
+<!--				</button>-->
+<!--       		 </ion-footer-bar>	-->
+
+
+</ion-view>

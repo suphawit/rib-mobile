@@ -1,0 +1,22 @@
+repositories {
+    jcenter()
+    maven { url 'https://maven.google.com' }
+    mavenCentral()
+} 
+
+dependencies {
+	compile 'org.jetbrains.kotlin:kotlin-stdlib:1.3.21'
+	compile 'com.android.support:appcompat-v7:27+'
+    compile 'com.karumi:dexter:5.0.0'
+	
+    compile(name: 'PALiveDetect4.4.0.3', ext: 'aar')
+    compile(name: 'PALicense2.1.0', ext: 'aar')
+    compile(name: 'facerecog', ext: 'aar')
+}
+
+android {
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}

@@ -1,0 +1,41 @@
+ <div>
+ <ion-view >  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>		 
+	    <h4 class="title" translate="label.QRGeneratorMenu"></h4>
+	</ion-header-bar>
+  	<ion-content  class="has-header has-subheader-sub" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		
+		<div  class="txtCenterAlign" id ="QRGroup">
+			<qrcode id="qrCode" download data="{{QRCodeData}}" size="250"></qrcode>
+			<img id="QRLogo" ng-style="{'left' : left}" class="preview-qr-logo" ng-src="images/Thai_QR_Payment_Logo_tranparent.png"/>
+		</div>
+		<div>
+			<canvas id="QRFrameCanvas" width="414" height="621"></canvas>
+			<ion-item Style="border-color: transparent; width: 70%; margin: 0 auto;">
+				<div>
+					<img style="vertical-align: middle;background-color: #594F74;"
+					ng-src="{{ getAnyIDIcon(QRCodeDetail.anyIDType) }}"
+					class="externalMenuListImg"/>
+					<span Style="margin: 0 auto; padding-left: 5 px;">{{QRCodeDetail.anyIDValue}}</span>
+				</div>
+				<div Style=" margin-top: 4%;">
+					<span translate="tableHead.Amount"> </span> : 
+					<span ng-if="QRCodeDetail.amount != null" style="font-size: 21px; padding-left: 5 px;">{{QRCodeDetail.amount | currency: ""}}</span> <span ng-if="QRCodeDetail.amount != null" translate="label.currency"></span>
+					<span ng-if="QRCodeDetail.amount == null" style="font-size: 21px; padding-left: 5 px;" translate="label.notSpecifyAmount"></span>
+				</div>
+			</ion-item>
+			<div Style="text-align: center; margin-top: 3%;">
+			<button class="button button-light font-clanOt-label" ng-class="fontLabel" translate="label.saveImage" ng-click="saveImage()" 
+			style="min-width: 75%; background-color: #594F74;color: #fff;"></button>
+			</div>
+			<div Style="text-align: center; margin-top: 3%;">
+				<button class="button button-light font-clanOt-label" ng-class="fontLabel" translate="btn.share" ng-click="shareReceipt()"
+						style="min-width: 75%; background-color: #594F74;color: #fff;"></button>
+			</div>
+		</div>
+	 </ion-content>
+  </ion-view>
+ </div>
+ 
+

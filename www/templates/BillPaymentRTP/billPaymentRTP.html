@@ -1,0 +1,212 @@
+<ion-view title="" id="billPay"  drag-content="false">
+	 
+ 	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()" translate="button.back" ng-if="isShowBack"></a>
+	    <h4 class="title" translate="label.billPayment"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="goNextPage()" translate="button.next" ng-if="isShowNext"></a>-->
+	</ion-header-bar>
+	
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<ion-item class="item-divider selectFromAccountItem" ng-if="account == null">
+				<center class="selectFromAccountItemButt">
+					<button class="button  button-light" ng-click="openAccountList()" translate="label.selecFromAccounts" ng-class="fontLabel"></button>
+				</center>
+			</ion-item>
+			
+			<!--account selected detail-->
+			<ion-item class="item-divider fundTransGreyTopArea" ng-if="account!=null" ng-click="openAccountList()">
+				<div>{{account.myAccountAliasName}}</div>
+				<div>{{account.myAccountNumber}}</div>
+				<span translate="label.availableBalance"></span>
+				<span>{{account.myAvailableBalance | currency : ""}}</span> 
+				<span translate="label.currency"></span>
+			</ion-item>
+			<div class="transferaccount txtCenterAlign">
+				<label class="item item-input themeDarkBlueBGColor">
+					<input bind-virtual-keyboard 
+						vkmodel="amountModel.amount" 
+						vkoption="virtualKeyboardAmount.option" 
+						onvkkeyup="virtualKeyboardAmount.onkeyup()"
+						onvkblur="virtualKeyboardAmount.onblur()"
+						onvkfocus="virtualKeyboardAmount.onfocus()"
+						type="text" 
+						class="font-clanOt-header whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox" 
+						ng-model="amountModel.amount" 
+						placeholder="{{placeholderAmount}}" />
+				</label>
+				<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+			</div>
+
+			<ion-item style="padding-bottom: 5px" class="billerButtonSelectBill borderNone txtCenterAlign" ng-if="biller == null">
+				<div class="row icon-row paddingNone">
+					<div class="col themeGreyTextColor" ng-class="fontLabel" translate="label.biller.selectBiller"></div>
+				</div>
+				<div class="row icon-row paddingNone">
+					<div class="col .col-offset-50">
+						<button 
+							class="button button-block button-custom themeGreyTextColor "  
+							ng-class="fontLabel" 
+							style="background-color: White; border-color: #dedede; margin-top: 5px;" 
+							ng-click="openSearchBillerModal()" 
+							translate="label.newbiller"  >
+						</button>
+					</div>
+					<div class="col .col-offset-50">
+						<button 
+							class="button button-block button-custom themeGreyTextColor "  
+							ng-class="fontLabel" 
+							style="background-color: White; border-color: #dedede; margin-top: 5px;" 
+							ng-click="openBillerList('open')" 
+							translate="label.fromList"  >
+						</button>
+					</div>
+				</div>
+				<div class="row icon-row paddingNone">
+					<div class="col col-100 " style="padding-top: 0px; padding-bottom: 0px">
+						<button 
+							class="button button-block button-custom themeGreyTextColor "  
+							ng-class="fontLabel" 
+							style="background-color: White; border-color: #dedede; margin-top: 5px;" 
+							ng-click="scanBiller()" 
+							translate="btn.scanBill">
+						</button>
+					</div>
+				</div>
+			</ion-item>
+				
+			<!-- 	/////////////////////////// biller detail ///////////////////////////////////// -->
+			<div class="padding15px margin-Top-20px" ng-if="biller!=null" ng-class="fontDisplay">
+				<div class="row icon-row paddingNone" ng-click="isFromQRScannerPage ? return : openBillerList('reopen')">
+					<div class="col col-90 transferTxnPad">
+						<a class="item item-thumbnail-left item-icon-right paddingNone" href="#">
+							<img class="tranCompImg"  style="background-color: #594F74;" ng-src="{{biller.logoCompany || defaultBillerLogo}}" >
+							<div class="thumbnail-detail" ng-class="fontMain">
+								<div class="themeGreyTextColor text-ellipsis">{{biller.aliasName}}</div>
+								<div class="text-ellipsis">{{displayBillerName(biller)}}</div>
+							</div>
+							<!-- <div ng-if="isNewBiller" class="thumbnail-detail marginTop15Px" ng-class="fontMain">
+								<div class="text-ellipsis">{{displayBillerName(biller)}}</div>
+							</div> -->
+						</a>
+					</div>
+					<div class="col" ng-if="!isRTPPayment">
+						<i class="icon ion-ios-close-outline msgIcon fontSize25px" ng-if="!isFromQRScannerPage" ng-click="closeBiller()"></i> 
+					</div>
+				</div>
+				<div class="padd-left5px">
+					<div ng-if="!isNewBiller || isScanBiller" ng-repeat="ref in biller.refInfos" class="paddingNone">
+						<div class="row" ng-if="ref.value!=null && ref.value!='' && ref.showRef == true">
+							<div class="col col-37 paddingNone marginNone font-bold">{{displayRefName(ref)}}</div>
+							<div class="col col-67 paddingNone marginNone">{{ref.value}}</div>
+						</div>
+					</div>
+					<div ng-if="isNewBiller && !isScanBiller">
+						<div class="row">
+							<div class="col col-40 paddingNone marginNone font-bold" translate="label.billerCategory"></div>
+							<div ng-if="lang == 'en'" class="col col-60 paddingNone marginNone">{{biller.categoryEn}}</div>
+							<div ng-if="lang == 'th'" class="col col-60 paddingNone marginNone">{{biller.categoryTh}}</div>
+						</div>
+						<div ng-if="biller.promptPayBillerId" class="row" >
+							<div class="col col-40 paddingNone marginNone font-bold" translate="label.billerId"></div>
+							<div class="col col-60 paddingNone marginNone">{{biller.promptPayBillerId}}</div>
+						</div>
+						<div class="row" ng-repeat="ref in biller.refInfos track by $index" style="margin-top: 13px;">
+							<div class=" col col-25 paddingNone  marginNone font-bold">{{displayRefName(ref)}}</div>
+							<div class=" col col-75 paddingNone marginNone">
+								<label class="item item-input item-stacked-label">
+									<input class="memo" ng-model="ref.value" type="text"  maxlength = "100">
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class=" col col-25 paddingNone  marginNone font-bold" translate="label.note"></div>
+						<div class=" col col-75 paddingNone marginNone">
+							<label class="item item-input item-stacked-label">
+								<input class="memo" type="text" ng-model="memo.txt" maxlength = "50">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="padding10px margin-Top-10px list list-inset" ng-class="fontDisplay" style="margin-bottom:5px">-->
+				<!--<div class="row">-->
+					<!--<div class=" col col-25 paddingNone  marginNone font-bold" translate="label.note"></div>-->
+					<!--<div class=" col col-75 paddingNone marginNone">-->
+						<!--<label class="item item-input item-stacked-label">-->
+							<!--<input class="memo" type="text" ng-model="memo.txt" maxlength = "50">-->
+						<!--</label>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div> -->
+			<div class="txtCenterAlign borderTop1Px padding10px themeGreyTextColor" ng-class= "fontLabel">
+				<span translate="label.paymentDate"></span>&nbsp; 
+				<span>{{paymentDate.ui.day_label | translate}}</span>
+				&nbsp;{{paymentDate.ui.date}}&nbsp;
+				<span translate="{{paymentDate.ui.month_label}}"></span>
+				&nbsp;{{paymentDate.ui.year}} 
+				<div  ng-show = "showCalenda"  class="txtCenterAlign"></div>
+			</div> 
+				
+			<ion-item class="item-divider todayLaterItem">
+				<div class = "row icon-row">
+					<div class = "col text-center scheduleBtns {{TodayBtnClass}}">
+						<button class="button button-block button-custom" 
+							ng-class="fontLabel"  
+							translate="label.today" 
+							ng-click="selectTodayScheduleDate()">
+						</button>
+					</div>
+					<div class = "col text-center scheduleBtns {{FurtureBtnClass}}">
+						<button class = "button button-block button-custom" 
+							ng-class="fontLabel" 
+							translate="label.future" 
+							ng-click="selectFutureScheduleDate()" >
+						</button>
+					</div>
+				</div> 	     
+			</ion-item>
+				
+				
+			<div class="row icon-row" ng-if="isShowRecurringButton">
+				<div class="col text-center paddingNone txtCenterAlign">
+						<p class="recurring fontQuarkBold textGrayClr" translate="label.recurring"></p>
+				</div>
+				<div class="col text-center yesNoButton padd-Right20px ">
+					<div class="button-bar"  >
+						<a class="button" ng-class="{'button-custom': isRecurringEnabled == true }" ng-click="setRecurringEnabled(true)" translate="label.yes"></a>
+						<a class="button" ng-class="{'button-custom': isRecurringEnabled == false }" ng-click="setRecurringEnabled(false)" translate="label.no"></a>
+					</div>
+				</div>
+			</div>
+					
+			<div class="row txtCenterAlign fontSize12px padding10px" ng-if="isRecurringEnabled">
+				<div class="col text-center">
+					<div class="styled-select styled-select-removepadding" data-tap-disabled="{{chromeview}}">
+						<select ng-model="selectedScheduleType"
+							ng-options="option.name for option in scheduleTypeList"  
+							ng-class="fontLabel"  
+							ng-change="setSelectedScheduleType(selectedScheduleType)">
+						</select>
+					</div>
+				</div>
+				<div class="col text-center">
+					<div class="styled-select styled-select-removepadding" data-tap-disabled="{{chromeview}}">
+						<select 
+							ng-model="selectedRecurringTime" 
+							ng-options="option.name for option in recurringTimeList" 
+							ng-class="fontLabel"  
+							ng-change="setSelectedRecurringTime(selectedRecurringTime)">
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" 
+			ng-click="goNextPage()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

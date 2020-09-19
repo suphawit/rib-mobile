@@ -1,0 +1,44 @@
+<ion-view title="" drag-content="false">
+		<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+			<ion-nav-title>
+				 <img src="images/Bank_KK.png" class="appTitleIcon" />
+			</ion-nav-title>
+		</ion-nav-bar>
+		 <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+			<!--<a class="button button-clear" ng-click="event.goBackPage()" translate="button.back" ng-if="event.isShowBack"></a>-->
+			<h4 class="title" style="margin-left: -102px; margin-right: -102px;" translate="header.userAuthentication"></h4>
+			<!--<a class="button button-clear" side="right" ng-click="event.goNextPage()" translate="button.next" ng-if="event.isShowNext"></a>-->
+			<a id="btn-lang" class="button button-clear" side="right" ng-click="ChangeLanguage(lang)"><span>{{langLabel}}</span></a>
+		</ion-header-bar>
+		<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false" ng-class="fontHeader">
+			<h2 class="title-content-bar" translate="header.selectMethod"></h2>
+			<pin-portal onaction="pinportal.onaction(value)" showmypin="pinportal.canShowMyPIN" labelclass="fontLabel"></pin-portal>
+		</ion-content>
+		
+		<ion-footer>
+			<ion-toolbar>
+				<div id="tab" class="tabs tabs-icon-top sticky-tabs" ng-class="fontTabMenu">
+					<a class="tab-item" ng-click="showPromotions()">
+						<i class="tabIcon icon-promotion"></i>
+						<span translate="menu.promotions"></span>
+					</a>
+					<a class="tab-item" href="#/locateUs">
+						<i class="tabIcon icon-c24 icon-locate-us"></i>
+						<span translate="menu.locateUs"></span>
+					</a>
+					<a class="tab-item" href="#/contactUs">
+						<i class="tabIcon icon-c24 icon-contact-us2"></i>
+						<span translate="menu.contactUs"></span>
+					</a>
+					<a class="tab-item" href="#/faq">
+						<i class="tabIcon icon-c24 icon-faq"></i>
+						<span translate="menu.FAQ"></span>
+					</a>
+					<a class="tab-item" href="#/settingMainMenu">
+						<i class="tabIcon icon-c24 icon-setting"></i>
+						<span translate="menu.settings"></span>
+					</a>
+				</div>
+			</ion-toolbar>
+		</ion-footer>
+	</ion-view>

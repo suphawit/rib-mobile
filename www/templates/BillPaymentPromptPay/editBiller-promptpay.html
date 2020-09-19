@@ -1,0 +1,76 @@
+<ion-view> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+		<i class="button button-clear" ng-click="backeditBillerDetail()" translate="label.back" ></i>
+		  <h4 class="title" translate="label.editBiller"></h4>
+		<!--<i class="button button-clear" side="right" ng-click="goToBillerConfirm()" translate="button.next"></i>-->
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader"   locking="false"  overflow-scroll="false" padding="false" has-bouncing="false">
+		 <div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar fontSize18px" translate="header.billerDetail"  ng-class="fontHeader"></h2>
+			<div class="list list-inset addMyAccountDetailList"> 
+				<h5 class="addMyAccountLable" translate="label.billerAliasName"  ng-class="fontLabel"> </h5>
+				<div style="padding-right: 37px">
+					<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine">
+						<i class="icon ion-person placeholder-icon padd-top3px"></i>
+					<input type="text"  ng-model="from_edit_data.aliasName"  maxlength="20" > 
+					</label>
+				</div>
+				<div><p class="padding" style="color:red" ng-show="isErr">{{errorMsg}}</p> </div>
+				
+				
+				<div class="list-bank" style="padding-top:20px;">
+						<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor ">
+							<img ng-src="{{from_edit_data.logoCompany || getDefaultBillerImage(from_edit_data)}}" class="tranCompImg" style="background-color: #594F74;"/>
+								<div  ng-if ="lang == 'en'" class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+									<div class="min-height-m bankName-other-acc padding-Top5px text-ellipsis" style="padding-top: 15px">
+										{{from_edit_data.billerNameEn}}
+									</div>
+									<!-- <div class="text-ellipsis">
+										{{from_edit_data.categoryEn}}
+									</div> -->
+								</div>
+
+								<div  ng-if ="lang == 'th'" class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+									<div class="min-height-m bankName-other-acc padding-Top5px text-ellipsis" style="padding-top: 15px">
+										{{from_edit_data.billerNameTh}}
+									</div>
+									<!-- <div class="text-ellipsis">
+										{{from_edit_data.categoryTh}}
+									</div> -->
+								</div>
+						</div>
+				</div>
+
+				<div class="padd-left18px padd-Right18px" style="margin-bottom: 10px">
+					<h5 translate="label.billerCategory"  ng-class="fontLabel"> </h5>
+					<div ng-if="lang == 'en'"  class="bankName-other-acc">
+						{{from_edit_data.categoryEn }}
+					</div>
+					<div ng-if="lang == 'th'"  class="bankName-other-acc">
+						{{from_edit_data.categoryTh }}
+					</div>
+				</div>
+
+				<div ng-repeat="billerDetail in from_edit_data.refInfos track by $index">
+						<h5  ng-if ="lang == 'th' && !billerDetail.isHideRef" class="addMyAccountLable"  ng-class="fontLabel">
+							{{billerDetail.textTh}}
+						</h5>
+						<h5 ng-if ="lang == 'en' && !billerDetail.isHideRef" class="addMyAccountLable"  ng-class="fontLabel">
+							{{billerDetail.textEn}}
+						</h5>
+						<div class="bankName-other-acc padd-left18px padd-Right18px" ng-if="!billerDetail.isHideRef">
+							{{billerDetail.value }}
+						</div>
+						<!-- <label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine">
+							<i class="icon ion-document-text placeholder-icon padd-top3px"></i>
+							<input type="text" ng-model="billerDetail.value" ng-readonly="billerDetail.value"  maxlength="20"  style="background-color: rgb(255,255,255);">
+						</label> -->
+				</div>
+			</div> 
+		 </div>
+		 <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="goToBillerConfirm()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

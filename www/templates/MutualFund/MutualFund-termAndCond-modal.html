@@ -1,0 +1,30 @@
+<ion-modal-view id="accListModal" class="listModal" >
+    <ion-header-bar class="darkHeadBar">
+        <h4 class="title noneLeftRight" translate="label.viewTermAndConditions"></h4>
+        <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right"
+           ng-click="selectClose()"></a>
+    </ion-header-bar>
+
+    <ion-content>
+            <div ng-if="!termAndCondTextMutualFund" ng-class="fontLabel">
+                <span class="col col-80 col-offset-10 txtCenterAlign padd-top15px"></span>
+            </div>
+
+            <div ng-if="termAndCondTextMutualFund">
+                <div class="row">
+                    <div class="col termAndCondMutualFund" ng-bind-html= "termAndCondTextMutualFund.data" ></div> 
+                </div>
+            </div>
+            <div style="height:150px;"></div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="modal-footer">
+            <div class="col text-center scheduleBtns selectedBtnBGColor"  id="TransTodayScheduleDate">
+                <button class="button button-block button-custom" ng-class="fontLabel" translate="label.accept"
+                            ng-click="termsAndCondChecked()"></button>
+            </div>
+            <div class="col text-center scheduleBtns selectedBtnBGColor"  id="TransFutureScheduleDate">
+                <button class="button button-block button-custom" ng-class="fontLabel" translate="label.cancel"
+                            data-backdrop="static" data-keyboard="false" ng-click="selectClose()"></button>
+            </div>
+    </ion-footer-bar>
+</ion-modal-view>

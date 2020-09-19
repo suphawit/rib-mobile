@@ -1,0 +1,23 @@
+<ion-view id="otherAccount" ng-init="init()">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<h4 class="title" translate="header.rtpBlocklist"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader " ng-class="hasSubheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false">
+        <div ng-show="!showBlockList" class="padd-top15px">
+	        <div class="col col-80 col-offset-10 txtCenterAlign" translate="lbl.noBlockList"></div>
+	    </div>
+        <ion-list ng-show ="showBlockList" class="externalAccList" >
+			<ion-item ng-repeat="item in rtpBlockList track by $index" class="item item-thumbnail-left bordoerBottom">
+			    <img ng-if="item.blocklistProxyID.type !== 'BILLERID'" 
+					ng-src="{{getAnyIdInfo(item.blocklistProxyID.type).icon}}" 
+					ng-style="{ 'background-color': getAnyIdInfo(item.blocklistProxyID.type).iconColor }" 
+					class="ohterAccountListImg" />
+				<img ng-if="item.blocklistProxyID.type === 'BILLERID'" ng-src="{{defaultBillerLogo}}" class="externalMenuListImg" style="background-color: #594F74;">
+		      	<p style="margin: 4px 0px 0px 60px;">{{item.blocklistProxyID.name}}</p>
+		      	<p style="margin: 4px 0px 0px 60px;">{{item.blocklistProxyID.value}}</p>
+		      	<ion-option-button class="button-assertive" translate="btn.unblock" ng-click="unblockItem(item.blocklistProxyID)"></ion-option-button> 
+        	</ion-item>
+        	
+        </ion-list>
+	</ion-content>
+</ion-view>

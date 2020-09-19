@@ -1,0 +1,11 @@
+{
+  "name": "mfpstarterweb-client",
+  "version": "1.0.0",
+  "description": "MFPStarterWeb-client holds the ibm-mfp-sdk and requirejs, two node_modules that are mandatory for this sample",
+  "dependencies": {
+  "requirejs": "latest",
+   "ibm-mfp-web-sdk": "latest"
+  },
+  "author": "IBM MobileFirst Platform Foundation",
+  "license": "SEE LICENSE IN README.MD"
+}

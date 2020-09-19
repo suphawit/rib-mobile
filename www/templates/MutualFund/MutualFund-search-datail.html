@@ -1,0 +1,83 @@
+<ion-view id =""  drag-content="false"> 
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+            <a class="button button-clear" href="#/mutualFundSearch" translate="label.back" ></a>	 
+            <h4 class="title" translate="menu.mutualFundSearch"></h4>
+    </ion-header-bar>
+    
+        <ion-content class="has-header has-subheader" overflow-scroll="true" padding="false" has-bouncing="false">
+            <div ng-if="isShowScreen">
+                <ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding" >
+                    <div class = "row fontQuarkBold" >
+                        <span  translate="label.mutualFund.headerDetail"></span>&nbsp;
+                    </div>
+                </ion-item>
+                <div class="  txtCenterAlign ">
+                    <h5 class="wordBreak themeBlueTextColor font-quark-head fontSize18px ">{{fundListInfoShow.fundCode}}</h5>
+                    <p ng-if="curlang == 'en'" style="font-size: 14px;" class="wordBreak themeBlueTextColor font-quark-head ">{{fundListInfoShow.fundNameEn}}</p>
+                    <p ng-if="curlang == 'th'" style="font-size: 14px;" class="wordBreak themeBlueTextColor font-quark-head ">{{fundListInfoShow.fundNameTh}}</p>
+                    <div class="tddetailsstatement"></div>
+			    </div>
+                <div class="row lineHeight1 " ng-class="fontLabel">	
+                    <div class="col col-60 ">
+                        <p translate="label.lisklevel"  > </p>
+                        <p><span translate="label.initialPurchase"></span><span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">) </span></p>		 
+                        <p><span translate="label.AdditionPurchase"></span><span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">) </span></p>
+                        <p><span translate="label.minRedemptionAmount"></span><span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">) </span></p>
+                        <p><span translate="label.minRedemptionUnit"></span><span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.unit"></span><span class="fontSize11px">) </span></p>
+                        <p><span translate="label.sellSettlementDay"></span><span class="fontSize11px"> (</span><span class="fontSize11px" translate="label.day"></span><span class="fontSize11px">) </span></p>
+                        <p translate="label.dividendPolicy"> </p>
+                        <p>NAV<span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.currency"></span><span  class="fontSize11px">/</span><span class="fontSize11px" translate="label.unit"></span><span class="fontSize11px">) </span></p> 
+                    </div>
+				
+                    <div class="col col-40 txtRightAlign">
+                        <p>{{fundListInfoShow.fundRiskLevel}}</p>
+                        <p>
+                            <span ng-if="fundListInfoShow.firstLowBuyValue > 0">{{fundListInfoShow.firstLowBuyValue | currency : "" : 2 }}</span>
+                            <span ng-if="fundListInfoShow.firstLowBuyValue == 0"> - </span>
+                        </p>
+                        <p> 
+                            <span ng-if="fundListInfoShow.nextLowBuyValue > 0">{{fundListInfoShow.nextLowBuyValue | currency : "" : 2 }}</span>
+                            <span ng-if="fundListInfoShow.nextLowBuyValue == 0"> - </span>
+                        </p>
+                        <p> 
+                            <span ng-if="fundListInfoShow.lowSellValue > 0">{{fundListInfoShow.lowSellValue | currency : "" : 2 }}</span>
+                            <span ng-if="fundListInfoShow.lowSellValue == 0"> - </span>
+                        </p>
+                        <p> 
+                            <span ng-if="fundListInfoShow.lowSellUnit > 0">{{fundListInfoShow.lowSellUnit | currency : "" : 4 }}</span>
+                            <span ng-if="fundListInfoShow.lowSellUnit == 0"> - </span>
+                        </p>
+                        <p>{{fundListInfoShow.sellSettlementDay}}</p>
+                        <p>
+                            <span ng-if="fundListInfoShow.dividendFlag === 'Y'" translate="label.pay"></span>
+                            <span ng-if="fundListInfoShow.dividendFlag === 'N'" translate="label.notPay"></span>
+                        </p>
+                        <p>{{fundListInfoShow.navValue}}</p>
+                        <p class="fontSize11px">( as of {{fundListInfoShow.navDateFormat.date}}&nbsp;<span  translate="{{fundListInfoShow.navDateFormat.month}}"></span>&nbsp;{{fundListInfoShow.navDateFormat.year}} )</span></p>
+                    </div>
+			    </div>
+                <div class="row paddingNone bar  headerDropdownBar">
+                    <div class="headerDropdownBar" style = "padding : 0px;" scroll="false">
+                        <div class="accountsDropdown" dropdown-select="timesOfMutualFund" dropdown-model="timesOfMutualModel"
+                        dropdown-item-label="name" 	dropdown-onchange="getTimesOfMutualFund(selected.value)"></div>
+                    </div>
+                </div>
+            
+                <div id="divChart" style=" margin-top: 50px; margin-bottom: 50px;"> </div>
+            </div>
+        </ion-content>
+        <div ng-if="isShowScreen" class="paddingNone bar bar-footer" style="position: fixed;  bottom: 0.5em;">
+                <div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative">
+                    <a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" ng-class="{'disabled': isDisableFundFactSheetBtn }" ng-click="navigateFundFactSheet()" 
+                       icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">
+                        <i class="icon icon-w icon-fund-fact-sheet padding-Top5px" ></i>
+                        <span translate="label.fundFactSheet" class="fontSize11px fontQuarkBold"> </span>
+                    </a>
+    
+                    <a nav-clear ng-if="isUnitHolderExist" class="tab-item disable-user-behavior activated whiteTextColor"  ng-click="nevigateMutualFundPuechase()" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">
+                        <i class="icon icon-w icon-buy-fund padding-Top5px"></i>
+                        <span translate="menu.purchase" class="fontSize11px fontQuarkBold"> </span>
+                    </a>
+                </div>
+        </div>
+</ion-view>

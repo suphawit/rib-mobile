@@ -1,0 +1,102 @@
+<ion-view title="" id="rtprequestConfirm">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>
+		<h4 class="title" translate="label.requestToPay"></h4>
+		<!--<a class="button button-clear" side="right" ng-click="onClickConfirm()" ng-disabled="!isEnableConfirm" translate="button.confirm"></a>-->
+	</ion-header-bar>
+
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+			<div id="divBtn" class="margin-bottom15px">
+				<div class="row padd-left20px padd-Right20px" style="padding-top: 20px">
+					<div class="col col-90">
+						<div class="item item-thumbnail-left item-icon-right paddingNone">
+							<img ng-src="{{ getAnyIDIcon(resultVerify.toAnyIdType) }}" 
+								class="tranCompImg" 
+								style="background-color: #594F74;" />
+
+							<div class="thumbnail-detail themeGreyTextColor" ng-class="fontMain">
+								<div class="themeGreyTextColor">{{resultVerify.toAccountAliasName}}</div>
+								<div class="thumbnail-acc-no ">{{resultVerify.toAccountAcctName}}</div>
+								<div class="thumbnail-acc-no ">{{resultVerify.toAnyIdValue}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="transferaccount rtprequestConfirmAmoutDiv txtCenterAlign">
+				<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+					<span class="whiteTextColor font-clanOt-header" >
+						{{ resultVerify.amount }}
+					</span>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				</div>
+			</div>
+			<ion-item class="item-divider selectmypromptpayAccount" style="padding-top: 80px">
+				<div class="col paddingNone">
+					<!-- <div class="col-40 txtRightAlign padd-Right10px">
+						<img 
+							ng-src="{{ getAnyIDIcon(resultVerify.fromAnyIdType) }}"
+							class="externalMenuListImg" 
+							ng-style="{ 'background-color': getAnyIDIconColor(resultVerify.fromAnyIdType) }"/>
+					</div> -->
+					<!-- <div class="col-60 txtLeftAlign padd-left10px"> -->
+						<div class="fontSize16px">{{resultVerify.fromAccountAliasName}}</div>
+						<div class="fontSize16px">{{getAnyIDLabelName(resultVerify.fromAnyIdType)}}</div>
+						<div class="fontSize16px">{{resultVerify.fromAnyIdValue}}</div>
+					<!-- </div>						 -->
+				</div> 
+			</ion-item>
+			<div class="list list-inset padd-left10px themeGreyTextColor" ng-class="fontDisplay">
+				<div class = "row">
+					<div class="col col-37 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+					<div class="col col-67 paddingNone marginNone">
+						{{resultVerify.transactionDateUI.date}}
+						<span translate="{{resultVerify.transactionDateUI.month}}"></span>
+						{{resultVerify.transactionDateUI.year}}
+					</div>
+				</div>
+				<div class = "row" ng-if="resultVerify.memo">
+					<div class="col col-37 paddingNone marginNone font-bold" translate="label.note"></div>
+					<div class="col col-67 paddingNone marginNone">{{resultVerify.memo}}</div>
+				</div>
+			</div>
+			<div class="line-bottom marginTop10Px"></div>
+
+			<!-- <h5 class="padd-left15px padd-topq10px" style="margin-top: 20px" translate=label.input.otp ng-class="fontLabel"></h5>
+			<div class="row padd-left10px">
+				<label class="item item-input addotherAccountCustomBorder rtpRequestOTP"> 
+					<i class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+					<input bind-virtual-keyboard 
+						vkmodel="otpModel.otp" 
+						vkoption="virtualKeyboardOTP.option"
+						class="whiteBGColor" 
+						type="password"
+						ng-model="otpModel.otp" 
+						placeholder={{resultRequestOTP.referenceNo}}
+						maxlength="6">
+				</label>
+				<button 
+					class="button getOTPTransfer"
+					ng-class="fontLabel" 
+					ng-click="requestOTP()" 
+					translate=label.getOtp>
+				</button>
+			</div>
+			<div class="otp-section-desc margin-bottom20px " ng-show="resultRequestOTP.referenceNo">
+				<div class="row">
+					<span translate="otp.desc.mobileno"></span>
+					<strong><span class="font-color-kkblue">&nbsp;{{resultRequestOTP.mobileNo}}</span></strong>
+				</div>
+				<div class="row">
+					<span translate="otp.desc.validity"></span>
+				</div>
+			</div> -->
+        </div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="onClickConfirm()" ng-disabled="!isEnableConfirm" translate="button.confirm">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

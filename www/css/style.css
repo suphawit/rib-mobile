@@ -1,0 +1,1063 @@
+.loginLanguage {
+	/* margin-top: 15px !important; */
+	margin-right: 18px !important;
+	font-size: xx-small;
+}
+.pin-template-login {
+  margin: 0px -15px 0px !important;
+}
+.pin-login-lable {
+	margin-left: 123px !important;
+}
+.pin-pwd-label {
+	text-align: center !important;
+	 
+	border: none !important;
+	/*border-bottom: 1px solid #DADADB !important;*/
+}
+ 
+.pin-btn-ctrl {
+	margin: 15px 0px 0px;
+	/*margin-top: 30px;*/
+}
+.fix-position{
+	position: fixed;
+}
+
+.pin-login-padding {
+	padding: 0px
+}
+#pinPanel .col {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    padding: 5px;
+    width: 100%;
+    border: #C5C5C5;
+    border-style: solid;
+    margin-left: 5px;
+    margin-right: 5px;
+    width:100%;
+    border-width: 1px;
+    height:40px;
+}
+
+#pinPanel.item-input{
+   padding: 15px 0 0 0;
+    
+}
+.circle {
+	width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    /*margin-right: 20px;*/
+    margin-top: 9px;
+}
+.circle-color-black{
+	background: #C5C5C5;
+}
+.circle-color-white{
+	background: #fff;
+}
+/**
+* end for login pin page
+*/
+.space-top{
+	height:50px;
+	
+}
+.slide-in-right {
+  -webkit-transform: translateX(100%);
+    transform: translateX(100%); }
+
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; }
+
+.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
+  -webkit-transform: translateX(0);
+    transform: translateX(0); }
+
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms; }
+.center{
+	text-align: center;
+}
+.sub-title{
+	font-size:15px;
+}
+
+
+/**
+* ADDMYACCOUNT <HR> 
+*/
+.addMyAccountMarginAddTittle {
+	    margin: 35px !important;
+}
+.addMyAccountUnderLine {
+	border-bottom: 2px solid #DADADB !important;
+    display: inline-flex !important;
+    margin-left: 20px !important;
+	padding: 0px !important;
+	width: 100% !important;
+}
+.addMyAccountUnderLineEdit{
+	 border-bottom: 2px solid #DADADB !important;
+    display: inline-flex !important;
+    margin-left: 8px !important;
+    padding: 0px !important;
+}
+
+.addMyAccountLable {
+    margin-left: 18px !important;
+    /* padding: 1px; */
+}
+.addMyAccountfont {
+	color: #8F8F8F !important;
+	padding-left: 12px;
+}
+
+.addMyAccountDetailTitleBar,.title-content-bar {
+	background-color: #454B59 !important;
+	color:white !important;
+	margin-top: 1px !important;
+	padding: 8px 11px !important;
+}
+
+.addMyAccountDetailConfirm {
+	border-bottom: 2px solid #DADADB !important;
+    display: inline-flex !important;
+    margin-left: 8px !important;
+    padding: 0px !important;
+}
+ 
+.addMyAccountDetailConfirmOtpTxtBox {
+ padding-top: 27px !important;
+}
+
+.addMyAccountEditDetailUnderLine {
+	border-bottom: 2px solid #DADADB !important;
+    margin-left: 9px !important;
+    padding: 0px !important;
+    /*margin-right: 100px !important;*/
+    margin-right: 9px !important;
+}
+
+.addOtherAccountUnderLine {
+	border-bottom: 2px solid #DADADB !important;
+    padding: 0px !important;
+    /*margin-right: 100px !important;*/
+    margin-right: 9px !important;
+}
+
+.addMyAccountEditAccountNumber {
+	margin: -9px !important;
+}
+.addMyAccountEditAccountNumberIcon {
+	font-size : 25px !important;
+}
+
+.addMyAccountEditAlias {
+	margin: 0px 0px 0px;
+}
+
+.addOtherAccountDetail {
+	background-color: #ffffff !important;
+	background-color: #E7E8EA !important;
+	min-height: 65px !important;
+	border: none !important;
+}
+
+.addOtherAccountDetailIcon {
+ font-size: 25px !important;
+  margin: 0px 7px -20px !important;	
+}
+.confirmAddBillerIcon {
+ font-size: 25px !important;
+ margin: 0px -13px -20px !important;	
+}
+.addOtherAccountDetailOtpBtn {
+	height: 50px !important;
+    margin-top: 5px !important;
+}
+.editOtherAccountCategory {
+	margin: 7px -7px 5px !important;
+}
+.editOtherMobile {
+	margin: -5px 0px 0px !important;
+}
+
+/**
+* login page
+*/
+.login-template-css {
+	/* max-width: 500px; */
+    margin: 0 auto;
+    padding: 50px 20px 20px 20px;
+	position: absolute;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+ }
+ .pinTemplateContainer {
+    max-width: 500px;
+    margin: 0 auto;
+    /* padding: 50px 20px 20px 20px; */
+	/* position: absolute; */
+    z-index: 5;
+    width: 100%;
+    bottom: 35px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:8vh;
+    padding-bottom:5vh;
+}
+ .login-card {
+  max-width: 500px;
+  margin: 0 auto !important;
+ }
+ .login-submit-btn {
+  margin: 0px 53px 12px !important;
+ }
+ .login-error-msg {
+  padding: 0px !important;
+ }
+ 
+ /**
+ * MyAccountTD Detail
+ */
+ .myAccountTdDetail {
+  margin-right: 280px !important;
+ }
+.paddingRightUnderline{
+	padding-right:40px;
+}
+/**
+* static images loading for addOtherAccount
+*/
+
+/**
+* fundtransfer reciept 
+*/
+
+.fundTrfRecieptBorderBlue {
+	border: 1px solid;
+    height: 65px;
+    /* font-size: 14px; */
+}
+
+.fundTrfRecieptBorderYellow {
+	border: 1px solid;
+    height: 65px;
+    /* font-size: 14px; */
+}
+
+.fundTrfRecieptAmount{
+	margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    top: 0px !important;
+}
+.fundtrfRecieptDetailListBorder {
+	padding: 0px 15px 0px !important;
+	text-align: left !important;
+}
+.fundtrfRecieptDetailListMargin {
+  margin: -5px -30px 0px !important;
+}
+.fundtransferDetailCommonBorder {
+	    border: none !important;
+	    margin-left: 8px !important;
+	    background: none !important;
+}
+.fundtrfRecieptLogoPadding {
+	padding-left : 25px !important;
+	padding-right : 25px !important;
+}
+.fundTransferRecieptRow {
+	margin: -20px 1px 2px !important;
+}
+.pin-top{
+	margin-top: 60px;
+}
+.fundTrfBGremove {
+	border: none !important;
+    background: none !important;
+}
+.fundTransferBgimage {
+	background-image: url("../images/bg_slip.png");
+	background-size: 115px;
+	z-index: -1;
+}
+
+/**
+* schedule fundtransfer
+*/
+
+.tblAmountColSchedulefundTrf {
+   margin-left: 25px !important;
+}
+.scheduleMargintop {
+	margin-top: -4px !important;
+}
+.scheduleBGcolorTitleBar {
+	background-color: #F3F3F5 !important;
+}
+.statementCASABGcolorTitleBar {
+	background-color: #EAE9E9 !important;
+}
+.scheduleFontSize {
+  font-size: 14px !important;
+}
+.scheduleFontSizeAlias {
+  font-size: 14px !important;
+}
+.scheduletitleBarMargin {
+	margin: 3px !important;
+}
+.scheduleAmountLeftMargin {
+	margin-left: 38px !important;
+}
+.scheduleArrowIcon {
+	color: #594F74 !important;
+	font-size: 30px !important;
+}
+.scheduleArrowIconmargin {
+   margin-top: 0px !important;
+   margin-left: -6px;
+}
+.fundtransferScheduleLogo {
+	 /* background-image: url("../images/Bank_KK.png"); */
+  	 background-repeat: no-repeat;
+  	 background-size: 64px 64px;
+}
+.scheduleFundTrfDetailLine {
+	padding: 10px;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    text-align: center;
+}
+.scheduleFundTrfDetailTitleNameMargin {
+	    margin-right: 30px !important;
+}
+
+.addBillerAliseLabel {
+	 margin-right: 5px !important;
+}
+.fundTransferIcon-size {
+	font-size: 20px !important;
+}
+.fundTransferReciept-height { 
+	height: 100% !important;
+}
+
+/**
+  myAccount casa view statement 
+*/
+
+.myAccountCasaStatement {
+	background-color: #D7182A;
+	color:white; 
+	margin-bottom: 2px; 
+	padding-top: 3px; 
+	text-align: left;  
+	padding-bottom: 0px;
+}
+.myAccountCasaViewStm {
+	border-left: solid #949597;
+	 margin-left: 20px; 
+	 min-height: 75px; 
+	 height: 100%;
+}
+
+.myAccountCasaViewLine {
+	border-color: #31B457;
+	min-width: 20px;     
+	width: 100%; 
+	margin-top: 20px;
+}
+.myaccountCommonWidth {
+	width: 100%;
+}
+.myAccountCasaviewColumnTwo {
+	border-color: #D7182A;
+	 min-width: 20px; 
+	 width: 100%; 
+	 margin-top: 20px;
+}
+.myAccCasaviewColumnThree {
+	background-color: #31B457;
+	color:white; 
+	text-align: left; 
+	padding-top: 3px;  
+	margin-bottom: 2px; 
+	padding-bottom: 0px;
+}
+
+
+
+
+
+
+/* Transaction History Page */
+
+
+
+.hButton {
+	border: none;
+	background-color: #594F74 !important;
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	padding: 0 12px;
+	/* min-width: 52px;
+	min-height: 47px; */
+	vertical-align: top;
+	text-align: center;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 42px;
+	
+}
+
+.button-circle {
+	background: #594F74 !important;
+	color: white !important;
+	z-index: 12 !important;
+	min-width: 43px !important;
+	min-height: 43px !important;
+	border-radius: 50% !important;
+	-webkit-transform: translate3d(0, 0, 0) !important;
+	transform: translate3d(0, 0, 0) !important;
+	-webkit-transition: 0.2s linear !important;
+	transition: 0.2s linear !important;
+	-webkit-transition-property: -webkit-transform, all !important;
+	transition-property: transform, all !important;
+}
+
+.connector-top {
+
+  background: linear-gradient(white 40px, #594F74 50px, #594F74 100%);
+    background-repeat: no-repeat;
+    background-position: 30px 0px;
+    background-size: 2px 100%;
+    
+}
+.connector-mid {
+
+  background: linear-gradient(#594F74, #594F74);
+    background-repeat: no-repeat;
+    background-position: 30px 0px;
+    background-size: 2px 100%;
+    
+}
+.connector-bottom {
+
+  background-image: linear-gradient(180deg, #594F74, #594F74);
+    background-repeat: no-repeat;
+    background-position: 30px 0px;
+    background-size: 2px 35px;
+    
+}
+
+.hist-trans-data {
+	background-color: white !important;
+	text-align: left; 
+	padding-left: 10px; 
+	margin-bottom: 2px; 
+}
+.hist-trans-data-sub{
+	color:#808080;
+}
+
+.divTable
+{
+    display:  table;
+    width:auto;
+    border-spacing:5px;/*cellspacing:poor IE support for  this*/
+    padding-left: 20px;
+	padding-top: 15px;
+   /* border-collapse:separate;*/
+}
+
+.divRow
+{
+   display:table-row;
+   width:auto;
+}
+
+.divCell
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:40%;
+}
+
+.divCellValue
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:60%;
+}
+.memoDivCellValue{
+	width: 50vw;
+}
+
+.addBillerDetail {
+	background-color: #ffffff !important;
+	background-color: #E7E8EA !important;
+	min-height: 55px !important;
+	border: none !important;
+	padding-left : 77px !important;
+	padding-top : 22px !important;
+	
+}
+
+
+.addBillerDetailtext {
+	font-size: 16px !important;
+	  display: inline-block; 
+	  white-space: nowrap; 
+	 overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.button-number {
+	width: 100%;
+}
+
+.button.button-number:active {
+	background-color: #D1D3D4;
+	color: #838996;
+}
+
+.buttonTypeAnyID {
+	background-color: #e7e7e7;
+	width: 55px;
+	height: 55px;	
+}
+
+.my-virtual-keyboard .button:hover {
+    color: #838996;
+}
+
+.button.button-number {
+    background-color: #FFFFFF;
+    font-size: xx-large;
+    color: #838996;
+    min-height: 50px;
+    line-height: 20px;
+}
+.my-virtual-keyboard .button {
+	font-family: 'Quark-bold' !important;
+	font-size: 32px !important;
+    border-color: #A9ACB3;
+}
+.my-virtual-keyboard{
+	background-color: #F7F7F7;
+}
+
+.my-virtual-keyboard .col {
+    padding: 2px;
+}
+.my-virtual-keyboard a.textButton {
+    font-family: 'Quark-bold';
+	font-size: 18px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.hidden
+{
+	visibility: hidden;
+}
+.visibility
+{
+	visibility: visible;
+}
+
+.item-sub-menu>.item-content{
+	
+	/* background-color: #ebebeb !important;
+	color: #594F74 !important; */
+	border-color: green;
+    background-color: #ebebeb !important;
+    color: #fff !important;
+	
+}
+.item-sub-menu+.item {
+     background-color: #b2b2b2 !important;
+}
+
+@font-face {
+	font-family: 'Quark-bold';
+	src: url("../fonts/Quark/Quark-Bold.otf");
+}
+@font-face {
+	font-family: 'Quark-Light';
+	src: url("../fonts/Quark/Quark-Light.otf");
+}
+@font-face {
+	font-family: 'ClanOT-Bold';
+	src: url("../fonts/ClanOT/ClanOT-Bold.otf");
+}
+@font-face {
+	font-family: 'ClanOT-BoldItalic';
+	src: url("../fonts/ClanOT/ClanOT-BoldItalic.otf");
+}
+@font-face {
+	font-family: 'ClanOT-Book';
+	src: url("../fonts/ClanOT/ClanOT-Book.otf");
+}
+@font-face {
+	font-family: 'ClanOT-BookItalic';
+	src: url("../fonts/ClanOT/ClanOT-BookItalic.otf");
+}
+@font-face {
+	font-family: 'ClanOT-Medium';
+	src: url("../fonts/ClanOT/ClanOT-Medium.otf");
+}
+@font-face {
+	font-family: 'ClanOT-MediumItalic';
+	src: url("../fonts/ClanOT/ClanOT-MediumItalic.otf");
+}
+@font-face {
+	font-family: 'ClanOT-News';
+	src: url("../fonts/ClanOT/ClanOT-News.otf");
+}
+@font-face {
+	font-family: 'ClanOT-NewsItalic';
+	src: url("../fonts/ClanOT/ClanOT-NewsItalic.otf");
+}
+@font-face {
+	font-family: 'RSU_BOLD';
+	src: url("../fonts/RSUBold/RSU_BOLD.ttf");
+}
+.font-quark-light{
+	font-family: 'Quark-Light' !important;
+}
+.font-clanOt-news{
+	font-family: 'ClanOT-News' !important;
+}
+h5 span.font-quark-light {
+	font-size: 22px !important;
+	font-weight: bold;
+}
+h4 span.font-clanOt-news {
+	font-size: 18px !important;
+}
+#faq .font-quark-light h4{
+	font-family: 'Quark-Light' !important;
+	font-weight: bold;
+}
+#faq .font-clanOt-news h4{
+	font-family: 'ClanOT-News' !important;
+	font-weight: bold;
+}
+.font-quark-menu-left{
+	font-family: 'Quark-Light' !important;
+	font-size: 20px !important;
+}
+.font-clanOt-medium-menu-left{
+	font-family: 'ClanOT-News' !important;
+	font-size: 14px !important;
+}
+.font-quark-menu-header{
+	font-family: 'Quark-bold' !important;
+	font-size: 20px !important;
+}
+.font-clanOt-menu-header{
+	font-family: 'ClanOT-News' !important;
+	font-size: 14px !important;
+}
+
+.font-quark-pin-btn .pinBtn,.font-quark-pin-btn{
+	font-family: 'Quark-bold' !important;
+	font-size: 36px !important;
+}
+.font-clanOt-pin-btn .pinBtn{
+	font-family: 'ClanOT-News' !important;
+	font-size: 32px !important;
+}
+
+.font-quark-label,.font-quark-label h5{
+	font-family: 'Quark-Light' !important;
+	font-size: 18px !important;
+	/* font-weight: bold !important; */
+}
+.font-clanOt-label,.font-clanOt-label h5{
+	font-family: 'ClanOT-News' !important;
+	font-size: 14px !important;
+}
+
+.font-quark-header,.font-quark-header h4{
+	font-family: 'Quark-bold' !important;
+	font-size: 24px !important;
+}
+.font-clanOt-header,.font-clanOt-header h4{
+	font-family: 'ClanOT-News' !important;
+	font-size: 20px !important;
+}
+
+.font-quark-header h2{
+	font-family: 'Quark-bold' !important;
+	font-size: 22px !important;
+}
+.font-clanOt-header h2{
+	font-family: 'ClanOT-News' !important;
+	font-size: 18px !important;
+}
+.font-quark-header a,.font-quark-header i{
+	font-family: 'Quark-bold' !important;
+	font-size: 20px !important;
+}
+.font-clanOt-header a,.font-clanOt-header i{
+	font-family: 'ClanOT-News' !important;
+	font-size: 16px !important;
+}
+
+
+
+.font-quark-label-small{
+	font-family: 'Quark-Light' !important;
+	font-size: 14px !important;
+}
+
+.font-clanOt-label-small{
+	font-family: 'ClanOT-News' !important;
+	font-size: 10px !important;
+	/* font-weight: bold; */
+}
+.font-quark-label-medium{
+	font-family: 'Quark-Light' !important;
+	font-size: 16px !important;
+}
+
+.font-clanOt-label-medium{
+	font-family: 'ClanOT-News' !important;
+	font-size: 12px !important;
+	/* font-weight: bold; */
+}
+
+.font-quark-tab-menu-small,#tab.font-quark-tab-menu-small span{
+	font-family: 'Quark-bold' !important;
+	font-size: 11px !important;
+}
+
+.font-clanOt-tab-menu-small,#tab.font-clanOt-tab-menu-small span{
+	font-family: 'ClanOT-News' !important;
+	font-size: 9px !important;
+}
+.font-quark-label-display{
+	font-family: 'Quark-Light' !important;
+	font-size: 15px !important;
+}
+
+.font-clanOt-label-display{
+	font-family: 'ClanOT-Book' !important;
+	font-size: 12px !important;
+	/* font-weight: bold; */
+}
+.font-clanOt-label-display .bankName-other-acc{
+	font-size: 10px !important;
+}
+
+.icon-fontello{
+	font-family: "fontello" !important;
+}
+
+/*** menu icon ***/
+@font-face {
+	font-family: 'fontello';
+	src: url('../fonts/fontTelloIcon/fontello.eot?22747831');
+	src: url('../fonts/fontTelloIcon/fontello.eot?22747831#iefix') format('embedded-opentype'),
+		 url('../fonts/fontTelloIcon/fontello.woff2?22747831') format('woff2'),
+		 url('../fonts/fontTelloIcon/fontello.woff?22747831') format('woff'),
+		 url('../fonts/fontTelloIcon/fontello.ttf?22747831') format('truetype'),
+		 url('../fonts/fontTelloIcon/fontello.svg?22747831#fontello') format('svg');
+	font-weight: normal;
+	font-style: normal;
+  }
+.icon-fontello{
+		font-family: "fontello" !important;
+}
+
+.icon-c32:before {
+	color: #594F74;
+	font-size: 32px !important;
+	font-family: "fontello";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 32px;
+}
+.icon-c24:before {
+	color: #594F74;
+	font-size: 24px !important;
+	font-family: "fontello";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 24px;
+}
+.icon-w:before {
+	color: #ffffff;
+	font-size: 24px !important;
+	font-family: "fontello";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 24px;
+}
+
+.icon-w32 {
+	color: #ffffff;
+	font-size: 37px !important;
+	font-family: "fontello";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 45px;
+	padding-left: 10px;
+}
+
+.icon-menu-changepass:before {
+	content: url("../images/icon/32/menu_Change-Password.png");
+}
+.icon-menu-settings:before {
+	content: url("../images/icon/24/menu_setting.png");
+}
+.icon-menu-faq:before {
+	content: url("../images/icon/24/menu_FAQ.png");
+}
+.icon-menu-language:before {
+	content: url("../images/icon/32/menu_Language.png");
+}
+
+.icon-promotion {
+	background-image: url("../images/promotion.png");
+}
+.icon-ncb:before { content: '\e800'; } /* '' */
+.icon-digital-allten:before { content: '\e801'; } /* '' */
+.icon-risk-assessment:before { content: '\e802'; } /* '' */
+.icon-book-open:before { content: '\e803'; } /* '' */
+.icon-book-open-1:before { content: '\e804'; } /* '' */
+.icon-promptpay:before { content: '\e805'; } /* '' */
+.icon-card-id:before { content: '\e806'; } /* '' */
+.icon-mobile-phone:before { content: '\e807'; } /* '' */
+.icon-noti_ndid:before { content: '\e808'; } /* '' */
+.icon-passbook:before { content: '\e809'; } /* '' */
+.icon-view-statement:before { content: '\e80a'; } /* '' */
+.icon-accountactivation:before { content: '\e80b'; } /* '' */
+.icon-mutual-fund2:before { content: '\e80c'; } /* '' */
+.icon-transaction-history:before { content: '\e80d'; } /* '' */
+.icon-logout:before { content: '\e80e'; } /* '' */
+.icon-bill-payment:before { content: '\e80f'; } /* '' */
+.icon-mobile:before { content: '\e810'; } /* '' */
+.icon-schedule:before { content: '\e811'; } /* '' */
+.icon-other-account:before { content: '\e812'; } /* '' */
+.icon-fund-transfer:before { content: '\e813'; } /* '' */
+.icon-my-account:before { content: '\e814'; } /* '' */
+.icon-email:before { content: '\e815'; } /* '' */
+.icon-setting:before { content: '\e816'; } /* '' */
+.icon-language:before { content: '\e817'; } /* '' */
+.icon-termsandconditions:before { content: '\e818'; } /* '' */
+.icon-services:before { content: '\e819'; } /* '' */
+.icon-forgotresetpassword2:before { content: '\e81a'; } /* '' */
+.icon-megaphone:before { content: '\e81b'; } /* '' */
+.icon-locate-us:before { content: '\e81c'; } /* '' */
+.icon-mutual-fund:before { content: '\e81d'; } /* '' */
+.icon-change-password:before { content: '\e81e'; } /* '' */
+.icon-mail-squared:before { content: '\e81f'; } /* '' */
+.icon-megaphone-1:before { content: '\e820'; } /* '' */
+.icon-forgotusername2:before { content: '\e821'; } /* '' */
+.icon-contact-us2:before { content: '\e822'; } /* '' */
+.icon-request-to-pay02:before { content: '\e823'; } /* '' */
+.icon-qr:before { content: '\e824'; } /* '' */
+.icon-request-to-pay:before { content: '\e825'; } /* '' */
+.icon-request-to-pay03:before { content: '\e826'; } /* '' */
+.icon-buy-fund:before { content: '\e827'; } /* '' */
+.icon-faq:before { content: '\e828'; } /* '' */
+.icon-block:before { content: '\e829'; } /* '' */
+.icon-change-mobile:before { content: '\e82a'; } /* '' */
+.icon-face-id:before { content: '\e82b'; } /* '' */
+.icon-fingerprint:before { content: '\e82c'; } /* '' */
+.icon-login_2:before { content: '\e82d'; } /* '' */
+.icon-face-id_2:before { content: '\e82e'; } /* '' */
+.icon-fund-fact-sheet:before { content: '\e82f'; } /* '' */
+.icon-address-book:before { content: '\f2b9'; } /* '' */
+.icon-address-book-o:before { content: '\f2ba'; } /* '' */
+
+.popup-body input{
+	font-family: 'Quark-Light' !important;
+}
+.txtmiddle{
+	vertical-align: middle !important;
+}
+.chevronRight{
+	font-size: 20px;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+.statement-group-list{
+	text-align: center;
+	background-color: #fff;
+	height:35px;
+	font-weight: bold;
+	padding-top:10px;
+	color: #646366;
+}
+.statement-list{
+	background-color: #DEDEDE;border-radius: 5px;color:#000;
+}
+
+.platform-ios.platform-cordova .ios-bar-maintain{
+    padding-top: 15pt;
+}
+
+
+/* Register Any id styles*/
+
+/*set default bg color*/
+.icon-anyid-tumb, .icon-anyid-tumb-list, .icon-anyid-tumb-confirm, .icon-anyid-register-tumb, .icon-anyid-tumb-slip, .container-anyid-type-select .active{
+	background-color:#594F74;
+}
+
+.icon-anyid-tumb{
+	position: absolute;
+	font-size: 37px;
+    text-align: center;
+    color: white;
+    line-height: 45px;
+}
+.position-relative{
+	position: relative;
+}
+.icon-anyid-tumb-list{
+	font-size: xx-large;
+    text-align: center;
+    color: white;
+    line-height: 38px;
+}
+
+.icon-anyid-tumb-confirm{
+	font-size: 37px;
+    text-align: center;
+    color: white;
+    line-height: 45px;
+}
+
+.icon-anyid-tumb-slip{
+	font-size: 37px;
+    text-align: center;
+    color: white;
+    line-height: 55px;
+}
+
+.icon-anyid-register-tumb {
+	font-size: 37px;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+}
+.icon-anyid-selecbutton{
+	background-color:#CCC;
+	font-size: xx-large;
+    text-align: center;
+    color: white;
+     line-height: 45px;
+     margin: 0 auto;
+     cursor: pointer;
+}
+
+.icon-anyid-selecbuttonActive{
+	background-color:#594F74;
+	
+}
+.container-anyid-type-select{
+	max-width: 350px;
+	margin:-10px auto;
+	
+}
+
+.container-anyidAddOther-type-select{
+	max-width: 250px;
+	margin:0 auto;
+	
+}
+
+#addOthertextCenter {
+	 text-align: center  !important;
+}
+
+#qrCode canvas{
+	width: 150px;
+}
+
+
+ion-list .notification-list-active{
+	background: #ebebeb ;
+}
+
+.icon-address-book-o:before {
+	font-family: "fontello";
+	font-weight: normal;
+	font-style: normal;
+	line-height: 32px;
+	font-size:22px!important; 
+	color: #aaa;
+}
+
+.style-icon-contact-phone{
+	right: 2%;
+    top: -2%; 
+	position: absolute;
+}
+.mutualFundTabNevigate {
+	background-color: #594F74 !important;
+	 border-right-style: solid;
+	border-width: 0.05px;  
+	border-color:#b2b2b2 ;
+	color:white;
+}
+.margin-top-50{
+	margin-top: 50%
+}
+
+@media only screen and (max-width: 360px) and (orientation : portrait) { 
+	.font-clanOt-header,.font-clanOt-header h4{
+		font-size: 18px !important;
+	}
+}
+
+.margin-top-50{
+	margin-top: 50%
+}
+
+#qrSection {
+	max-width: 150px;
+	max-height: 150px;
+	margin: 0 auto;
+}
+
+.qrSlipBorder {
+	border: 1px solid #594F74 !important;
+}
+
+.qrSlipPanel{
+	padding-left:18px;
+	padding-right:18px;
+}
+.pos-top25-right10 {
+	top: 25px;
+	right: 10px;
+}
+button.button.icon-w {
+	min-height: 11.5vh !important;
+}
+button.button.icon-w:before {
+	font-size: 40px !important;
+	line-height: 40px !important;
+}

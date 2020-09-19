@@ -1,0 +1,36 @@
+<ion-view> 
+	 <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+	    <h4 class="title" translate="submenu.myReceive"></h4>
+	</ion-header-bar>
+
+    <ion-content class="has-header"  locking="false" overflow-scroll="false" ng-class="fontHeader" has-bouncing="false"> 
+        <div ng-if="!requestToPayList.hasRow" class="row">
+            <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.schedule.billpayment.noData" ></div>
+        </div>	 			
+        <div ng-if="requestToPayList.hasRow" ng-repeat="result in requestToPayList.data" class="group-list">
+            <ion-item class="textSchduleHeader dashboardmainmenucolor" ion-affix data-affix-within-parent-with-class="group-list">
+                <div class="fontSize16px">{{::result.d.date}}&nbsp;<span translate="">{{result.d.month}}</span>&nbsp{{result.d.year}}</div>
+            </ion-item>
+            <ion-list>
+                <ion-item class="dashboard-accordion padd-left0px padd-Right0px borderNone" ng-repeat="record in result.items">
+                    <div class="row padd-bottom padd-left5px padd-Right10px " ng-click="navigationToDetail(record)">
+                        <div style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="col col-50 scheduleMargintop scheduleCommonMargin">
+                            <div class="displayBlock wordBreak fontSize14px themeGreyTextColor " style = "font-family: ClanOT-Bold;">{{::record.requesterFrom}}</div>
+                            <div style="width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis ;font-family: ClanOT-Book;" class="fontSize14px wordBreak" >{{::record.requesterIdTypeLabel || ""}}</div>
+                        </div>
+                        <div style="width:50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"class="col col-50 paddingNone">
+							<div class="wordBreak scheduleFontSizeAlias txtRightAlign">{{::record.statusDesc || ""}}</div>
+							<ion-option-button class="button-assertive" ng-click="deleteRow(record)" translate="label.delete"> </ion-option-button>
+					    </div>	
+                    </div>
+                        
+                    <div class = "row padd-bottom padd-left5px padd-Right10px scheduleBGcolorTitleBar">                              
+                        <div class="col tblAmountColSchedulefundTrf paddingNone scheduletitleBarMargin" align="right">
+                            <span class="wordBreak fontSize14px scheduleAmountLeftMargin">{{::record.amount | currency : ""}}&nbsp;{{::record.currencyCode}}</span>
+                        </div>
+                    </div>                                    
+                </ion-item>  
+            </ion-list>
+        </div>
+    </ion-content> 
+</ion-view>

@@ -1,0 +1,93 @@
+<ion-modal-view id="reciept" title="">
+
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+        <ion-nav-title>
+            <img src="images/Bank_KK.png" class="appTitleIcon" ng-click="closeReceiptModal()"/>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <ion-content class="has-header fundTransferBgimage" scroll="false" overflow-scroll="false"  ng-class="fontContent" has-bouncing="false">
+        <div class="has-header fundTransferReciept-height padd-left0px slipMarginTop" data-ng-init="">
+            <div class="fundTrfBGremove">
+                <div class="dasboardAccord-reciept padding10px boxOfSummitedStatus txtCenterAlign margin-Top5px z-index-2 center90Box">
+                    <span class="fontSize18px">{{fundTransferRequest.status}}</span>
+                </div>
+                <div class="row icon-row slipMarginTop center90Box padZero">
+                    <img ng-src="{{fromImgUrl}}" class="tranCompImgReceipt" ng-style="{ 'background-color': getBankCodeImg(fundTransferRequest.fromBankCode, 'color') }"/>
+                    <div class = "col fundTrfRecieptBorderBlue" ng-style="{ 'border-color': getBankCodeImg(fundTransferRequest.fromBankName, 'color') }" ng-class="fontDisplay">
+                        <div style="width: 67vw" class="text-ellipsis">
+                            <strong class="fontSize13px">{{fundTransferRequest.fromAccountName}}</strong>
+                        </div>
+                        <span>{{fundTransferRequest.maskingFromAccount}}</span>
+                        <div class ="fontSize11px !important">{{fundTransferRequest.fromBankName}}</div>
+                    </div>
+                </div>
+
+                <div class="row transferaccount-amount amount-reciept padd-top30px z-index-2 slipMarginTop center90Box" >
+                    <div class="borderNone txtCenterAlign z-index-2" style="width:100%">
+                        <span class="whiteTextColor font-clanOt-header" >{{fundTransferRequest.amount | currency : ""}} </span>
+                        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                    </div>
+                </div>
+                <div class = "row icon-row center90Box slipMarginTopTo marginToAccount padZero" ng-class="fontDisplay">
+                    <img ng-show="isAnyID" class="icon-fontello tranCompImg icon-anyid-tumb-slip {{anyIDIcon}} tranCompImgReceipt"  ng-src="{{isAnyID ? anyIDIcon : clientImgUrl}}" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(fundTransferRequest.bankCode, 'color') }"/>
+                    <img ng-show="!isAnyID" class="tranCompImgReceipt"  ng-src="{{isAnyID ? anyIDIcon : clientImgUrl}}" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(fundTransferRequest.bankCode, 'color') }"/>
+                    <div class = "col fundTrfRecieptBorderYellow" ng-style="{ 'border-color': getBankCodeImg(fundTransferRequest.bankCode, 'color') }">
+                        <div style="width: 67vw" class="text-ellipsis">
+                            <strong class="fontSize13px">{{fundTransferRequest.toAccountName}}</strong>
+                        </div>
+                        <span>{{fundTransferRequest.maskingToAccount}}</span>
+                        <div class ="fontSize11px !important">{{fundTransferRequest.bankName}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "padd-slip-left" ng-class="fontDisplay">
+                <div class="row">
+                    <div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.ref"></div><div class="col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.transactionRef || fundTransferRequest.referenceNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-33 paddingNone   marginNone font-bold"   translate="label.txnDate"></div><div class="col col-67 paddingNone marginNone lineBreak" style="white-space: nowrap;">{{fundTransferRequest.transactionDate.date}}
+                    <span translate="">{{fundTransferRequest.transactionDate.month}}</span>&nbsp{{fundTransferRequest.transactionDate.year}}&nbsp{{fundTransferRequest.transactionDate.time}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 paddingNone   marginNone font-bold" translate="label.deductDate"></div><div class=" col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.debitDate.date}}&nbsp<span translate="">{{fundTransferRequest.debitDate.month}}</span>&nbsp{{fundTransferRequest.debitDate.year}}</div>
+                </div>
+                <div class="row">
+                    <div class="col  col-33 paddingNone   marginNone font-bold" translate="label.receiveDate"></div><div class=" col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.creditDate.date}}&nbsp<span translate="">{{fundTransferRequest.creditDate.month}}</span>&nbsp{{fundTransferRequest.creditDate.year}}</div>
+                </div>
+
+                <div ng-if="fundTransferRequest.rtpReferenceNo" class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.PayAlertRef"></div><div class=" col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.rtpReferenceNo}}&nbsp</div>
+                </div>
+
+
+                <div class="row">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.sumfeeAmount"></div><span class=" col col-67 paddingNone marginNone">{{fundTransferRequest.feeAmount |  currency : ""}}&nbsp;<span translate="label.currency"></span> </span>
+                </div>
+                <div class="row" ng-show="recurringType === 'Y'">
+                    <div class="col  col-33 paddingNone   marginNone font-bold" translate="label.recurring"></div><div class=" col col-67 paddingNone marginNone lineBreak">{{fundTransferRequest.recurring}}</div>
+                </div>
+                <div class="row paddingNone margin-Top-10px">
+                    <div class="col col-60 paddingNone" style="padding-left: 3px !important">
+                        <div class="row" ng-if="fundTransferRequest.memo">
+                            <div class=" col col-50 paddingNone marginNone font-bold" translate="label.note"></div>
+                        </div>
+                        <div ng-if="fundTransferRequest.memo" class="lineBreak schedulePadd-left margin-Top-8px">{{fundTransferRequest.memo}}</div>
+                    </div>
+                    <div class="col col-40 txtCenterAlign">
+                        <div id="qrSection" ng-if="qrData">
+                            <div  translate="label.verifyQR.labelQR"></div>
+                            <qrcode id="qr" image="image" data="{{qrData}}" size="100" download></qrcode>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div id="qrSection" ng-if="qrData">
+                <div style="text-align: center;" translate="label.verifyQR.labelQR"></div>
+                <qrcode id="qr" style="padding-left: 25px" image="image" data="{{qrData}}" size="100" download></qrcode>
+            </div>-->
+        </div>
+    </ion-content>
+</ion-modal-view>

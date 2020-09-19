@@ -1,0 +1,255 @@
+<ion-side-menus ng-controller="menuCtrl">
+		<ion-side-menu-content>
+			<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+				<ion-nav-title>
+					 <img src="images/Bank_KK.png" class="appTitleIcon" />
+				</ion-nav-title>
+				<ion-nav-buttons side="left">
+					<button hide-when="large" class="button button-icon button-clear ion-navicon" ng-click="toggleLeftMenu()"></button>
+				</ion-nav-buttons>
+				<ion-nav-buttons side="right">
+					<button  class="button button-icon button-clear ion-android-notifications-none" ng-click="gotoNotificationMenu()">
+						<span ng-if="badgeNumber != '0'" class="badge badge-assertive header-badge">{{badgeNumber}}</span>
+				</button>
+				</ion-nav-buttons>
+			</ion-nav-bar>
+			<ion-nav-view name="appContainerView"></ion-nav-view>   
+		</ion-side-menu-content>
+		<ion-side-menu side="left" expose-aside-when="large" id="side-menu" class="backgroundLeftMenu">
+			<div class="list marginTop20Px" >
+				<div class="item item-avatar darkHeadBar" href="#">
+				  <h2 class="marginTop20Px" ng-class="fontLabelMedium">{{firstName}} &nbsp;{{lastName}}</h2>
+				  <p class="marginTop10Px"> <span class="lastLogin" translate="label.lastLogin"></span><span class="fontSize12px whiteTextColor">{{lastLogin}}</span></p>
+				</div>
+			</div>
+			<ion-content class="has-header has-subheader" overflow-scroll="false" has-bouncing="false" ng-style="fontLeftMenuStyle">
+				<div class="group-list">
+					<ion-item class="item-divider dashboardmainmenucolor borderTopWid fontSize18px" translate="label.myService" ion-affix data-affix-within-parent-with-class="group-list" ng-class="fontMenuHeader"></ion-item>
+						<!-- <ion-item class="item-stable item-icon-left" menu-close href="#/myAccount">
+							<i class="icon icon-c32 icon-my-account"></i>
+							<span translate="label.myAccount" ng-class="fontMenuLeft"></span>
+						</ion-item> -->
+						<div class="list-group">
+							<ion-item class="item-stable item-icon-right" href="" 
+								ng-click="toggleGroupMyAccount(groupMyAccount[0])">
+								<div class="item-icon-left">
+								<i class="icon icon-c32 icon-my-account"></i>
+								<span translate="{{groupMyAccount[0].name}}" ng-class="fontMenuLeft"></span>
+							</div>
+							<div class="item-icon-right">
+								<i class="icon" ng-class="isGroupMyAccountShown(groupMyAccount[0]) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+							</div>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="#/myAccount" ng-show="isGroupMyAccountShown(groupMyAccount[0])" >
+							<span translate="{{groupMyAccount[0].items[0].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="#/myAnyIDAccount" ng-show="isGroupMyAccountShown(groupMyAccount[0])" ng-click="gotoMyKKPromptPayPage()">
+							<span translate="{{groupMyAccount[0].items[1].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="" ng-show="isGroupMyAccountShown(groupMyAccount[0])" ng-click="gotoQRGenerator()">
+							<span translate="{{groupMyAccount[0].items[2].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>
+					</div>
+					<ion-item class="item-stable item-icon-left" menu-close href="" ng-click="gotoOtherAccount()">
+						<i class=" icon icon-c32 icon-other-account"></i>
+						<span translate="menu.manageExternalAccount" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close href="" ng-click="gotoFund()">
+						<i class="icon icon-c32 icon-fund-transfer"></i>
+						<span translate="label.fundTransfer" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close ng-click="gotoQRScanner()" href="#/QRScanner">
+						<i class="icon icon-c32 icon-qr"></i>
+						<span translate="label.QRScannerMenu" ng-class="fontMenuLeft"></span>
+					</ion-item>
+		
+						<div class="list-group">
+							<ion-item class="item-stable item-icon-right" href="" 
+									ng-click="toggleGroupPromptPayBillPayment(PromptPayBillPaymentgroups[0])">
+								<div class="item-icon-left">
+								<i class="icon icon-c32 icon-bill-payment"></i>
+								<span translate="{{PromptPayBillPaymentgroups[0].name}}" ng-class="fontMenuLeft"></span>
+							</div>
+							<div class="item-icon-right">
+									<i class="icon" ng-class="isGroupPromptpayShown(PromptPayBillPaymentgroups[0]) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+							</div>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{PromptPayBillPaymentgroups[0].items[0].link}}" 
+									ng-show="isGroupPromptpayShown(PromptPayBillPaymentgroups[0])">
+							<span translate="{{PromptPayBillPaymentgroups[0].items[0].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="#" ng-click="gotoBillRTP()"  
+									ng-show="isGroupPromptpayShown(PromptPayBillPaymentgroups[0])">
+							<span translate="{{PromptPayBillPaymentgroups[0].items[1].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+						</div>
+
+					<div class="list-group">
+							<ion-item class="item-stable item-icon-right" href="" 
+									ng-click="toggleGroupMyRequestToPay(groupMyRequestToPay[0])">
+								<div class="item-icon-left">
+								<i class="icon icon-c32 icon-request-to-pay03"></i>
+								<span translate="{{groupMyRequestToPay[0].name}}" ng-class="fontMenuLeft"></span>
+								<span style = "margin-right:15px;" class="badge badge-assertive" ng-show = "isShowNotiMyRTP">
+									{{notiMyRTP()}}
+								</span>
+							</div>
+							
+							<div class="item-icon-right">
+								<i class="icon" ng-class="isGroupMyRequestToPayShown(groupMyRequestToPay[0]) ? 'ion-chevron-down' : 'ion-chevron-right'"><span  style = "padding-top:5px; margin-bottom:15px;" class="badge badge-assertive">{{notiNumber}}</span> </i>
+							</div>
+								
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMyRequestToPay[0].items[0].link}}" 
+									ng-show="isGroupMyRequestToPayShown(groupMyRequestToPay[0])">
+							<span translate="{{groupMyRequestToPay[0].items[0].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							<!--<span style = "margin-right:15px;" class="badge badge-assertive" ng-show='isShowNotiMyRequest'>
+								{{notiMyRequest()}}
+							</span>-->
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMyRequestToPay[0].items[1].link}}"  
+									ng-show="isGroupMyRequestToPayShown(groupMyRequestToPay[0])">
+							<span translate="{{groupMyRequestToPay[0].items[1].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							<!--<span style = "margin-right:15px;" class="badge badge-assertive" ng-show='isShowNotiMyReceive'>
+								{{notiMyReceive()}}
+							</span>-->
+							</ion-item>    
+					</div>
+
+					<ion-item class="item-stable item-icon-left" menu-close href="#/scheduleFundTransfer" >
+						<i class="icon icon-c32 icon-schedule"></i>
+						<span translate="label.schedule" ng-class="fontMenuLeft"></span>
+					</ion-item>
+
+					<div class="list-group">
+							<ion-item class="item-stable item-icon-right" href="" 
+									ng-click="toggleGroupTransactionHistory(groupTransactionHistory[0])">
+								<div class="item-icon-left">
+								<i class="icon icon-c32 icon-transaction-history"></i>
+								<span translate="{{groupTransactionHistory[0].name}}" ng-class="fontMenuLeft"></span>
+							</div>
+							<div class="item-icon-right">
+									<i class="icon" ng-class="isGroupTransactionHisShown(groupTransactionHistory[0]) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+							</div>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[0].link}}" 
+									ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+							<span translate="{{groupTransactionHistory[0].items[0].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[1].link}}"  
+									ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+							<span translate="{{groupTransactionHistory[0].items[1].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[2].link}}"  
+									ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+							<span translate="{{groupTransactionHistory[0].items[2].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[3].link}}"  
+								ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+								<span translate="{{groupTransactionHistory[0].items[3].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[4].link}}"  
+								ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+								<span translate="{{groupTransactionHistory[0].items[4].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>
+					</div>
+
+					<div class="list-group">
+							<ion-item class="item-stable item-icon-right" href="" 
+									ng-click="toggleGroupMutualFund(groupMutualFund[0])">
+								<div class="item-icon-left">
+								<i class="icon icon-c32 icon-mutual-fund"></i>
+								<span translate="{{groupMutualFund[0].name}}" ng-class="fontMenuLeft"></span>
+							</div>
+							<div class="item-icon-right">
+									<i class="icon" ng-class="isGroupMutualFundShown(groupMutualFund[0]) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+							</div>
+							</ion-item>
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMutualFund[0].items[0].link}}" 
+									ng-show="isGroupMutualFundShown(groupMutualFund[0])">
+							<span translate="{{groupMutualFund[0].items[0].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+		
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMutualFund[0].items[1].link}}" 
+									ng-show="isGroupMutualFundShown(groupMutualFund[0])">
+							<span translate="{{groupMutualFund[0].items[1].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMutualFund[0].items[2].link}}" 
+									ng-show="isGroupMutualFundShown(groupMutualFund[0])">
+							<span translate="{{groupMutualFund[0].items[2].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+							<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMutualFund[0].items[3].link}}" 
+									ng-show="isGroupMutualFundShown(groupMutualFund[0])">
+							<span translate="{{groupMutualFund[0].items[3].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item> 
+
+								<!-- <ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupMutualFund[0].items[3].link}}" 
+									ng-show="isGroupMutualFundShown(groupMutualFund[0])">
+							<span translate="{{groupMutualFund[0].items[3].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>	 -->
+
+							
+
+							</ion-item>  
+						
+							<!--<ion-item class="item-stable item-sub-menu item-icon-right item-accordion" menu-close href="{{groupTransactionHistory[0].items[2].link}}"  
+									ng-show="isGroupTransactionHisShown(groupTransactionHistory[0])">
+							<span translate="{{groupTransactionHistory[0].items[2].subName}}" class="marin-left38" ng-class="fontMenuLeft"></span>
+							</ion-item>-->
+						
+						</div>
+
+					<ion-item class="item-stable item-icon-left" menu-close href="" ng-click="gotoAnyID()">
+						<i class="icon ion-edit"></i>
+						<span translate="menu.registerPromptpay" ng-class="fontMenuLeft"></span>
+					</ion-item>
+				</div>
+
+				<div class="group-list">
+					<ion-item class="item-divider dashboardmainmenucolor fontSize18px" translate="menu.otherService" ion-affix data-affix-within-parent-with-class="group-list" ng-class="fontMenuHeader"></ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close href="#" ng-click="gotoNDIDAuthenPage()">
+						<i class="icon icon-c32 icon-digital-allten"></i>
+						<span translate="label.kkpNdidServices" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close href="#" ng-click="gotoNCBPage()">
+						<i class="icon icon-c32 icon-ncb"></i>
+						<span translate="label.checkNCB" ng-class="fontMenuLeft"></span>
+					</ion-item>
+				</div>
+				<div class="group-list">
+					<ion-item class="item-divider dashboardmainmenucolor fontSize18px" translate="menu.settings" ion-affix data-affix-within-parent-with-class="group-list" ng-class="fontMenuHeader"></ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close href="#/changePIN">
+						<i class="icon icon-c32 icon-change-password"></i>
+						<span translate="label.changePIN" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close href="#/setting">
+						<i class="icon icon-c32 icon-language" ></i>
+						<span translate="label.lang" ng-class="fontMenuLeft" ></span>
+					</ion-item>
+					
+					<!-- LoginSetting -->
+					<ion-item ng-if="isBiometricAvialable"  class="item-stable item-icon-left" menu-close href="#/loginSetting" >
+						<!--image-->
+						<i class="icon icon-c32 icon-login_2"></i>
+						<span translate="label.loginSetting" ng-class="fontMenuLeft"></span>
+					</ion-item>
+
+					<ion-item class="item-stable item-icon-left" menu-close  href="#/manageDevice">
+						<i class="icon icon-c32 icon-change-mobile"></i>
+						<span translate="lbl.manageDevice" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close  href="#/RequestToPayBlockList">
+						<i class="icon icon-c32 icon-block"></i>
+						<span translate="label.myBlocklist" ng-class="fontMenuLeft"></span>
+					</ion-item>
+					<ion-item class="item-stable item-icon-left" menu-close ng-click="logout()" href="#">
+						<i class="icon icon-c32 icon-logout"></i>
+						<span translate="item.logout" ng-class="fontMenuLeft"></span>
+					</ion-item>
+				</div>
+			</ion-content>
+		</ion-side-menu>
+	</ion-side-menus> 
+	<!-- <virtual-keyboard></virtual-keyboard> -->
+	

@@ -1,0 +1,92 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="goBackPage()"  ng-disabled ="checkedBack" translate="label.back" ng-class="fontHeader"></a>
+	    <h4 class="title" translate="label.addBiller"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="submitVerifyPayInfo()"  ng-disabled ="checked" translate="button.next" ng-class="fontHeader"></a>-->
+	</ion-header-bar>
+	
+	<ion-content class="has-header has-subheader" overflow-scroll="false"  locking="false"  has-bouncing="false" ng-class="fontHeader" >
+		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar" translate="header.billerDetail"></h2>
+			<div class="list  paddingRightUnderline">
+				<h5 class="addMyAccountLable" translate="label.billerAliasName"  ng-class="fontLabel" > </h5>
+				<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine ">
+						<i class="icon ion-person placeholder-icon padd-top3px"></i>
+						<input type="text" ng-model="billerPayInfoVerify.billerAliasName"  required="required"   ng-model-options="{ debounce: 500 }"  maxlength="20"/>
+				</label>
+			</div>
+				
+			<ion-item class="billerButtonSelectBill borderNone txtCenterAlign" ng-if = "showBillerButton">
+				<div class="row icon-row paddingNone">
+					<div class="col">
+						<button class="button button-block button-custom themeGreyTextColor"  ng-class="fontLabel" style="background-color: White;  border: 2px solid #dedede;  border-radius: 7px !important; " ng-click="searchBiller()" 
+								translate="label.biller.selectBiller">
+						</button>
+					</div>
+				</div>
+				<div class="row icon-row paddingNone">
+					<div class="col">
+						<button class="button button-block button-custom themeGreyTextColor"  ng-class="fontLabel" style="background-color: White;  border: 2px solid #dedede;  border-radius: 7px !important; " ng-click="scanBiller()" 
+								translate="btn.scanBill">
+						</button>
+					</div>
+				</div>
+			</ion-item>
+
+			<div class="list-bank-add" ng-if = "showBillerButton == false" ng-disabled = "isFromAddNewAfterPayBill">
+				<div class="row item item-thumbnail-left item-icon-right paddingNone greyBGColor  ">
+					<img ng-src="{{billerPayInfo.logoCompany || getDefaultBillerImage(billerPayInfo)}}" class="tranCompImg" style="background-color: #594F74;"/>
+					<div  ng-if ="lang == 'en'"  class="col col-90 thumbnail-detail-add-other-acc padding-Top5px" ng-class="fontDisplay">
+						<div  class="bankName-other-acc text-ellipsis" style="padding-top: 13px">
+							{{ billerPayInfo.billerNameEn }}
+						</div>
+					</div>
+
+					<div ng-click="searchBiller()"  ng-if ="lang == 'th'"  class="col thumbnail-detail-add-other-acc padding-Top5px" ng-class="fontDisplay">
+						<div  class="bankName-other-acc text-ellipsis" style="padding-top: 13px">
+							{{ billerPayInfo.billerNameTh }}
+						</div>
+					</div>
+					<!-- <div class="col col-35"> -->
+						<i class="col col-10 icon ion-ios-close-outline msgIcon fontSize25px" ng-if="!isFromAddNewAfterPayBill" ng-click="closeBiller()"></i> 
+					<!-- </div> -->
+				</div>
+			</div>
+
+			<div class="padd-left18px padd-Right18px" ng-if = "showBillerButton == false" style="margin-bottom: 10px">
+				<h5 translate="label.billerCategory" ng-class="fontLabel"></h5>
+				<div ng-if="lang == 'en'"  class="bankName-other-acc fontSize14px font-quark-label">
+					{{billerPayInfo.categoryEn }} 
+				</div>
+				<div ng-if="lang == 'th'"  class="bankName-other-acc fontSize14px font-quark-label">
+					{{billerPayInfo.categoryTh }} 
+				</div>
+			</div>
+			<div class="padd-left18px padd-Right18px" ng-if = "(showBillerButton == false)&&(billerPayInfo.promptPayBillerId)" style="margin-bottom: 10px">
+				<h5 translate="label.billerId" ng-class="fontLabel"></h5>
+				<div class="bankName-other-acc fontSize14px font-quark-label">
+					{{billerPayInfo.promptPayBillerId }} 
+				</div>
+			</div>
+			<div class="margin-bottom15px">
+				<div ng-repeat="billerInfo in refInfos track by $index"  class="list  paddingRightUnderline" ng-if = "showBillerButton == false && !billerInfo.isHideRef">
+					<h5 ng-if ="lang == 'th'" class="addMyAccountLable"  ng-class="fontLabel" >{{billerInfo.textTh}}</h5>
+					<h5  ng-if ="lang == 'en'" class="addMyAccountLable" ng-class="fontLabel">{{billerInfo.textEn}}</h5>
+					<label ng-if="!isBillerScan" class="item item-input addotherAccountCustomBorder addMyAccountUnderLine ">
+					<i class="icon ion-document-text placeholder-icon padd-top3px"></i>
+						<!-- <input bind-virtual-keyboard vkmodel="billerRefNum[$index]" vkoption="virtualKeyboardRefer.option" type="text"   ng-model="billerRefNum[$index]"   required="required"  maxlength="20"  ng-pattern="myRegex"/> -->
+						<input ng-disabled = "isFromAddNewAfterPayBill" type="text" ng-model="billerRefNum[$index]"  style="background-color: transparent !important;" required="required"    maxlength="20" />
+					</label>
+					<label ng-if="isBillerScan" class="item item-input addotherAccountCustomBorder addMyAccountUnderLine fontSize14px font-quark-label">
+					<i class="icon ion-document-text placeholder-icon padd-top3px"></i>
+						{{billerRefNum[$index]}}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="submitVerifyPayInfo()"  ng-disabled ="checked">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

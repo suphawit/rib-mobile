@@ -1,0 +1,6 @@
+projectKey=rib-mobile-rtp2
+serverUrl=http://10.202.104.203:9100
+serverVersion=6.7.1.35068
+dashboardUrl=http://10.202.104.203:9100/dashboard/index/rib-mobile-rtp2
+ceTaskId=AWJnhL-wjXgNU90gSoPM
+ceTaskUrl=http://10.202.104.203:9100/api/ce/task?id=AWJnhL-wjXgNU90gSoPM

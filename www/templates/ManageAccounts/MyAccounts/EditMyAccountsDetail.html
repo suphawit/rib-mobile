@@ -1,0 +1,27 @@
+<ion-view title="">  
+   
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom">
+		<a class="button button-clear" ng-click="backToEditMyAccounts()" translate="label.back"></a>	 
+	    <h4 class="title" translate="label.editMyAcc"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="editMyOwnAccount()" translate="button.confirm"></a>-->
+	</ion-header-bar>
+	
+<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" has-bouncing="false" ng-class="fontHeader" >
+      <div style="min-height: calc(90vh - 110px)">
+		<h2 class="title-content-bar" translate="label.myAccDetail"></h2>
+			<div ng-show="isSucc" ng-class="fontLabel">
+				<div  class="list list-inset">
+				<p class="confirmDeleteAddMyAccountPad" translate="label.confirmAccNo"> </p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{selectedAccountDataInfo.myAccountNumber}}</p>
+				<p class="confirmDeleteAddMyAccountPad" translate="label.confirmAccAlias"> </p>
+				<p class="confirmDeleteAddMyAccountPadAccount">{{selectedAccountDataInfo.myAccountAliasName}}</p>
+				</div>
+			</div>
+      </div>
+	  <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="editMyOwnAccount()" translate="button.confirm">
+			</button>
+		</div>
+ </ion-content>
+</ion-view>

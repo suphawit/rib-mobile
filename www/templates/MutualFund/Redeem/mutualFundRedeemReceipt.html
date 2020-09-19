@@ -1,0 +1,104 @@
+<ion-modal-view id="reciept"  title=""> 
+    <ion-content has-header="true" scroll="false" overflow-scroll="false">
+        <ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true">
+            <ion-nav-title>
+                <img src="images/Bank_KK.png" class="appTitleIcon" ng-click="closeMutualFundRecieptModal()" />
+            </ion-nav-title>
+        </ion-nav-bar>
+
+        
+        <ion-item scroll="false" class="has-header fundTransferBgimage fundTransferReciept-height padd-left0px" has-bouncing="false">
+                <ion-item scroll="false" class="fundTrfBGremove paddRightNone">
+   
+           <div class="dasboardAccord-reciept padding15px boxOfSummitedStatus txtCenterAlign">
+                        	<span ng-if = "fundResultInfo.fundConnectStatusCode == 'FL'"  translate="label.fundTransferFailStatus"></span>
+				            <span ng-if = "fundResultInfo.fundConnectStatusCode == 'SC'"  translate="label.success"></span>
+                    </div>
+                   
+        <div  class="padd-top10px paddingNone   txtCenterAlign" >
+        <center class="row icon-row"> 
+            <div class="col col-100  padd-top-zero " >
+                <div class="col  col-33 padding   marginNone font-bold" ></div>
+                <div class= "text-ellipsis " style="font-size: 13px; font-weight: bold;">{{fundResultInfo.fundCode}} </div>
+            </div>
+        </center>
+    </div>
+
+
+<div style=" margin-top:10px;  border-top: 1px solid #ddd;" class="padd-bottom10px paddingNone  txtCenterAlign" >
+<center class="row icon-row"> 
+    <div class="col col-100 padd-top-zero padd-bottom10px" style="font-size: 13px; font-weight: bold;">
+        <div class="col  col-33 padding   marginNone font-bold" ></div>
+        <div class= "text-ellipsis ">{{fundResultInfo.unitholderId}}<span>&nbsp;-&nbsp;{{fundResultInfo.unitHolderName}}</span></div>
+    </div>
+</center>
+</div>
+    
+        
+<div  ng-if = " fundResultInfo.amount !== null" class="transferaccount amount-reciept transConfrmAmoutDiv marginTop35Px" style = "width: 89%!important;">
+    <div class="borderNone txtCenterAlign">
+        <span class="whiteTextColor font-clanOt-header tablet-inputAmout-top5px"> {{fundResultInfo.amount | currency : ""}} </span>
+        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+    </div>
+</div>
+
+<div  ng-if = " fundResultInfo.unit !== null" class="transferaccount amount-reciept transConfrmAmoutDiv marginTop35Px" style = "width: 89%!important;">
+    <div class="borderNone txtCenterAlign">
+
+        <span class="whiteTextColor font-clanOt-header tablet-inputAmout-top5px "> {{fundResultInfo.unit}} </span>
+
+        <span class="currencySpan" ng-class="fontLabel" translate="label.mutualFund.unit"></span>
+    </div>
+</div>
+        
+<div class= "padding  padding-left20px" ng-class="fontDisplay">
+    <div class = "padd-top15px">
+        <div class="row"  >
+            <div class=" col col-37 paddingNone    font-bold" translate="label.accNo"></div>
+            <div class=" col col-67 paddingNone   ">{{fundResultInfo.markingAccount}}</div>
+        </div>
+       
+        <div class="row" ng-if="fundResultInfo.fundConnectStatusCode === 'SC'">
+            <div class=" col col-37 paddingNone    font-bold" translate="label.fundTrfCnfm.ref"></div>
+            <div class=" col col-67 paddingNone   ">{{fundResultInfo.confirmOrderDetail.mutualFundRef}}</div>
+        </div>
+
+        <div class="row" ng-if="fundResultInfo.fundConnectStatusCode === 'FL'">
+            <div class=" col col-37 paddingNone    font-bold" translate="label.fundTrfCnfm.ref"></div>
+            <div class=" col col-67 paddingNone   ">{{fundResultInfo.confirmOrderDetail.mutualFundRef}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col col-37 paddingNone  font-bold"  translate="label.orderDate"></div>
+           <div class="col col-67 paddingNone ">{{orderDate.date}}&nbsp;<span  translate="{{orderDate.month}}"></span>&nbsp;{{orderDate.year}} {{orderDate.time}}</div> 
+        </div>
+
+        <div class="row" ng-if="fundResultInfo.fundConnectStatusCode === 'SC'">
+            <div class="col col-37 paddingNone  font-bold" translate="label.deductMutualFund"></div>
+          <div class="col col-67 paddingNone ">{{effectiveDate.date}}&nbsp;<span  translate="{{effectiveDate.month}}"></span>&nbsp;{{effectiveDate.year}}</div>
+        </div>
+
+        <div class="row" ng-if="fundResultInfo.fundConnectStatusCode === 'SC'">
+            <div class="col col-37 paddingNone  font-bold" translate="label.sellSettlementDay" ></div>
+            <div class="col col-67 paddingNone " ng-if="fundResultInfo.sellSettlementDay > 0">{{fundResultInfo.sellSettlementDay}}<span  translate="label.workingDay"></span></div>
+            <div class="col col-67 paddingNone " ng-if="fundResultInfo.sellSettlementDay == 0" translate="label.deductMutualFund"></div>
+        </div>
+
+        <div class="row">
+            <div class="col col-37 paddingNone  font-bold" translate="label.input.Status"></div>
+
+            <div ng-if="fundResultInfo.fundConnectStatusCode === 'SC'" class="col col-67 paddingNone"><span translate="label.success"></span><span ng-if="fundResultInfo.fundConnectStatusDesc !== null"> - {{fundResultInfo.fundConnectStatusDesc}}</span></div>
+            <div ng-if="fundResultInfo.fundConnectStatusCode === 'FL'" style="white-space: initial;" class="col col-67 paddingNone"><span translate="label.fundTransferFailStatus"></span>
+            <span ng-if="fundResultInfo.fundConnectStatusDesc !== null"> - {{fundResultInfo.fundConnectStatusDesc}}</span></div>
+		</div>
+        <div class="row"  ng-if="fundResultInfo.remarkMessageForPreorderSell !== null && fundResultInfo.remarkMessageForPreorderSell !== undefined">
+            <div class="col col-37 paddingNone  font-bold" translate="label.remark"></div>
+            <div class="col col-67 paddingNone " style="white-space: initial;">{{fundResultInfo.remarkMessageForPreorderSell}}</div>
+        </div>
+
+    </div>
+</div>
+</ion-item>
+</ion-item>
+    </ion-content> 
+</ion-modal-view>

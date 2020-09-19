@@ -1,0 +1,33 @@
+<div class="row" ng-class="fontstyle.body">
+    <div class="col col-67 col-offset-20">
+        <div class="row txtCenterAlign">
+            <div class="col paddingNone marginNone font-bold" translate="label.checkInfo"></div>
+        </div>
+        <div class="row">
+            <div class="col col-33 paddingNone marginNone font-bold" translate="label.email"></div>
+            <div class="col col-67 paddingNone marginNone">{{::confirmdata.email}}</div>
+        </div>
+        <div class="row">
+            <div class="col col-33 paddingNone marginNone font-bold" translate="label.mobileNo"></div>
+            <div class="col col-67 paddingNone marginNone">{{::confirmdata.mobile}}</div>
+        </div>
+    </div>
+</div>
+<h5 class="padd-left15px padd-topq10px" translate=label.input.otp ng-class="fontstyle.label"></h5>
+<div class="row padd-left10px">
+    <label id="view" class="item item-input addotherAccountCustomBorder"> <i
+        class="icon ion-android-lock placeholder-icon fontSize20px"></i>
+        
+    </label>
+    <button class="button getOTPTransfer"
+          ng-class="fontLabel" ng-disabled="control.isDisabled" ng-click="input.requestOTP()" translate=label.getOtp></button>
+</div>
+<div class="otp-section-desc" ng-show="otpdata.referenceNo">
+    <div class="row">
+        <span translate="otp.desc.mobileno"></span>
+        <strong><span class="font-color-kkblue">&nbsp;{{otpdata.mobileNumber}}</span></strong>
+    </div>
+    <div class="row">
+        <span translate="otp.desc.validity"></span>
+    </div>
+</div>

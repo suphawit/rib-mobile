@@ -1,0 +1,331 @@
+<ion-view id="funtransfer">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="goBackPage()" translate="label.back" ng-if="isShowBack"></a>
+        <h4 class="title" translate="label.transfer"></h4>
+        <!--<a class="button button-clear" ng-click="showConfirmPage()" ng-class="fontHeader" translate="button.next" ng-if="showNext"></a>-->
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <div class="item-divider selectFromAccountItem selectFromAccountItemButt" ng-if="showSelectBtn">
+                <button class="button button-light" ng-class="fontLabel" ng-click="selectAccount()"
+                        translate="label.selecFromAccounts"></button>
+            </div>
+            <ion-item class="item-divider fundTransGreyTopArea" ng-if="showSelectFromAccountDetails"
+                      ng-click="selectAccount()">
+                <div>{{fundObj.selectedFromName}}</div>
+                <div>{{fundObj.selectedFromAccNo}}</div>
+                <span translate="label.availableBalance"></span>
+                <span>{{fundObj.selectedFromTotalActBalance | currency : ""}}</span>
+                <span translate="label.currency"></span>
+            </ion-item>
+            <div class="transferaccount txtCenterAlign">
+                <label class="item item-input themeDarkBlueBGColor">
+                    <input bind-virtual-keyboard
+                           vkmodel="fundObj.amount"
+                           vkoption="virtualKeyboardAmount.option"
+                           onvkkeyup="virtualKeyboardAmount.onkeyup(value)"
+                           onvkblur="virtualKeyboardAmount.onblur()"
+                           onvkfocus="virtualKeyboardAmount.onfocus()"
+                           type="text"
+                           class="whiteTextColor txtCenterAlignTextBox resizedEnterAmtTextbox font-clanOt-header"
+                           ng-model="fundObj.amount" placeholder="{{placeholderAmount}}"/>
+                </label>
+                <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+            </div>
+
+            <div id="divBtn" ng-if="isPanelButtonsShow" class="margin-bottom15px">
+                <div class="row txtCenterAlign">
+                    <div class="col themeGreyTextColor" ng-class="fontLabel" translate="label.savingTo"></div>
+                </div>
+                <div class="row icon-row">
+                    <div class="col text-center scheduleBtns">
+                        <button class="button button-block button-custom themeGreyTextColor" ng-class="fontLabel"
+                                ng-click="selectNewAccount();" translate="label.newAccount"></button>
+                    </div>
+                    <div class="col text-center scheduleBtns">
+                        <button class="button button-block button-custom themeGreyTextColor" ng-class="fontLabel"
+                                ng-click="selectAccountFromList();" translate="label.fromList"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-Top-20px padd-left20px padd-Right20px" ng-if="isAccountFromList">
+                <div class="col col-90 transferTxnPad" ng-click="selectAccountFromList()">
+                    <div class="item item-thumbnail-left item-icon-right paddingNone">
+                        <img ng-src="{{checkIsAnyID(selectedAnyIDType) ? getAnyIDIcon(selectedAnyIDType) : clientImgUrl}}"
+                             class="tranCompImg"
+                             ng-style="{ 'background-color': checkIsAnyID(selectedAnyIDType) ? '#594F74' :  getBankCodeImg(accountDetails.bankCode, 'color') }"/>
+                        <div class="thumbnail-detail themeGreyTextColor" ng-class="fontMain">
+                            <div class="themeGreyTextColor  text-ellipsis">{{accountDetails.accountAliasName}}</div>
+                            <div class="thumbnail-acc-no ">{{accountDetails.accountNumber}}</div>
+                            <div class="thumbnail-to-bank ">{{toBankName}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="text-align: right;" ng-if="!isRTP">
+                    <i class="icon ion-ios-close-outline msgIcon fontSize25px" ng-click="setSelectFromList('BTN')"
+                       ng-if="isAccountFromList||isNewAccount"></i>
+                </div>
+            </div>
+
+            <div class="row" ng-show="isNewAccount">
+                <div class="col row margin-Top-20px">
+
+                    <div class="row padZero">
+                        <div class="col padd-Right10px txtRightAlign">
+                            <i class="icon ion-ios-close-outline msgIcon fontSize25px"
+                               ng-click="setSelectFromList('BTN')"
+                               ng-if="(isAccountFromList||isNewAccount) && !isFormQRScanner"></i>
+                        </div>
+                    </div>
+
+                    <div class="row col margin-Top-35px" style="padding-left:20px;padding-right:20px">
+                        <h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel"
+                            translate="label.typeAnyID"></h5>
+                        <any-id-type-list-swiper override-parameters="anyIdTypeListSwiper.overrideParams"
+                                                 active-item="{{anyIdTypeListSwiper.activeItem}}"
+                                                 items="anyIdTypeList"
+                                                 on-data-updated="anyIdTypeListSwiper.invokes(value)"
+                                                 options="dirOptions"></any-id-type-list-swiper>
+                        <div class="wordBreak themeGreyTextColor line-bottom txtCenterAlign" ng-class="fontLabelSmall">{{anyidTypeDescriptionName}}</div>
+                    </div>
+                    <div ng-show="isAcctNo" class="row col">
+                        <h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel"
+                            translate="label.bankName"></h5>
+                        <banklist-swiper override-parameters="bankListSwiper.overrideParams"
+                                         items="banksList"
+                                         on-data-updated="bankListSwiper.invokes(value)"
+                                         options="dirBankCodeOptions"></banklist-swiper>
+                        <div class="wordBreak themeGreyTextColor line-bottom txtCenterAlign" ng-class="fontLabelSmall">{{displaySelectedBankName}}</div>
+                    </div>
+
+
+                    <div ng-switch="selectedAnyIDType">
+                        <h5 class="padd-left20px themeGreyTextColor" ng-class="fontLabel"> {{anyidTypeLabelName}}</h5>
+                        <div class="item item-input marginLeft20Px addotherAccountCustomBorder addMyAccountEditDetailUnderLine"
+                             style="width:90%">
+                            <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                            <div ng-if="isStringDataType" style="width:100%">
+                                <input type="text" ng-model="fundObj.toAccountNo"
+                                       maxlength="{{fundObj.anyidTypeLength}}"/>
+                            </div>
+                            <div ng-if="!isStringDataType" style="width:85%">
+                                <input bind-virtual-keyboard vkmodel="fundObj.toAccountNo"
+                                       vkoption="virtualKeyboardAccount.option"
+                                       type="text"
+                                       onvkblur="(selectedAnyIDType !== 'MSISDN' || isFormQRScanner) || validateMobileNo(fundObj.clientPhoneNo, 'toAccountNo')"
+                                       class="margin-account-input font-clanOt-label"
+                                       ng-model="fundObj.toAccountNo"/>
+                            </div>
+                            <i class="icon icon-c32 icon-address-book-o style-icon-contact-phone"
+                               ng-if="selectedAnyIDType == 'MSISDN' && !isFormQRScanner"
+                               ng-click="getContactPhone('toAccountNo')"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="isShowAccountName && (isAccountFromList||isNewAccount) && isCasa">
+                <div class="col row">
+                    <h5 class="padd-left20px themeGreyTextColor" translate="label.accName" ng-class="fontLabel"></h5>
+                    <label class="item item-input marginLeft20Px addotherAccountCustomBorder addMyAccountEditDetailUnderLine">
+                        <i class="icon ion-person placeholder-icon fontSize25px"></i>
+                        <input type="text" account-name-validation ng-model="fundObj.toAccountName"
+                               placeholder="{{'label.placeholder.accountName' | translate }}"
+                               ng-disabled="(accountDetails.accountName != '') && isDisableAccname"/>
+                    </label>
+                    <span class="padd-left20px themeDarkGreyTextColor" translate="label.PleaseInputAccountName"></span>
+                </div>
+            </div>
+
+            <div class="row padd-left15px"
+                 ng-if="(isAccountFromList||isNewAccount)&&isCasa&&!isOwnerAccount">
+                <div class="col marginLeft20Px">
+                    <div class="row icon-row transferTxnPad">
+                        <!--<a href="" class="col paddingNone textNOStyle">
+							<span id="fundTrasnPhoneCircleIconID" class="transferDrawCircle whiteTextColor"
+                                  ng-class="{'themeDarkBlueBGColor': !isDataEmpty(clientPhoneNo) , 'themeLightGreyBGColor': isDataEmpty(clientPhoneNo)}">
+								<i class="icon ion-ios-telephone-outline fontSize20px"></i>
+							</span>
+                        </a>
+                        <a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span ng-if="clientPhoneNo" id="fundTrasnPhoneValID" class="themeDarkGreyTextColor">{{clientPhoneNo}}</span>
+                            <span ng-hide="clientPhoneNo" class="themeLightGreyTextColor"
+                                  translate="label.placeholder.mobile"></span>
+                        </a>-->
+                        <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine"
+                             style="width:100%">
+                            <span id="fundTrasnPhoneCircleIconID" class="transferDrawCircle whiteTextColor"
+                                  ng-class="{'themeDarkBlueBGColor': !isDataEmpty(fundObj.clientPhoneNo) , 'themeLightGreyBGColor': isDataEmpty(fundObj.clientPhoneNo)}">
+                                <i class="icon ion-ios-telephone-outline fontSize20px"></i>
+                            </span>
+                            <input bind-virtual-keyboard vkmodel="fundObj.clientPhoneNo"
+                                   onvkblur="validateMobileNo(fundObj.clientPhoneNo, 'clientPhoneNo')"
+                                   vkoption="virtualKeyboardMobileNo.option" type="text"
+                                   class="themeDarkGreyTextColor marginLeft20Px"
+                                   ng-model="fundObj.clientPhoneNo"
+                                   ng-model-options="{ updateOn: 'blur', debounce: 500 }"
+                                   id="clientPhoneNo" maxlength="10"/>
+                            <i class="icon icon-c32 icon-address-book-o style-icon-contact-phone"
+                               ng-click="getContactPhone('clientPhoneNo')"></i>
+                        </div>
+                    </div>
+
+                    <div class="row icon-row transferTxnPad">
+                        <!--<a href="" class="col paddingNone textNOStyle">
+						<span id="fundTrasnEmailCircleIconID" class="transferDrawCircle whiteTextColor"
+                              ng-class="{'themeDarkBlueBGColor': !isDataEmpty(clientEmailId) , 'themeLightGreyBGColor': isDataEmpty(clientEmailId)}">
+							<i class="icon ion-ios-email-outline fontSize20px"></i>
+						</span>
+                        </a>
+                        <a href="" class="col col-90 paddingNone textNOStyle margin-Top5px">
+                            <span ng-if="clientEmailId" id="fundTrasnEmailValID" class="themeDarkGreyTextColor">{{clientEmailId}}</span>
+                            <span ng-hide="clientEmailId" class="themeLightGreyTextColor"
+                                  translate="label.placeholder.email"></span>
+                        </a>-->
+                        <div class="item item-input addotherAccountCustomBorder addMyAccountEditDetailUnderLine"
+                             style="width:100%">
+                            <span id="fundTrasnEmailCircleIconID" class="transferDrawCircle whiteTextColor"
+                                  ng-class="{'themeDarkBlueBGColor': !isDataEmpty(fundObj.clientEmailId) , 'themeLightGreyBGColor': isDataEmpty(fundObj.clientEmailId)}">
+                                <i class="icon ion-ios-email-outline fontSize20px"></i>
+                            </span>
+                            <input type="text"
+                                   class="themeDarkGreyTextColor marginLeft20Px"
+                                   ng-model="fundObj.clientEmailId"
+                                   ng-model-options="{ updateOn: 'blur', debounce: 500 }"
+                                   ng-blur="validateEmail(fundObj.clientEmailId)" id="clientEmailId" maxlength="40"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="isCasa">
+                <div class="txtCenterAlign borderTop1Px padd-top10px padd-bottom5px themeGreyTextColor"
+                     ng-class="fontLabel">
+                    <span translate="label.receiveDate"></span>&nbsp; <span>{{weekDayArray | translate}}</span>&nbsp;{{date}}&nbsp;<span>{{monthFullArray | translate}}</span>&nbsp;{{year}}
+                </div>
+                <ion-item class="item-divider todayLaterItem">
+                    <div class="row icon-row">
+                        <div class="col text-center scheduleBtns " ng-class="transTodayScheduleDate"
+                             id="TransTodayScheduleDate">
+                            <button class="button button-block button-custom" ng-class="fontLabel"
+                                    translate="label.today" ng-click="selectTodayScheduleDate()"></button>
+                        </div>
+                        <div class="col text-center scheduleBtns" ng-class="transFutureScheduleDate"
+                             id="TransFutureScheduleDate">
+                            <button class="button button-block button-custom" ng-class="fontLabel"
+                                    translate="label.future" ng-click="selectFutureScheduleDate()"></button>
+                        </div>
+                    </div>
+                </ion-item>
+                <div class="row icon-row" ng-if="isShowRecurringForm">
+                    <div class="col text-center paddingNone txtCenterAlign">
+                        <p class="recurring themeGreyTextColor" ng-class="fontLabel" translate="label.recurring"></p>
+                    </div>
+                    <div class="col text-center yesNoButton padd-Right20px ">
+                        <div class="button-bar">
+                            <a class="button" ng-class="{'button-custom': isRecurringEnabled == true }"
+                               ng-click="setRecurringEnabled(true)" translate="label.yes"></a>
+                            <a class="button" ng-class="{'button-custom': isRecurringEnabled == false }"
+                               ng-click="setRecurringEnabled(false)" translate="label.no"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row txtCenterAlign padding-dropdown" ng-if="isRecurringEnabled">
+                    <div class="col text-center">
+                        <div class="styled-select styled-select-removepadding">
+                            <select ng-model="selectedPeriodTypeOption"
+                                    ng-options="option.name for option in recurringTypesOptions" ng-class="fontLabel"
+                                    ng-change="setScheduleType(selectedPeriodTypeOption)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="styled-select styled-select-removepadding">
+                            <select ng-model="selectedtimeOfPeriodTypeOption"
+                                    ng-options="option.name for option in timeOfRecurringTypesOptions"
+                                    ng-class="fontLabel" ng-change="setTimeType(selectedtimeOfPeriodTypeOption)">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Transfer to TD -->
+            <div ng-hide="showTDTermsnConditions">
+                <div class="txtCenterAlign borderTop1Px padding10px" ng-if="toShowTodayDateDiv">
+                    <span translate="label.receiveDate"></span> <span>{{recieveDate}}</span>
+                </div>
+                <ion-item class="item-divider todayLaterItem" ng-if="toShowTodayFutureButtons">
+                    <div class="row icon-row">
+                        <div class="col text-center scheduleBtns" ng-class="transTodayScheduleDate"
+                             id="TransTodayScheduleDate">
+                            <button class="button button-block button-custom" ng-class="fontLabel"
+                                    translate="label.today" ng-click="selectTodayScheduleDate()"></button>
+                        </div>
+                        <div class="col text-center scheduleBtns" ng-class="transFutureScheduleDate"
+                             id="TransFutureScheduleDate">
+                            <button class="button button-block button-custom" ng-class="fontLabel"
+                                    translate="label.future" ng-click="selectFutureScheduleDate()"></button>
+                        </div>
+                    </div>
+                </ion-item>
+                <div class="row icon-row" ng-if="toShowRecurringButtons">
+                    <div class="col text-center paddingNone txtCenterAlign">
+                        <p class="recurring" translate="label.recurring"></p>
+                    </div>
+                    <div class="col text-center yesNoButton padd-Right20px">
+                        <div class="button-bar">
+                            <a class="button" ng-class="{'button-custom': isRecurringEnabled == true }"
+                               ng-click="setRecurringEnabled(true)" translate="label.yes"></a>
+                            <a class="button" ng-class="{'button-custom': isRecurringEnabled == false }"
+                               ng-click="setRecurringEnabled(false)" translate="label.no"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="termCon txtCenterAlign fontSize12px padding10px" ng-if="showTDTermsnConditions">
+                <div class="row themeDarkGreyBGColor">
+                    <div class="col col-66 web-tblrow-data-link" translate="label.tdstatement.Term"></div>
+                    <div class="col col-33 tableHeaderWhiteLine" translate="label.tdstatement.InterestCondition"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-66">
+                        <div class="styled-select">
+                            <select ng-model="selected_term_type" class="fontSize14px"
+                                    ng-options="option.productTypeDescription + ' - ' + option.term_description for option in options_term_type"
+                                    ng-change="onChangeTermType(selected_term_type)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col col-33">
+                        <div class="styled-select">
+                            <select id="select_field_term_freq">
+                                <option value="{{option}}"
+                                        ng-repeat="option in options_term_freq | filter:filterfreq">
+                                    {{option.freq_description}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row paddingNone" ng-if="showTDTermsnConditions && benefitAccountList.length > 0">
+                <div class="col paddingNone">
+                    <div class="item-divider greyButtonBar">
+                        <button style="width:auto !important;" class="button button-light"
+                                ng-if="!showSelectBenefitAccountDetail" ng-class="fontLabel"
+                                translate="label.selectBenefitAccount" ng-click="selectBenefitAccount(true)"></button>
+                        <div ng-click="selectBenefitAccount(false)" ng-if="showSelectBenefitAccountDetail">
+                            {{benefitAccountNumber}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="button.next"
+                    ng-click="showConfirmPage()" ng-if="showNext">
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

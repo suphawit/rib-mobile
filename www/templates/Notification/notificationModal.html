@@ -1,0 +1,13 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">		 
+	    <h4 ng-if="titleLabel == undefined && titleLabel == ''" class="title noneLeftRight" translate="lable.informationHeadNoti"></h4>
+		<h4 ng-if="titleLabel != undefined && titleLabel != ''" class="title noneLeftRight">{{titleLabel}}</h4>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a>
+	</ion-header-bar>
+    <ion-content >
+    	<div class="row">
+    		<div style="width: 100%;" ng-bind-html="termAndCondText"></div>
+    	</div>
+    	<div style="height:88px;"></div>
+    </ion-content>
+  </ion-modal-view>

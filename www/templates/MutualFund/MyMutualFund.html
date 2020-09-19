@@ -1,0 +1,23 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+		<h4 class="title" translate="label.myMutualFund"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false"> 
+		
+		<ion-list>
+			<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor fontHeader" >
+				<div class = "row font-clanOt-label fontSize18px">
+					<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"  translate="label.mutualFund"></span>
+				</div>
+			</ion-item>
+
+			<ion-item ng-repeat="result in resultMenu track by $index"  style = "border-color: #f8f8f8;" class="item-stable item-icon-right dasboardAccord padding-right5px item-header-height"  >
+				<div class="row padd-bottom padd-top-zero padd-Right10px" ng-click="navigateMyMutualFund(result)">
+					<i class="icon ion-chevron-right placeholder-icon fontSize25px whiteTextColor padd-right2px"></i>
+					<label ng-class="fontHeader">{{result.subName | translate}}</label>
+				</div>
+			</ion-item>
+		</ion-list>
+
+	</ion-content>
+ </ion-view>

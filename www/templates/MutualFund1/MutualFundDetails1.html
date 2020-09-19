@@ -1,0 +1,47 @@
+<ion-view title="" cache-view="false">
+	  
+	  <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear"  ng-click="backToMutualFund()" translate="label.back"></a>
+	    <h4 class="title" translate="label.mutualFund"></h4>
+	     
+	</ion-header-bar>
+	 
+   <ion-content ng-class="fontHeader" ng-style="{ 'top': mutualFundDetailTop(),'margin-bottom': mutualFundDetailMarginBottom()}"  class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+     
+     <h2 class="title-content-bar" translate="label.transactionHistory"></h2>
+     <div ng-class="fontLabel">
+            <!-- <div class="row lineHeight1 fontBold mutualFundHeaderDiv">	
+		        <div class="col col-50 " translate="label.transactionHistory"></div>
+	       </div> -->
+	       <div class="row fontSize12px lineHeight1">	
+		      <div class="col col-50 ">
+			   <p class="fontWeiSize">{{mfTransactionPortDetails[0].fundCode}}</p>
+			   <p>{{mfTransactionPortDetails[0].fundName}}</p>		 
+		      </div>
+	       </div>
+	       <div>
+	          <div ng-repeat="mfTransactionPortDetail in mfTransactionPortDetails[0].listTrans" class="row fontSize12px lineHeight1 mutualBorderTop">	
+		      <div class="col col-50 ">
+			   <p translate="label.txnDate"> </p>
+			   <p translate="label.txnType"> </p>		 
+			   <p translate="tableHead.Amount"> </p>
+			    <p translate="label.allocatedUnit"> </p>
+			    <p translate="label.navPerUnit"> </p>
+			    <p translate="label.costPerUnit"> </p>
+			    <p translate="label.input.Status"> </p>
+		      </div>
+		      <div class="col col-50 txtRightAlign">
+			    <p>{{mfTransactionPortDetail.transDate}}</p>
+			    <p>{{mfTransactionPortDetail.transType}}</p>
+			    <p>{{mfTransactionPortDetail.amount | currency : ""}}</p>
+			    <p>{{mfTransactionPortDetail.unit |  number : 4}}</p>
+			    <p>{{mfTransactionPortDetail.navPerUnit | number : 4}}</p>
+			    <p>{{mfTransactionPortDetail.costPerUnit | number : 4}}</p>
+			     <p>{{mfTransactionPortDetail.transStatus}}</p>
+			  </div>
+	          </div>
+	          </div>
+	         
+	 </div>
+  </ion-content>
+</ion-view>

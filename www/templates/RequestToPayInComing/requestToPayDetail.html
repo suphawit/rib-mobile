@@ -1,0 +1,170 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<i class="button button-clear" ng-click="goBackPage()" translate="label.back" ></i>
+	    <h4 class="title padd-left10px" translate="lbl.RTPReceiveDetail" style="font-size: 1.2rem !important;"></h4>
+	</ion-header-bar>
+    <!--<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div class="row padding padd-top20px schedulePadd-left">
+            <img ng-src="{{checkIsAnyID(selectedAnyIDType) ? getAnyIDIcon(selectedAnyIDType) : clientImgUrl}}" class="tranCompImg" ng-style="{ 'background-color': checkIsAnyID(selectedAnyIDType) ? getAnyIDIconColor(selectedAnyIDType) :  getBankCodeImg(accountDetails.bankCode, 'color') }"/>
+            <div class="col-80 padd-left10px column80Tablet">
+                <strong>{{::requestToPayDetail.data.requesterFrom || ""}}</strong>
+            </div>
+        </div>
+        <div class="divTable padd-top0Px">
+            <div class="divRow">
+                <div class="divCell" translate="lable.fundschedule.ref"></div>
+                <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.rtpreference || ""}}</div>
+                <div class="divCell" translate="label.tdstatement.Amount"></div>
+                <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.amount | currency : ""}} {{'label.currency' | translate}}</div>
+                <div class="divCell" translate="label.transDate"></div>
+                <div class="divCellValue themeGreyTextColor">
+                    {{::requestToPayDetail.data.createdDateObj.date || ""}}
+                    <span translate="">{{::requestToPayDetail.data.createdDateObj.month || ""}}</span>
+                    {{::requestToPayDetail.data.createdDateObj.year || ""}}
+                </div>
+                <div class="divCell" translate="label.expiredDate"></div>
+                <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.expriedDateObj.date || ""}}&nbsp;<span translate="">{{::requestToPayDetail.data.expriedDateObj.month || ""}}</span>&nbsp;{{::requestToPayDetail.data.expriedDateObj.year || ""}}</div>
+                <div class="divCell" translate="label.referenece1" ng-if="requestToPayDetail.data.billReference1"></div>
+                <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference1">{{::requestToPayDetail.data.billReference1 || ""}}</div>
+                <div class="divCell" translate="label.referenece2" ng-if="requestToPayDetail.data.billReference2"></div>
+                <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference2">{{::requestToPayDetail.data.billReference2 || ""}}</div>
+                <div class="divCell" translate="label.referenece3" ng-if="requestToPayDetail.data.billReference3"></div>
+                <div class="divCellValue themeGreyTextColor" ng-if="requestToPayDetail.data.billReference3">{{::requestToPayDetail.data.billReference3 || ""}}</div>	               	
+                <div class="divCell" translate="label.input.Status"></div>
+                <div class="divCellValue themeGreyTextColor">{{::requestToPayDetail.data.statusDesc || ""}}</div>	               	
+                <div class="divCell" ng-if="requestToPayDetail.data.additionalNote" translate="lable.fundschedule.note"></div>
+                <div class="divCellValue themeGreyTextColor memoDivCellValue" ng-if="requestToPayDetail.data.additionalNote">{{::requestToPayDetail.data.additionalNote || ""}}</div>
+                <div class="divCell" ></div>
+            </div>
+        </div>
+        <div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative paddTopZeroTabs" >
+            <a nav-clear ng-if="!isBillerRequest(requestToPayDetail.data.requesterIdType)" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="gotoFund()" >
+                <i class="icon icon-w icon-fund-transfer padding-Top5px"></i>
+                <span translate="label.transferFunds" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+            <a nav-clear ng-if="isBillerRequest(requestToPayDetail.data.requesterIdType)" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="gotoBillPaymentRTP()">
+                <i class="icon icon-w icon-bill-payment padding-Top5px"></i>
+                <span translate="label.subBillPayment" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+            <a nav-clear ng-if="isBillerRequest(requestToPayDetail.data.requesterIdType) && requestToPayDetail.data.billPresentmentURL" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="openUrl(requestToPayDetail.data.billPresentmentURL)">
+                <i class="icon icon-w icon-view-statement padding-Top5px"></i>
+                <span translate="button.viewBiller" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+            <a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" ng-click="requestToBlock(requestToPayDetail.data)">
+                <i class="icon icon-w icon-logout padding-Top5px"></i>
+                <span translate="button.block" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+        </div>
+    </ion-content>-->
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div id="divBtn" class="rtpBorderAccount">
+            <div class="row padd-left20px padd-Right20px" style="padding-top: 20px">
+                <div class="col col-90 transferTxnPad">
+                    <div class="item item-thumbnail-left rtprequestOtherAccBlock paddingNone">
+                        <img ng-if="requestToPayDetail.data.receiverIdType !== 'BILLERID'" 
+                        ng-src="{{checkIsAnyID(selectedAnyIDType) ? getAnyIDIcon(selectedAnyIDType) : clientImgUrl}}" 
+                        class="tranCompImg" 
+                        ng-style="{ 'background-color': checkIsAnyID(selectedAnyIDType) ?
+                        '#594F74' :  getBankCodeImg(accountDetails.bankCode, 'color') }"/>
+                        <img class="tranCompImg"
+                        ng-if="requestToPayDetail.data.receiverIdType === 'BILLERID'"  
+                        style="background-color: #594F74;" 
+                        ng-src="{{defaultBillerLogo}}" >
+                        <div class="thumbnail-detail themeGreyTextColor" ng-class="fontMain">
+                            <div class="themeGreyTextColor" style="font-weight: bold">{{requestToPayDetail.data.receiverAccountName}}</div>
+                            <div class="thumbnail-acc-no ">{{requestToPayDetail.data.receiverIdValue}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transferaccount transConfrmAmoutDiv">
+            <div class=" themeDarkBlueBGColor borderNone txtCenterAlign">
+                <span class="whiteTextColor font-clanOt-header">
+                    {{ requestToPayDetail.data.amount | currency : "" }}
+                </span>
+                <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+            </div>
+        </div>
+        <ion-item class="transConfirmHeadBlck padd-bottom15px margin-Top-35px rtprequestMyAccountBlock" ng-class="fontDisplay">
+            <div class="font-bold fontSize19px blackTextColor">{{requestToPayDetail.data.requesterAccountName}}</div>
+            <div> {{requestToPayDetail.data.requesterIdTypeLabel}}</div>
+            <div> {{requestToPayDetail.data.requesterIdValue}} </div>
+        </ion-item>
+        <div class="line-bottom"></div>
+
+        <div class="marginNone list list-inset padd-top10px padd-left20px themeGreyTextColor" ng-class="fontDisplay">
+            <div class="row">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.PayAlertRef"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.rtpreference || ""}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-33 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+                <div class="col col-67 paddingNone marginNone">
+                    {{requestToPayDetail.data.createdDateObj.date || ""}}
+					<span translate="{{requestToPayDetail.data.createdDateObj.month}}"></span>
+                    {{requestToPayDetail.data.createdDateObj.year || ""}}
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.expiredDate"></div>
+			    <div class="col col-67 paddingNone marginNone">
+                    {{requestToPayDetail.data.expriedDateObj.date || ""}}
+                    <span translate="{{requestToPayDetail.data.expriedDateObj.month}}"></span>
+                    {{requestToPayDetail.data.expriedDateObj.year || ""}}
+                </div>
+			</div>
+             <div class = "row" ng-if="requestToPayDetail.data.billReference1">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.referenece1"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.billReference1 || ""}}</div>
+			</div>
+             <div class = "row" ng-if="requestToPayDetail.data.billReference2">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.referenece2"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.billReference2|| ""}}</div>
+			</div>
+             <div class = "row" ng-if="requestToPayDetail.data.billReference3">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.referenece3"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.billReference3 || ""}}</div>
+			</div>
+             <div class = "row">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.input.Status"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.statusDesc || ""}}</div>
+			</div>
+             <div class = "row" ng-if="requestToPayDetail.data.additionalNote">
+                <div class="col col-37 paddingNone marginNone font-bold" translate="label.note"></div>
+			    <div class="col col-67 paddingNone marginNone">{{requestToPayDetail.data.additionalNote}}</div>
+			</div>
+        </div>
+        <!--<div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative paddTopZeroTabs" >
+            <a nav-clear ng-if="!isBillerRequest(requestToPayDetail.data.requesterIdType)" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="gotoFund()" >
+                <i class="icon icon-w icon-fund-transfer padding-Top5px"></i>
+                <span translate="label.transferFunds" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+            <a nav-clear ng-if="isBillerRequest(requestToPayDetail.data.requesterIdType)" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="gotoBillPaymentRTP()">
+                <i class="icon icon-w icon-bill-payment padding-Top5px"></i>
+                <span translate="label.subBillPayment" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+            <a nav-clear ng-if="isBillerRequest(requestToPayDetail.data.requesterIdType) && requestToPayDetail.data.billPresentmentURL" class="tab-item disable-user-behavior activated whiteTextColor" ng-click="openUrl(requestToPayDetail.data.billPresentmentURL)">
+                <i class="icon icon-w icon-view-statement padding-Top5px"></i>
+                <span translate="button.viewBiller" class="fontSize11px fontQuarkBold"> </span>
+            </a>
+        </div>-->
+        <div class="tabs tabs-icon-top accActionTabs padding-left5px positRelative paddTopZeroTabs">
+				<a nav-clear style="text-overflow: clip;" class="tab-item disable-user-behavior activated whiteTextColor myAccountTdDetail" 
+                    icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" 
+                    ng-if="!isBillerRequest(requestToPayDetail.data.requesterIdType)"
+                    ng-click="gotoFund()">
+		          <i class="icon icon-w icon-fund-transfer padding-Top5px"></i>
+		          <span translate="label.transferFunds" class="fontSize11px fontQuarkBold"> </span>
+		        </a>
+				<a nav-clear style="text-overflow: clip;" class="tab-item disable-user-behavior activated whiteTextColor myAccountTdDetail" 
+                    icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" 
+                    ng-if="isBillerRequest(requestToPayDetail.data.requesterIdType)"
+                    ng-click="gotoBillPaymentRTP()">
+		          <i class="icon icon-w icon-bill-payment padding-Top5px"></i>
+		          <span translate="label.subBillPayment" class="fontSize11px fontQuarkBold"> </span>
+		        </a>
+			</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,77 @@
+<ion-view> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">	 
+	    <h4 class="title" translate="header.changePIN"></h4>
+	</ion-header-bar>
+	
+	<ion-content scroll="false" overflow-scroll="false" has-bouncing="false">
+	  <div ng-controller="changePinCtrl" ng-init="init()" class="pin-top pinTemplateContainer">
+		<div class="sub-title padd-left20px themeDarkGreyTextColor" ng-class="fontLabel" translate="{{suptitlePin}}"></div>
+
+			<div id="pinPanel" class="item item-input pin-pwd-label" >
+				<div class="row">
+					<div class="col" ng-repeat="n in [0, 1, 2, 3, 4, 5] track by $index">
+						 <div class="circle {{dotchangepins[n]}}"></div>
+					</div>
+				</div>
+			</div>
+		
+		<div class="padd-left30px">
+			<p class="padding errorLabelRed login-error-msg" ng-show="errorPinMessageEnable">{{errorPinMessage|translate}}
+			</p>
+		</div>
+    
+     	<div class="pin-btn-ctrl">
+		    <div class="row loginPin padding1px">
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(1)">1<br></button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(2)">2<br></button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(3)">3<br></button>
+		        </div>
+		    </div>
+		    <div class="row pin-login-padding padding1px">
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(4)">4</button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(5)">5</button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(6)">6</button>
+		        </div>
+		    </div>
+		    <div class="row pin-login-padding padding1px" >
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(7)">7</button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(8)">8</button>
+		        </div>
+		        <div class="col col-33 loginPinbtn padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(9)">9</button>
+		        </div>
+		    </div>
+		    <div class="row padding1px">
+		        <div class="col col-33 padding1px ">
+		        	<div ng-hide="isCreatePage">
+		            	  <button class="button button-stretch pinBtn" ><div  > </div></button> 
+		            </div>
+		            <div ng-show="isCreatePage">
+		            	<button class="button button-light button-stretch"></button>
+		            </div>
+		        </div>
+		        <div class="col col-33 padding1px">
+		            <button class="button  button-stretch pinBtn" ng-click="addPin(0)">0</button>
+		        </div>
+		        <div class="col col-33 padding1px">
+		            <button class="button ion-ios-close-outline  button-stretch pinBtn" ng-click="delPin()"></button>
+		        </div>
+		    </div>
+		</div>
+	</div>
+
+	</ion-content> 
+</ion-view> 

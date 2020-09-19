@@ -1,0 +1,84 @@
+<ion-view title="">
+
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <i ng-show="showHideChangeTerm" class="button button-clear" ng-click="navigateToBackChangeTermDetail()" translate="label.back"></i>
+        <h4 class="title" translate="label.changeTerm"></h4>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+		
+        <!--  Switch Term TD Step1 -->
+        <div ng-show="showHideChangeTerm">
+			
+            <ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding">
+                <span> {{changeTermDepositData.myAccountAliasName}} </span>
+                <span class="themeMediumGreyTextColor"> {{changeTermDepositData.myAccountNumber}} </span>
+            </ion-item>
+
+            <div>
+                <div class="txtCenterAlign ">
+                    <h5 class="fontSize18px wordBreak lineHeight2 themeBlueTextColor font-clanOt-news tddetailsstatement">{{changeTermDepositData.myAvailableBalance  | currency : ""}} <span translate="label.currency" ng-class="fontMain"></span></h5>
+                </div>
+
+                <div class="row lineHeight1" ng-class="fontLabel">
+                    <div class="col col-50 ">
+                        <p translate="label.changeTerm.accountType"> </p>
+                        <p translate="label.changeTerm.legerBal"> </p>
+                    </div>
+
+                    <div class="col col-50 txtRightAlign">
+                        <p>{{accountTypeTerm}}</p>
+                        <p>{{changeTermDepositData.myLedgerBalance | currency : ""}} <span translate="label.currency"></span></p>
+                        <!-- <p>{{lastUpdate}}</p> -->
+                    </div>
+                </div>
+                <div class="item-divider themeDarkBlackBGColor whiteTextColor txtCenterAlign"  ng-class="fontLabel" ion-affix data-affix-within-parent-with-class="group-list" 
+				translate="label.selectTerm"></div>
+            </div>
+            <div class="txtCenterAlign padd-top10px">
+                <button class="button button-outline" ng-click="navigateToSelectTerm()" translate="label.selectTerm" ng-class="fontLabel">
+             </button>
+            </div>
+        </div>
+        <!--  Switch Term TD Step1 -->
+
+        <!--  Switch Term TD Step1 select term -->
+        <div ng-show="showHideSelectTerm">
+            
+                <div class="fromAccountDarkHeadBarChange">
+                    <span class="sgTitleMsg" translate="label.selectTerm"></span>
+                    <i class="icon ion-ios-close-outline msgIcon fontSize25px" ng-click="navigateToChangeTermMain()"></i>
+                </div>
+				<div ng-show="errMsg" class="txtCenterAlign">{{errMsg}}</div>
+                <div class=" myAccountDetailStatementDetail" ng-repeat="selectTerms in changeSelectTermData" ng-click="showTermCondition(selectTerms)">
+                    <div class="row tddetailsstatement">
+                        <div class="col col-50">
+                            <p translate="tableHead.depositNo"></p>
+                            <p translate="tableHead.valueDate"> </p>
+                            <p translate="tableHead.maturityDate"> </p>
+                            <p translate="tableHead.Term"> </p>
+                            <p translate="tableHead.Amount"> </p>
+                            <p translate="tableHead.InterestRate"> </p>
+                            <p translate="tableHead.InterestCondition"> </p>
+                            <p translate="lable.td.AccountInterest"> </p>
+                        </div>
+
+                        <div class="col col-50 txtRightAlign">
+                            <p>{{selectTerms.depNo}}</p>
+                            <p>{{selectTerms.dateOpen}}</p>
+                            <p>{{selectTerms.dateMaturity}}</p>
+                            <p>{{selectTerms.term_description}}</p>
+                            <p>{{selectTerms.balAvailable | currency : ""}} <span translate="label.currency"></span></p>
+                            <p>{{selectTerms.interest}} %</p>
+                            <p>{{selectTerms.freqIntPay}}</p>
+                            <p>{{selectTerms.benefitAcc}}</p>
+                        </div>
+                    </div>
+                </div>
+          
+
+        </div>
+        <!--  Switch Term TD Step1 select term -->
+
+    </ion-content>
+</ion-view>

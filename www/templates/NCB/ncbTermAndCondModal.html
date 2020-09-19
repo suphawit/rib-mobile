@@ -1,0 +1,23 @@
+<ion-modal-view id="accListModal" class="listModal termAndCondModal">
+    <ion-header-bar align-title="center" class="darkHeadBar">		 
+	    <h4 class="title noneLeftRight" translate="label.viewTermAndConditions"></h4>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false" class="has-header">
+    	<div class="row">
+    		<div class="col" ng-bind-html="termAndCond.text"></div>
+    	</div>
+		<div class="row margin-Top5px">
+			<div class="col text-center ">
+				<a class="button button-block button-term-and-conditions" ng-class="(termAndCond.isChecked == true ? 'active' : '')" ng-click="termAndCond.checkedboxChecked()"><i class="icon ion-checkmark"></i>&nbsp;&nbsp;{{'label.termAndConditionsBtn' | translate}}</a>
+			</div>
+		</div>
+		<div style="height:129px;"></div>
+	</ion-content>
+	
+    <ion-footer-bar align-title="left" class="modal-footer">
+		<div class="col text-center scheduleBtns selectedBtnBGColor">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="gotoConfirmNCBRequest()">
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-modal-view>

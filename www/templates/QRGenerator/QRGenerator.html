@@ -1,0 +1,74 @@
+ <ion-view>  
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" href="#/AnyIdDetails" ng-if="fromMyAccountPage" translate="label.back"></a>	
+	    <h4 class="title" translate="label.QRGeneratorMenu"></h4>
+	    <!--<a class="button button-clear"  translate="label.next" side="right" ng-if="showNext" ng-click="showCompletePage()"></a>-->
+	</ion-header-bar>
+  	<ion-content class="has-header" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<ion-item Style=" margin: 0 auto; margin-top: 4%;" class="billerButtonSelectBill borderNone txtCenterAlign">
+				<div class="row icon-row paddingNone">
+					<div class="col .col-offset-50">
+						<button ng-if="showSelectBtn"
+								class="button button-block button-custom themeGreyTextColor "
+								ng-class="fontLabel"
+								style="background-color: White; border-color: #dedede; margin-top: 5px;"
+								ng-click="openMyPromptpayAccount()"
+								translate="label.selectAccounts">
+						</button>
+						<ion-item class="item-divider padZero" ng-if="showSelectFromAccountDetails"
+								  ng-click="openMyPromptpayAccount()">
+							<div class="item item-thumbnail-left item-icon-right paddingNone"
+								 Style="background: transparent; border-color: transparent;">
+								<img
+										ng-src="{{ getAnyIDIcon(QRGenerateObj.anyIDType) }}"
+										class="externalMenuListImg"
+										style="background-color: #594F74"/>
+								<div class="thumbnail-detail themeGreyTextColor font-clanOt-news" ng-class="fontMain"
+									 Style=" float: left;margin-top: 5%;padding-left: 2%;">
+									<div>{{QRGenerateObj.anyIDValue}}</div>
+								</div>
+							</div>
+						</ion-item>
+					</div>
+				</div>
+			</ion-item>
+			<form ng-class="fontLabel" class="paddingRightUnderline">
+				<div class="row icon-row">
+					<div class="col text-center paddingNone txtCenterAlign">
+						<p translate="label.specifyAmount" style=" padding-top: 13px; padding-right: 35%;"></p>
+					</div>
+					<div class="col text-center yesNoButton" style=" margin-right: -9%;">
+						<div class="button-bar">
+							<a class="button" ng-class="{'button-custom': isDisableAmount == true }"
+							   ng-click="toggleDisableAmount(true)" translate="label.no"></a>
+							<a class="button" ng-class="{'button-custom': isDisableAmount == false }"
+							   ng-click="toggleDisableAmount(false)" translate="label.yes"></a>
+						</div>
+					</div>
+				</div>
+				<div ng-if="!isDisableAmount">
+					<h5 class="addMyAccountLable" translate="tableHead.Amount"></h5>
+					<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100 marin-left20">
+						<i class="icon ion-social-bitcoin placeholder-icon fontSize25px"></i>
+						<input bind-virtual-keyboard
+							   vkmodel="QRGenerateObj.amount"
+							   vkoption="virtualKeyboardAmount.option"
+							   onvkkeyup="virtualKeyboardAmount.onkeyup(value)"
+							   onvkblur="virtualKeyboardAmount.onblur()"
+							   onvkfocus="virtualKeyboardAmount.onfocus()"
+							   type="text" id="myAmount" placeholder="{{placeholderAmount}}"
+							   ng-model="QRGenerateObj.amount">
+					</label>
+				</div>
+				<div></div>
+			</form>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="label.next" ng-click = "showCompletePage()" ng-if="showNext">
+			</button>
+		</div>
+	 </ion-content>
+	 <div style="font-family: RSU_BOLD">.</div>
+  </ion-view>
+

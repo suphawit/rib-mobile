@@ -1,0 +1,24 @@
+<ion-view title="">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <i class="button button-clear" ng-click="goBackPage()" translate="label.back"></i>
+        <h4 class="title" translate="label.kkpNdidServices"></h4>
+    </ion-header-bar>
+    <ion-content>
+        <h2 class="title-content-bar" translate="label.digitalAuthenDetail"></h2>
+        <div class="row">
+            <div class="col">
+                <span translate="label.input.Status"></span>: {{getRequestStatus(transactionDetail)}}
+                <span class="positionRight"><span translate="label.transactionDate"></span>: {{transactionDetail.transactionDateTime}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col padd-top-zero white-space-normal breakWord fontSize15px">
+                <span
+                    translate="label.ndidHistoryDetail" 
+                    translate-values="{ refCode: transactionDetail.refCode, requestMessage: transactionDetail.fullRequestMessage, requestorName: getRequestorName(transactionDetail) }">
+                </span>
+            </div>
+        </div>
+        <div style="height:88px;"></div>
+    </ion-content>
+</ion-view>

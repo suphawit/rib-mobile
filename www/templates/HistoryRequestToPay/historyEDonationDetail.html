@@ -1,0 +1,117 @@
+<ion-view id="billPayResult">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <i class="button button-clear" ng-click="goBackPage()" translate="label.back"></i>
+        <h4 class="title title-result" translate="label.eDonation"></h4>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false"
+                 has-bouncing="false">
+        <div style="min-height: calc(85vh - 150px)">
+            <div class="dasboardAccord padding15px txtCenterAlign">
+                <span class="fontSize18px">{{showDataConfirmComplete.status}}</span>
+            </div>
+
+            <div>
+                <ion-item class="item-divider transConfirmHeadBlck" ng-class="fontDisplay">
+                    <div class="font-bold fontSize19px blackTextColor">{{showDataConfirmComplete.fromAccountName}}</div>
+                    <div> {{showDataConfirmComplete.fromAccountNumber}}</div>
+                </ion-item>
+
+                <div class="transferaccount transConfrmAmoutDiv">
+                    <div class=" themeDarkBlueBGColor borderNone txtCenterAlign">
+                        <span class="whiteTextColor font-clanOt-header">{{::showDataConfirmComplete.payAmount | currency : ""}} </span>
+                        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col bill-img-panel " ng-class="fontDisplay">
+                <div class="item item-thumbnail-left item-icon-right paddingNone">
+                    <img class="tranCompImg" style="background-color: #594F74;"
+                         ng-src="{{showDataConfirmComplete.logoCompany || defaultBillerLogo}}">
+                    <div class="thumbnail-detail" ng-class="fontMain">
+
+                        <p class="themeGreyTextColor text-ellipsis">{{showDataConfirmComplete.billerAliasName}}</p>
+                        <p class="text-ellipsis">{{showDataConfirmComplete.billerName}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="line-bottom"></div>
+
+            <div class="marginNone list list-inset padd-left20px themeGreyTextColor" ng-class="fontDisplay">
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.referenceNO"></div>
+                    <div class="col col-67 paddingNone marginNone">{{showDataConfirmComplete.transactionRef || showDataConfirmComplete.referenceNO}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+                    <div class="col col-67 paddingNone marginNone">
+                        {{showDataConfirmComplete.transactionDate.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.transactionDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.transactionDate.year}}&nbsp;
+                        {{showDataConfirmComplete.transactionDate.time}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold"
+                         translate="label.eDonation.result.donationDate"></div>
+                    <div class="col col-67 paddingNone marginNone">
+                        {{showDataConfirmComplete.paymentDate.date}}&nbsp;
+                        <span translate="{{showDataConfirmComplete.paymentDate.month}}"></span>&nbsp;
+                        {{showDataConfirmComplete.paymentDate.year}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.input.feeamount"></div>
+                    <div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.feeAmount | currency :
+                        ""}}
+                        <span translate="label.currency"></span></div>
+                </div>
+
+                <div class="row" ng-if="ref.value!=null && ref.value!='' && !($index == 1 && ref.value==0)"
+                     ng-repeat="ref in showDataConfirmComplete.refInfos track by $index">
+                    <div class="col col-33 paddingNone marginNone font-bold">{{displayRefName($index)}}</div>
+                    <div class=" col col-67 paddingNone marginNone">{{displayRefValue($index)}}</div>
+                </div>
+                <!--<div class="row">-->
+                    <!--<div class=" col col-33 paddingNone   marginNone font-bold" translate="label.history.ref1"></div>-->
+                    <!--<div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.reference1}}</div>-->
+                <!--</div>-->
+
+                <!--<div class="row"-->
+                     <!--ng-if="showDataConfirmComplete.reference2 && showDataConfirmComplete.reference2 != '0'">-->
+                    <!--<div class=" col col-33 paddingNone   marginNone font-bold"-->
+                         <!--translate="label.history.edonation.ref2"></div>-->
+                    <!--<div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.reference2}}</div>-->
+                <!--</div>-->
+
+                <div class="row">
+                    <div class=" col col-33 paddingNone   marginNone font-bold"
+                         translate="label.history.edonation.status"></div>
+                    <div class=" col col-67 paddingNone   marginNone">{{showDataConfirmComplete.paymentStatusDesc}}
+                    </div>
+                </div>
+
+                <div class="row" ng-if="showDataConfirmComplete.memo">
+                    <div class=" col col-33 paddingNone   marginNone font-bold" translate="label.note"></div>
+                    <div class=" col col-67 paddingNone  marginNone">{{showDataConfirmComplete.memo}}</div>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="button.capture"
+                    ng-click="showReceiptPage()" ng-if="showDataConfirmComplete.canPrintSlip">
+            </button>
+            <button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+                    translate="btn.share"
+                    ng-click="shareReceipt()" ng-if="showDataConfirmComplete.canPrintSlip && recieptImgUrl">
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

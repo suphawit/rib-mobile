@@ -1,0 +1,31 @@
+<ion-view id="menu-index"> 
+		<div align="right" class="loginLanguage" >
+		  	<button id="btn-lang" class="button" ng-click="ChangeLanguage(lang)">
+			  <span class="font-clanOt-medium-menu-left themeDarkGreyTextColor">{{langLabel}}</span>
+			</button>
+		</div>
+		<div class="kk-logo"></div>
+		<div ng-include="template.url"></div>
+	    <div id="tab" class="tabs tabs-icon-top sticky-tabs" ng-class="fontTabMenu"> 
+		  <a class="tab-item" ng-click="showPromotions()">
+		    <i class="tabIcon icon-promotion"></i>
+		    <span translate="menu.promotions"></span>
+		  </a>
+		  <a class="tab-item" href="#/locateUs">
+		    <i class="tabIcon icon-c24 icon-locate-us"></i>
+		    <span translate="menu.locateUs"></span>
+		  </a>
+		  <a class="tab-item" href="#/contactUs" >
+		    <i class="tabIcon icon-c24 icon-contact-us2"></i>
+		    <span translate="menu.contactUs"></span>
+		  </a>
+		  <a class="tab-item" href="#/faq">
+		    <i class="tabIcon icon-c24 icon-faq"></i>
+		    <span translate="menu.FAQ"></span>
+		  </a>
+		  <a class="tab-item" href="#/settingMainMenu">
+		    <i class="tabIcon icon-c24 icon-setting"></i>
+		    <span translate="menu.settings"></span>
+		  </a>
+	  </div>     
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="backToEditOtherAccounts()" translate="label.back"></a>
+	    <h4 class="title" translate="label.editAcc"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="onConfirmSaveEditedOtherAccount()" translate="button.confirm"></a>-->
+	</ion-header-bar>
+
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" ng-class="fontHeader" has-bouncing="false"> 
+	  	<div style="min-height: calc(90vh - 110px)">
+		  <div ng-class="fontLabel">
+	  		<h2 class="title-content-bar" translate="label.otherAccDetail"></h2>
+	  		<div class="list-bank">
+				 <h5 class="confirmDeleteAddMyAccountPad" translate="label.acctAliasName"></h5>
+				 <p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.acctAliasName || ""}}</p>
+			</div>
+			<div class="list-bank">
+				<div class="item item-thumbnail-left item-icon-right paddingNone greyBGColor" >
+			     <img ng-src="{{isAnyID ? anyIDIcon : getBankCodeImg(bankCode, 'image')}}" class="tranCompImg" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(bankCode, 'color') }"/>			     
+			      <div class="thumbnail-detail-add-other-acc" ng-class="fontDisplay">
+			      	<div class="min-height-m bankName-other-acc">{{currentEditDetails.bankName}}</div>
+			      	<div>{{currentEditDetails.accNo}}</div>
+			      </div>
+			    </div>
+			</div>
+			
+			<div class="list-bank" ng-show="currentEditDetails.acctName != ''">
+				 <h5 class="confirmDeleteAddMyAccountPad" translate="label.input.acctName"></h5>
+				 <p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.acctName || ""}}</p>
+			</div>
+
+		    <div class="list-bank">
+				 <h5 class="confirmDeleteAddMyAccountPad" translate="label.accountCategory"></h5>
+				 <p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.catName || "&nbsp;"}}</p>
+			</div>
+			<div ng-if="currentEditDetails.mobile" class="list-bank">
+				 <h5 class="confirmDeleteAddMyAccountPad" translate="label.mobileNo"></h5>
+				 <p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.mobile || "&nbsp;"}}</p>
+			</div>
+			<div ng-if="currentEditDetails.email" class="list-bank">
+				 <h5 class="confirmDeleteAddMyAccountPad" translate="label.email"></h5>
+				 <p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.email || "&nbsp;"}}</p>
+			</div>
+		</div>
+	  	</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" 
+			ng-click="onConfirmSaveEditedOtherAccount()" translate="button.confirm">
+			</button>
+		</div>
+		
+		
+	   <!--  
+	 	<p class="confirmDeleteAddMyAccountPad"  translate="label.accountCategory"> </p>
+		<p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.catName || "&nbsp;"}}</p>
+
+		<p class="confirmDeleteAddMyAccountPad" translate="label.mobileNo"></p>
+		<p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.mobile || ""}}</p>
+
+		<p class="confirmDeleteAddMyAccountPad" translate="label.email"></p>
+		<p class="confirmDeleteAddMyAccountPadAccount">{{currentEditDetails.email || ""}}</p>  -->
+</ion-content>
+</ion-view>

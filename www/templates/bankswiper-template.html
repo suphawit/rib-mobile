@@ -1,0 +1,21 @@
+<ks-swiper-container override-parameters="overrideParameters" on-ready="onReadySwiper(swiper)">
+	<ks-swiper-slide class="swiper-slide" ng-repeat="item in items track by $index">
+		<img id="{{item.bankCode}}" 
+			class="defaultBankImgBGColor"
+			name="{{item.bankName}}"
+			ng-src="{{value.bankCodeImageList[item.bankCode].url ||'images/bank/000.png'}}"
+			 />
+	</ks-swiper-slide>
+</ks-swiper-container>
+<!--<div id="swapper-debug" ng-show="value.debug.isShow" 
+	style="width: 150px; height: 100px; overflow: scroll; background-color: transparent; color: black; font-size: 12pt; z-index: 999; position: absolute; top: 100px; left: 100px;">{{value.debug.value}}</div>
+ <ks-swiper-container override-parameters="overrideParameters" on-ready="onReadySwiper(swiper)">
+	<ks-swiper-slide class="swiper-slide" ng-repeat="item in items track by $index">
+		<img id="{{item.bankCode}}" 
+			class="defaultBankImgBGColor"
+			name="{{item.bankName}}"
+			ng-src="{{value.bankCodeImageList[item.bankCode].url}}"
+			ng-style="value.activeBankCode == item.bankCode ? { 'background-color': value.activeBankCodeColor } : {}"
+			 />
+	</ks-swiper-slide>
+</ks-swiper-container> -->

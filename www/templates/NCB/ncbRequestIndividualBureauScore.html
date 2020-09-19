@@ -1,0 +1,28 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar align-title="center" class="darkHeadBar">		 
+	    <h3 class="title noneLeftRight" style="color:white;" translate="label.requestBureauInfo"></h3>
+	</ion-header-bar>
+    <ion-content overflow-scroll="false" has-bouncing="false" class="has-header">
+        <div class="row">
+			<div class="col">
+				<p class="fullname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ lang === "th" ? "ข้าพเจ้า"+"&nbsp;"+ customerData.titleNameTh+"&nbsp;"+customerData.firstNameTh+"&nbsp;"+customerData.lastNameTh : 
+				"I"+"&nbsp;"+customerData.titleNameEn+"&nbsp;"+customerData.firstNameEn+"&nbsp;"+customerData.lastNameEn }}
+				</p>
+				<p ng-bind-html="requestBereauScore.text"></p>
+			</div>
+    	</div>
+        <div class="row margin-Top5px">
+			<div class="col text-center ">
+				<a class="button button-block button-term-and-conditions fontSize14px" ng-class="(requestBereauScore.isChecked == true ? 'active' : '')" ng-click="requestBereauScore.checkedboxChecked()"><i class="icon ion-checkmark"></i>&nbsp;&nbsp;{{'label.confirmCreditScoreRequest' | translate}}</a>
+			</div>
+		</div>
+		<div style="height:129px;"></div>
+    </ion-content>
+	
+    <ion-footer-bar align-title="left" class="modal-footer">
+		<div class="col text-center scheduleBtns selectedBtnBGColor">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="gotoViewTermAndConditions()">
+			</button>
+		</div>
+	</ion-footer-bar>
+  </ion-modal-view>

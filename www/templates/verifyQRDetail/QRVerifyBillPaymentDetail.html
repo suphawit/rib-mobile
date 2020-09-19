@@ -1,0 +1,68 @@
+<ion-view id="">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <i class="button button-clear" ng-click="goBackPage()" translate="label.back"></i>
+        <h4 class="title title-result">{{detailTransaction.pageTitle}}</h4>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false"
+                 has-bouncing="false">
+        <div style="min-height: calc(90vh - 90px)">
+            <div class="dasboardAccord-reciept padding10px boxOfSummitedStatus txtCenterAlign margin-Top5px z-index-2 center90Box">
+                <span class="fontSize18px" translate="label.verifyQR.bill.sub.title"></span>
+            </div>
+
+            <div class="row icon-row slipMarginTop center90Box padZero" ng-class="fontDisplay">
+                <img class="billPayImgReceipt" style="background-color: #594F74; padding: 5px;"
+                     ng-src="{{senderImgUrl || 'images/bank/000.png'}}"
+                     ng-style="{ 'background-color': getBankCodeImg(detailTransaction.sendingBank, 'color') }">
+                <div class="col fundTrfRecieptBorderBlue" ng-style="{ 'border-color': getBankCodeImg(detailTransaction.sendingBank, 'color') }" ng-class="fontDisplay">
+                    <strong>{{detailTransaction.sender.displayName}}</strong> <br />
+                    {{detailTransaction.sender.account.value}}
+                    <div class ="fontSize11px">{{fromBankName}}</div>
+                </div>
+            </div>
+            <div class="row transferaccount-amount amount-reciept padd-top30px z-index-2 slipMarginTop center90Box">
+                <div class=" borderNone txtCenterAlign z-index-2" style="width:100%">
+                    <span class="whiteTextColor font-clanOt-header">{{::detailTransaction.amount | currency : ""}} </span>
+                    <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                </div>
+            </div>
+            <div class = "row icon-row center90Box slipMarginTopTo marginToAccount padZero" ng-class="fontDisplay">
+                <img class="billPayImgReceipt" style="background-color: #594F74; padding: 5px;"
+                     ng-src="{{receiverImgUrl || 'images/bank/000.png'}}"
+                     ng-style="{ 'background-color': receiverImgColor }">
+                <div class="col fundTrfRecieptBorderBlue" style="height: auto; border-color: rgb(209, 211, 212);" ng-class="fontDisplay">
+                    <strong>{{detailTransaction.receiver.displayName}}</strong> <br />
+                </div>
+            </div>
+
+            <div class="padd-slip-left" ng-class="fontDisplay">
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.referenceNO"></div>
+                    <div class="col col-67 paddingNone marginNone">{{detailTransaction.transRef}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-33 paddingNone marginNone font-bold" translate="label.paymentDate"></div>
+                    <div class="col col-67 paddingNone marginNone">{{detailTransaction.transactionDate}}
+                    </div>
+                </div>
+                <div class="row" ng-if="ref1Value != null && ref1Value != ''">
+                    <div class="col col-33 paddingNone marginNone font-bold">{{ref1Label}}</div>
+                    <div class="col col-67 paddingNone marginNone">{{ref1Value}}</div>
+                </div>
+                <div class="row" ng-if="ref2Value != null && ref2Value != ''">
+                    <div class="col col-33 paddingNone marginNone font-bold">{{ref2Label}}</div>
+                    <div class="col col-67 paddingNone marginNone">{{ref2Value}}
+                    </div>
+                </div>
+                <div class="row" ng-if="ref3Value != null && ref3Value != ''">
+                    <div class="col col-33 paddingNone marginNone font-bold">{{ref3Label}}</div>
+                    <div class="col col-67 paddingNone marginNone">{{ref3Value}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

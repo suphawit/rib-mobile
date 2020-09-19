@@ -1,0 +1,127 @@
+<ion-view title="" id="billPayConfirm">
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="onClickBack()" translate="label.back"></a>
+		<h4 class="title" translate="label.billPayment"></h4>
+		<!--<a class="button button-clear" side="right" ng-click="onClickConfirm()" ng-disabled="!isEnableConfirm" translate="button.confirm"></a>-->
+	</ion-header-bar>
+
+	<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<ion-item class="item-divider fundTransGreyTopArea"  ng-click="showFromAccounts()">
+				{{billConfirm.account.myAccountAliasName}} <br/>
+				{{billConfirm.account.myAccountNumber}}<br/>
+				<span translate="label.availableBalance"></span>
+				<span>
+					{{billConfirm.resultVerifyBill.availableBalance | currency : ""}}&nbsp;
+					<span translate="label.currency"></span>
+				</span> 
+			</ion-item>
+			<div class="transferaccount transConfrmAmoutDiv" >
+				<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+					<span class="whiteTextColor font-clanOt-header" >
+						{{::billConfirm.resultVerifyBill.payAmount | currency : ""}} 
+					</span>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				</div>
+			</div>
+
+			<div class="col bill-img-panel " ng-class="fontDisplay">
+				<div class="item  item-thumbnail-left item-icon-right paddingNone">
+				<img class="tranCompImg"  style="background-color: #594F74;" ng-src="{{billConfirm.biller.logoCompany || defaultBillerLogo}}">
+					<div class="thumbnail-detail" ng-class="fontMain">
+						<p class=" themeGreyTextColor text-ellipsis">{{billConfirm.biller.aliasName}}</p>
+						<p class="text-ellipsis" >{{displayBillerName(billConfirm.resultVerifyBill)}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="line-bottom marginTop10Px"></div>
+
+			<div class=" marginNone list list-inset padd-left10px themeGreyTextColor" ng-class="fontDisplay">
+				<div class="row">
+					<div class="col col-37 paddingNone marginNone font-bold"  translate="label.txnDate"></div>
+					<div class="col col-67 paddingNone">
+						{{billConfirm.ui.transactionDate.date}}&nbsp;
+						<span translate="{{billConfirm.ui.transactionDate.month}}"></span>&nbsp;
+						{{billConfirm.ui.transactionDate.year}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-37 paddingNone marginNone font-bold"  translate="label.paymentDate"></div>
+					<div class="col col-67 paddingNone">
+						{{billConfirm.ui.paymentDate.date}}&nbsp;
+						<span translate="{{billConfirm.ui.paymentDate.month}}"></span>&nbsp;
+						{{billConfirm.ui.paymentDate.year}}
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col col-37 paddingNone   marginNone font-bold" translate="label.input.feeamount"></div>
+					<div class="col col-67 paddingNone marginNone">
+						{{billConfirm.resultVerifyBill.feeAmount | currency : ""}}  
+						<span  translate="label.currency"></span>
+					</div>
+				</div>
+
+				<div class="row" ng-if="ref.value!=null && ref.value!='' && ref.showRef == true" ng-repeat="ref in billConfirm.biller.refInfos">
+					<div class="col col-37 paddingNone marginNone font-bold">{{displayRefName(ref)}}</div>
+					<div class="col col-67 paddingNone marginNone">{{ref.value}}</div>
+				</div>
+
+				<div class="row" ng-if="billConfirm.resultVerifyBill.recurringType=='Y'">
+					<div class="col col-37 paddingNone marginNone font-bold" translate="label.biller.recurring"></div>
+					<div  class="col col-67 paddingNone marginNone">
+						{{displayScheduleType(billConfirm.resultVerifyBill.scheduleType)}}&nbsp;,
+						{{displayRecurringTime(billConfirm.resultVerifyBill.recurringTimes)}}
+					</div> 
+				</div>
+
+				<div class="row" ng-if="billConfirm.rtpReferenceNo">
+					<div class=" col col-37 paddingNone   marginNone font-bold"  translate="label.PayAlertRef"></div>
+					<div class=" col col-67 paddingNone   marginNone">{{billConfirm.rtpReferenceNo}}</div>
+				</div>
+				
+				<div class="row" ng-if="billConfirm.resultVerifyBill.memo">
+					<div class="col col-37 paddingNone marginNone font-bold" translate="label.note"></div>
+					<div class="col col-67 paddingNone marginNone">{{billConfirm.resultVerifyBill.memo}}</div>
+				</div>
+			</div>
+<!--			<h5 class="padd-left15px padd-topq10px" translate=label.input.otp ng-class="fontLabel"></h5>-->
+<!--			<div class="row padd-left10px">-->
+<!--				<label class="item item-input addotherAccountCustomBorder"> -->
+<!--					<i class="icon ion-android-lock placeholder-icon fontSize20px"></i>-->
+<!--					<input bind-virtual-keyboard -->
+<!--						vkmodel="otpModel.otp" -->
+<!--						vkoption="virtualKeyboardOTP.option"-->
+<!--						class="whiteBGColor" -->
+<!--						type="password"-->
+<!--						ng-model="otpModel.otp" -->
+<!--						placeholder={{dataVerifyOTP.referenceNo}}-->
+<!--						maxlength="6">-->
+<!--				</label>-->
+<!--				<a-->
+<!--					class="button getOTPTransfer"-->
+<!--					ng-class="fontLabel" -->
+<!--					ng-click="requestOTP()" -->
+<!--					ng-disabled="isDisableBtn"-->
+<!--					translate=label.getOtp>-->
+<!--				</a>-->
+<!--			</div>-->
+<!--			<div class="otp-section-desc" ng-show="dataVerifyOTP.referenceNo">-->
+<!--				<div class="row">-->
+<!--					<span translate="otp.desc.mobileno"></span>-->
+<!--					<strong><span class="font-color-kkblue">&nbsp;{{dataVerifyOTP.mobileNumber}}</span></strong>-->
+<!--				</div>-->
+<!--				<div class="row">-->
+<!--					<span translate="otp.desc.validity"></span>-->
+<!--				</div>-->
+<!--			</div>-->
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<a class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+			ng-click="onClickConfirm()" translate="button.confirm" ng-disabled="isDisableConfirmBtn">
+<!--			ng-click="onClickConfirm()" ng-disabled="!isEnableConfirm" translate="button.confirm">-->
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

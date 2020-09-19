@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-biometric-authen" version="0.0.3" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BiometricAuthen</name>
+    <js-module name="BiometricAuthen" src="www/BiometricAuthen.js">
+        <clobbers target="cordova.plugins.BiometricAuthen" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BiometricAuthen">
+                <param name="android-package" value="com.kkebanking.biometricauthen.BiometricAuthen" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/BiometricAuthen.java" target-dir="src/com/kkebanking/biometricauthen/BiometricAuthen" />
+        <resource-file src="src/android/biometricauthen.aar" target="libs/biometricauthen.aar"/>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+        </config-file>
+        
+        <framework src="src/android/biometricauthen.gradle" custom="true" type="gradleReference"/>
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="BiometricAuthen">
+                <param name="ios-package" value="BiometricAuthen" />
+            </feature>
+        </config-file>
+        <config-file parent="NSFaceIDUsageDescription" target="*-Info.plist">
+            <string>$FACEID_USAGE_DESCRIPTION</string>
+        </config-file>
+        <preference default="KKP e-Banking will use Face ID to confirm your identity when approving login request instead of MyPIN." name="FACEID_USAGE_DESCRIPTION" />
+        <source-file src="src/ios/BiometricAuthen.swift" />
+        <framework src="LocalAuthentication.framework" />
+        <framework src="Security.framework" />
+    </platform>
+</plugin>

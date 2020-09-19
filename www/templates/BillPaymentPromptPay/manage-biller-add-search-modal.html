@@ -1,0 +1,59 @@
+<ion-modal-view id="accListModal" class="listModal"> 	
+	<ion-header-bar class="darkHeadBar">		 
+		<h4 class="title" translate="label.billerDetail"></h4> 		
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a> 		
+	</ion-header-bar>        
+	<ion-content class="has-header " locking="false" padding="false" padding="false" overflow-scroll="false" has-bouncing="false" >          	
+		
+		<div class = "row" style = "padding:0px; margin:0px;"> 			
+			<div class="col item-input-inset" style = "background-color:#594F74!important;">               
+				<label class="item-input-wrapper" style ="background-color:white!important;"> 				
+					<i class="icon ion-ios-search placeholder-icon"></i> 		
+					<input class="searchbiller" type="text" placeholder="{{searchplaceholder}}" ng-model="txtval.biller" ng-model-options="{ debounce: 500 }"/> 			
+					</label>                   	
+			</div>       
+		</div>
+
+		<div ng-if="noResult" class="padd-top15px">
+			<div class="col col-80 col-offset-10 txtCenterAlign" translate="label.billerNotFoundSearchAgain"></div>
+		</div>
+
+		
+		<ion-list ng-repeat="categories in bpBillerListInfo track by $index" class="externalAccList paddingNone">
+			<ion-item 
+				class="item-stable item-icon-right dasboardAccord  padding-left5px padding-right5px"
+                ng-click="toggleCategory(categories.category.categoryId)"
+				ng-class="{active: categories.category.expanded}"
+				ng-class="fontLabel">
+                <i class="icon fontSize25px whiteTextColor padd-right2px"
+                    ng-class=" categories.category.expanded ?'ion-chevron-down' : 'ion-chevron-right' ">
+                </i>
+				<div> 				
+					<span class="padd-left4px font-clanOt-news">{{ categories.category.categoryName }}</span> 	
+				</div> 			
+			</ion-item>
+			<ion-item  
+                ng-repeat="billerProfile in categories.items track by $index"
+                ng-if = "categories.category.expanded"
+				ng-click ="onSelectBillerProfile(billerProfile)"  
+				class="item-thumbnail-left paddingNone search-list-padding"> 		
+				<!-- <div class="row paddingNone"> 						 -->
+						<!-- <img  ng-src="{{billerProfile.logoCompany || defaultBillerLogo}}" class="externalMenuListImg"  style="background-color: #594F74;">  -->
+						<div class="row" ng-if ="lang == 'th'">
+                        	{{ billerProfile.billerNameTh }}
+                        </div>	
+						<div class="row" ng-if ="lang == 'th'">
+                            {{ billerProfile.billerNameEn }}
+                        </div>	
+						<div class="row" ng-if ="lang == 'en'"> 	
+                            {{ billerProfile.billerNameEn }}	
+						</div>							
+						<div class="row" ng-if ="lang == 'en'"> 	
+							{{ billerProfile.billerNameTh }}
+						</div>							
+				<!-- </div>	 			 -->
+			</ion-item> 	
+		</ion-list>      
+		<div  style="height:200px;"></div>     
+	</ion-content>      
+ </ion-modal-view> 

@@ -1,0 +1,111 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <h4 class="title" translate="label.fundTransferHist"></h4>
+    </ion-header-bar>
+
+    <div class="row paddingNone bar bar-subheader-sub headerDropdownBar">
+        <div class="headerDropdownBar" style="padding : 0px;" scroll="false">
+            <div class="accountsDropdown" dropdown-select="criteriaMonthlyList" dropdown-model="selectedItem"
+                 dropdown-item-label="monthYear"
+                 dropdown-onchange="getHistoryFundtranfer(selected.value)"></div>
+        </div>
+    </div>
+
+    <ion-content class="has-header has-subheader-sub">
+        <div ng-if="isNotShowData" class="row">
+            <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.history.fundtranfer.noData"></div>
+        </div>
+        <ion-list ng-if="isShowData" ng-repeat="ft_history_list_item in ft_history_list"
+                  ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">
+            <ion-item ng-repeat="transaction in ft_history_list_item.transactions"
+                      ng-click="openDetail(transaction)" class="padd-left10px padd-top0Px padd-bottom padd-Right5px">
+                <div class="row">
+                    <div class="fontBold padding-Top5px">
+                        <button class="hButton button-circle">{{ft_history_list_item.date}}</button>
+                    </div>
+                    <div class="col fontBold">
+                        <div class="col padding2px" style="width: calc(100vw - 150px); overflow: hidden;white-space: nowrap;">
+                            <span translate="label.to"></span>&nbsp;:&nbsp;{{transaction.toAliasName}} ({{transaction.toAccountNumber}})
+                        </div>
+                        <div class="col padding2px">
+                            <span translate="label.Amount"></span>&nbsp;:&nbsp;{{transaction.amount | currency : ""}}&nbsp;<span  translate="label.currency"></span></span>
+                        </div>
+                    </div>
+                    <div class="col col-10 pull-right padding-Top20px">
+                        <span class="chevronRight font-color-kkblue"><i class="icon ion-chevron-right"></i></span>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!--<div ng-if="isShowData" class="row" ng-repeat="ft_history_list_item in ft_history_list"-->
+             <!--ng-class="{'connector-top': $first && !$last , 'connector-mid': !$first && !$last}">-->
+
+            <!--<div class="col col-10">-->
+                <!--<button class="hButton button-circle">{{ft_history_list_item.date}}</button>-->
+            <!--</div>-->
+
+            <!--<div class="col col-90">-->
+                <!--<div class="hist-trans-data item-divider fontSize12px"-->
+                     <!--ng-repeat="transaction in ft_history_list_item.transactions">-->
+                    <!--<div class="row padding2px">-->
+                        <!--<div class="col padding2px"><span class="label"><span translate="label.from"></span>&nbsp;:&nbsp;{{transaction.fromAliasName}} &nbsp;{{transaction.fromAccountNumber}}</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="row padding2px">-->
+                        <!--<div class="col padding2px"><span translate="label.to"></span>&nbsp;:&nbsp;{{transaction.toAliasName}}-->
+                            <!--&nbsp;{{transaction.toAccountNumber}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="hist-trans-data-sub">-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col col-60 padding2px">-->
+                                <!--<span class="label"><span translate="label.history.bill.referenceNO"></span>&nbsp;:&nbsp;{{transaction.referenceNumber}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="col col-30 text-right padding2px">-->
+                                <!--<span>{{transaction.amount | currency : ""}}&nbsp;<span-->
+                                        <!--translate="label.currency"></span></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col col-60 padding2px">-->
+                                <!--<span translate="label.transDate"></span>&nbsp;:&nbsp;{{::transaction.transactionDate.date}}&nbsp;<span-->
+                                    <!--translate="">{{transaction.transactionDate.month}}</span>&nbsp;{{transaction.transactionDate.year}}-->
+                            <!--</div>-->
+                            <!--<div class="col text-right padding2px">-->
+                                <!--<span translate="label.history.bill.fee"></span>&nbsp;:&nbsp;{{transaction.feeAmount |-->
+                                <!--currency : ""}}&nbsp;<span translate="label.currency"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px" ng-if="transaction.rtpReferenceNo != null">-->
+                            <!--<div class="col padding2px"><span translate="label.PayAlertRef"></span>&nbsp;:&nbsp;{{transaction.rtpReferenceNo}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col padding2px"><span translate="label.receiveDate"></span>&nbsp;:&nbsp;{{::transaction.creditDate.date}}&nbsp;<span-->
+                                    <!--translate="">{{transaction.creditDate.month}}</span>&nbsp;{{transaction.creditDate.year}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col padding2px"><span translate="label.deductDate"></span>&nbsp;:&nbsp;{{::transaction.debitDate.date}}&nbsp<span-->
+                                    <!--translate="">{{transaction.debitDate.month}}</span>&nbsp{{transaction.debitDate.year}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col padding2px"><span translate=" lable.fundschedule.status"></span>&nbsp;:&nbsp;{{transaction.status}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row padding2px">-->
+                            <!--<div class="col padding2px"><span translate="lable.fundtrfreciept.note"></span>&nbsp;:&nbsp;{{transaction.memo}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+    </ion-content>
+</ion-view>
+
+

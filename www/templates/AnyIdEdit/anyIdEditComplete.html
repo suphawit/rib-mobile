@@ -1,0 +1,19 @@
+<ion-view title="" cache-view="false">
+	<ion-header-bar align-title="center" class="bar bar-subheader " ng-class="fontHeader">
+		<h3 class="title" translate="label.amendAnyId"></h3>
+
+	</ion-header-bar>
+	<ion-content>
+		<div class="dasboardAccord padding15px txtCenterAlign">
+			<span class="fontSize18px fontBold" translate="label.amendAnyIdSuccess"></span>
+		</div>
+		<h5 class="row fontLabel list-edit-anyid margin-Top0px" translate="label.currentAccountNo"></h5>
+		<p class="row list-edit-anyid">{{fromAccountAliasName}}</p>
+		<p class="row list-edit-anyid">{{fromAccountNo}}</p>
+		<h5 class="row fontLabel list-edit-anyid" translate="label.changetoAccountNo"></h5>
+		<p class="row list-edit-anyid">{{toAccountAliasName}}</p>
+		<p class="row list-edit-anyid">{{toAccountNo}}</p>
+		<h5 class="row fontLabel list-edit-anyid" translate="label.biller.status"></h5>
+		<p class="row list-edit-anyid">{{labelStatus | translate }}</p>
+	</ion-content>
+</ion-view>

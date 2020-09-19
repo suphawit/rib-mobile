@@ -1,0 +1,84 @@
+<ion-view title="">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <i class="button button-clear" ng-click="navigateToBackChangeTerm()" translate="label.back"></i>
+        <h4 class="title" translate="label.changeTerm"></h4>
+        <!--<i class="button button-clear" ng-click="navigateChangeTermConfirm()" translate="button.next"></i>-->
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false">
+        <div style="min-height: calc(90vh - 110px)">
+            <ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding">
+                <span> {{changeTermDepositData.myAccountAliasName}} </span>
+                <span class="themeMediumGreyTextColor"> {{changeTermDepositData.myAccountNumber}} </span>
+            </ion-item>
+
+            <div class="txtCenterAlign ">
+                <h5 class="fontSize18px wordBreak lineHeight2 themeBlueTextColor font-clanOt-news tddetailsstatement">{{changeTermDepositData.myAvailableBalance  | currency : ""}} <span translate="label.currency" ng-class="fontMain"></span></h5>
+            </div>
+
+            <div class="row lineHeight1" ng-class="fontLabel">
+                <div class="col col-50 ">
+                    <p translate="label.changeTerm.accountType"> </p>
+                    <p translate="label.changeTerm.legerBal"> </p>
+                </div>
+
+                <div class="col col-50 txtRightAlign">
+                    <p>{{accountTypeTerm}}</p>
+                    <p>{{changeTermDepositData.myLedgerBalance | currency : ""}} <span translate="label.currency"></span></p>
+                    <!-- <p>{{lastUpdate}}</p> -->
+                </div>
+            </div>
+            <div class="item-divider themeDarkGreyBGColor whiteTextColor txtCenterAlign" translate="label.selectTerm" ng-class="fontLabel"></div>
+            <div class="row fontSize12px lineHeight1 fontBold">
+                <div class="col col-50 textGrayClr">
+                    <p translate="tableHead.depositNo"></p>
+                    <p translate="tableHead.valueDate"> </p>
+                    <p translate="tableHead.maturityDate"> </p>
+                    <p translate="tableHead.Term"> </p>
+                    <p translate="tableHead.Amount"> </p>
+                    <p translate="tableHead.InterestRate"> </p>
+                    <p translate="tableHead.InterestCondition"> </p>
+                    <p translate="lable.td.AccountInterest"> </p>
+                </div>
+
+                <div class="col col-50 txtRightAlign textGrayClr">
+                    <p>{{changeTermCondition.depNo}}</p>
+                    <p>{{changeTermCondition.dateOpen}}</p>
+                    <p>{{changeTermCondition.dateMaturity}}</p>
+                    <p>{{changeTermCondition.term_description}}</p>
+                    <p>{{changeTermCondition.balAvailable | currency : ""}} <span translate="label.currency"></span></p>
+                    <p>{{changeTermCondition.interest}} %</p>
+                    <p>{{changeTermCondition.freqIntPay}}</p>
+                    <p>{{changeTermCondition.benefitAcc}}</p>
+                </div>
+            </div>
+
+            <div class="termCon txtCenterAlign fontSize12px padding10px">
+
+                <div class="row themeDarkGreyBGColor">
+                    <div class="col col-66 web-tblrow-data-link" translate="label.fundTrf.term"></div>
+                    <div class="col col-33 tableHeaderWhiteLine" translate="label.fundTrf.interestCondition"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-66">
+                        <div class="styled-select">
+                            <select class="fontSize14px" ng-model="selected_term_type" ng-options="option.productTypeDescription + ' - ' + option.term_description for option in options_term_type" ng-change="onChangeTermType(selected_term_type)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col col-33">
+                        <div class="styled-select">
+                            <select id="select_field_term_freq">
+                                <option value="{{option}}" ng-repeat="option in options_term_freq | filter:filterfreq">{{option.freq_description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="navigateChangeTermConfirm()">
+			</button>
+		</div>
+    </ion-content>
+</ion-view>

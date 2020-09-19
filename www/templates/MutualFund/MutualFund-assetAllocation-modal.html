@@ -1,0 +1,21 @@
+<ion-modal-view id="accListModal" class="listModal"> 		
+
+   <ion-header-bar class="darkHeadBar">
+          <h4 class="title noneLeftRight" translate="header.acceptMessage"></h4>
+         <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right"
+           ng-click="selectClose()"></a>
+    </ion-header-bar>  
+         
+    <ion-content  class="has-header" overflow-scroll= "false" locking="true" direction="xy" has-bouncing="false">
+         
+            <div class="row">
+                <div class="col fontLabel fontSize20px">การวัดระดับความเสี่ยง</div>
+            </div>
+
+            <div class="row"  ng-if="fundRiskTable">
+                <div class="col  tableRisk"  ng-bind-html="fundRiskTable"></div>
+            </div>
+        
+            <div class="spaceMutualFund"></div>
+    </ion-content>
+</ion-modal-view>

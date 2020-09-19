@@ -1,0 +1,32 @@
+<ion-view title="" class="setting-page">
+	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>
+	    <h4 class="title" translate="header.setting"></h4>
+	</ion-header-bar>
+	
+	<ion-content class="has-header has-subheader" overflow-scroll="false" has-bouncing="false">
+	    <div class="list">
+		  <a class="item item-icon-right" href="#" style="line-height: 31px;">
+		    <span translate="item.language" ng-class="fontLabel"></span>
+		    <button id="btn-lang" class="button" style="float: right; margin-right: -45px" ng-click="ChangeLanguage(lang)">
+				  {{langLabel}}
+			</button>
+		  </a>
+			<a class="item item-icon-right" href="#/privacyPolicy" style="line-height: 31px;">
+				<span translate="item.privacyPolicy" ng-class="fontLabel"></span>
+				<i class="icon ion-ios-arrow-forward" ng-class="fontLabel"></i>
+			</a>
+		  <a class="item item-icon-right" href="#" style="line-height: 31px;">
+		    <span translate="item.appVErsion" ng-class="fontLabel"></span>
+		    <span style="float: right; margin-right: -45px">
+				  {{appVersion}}{{buildNumber}}
+			</span>
+		  </a>
+		</div>
+	</ion-content>
+</ion-view>

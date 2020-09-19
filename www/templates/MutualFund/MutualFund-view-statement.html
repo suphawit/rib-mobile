@@ -1,0 +1,58 @@
+<ion-view title="" cache-view="false">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <a class="button button-clear" ng-click="backToMutualFundDetail()" translate="label.back"></a>
+        <h4 class="title" translate="label.mutualFund"></h4>
+    </ion-header-bar>
+
+    <ion-content ng-class="has-header has-subheader-sub"
+                 ng-style="{ 'top': mutualFundDetailTop(),'margin-bottom': mutualFundDetailMarginBottom()}"
+                 class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false"
+                 has-bouncing="false">
+        <h2 class="title-content-bar" translate="button.viewStatement"></h2>
+        <div class="txtLeftAlign padding-left20px">
+            <h5 class="wordBreak themeBlueTextColor font-quark-head fontSize18px">{{selectedMutualFundPort.fundCode}}</h5>
+            <span class="wordBreak themeBlueTextColor font-quark-head fontSize14px"><span translate="tableHead.CurrentNAV"></span> {{selectedMutualFundPort.navValue}} (<span translate="label.currency"></span>/<span translate="label.unit"></span>)</span>
+        </div>
+        <div class="pageContentsScroll">
+            <div class="headerDropdownBar">
+                <div class="accountsDropdown" dropdown-select="mutualFundStatementYearList" dropdown-model="selectedMutualFundStatementYear"
+                     dropdown-item-label="year" dropdown-onchange="mutualFundStatementInquiry(selected)"></div>
+            </div>
+            <div ng-show="isErr">
+                <div style="color:red;">{{ errorMsgInfo | translate }}</div>
+            </div>
+            <div class="row fontSize12px lineHeight1">
+                <div class="col col-50">
+                    <p class="fontWeiSize">{{mutualFundViewStatementData[0].fundCode}}</p>
+                    <p>{{mutualFundViewStatementData[0].fundName}}</p>
+                </div>
+            </div>
+            <div ng-if="noData()" class="row">
+                <div class="col col-80 col-offset-10 txtCenterAlign" translate="label.rtp.noData"></div>
+            </div>
+            <div ng-repeat="transaction in mutualFundViewStatementData" class="row fontSize12px lineHeight1 mutualBorderTop">
+                <div class="col col-50">
+                    <p translate="label.txnDate"></p>
+                    <p translate="label.txnType"></p>
+                    <p><span translate="tableHead.Amount"></span> (<span translate="label.currency"></span>)</p>
+                    <p translate="label.allocatedUnit"></p>
+                    <p><span translate="label.navPerUnit2"></span> (<span translate="label.currency"></span>/<span translate="label.unit"></span>)</p>
+                    <p><span translate="label.costPerUnit"></span> (<span translate="label.currency"></span>/<span translate="label.unit"></span>)</p>
+                </div>
+                <div class="col col-50 txtRightAlign">
+                    <p>{{transaction.transDate}}</p>
+                    <p>{{transaction.transType}}</p>
+                    <p>{{transaction.amount | currency : ""}}</p>
+                    <p>{{transaction.unit | number : 4}}</p>
+                    <p>{{transaction.navPerUnit | number : 4}}</p>
+                    <p>{{transaction.costPerUnit | number : 4}}</p>
+                </div>
+            </div>
+            <ion-infinite-scroll
+                    ng-if="haveNextMutualFundStatementDetail()"
+                    on-infinite="loadMutualFundStatementDetail()"
+                    distance="10%">
+            </ion-infinite-scroll>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,66 @@
+<ion-view id="otherAccount"> 
+	 <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">		 
+	    <h4 class="title" translate="label.manageBiller"></h4>
+	    <!--<a class="button button-icon icon ion-plus" side="right" ng-click="addBiller()" ></a>-->
+	</ion-header-bar>
+
+<div id="bill-list" ng-if="!isNotDataShow" class="row paddingNone bar bar-subheader-sub headerDropdownBar"> 
+		<div  class="headerDropdownBar scroll" style = "padding : 0px;" scroll="false">
+            <div ng-if="!isNotDataShow" style="padding-top: 6px" dropdown-select="accountCategoryList" dropdown-model="cataegorySelected" dropdown-item-label="categoryName" dropdown-onchange="showDataCategory(selected.categoryId,selected.categoryName)" on-touch="clearDeleteButton()"></div>
+        </div>
+</div>
+
+<ion-content class="has-header has-subheader" style = "padding-top: 44px !important; " ng-class="hasSubheader" locking="false" padding="false" overflow-scroll="false" has-bouncing="false"> 
+	<div style="min-height: calc(90vh - 150px)">
+		<div  ng-if="isNotDataShow">
+				<div class="col col-80 col-offset-10 txtCenterAlign" translate="label.nobillerrecord"></div>
+		</div>
+
+		<ion-list class="externalAccList">				 
+			<!--<ion-item  ng-repeat="bpBiller in billerListInfo track by $index"  class="item item-thumbnail-left"  ng-click="showMenuDetail($index,bpBiller)"  >-->
+				<ion-item  
+					ng-repeat="bpBiller in billerListInfo track by $index"  
+					class="item item-thumbnail-left billerlist" 
+					style="border-width: 1px; margin-top: 0px" 
+					ng-click="showDetailPage(bpBiller)" >
+				<div class="row paddingNone">
+				<!--   <img ng-src="{{BankImagesArray[0].url}}" class="externalMenuListImg" ng-style="{ 'background-color': BankImagesArray[0].color }"/>   -->
+					<img ng-src="{{bpBiller.logoCompany || getDefaultBillerImage(bpBiller)}}" class="externalMenuListImg" style="background-color: #594F74;">
+					<div class="col-80 padd-left10px">
+						<p class="padd-top5px" class="text-ellipsis">{{bpBiller.aliasName}}</p>
+						<div ng-if ="lang == 'en'" 
+							style="width:100%;"
+							class = "wordBreak fontSize12px text-ellipsis">
+							{{bpBiller.billerNameEn}}
+						</div>
+						<div ng-if ="lang == 'th'" 
+							style="width:100%;"
+							class = "wordBreak fontSize12px text-ellipsis">
+							{{bpBiller.billerNameTh}}
+						</div>
+					</div>							
+				</div>
+				<ion-option-button class="button-assertive" ng-click="deleteBillPayment(bpBiller)" translate="label.delete"> </ion-option-button>
+				<!--<div class=" item-accordion  dasboardAccord min-height50" ng-show="bpBiller.billerId == selection">
+						<div class="tabs tabs-icon-top min-height50 accActionTabs paddTopZeroTabs">
+							
+							<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" ng-click="manageFavourite(bpBiller)" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">
+								<i class="icon ion-ios-star extAccTabListIcons" ng-class="isFavouriteClass(bpBiller.isFavourite)"></i>
+								<span translate="label.favourite"></span>
+							</a>
+							<a nav-clear class="tab-item disable-user-behavior min-height50 whiteTextColor activated" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ng-click="nevigateToEdit(bpBiller)">
+								<i class="icon icon-w icon-setting extAccTabListIcons"></i>
+								<span translate="label.edit"></span>
+							</a>
+						</div>
+					</div>  			--> 
+					
+			</ion-item>
+		</ion-list>
+	</div>
+	<div style="margin-left: 3vw;margin-right: 3vw;">
+		<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.add" ng-click="addBiller()">
+		</button>
+	</div>
+</ion-content> 
+</ion-view>

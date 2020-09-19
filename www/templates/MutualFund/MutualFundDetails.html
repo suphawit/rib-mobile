@@ -1,0 +1,60 @@
+<ion-view   drag-content="false"> 
+		
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+			<a class="button button-clear"  ng-click="backToMutualFund()" translate="label.back"></a>
+			<h4 class="title" translate="label.mutualFund"></h4>
+	</ion-header-bar>
+
+	<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" has-bouncing="false"> 
+		<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor padding" >
+		<div class = "row  font-quark-head whiteTextColor  fontSize18px" >
+			<p><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff !important; font-size: 18px !important;"  translate= "label.unitholderNo"></span><span class = "whiteTextColor fontSize18px"> : </span><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff !important; font-size: 16px !important;">{{mfTranscationPortDetail.unitholderId}}</span></p>				
+			</div>
+			</div>
+		</ion-item>
+		<div class="pageContentsScroll">
+			<div class="  txtCenterAlign ">
+		  		<h5 class="wordBreak themeBlueTextColor font-quark-head fontSize18px ">{{mfTranscationPortDetail.fundCode}}</h5>
+				<p ng-if="curlang == 'en'" style="font-size: 14px;" class="wordBreak themeBlueTextColor font-quark-head ">{{mfTranscationPortDetail.fundNameEn}}</p>
+				<p ng-if="curlang == 'th'" style="font-size: 14px;" class="wordBreak themeBlueTextColor font-quark-head ">{{mfTranscationPortDetail.fundNameTh}}</p>
+				<div class="tddetailsstatement"></div>
+			</div>
+	  		<div class="row lineHeight1 " ng-class="fontLabel">	
+				<div class="col col-50 ">
+					<p translate="label.lisklevel"  > </p>
+					<p translate="label.costPerUnitMutualFund"  > </p>		 
+					<p translate="label.totalUnits"  > </p>
+					<p><span translate="label.investmentAvailableMutualFund"></span> <span class="fontSize11px"> (</span><span class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">)</span></p>
+					<p><span translate="label.profitLoss"></span><span class="fontSize11px"> (</span><span  class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">)</span></p>
+					<p>NAV<span  class="fontSize11px"> (</span><span class="fontSize11px" translate="label.currency"></span><span class="fontSize11px">/</span><span class="fontSize11px" translate="label.unit"></span><span  class="fontSize11px">)</span></p> 
+				</div>
+				<div class="col col-50 txtRightAlign">
+					<p>{{mfTranscationPortDetail.fundRisk}}</p>
+					<p>{{mfTranscationPortDetail.avarageCost | currency : "" : 4 }}</p>
+					<p>{{mfTranscationPortDetail.availableUnitBal | currency : "" : 4 }} </p>
+					<p>{{mfTranscationPortDetail.availableAmount | currency : "" : 2 }}</p>
+					<p class="txtBlue" ng-if="profitLost >= 0"><span ng-if="profitLost > 0" >+</span>{{profitLost | currency : "" : 2}}</p>
+					<p class="txtRed" ng-if="profitLost < 0">{{profitLost | currency : "" : 2}}</p>
+					<p>{{mfTranscationPortDetail.navValue}}</p>
+					<p class="fontSize11px">( as of {{navDate.date}}&nbsp;<span  translate="{{navDate.month}}"></span>&nbsp;{{navDate.year}} )</span></p>
+				</div>
+			</div>
+	 		<div class="tabs tabs-icon-top accActionTabs whiteTextColor positRelative">
+                    <a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" ng-click="navigateFundFactSheet()" ng-class="{'disabled': isDisableFundFactSheetBtn }"
+                       icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">
+                        <i class="icon icon-w icon-fund-fact-sheet padding-Top5px" ></i>
+                        <span translate="label.fundFactSheet" class="fontSize11px fontQuarkBold"> </span>
+                    </a>
+                    <a nav-clear ng-if="isPurchasable" class="tab-item disable-user-behavior activated whiteTextColor"  ng-click="nevigateMutualFundPuechase()"
+                       icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">
+                        <i class="icon icon-w icon-buy-fund padding-Top5px"></i>
+                        <span translate="menu.purchase" class="fontSize11px fontQuarkBold"> </span>
+                    </a>
+					<a nav-clear class="tab-item disable-user-behavior activated whiteTextColor" href="#/myMutualFundViewStatement"  >
+						<i class="icon icon-w icon-view-statement padding-Top5px"></i><!-- <i class="icon ion-social-bitcoin"></i> --> 
+						<span translate="button.viewStatement" class="fontSize11px fontQuarkBold"> </span>
+					</a>
+                </div>
+	 	</div>
+	 </ion-content>
+</ion-view>

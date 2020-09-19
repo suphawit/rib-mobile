@@ -1,0 +1,43 @@
+<ion-view title="" cache-view="false">
+
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<h4 class="title" translate="label.notification"></h4>
+	</ion-header-bar>
+
+	<ion-content ng-style="{ 'top': mutualFundTop(),'margin-bottom': mutualFundMarginBottom()}" ng-class="fontHeader" class="has-header has-subheader"
+	    locking="false" overflow-scroll="true" padding="false" has-bouncing="true">
+
+		<ion-list>
+			<ion-item style="padding: 0px;" ng-if="notificationData != null" ng-repeat="item in notificationData | unique: 'notificationId' track by $index" ng-class="{'notification-list-active' : !item.isRead}"
+			    ng-click="clickNotification($index,item);">
+				<!--ng-class="notification-list-active: !item.isRead"  -->
+				<div class="row  padd-Right10px">
+					<div class="col-15">
+						<div  class=" item-icon-left">
+							<i class="icon icon-c32 {{item.icon}}"></i>
+						</div>
+					</div>
+                    <div class="col">
+                        <div>
+                            <span ng-if="curlang == 'th'" class="fontSize14px wordBreak">{{item.msgTh}}</span>
+                            <span ng-if="curlang == 'en'" class="fontSize14px wordBreak">{{item.msgEn}}</span>
+                        </div>
+                    </div>
+					<div class="col-20 tblAmountCol padd5px">
+						<div class="themeGreyTextColor fontSize12px  wordBreak"  am-time-ago="item.createDate"></div>
+					</div>
+
+				</div>
+			</ion-item>
+			<div ng-if="notificationData == null" class="padd-top15px">
+				<div class="col col-80 col-offset-10 txtCenterAlign" translate="label.ohterAccount.noData"></div>
+			</div>
+
+		</ion-list>
+		<ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMoreNotification()" distance="5%">
+
+
+
+		</ion-infinite-scroll>
+	</ion-content>
+</ion-view>

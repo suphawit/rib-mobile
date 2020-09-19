@@ -1,0 +1,49 @@
+<ion-view title="" class="loginSetting">
+    <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+        <h4 class="title" translate="header.setting"></h4>
+        <!--  <i class="icon fontSize25px themeBlueTextColor" ></i>  -->
+    </ion-header-bar>
+    
+    <ion-content overflow-scroll="false" has-bouncing="false">
+            <!-- <div class="loginSetting">
+            <div class="item item-icon-right" href="#" >
+               
+                 <label class="toggle toggle-assertive toggle-rib" style="float: right; margin-right: -45px; ">
+                    <input type="checkbox" ng-model="model.isChecked" ng-change="showConfirm(model)">
+                    <div class="track">
+                      <div class="handle"></div>
+                    </div>
+                  </label>
+            </div>
+        </div> -->
+
+        <ul class="list">
+
+            <li class="item item-toggle" >
+               <span ng-class="fontLabel" translate="{{checkOS}}">
+              
+               </span>
+               <label class="toggle toggle-assertive toggle-rib">
+                 <input type="checkbox" ng-model="turnClearAppData.checked" ng-change="showConfirm()" ng-disabled="enrolled">
+                 <div class="track">
+                   <div class="handle"></div>
+                 </div>
+               </label>
+            </li>
+
+            <!-- <ion-toggle ng-repeat="item in settingsList"
+                    ng-model="item.checked" >
+            {{ item.text }}
+            </ion-toggle> -->
+
+            <!-- <ion-toggle ng-model="model.isChecked" toggle-class="toggle-calm">
+                <span translate="item.usefingerprint" ng-class="fontLabel"></span>
+            </ion-toggle> -->
+        
+            <!-- <div>
+            val = {{turnClearAppData}}
+            </div> -->
+          
+          </ul>
+    </ion-content>
+</ion-view>

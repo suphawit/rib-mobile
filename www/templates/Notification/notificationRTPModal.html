@@ -1,0 +1,115 @@
+<ion-modal-view id="accListModal" class="listModal">
+	<ion-header-bar class="darkHeadBar">
+		<h4 class="title noneLeftRight" translate="label.RTPHist"></h4>
+		<a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a>
+	</ion-header-bar>
+	<ion-content>
+
+
+		<div class="row">
+
+			<div style="margin: 0 auto;" class="col">
+				<div class="hist-trans-data item-divider fontSize12px">
+
+					<div class="row padding2px">
+						<div class="col padding2px">
+							<span ng-if="transaction.rtpMsgType === 'INCOMING'">
+								<span translate="label.hisRTPReceive"></span>
+							</span>
+							<span ng-if="transaction.rtpMsgType === 'OUTGOING'">
+								<span translate="label.hisRTPRequest"></span>
+							</span>
+						</div>
+						<div class="col text-right padding2px">
+							<span class="label">
+								<span translate="lable.fundschedule.status"></span>&nbsp;:&nbsp;{{transaction.statusDesc}}</span>
+						</div>
+					</div>
+					<div class="row padding2px">
+						<div class="col padding2px">
+							<span class="label" ng-if="transaction.rtpMsgType === 'INCOMING'">
+								<span translate="label.requestFrom"></span>&nbsp;:&nbsp;{{transaction.requesterAccountName}}
+								<span ng-if="transaction.requesterIdType !== 'BILLERID'">({{transaction.requesterIdValue}})</span>
+							</span>
+							<span class="label" ng-if="transaction.rtpMsgType === 'OUTGOING'">
+								<span translate="label.requestTo"></span>&nbsp;:&nbsp;{{transaction.receiverAccountName}}
+								<span ng-if="transaction.requesterIdType !== 'BILLERID'">({{transaction.receiverIdValue}})</span>
+							</span>
+						</div>
+					</div>
+
+					<div class="hist-trans-data-sub">
+						<div class="row padding2px">
+							<div class="col col-60 padding2px">
+								<span class="label">
+									<span translate="label.history.type"></span>&nbsp;:&nbsp;{{transaction.requesterIdTypeLabel}}</span>
+							</div>
+							<div class="col text-right padding2px">
+								<span>{{transaction.amount | currency : ""}}&nbsp;:&nbsp;
+									<span translate="label.currency"></span>
+								</span>
+							</div>
+						</div>
+						<div class="row padding2px">
+							<div class="col col-70 padding2px">
+								<span class="label">
+									<span translate="label.PayAlertRef"></span>&nbsp;:&nbsp;
+									<span ng-if="transaction.rtpreference != null">{{transaction.rtpreference}}</span>
+									<span ng-if="transaction.rtpreference == null">-</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="row padding2px">
+							<span translate="label.transDate"></span>
+							&nbsp;:&nbsp;
+							<div ng-if="transaction.transactionDate != ''">
+								{{::transaction.transactionDate.date}}&nbsp;
+								<span translate="">{{transaction.transactionDate.month | translate}}</span>
+								&nbsp;{{transaction.transactionDate.year}}
+							</div>
+							<span ng-if="transaction.transactionDate == ''"> - </span>
+						</div>
+
+						<div class="row padding2px">
+							<span translate="label.expiredDate"></span>
+							&nbsp;:&nbsp;
+							<div ng-if="transaction.expiryDate != ''">
+								{{::transaction.expiryDate.date}}&nbsp;
+								<span translate="">{{transaction.expiryDate.month | translate}}</span>
+								&nbsp;{{transaction.expiryDate.year}}
+							</div>
+							<span ng-if="transaction.expiryDate == ''"> - </span>
+						</div>
+
+						<div class="row padding2px" ng-if="transaction.requesterIdType == 'BILLERID'">
+							<div class="col padding2px">
+								<div class="label" ng-if="transaction.billReference1 !== null">
+									<span translate="label.referenece1"></span>&nbsp;:&nbsp;{{::transaction.billReference1}}&nbsp;</div>
+								<div class="label" ng-if="transaction.billReference2 !== null">
+									<span translate="label.referenece2"></span>&nbsp;:&nbsp;{{::transaction.billReference2}}&nbsp;</div>
+								<div class="label" ng-if="transaction.billReference3 !== null">
+									<span translate="label.referenece3"></span>&nbsp;:&nbsp;{{::transaction.billReference3}}&nbsp;</div>
+
+							</div>
+						</div>
+						<div class="row padding2px">
+							<div class="col padding2px">
+								<span translate="lable.fundtrfreciept.note"></span>&nbsp;:&nbsp;{{transaction.additionalNote || '-'}}</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<div style="height:88px;"></div>
+
+
+
+
+
+
+	</ion-content>
+</ion-modal-view>

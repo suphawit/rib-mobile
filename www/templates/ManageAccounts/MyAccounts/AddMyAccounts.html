@@ -1,0 +1,35 @@
+<ion-view> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >
+		<a class="button button-clear" ng-click="goBackPage()" translate="label.back"></a>	 
+	    <h4 class="title" translate="label.addMyAcc"></h4>
+	    <!--<a class="button button-clear" side="right" ng-click="navigateAddMyAccountsDetail()" translate="button.next"></a>-->
+	</ion-header-bar>
+ 
+	<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" ng-class="fontHeader" has-bouncing="false">
+		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar" translate="label.myAccDetails"></h2>
+			<form ng-submit='navigateAddMyAccountsDetail()' ng-class="fontLabel" class="paddingRightUnderline">
+					<h5 class="addMyAccountfont" translate="label.plsInpUrInfo"> </h5>
+					
+					<h5 class="addMyAccountLable" translate="label.acctNo"> </h5>
+					<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100 marin-left20">
+						<i class="icon ion-person placeholder-icon fontSize25px"></i>
+						<input bind-virtual-keyboard vkmodel="addMyAccountData.addMyAccountNumber" vkoption="virtualKeyboardAccount.option" type="text"  ng-model="addMyAccountData.addMyAccountNumber" maxlength="30">
+					</label>
+					<div>  </div>
+					
+					<h5 class="addMyAccountLable" translate="label.acctAliasName"></h5>
+					<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100 marin-left20">
+						<i class="icon ion-android-lock placeholder-icon fontSize25px"></i>
+							<input type="text"  maxlength="30" ng-model="addMyAccountData.addMyAccountAliasName">
+					</label>
+											
+				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+			</form>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next" ng-click="navigateAddMyAccountsDetail()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

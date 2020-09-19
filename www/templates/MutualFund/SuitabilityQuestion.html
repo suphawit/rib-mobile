@@ -1,0 +1,61 @@
+<ion-view>
+		<form   ng-controller="SuitabilityQuestionCtrl">
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+			<a class="button button-clear" ng-click = "onPreview()"  translate="label.back"></a>
+
+			<h4 class="title"  translate="menu.riskProfile"></h4>
+	
+		</ion-header-bar>
+	
+		<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false"> 
+
+			<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor fontHeader" >
+				<span class = "title row font-quark-header fontSize18px" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"  translate="menu.riskProfile"></span>
+			</ion-item>
+
+				<div ng-if="!suitQuestionResult" ng-class="fontLabel">
+					<span class="col col-80 col-offset-10 txtCenterAlign padd-top15px" translate="label.mutualFund.noData"></span>
+				</div>
+		
+			
+				<div ng-if="suitQuestionResult" class="pageContentsScroll  padding-Top5px">
+					<div>
+						<div align-title="center" class=" padding  fontLabel"  style="font-size: 19px !important; padding: 12px !important;    font-weight: 900 !important; border-bottom: 1px #ddd solid; line-height: 27px;">{{suitQuestionResult[suitIndex].seq}} &nbsp;{{suitQuestionResult[suitIndex].description}}</div>
+					</div>
+				
+					<div class="padding fontLabel fontSize18px " data-ng-if="suitQuestionResult[suitIndex].type == 'R'" >
+						<div ng-repeat="suitAnswer in suitQuestionResult[suitIndex].answerDataList"  style="padding: 15px !important;">
+							<!--<input type="radio"  ng-model="suitAnswerShow.id"  ng-value="suitAnswer.id" 	 ng-change="setSelectedAnswer(suitAnswer.id)"> <a href="#" ng-click="setSelectedAnswer(suitAnswer.id)" />{{suitAnswer.description}}</a>-->
+							<ion-radio icon="ion-checkmark" ng-model="suitAnswerShow.id" ng-value="suitAnswer.id" ng-click="setSelectedAnswer(suitAnswer.id)">
+								<div class="clearWhiteSpace">{{suitAnswer.description}}</div>
+							</ion-radio>
+						</div>
+					</div>
+
+					<div class="padding fontLabel fontSize18px" data-ng-if="suitQuestionResult[suitIndex].type == 'C'"  style="padding-left: 10px !important;">
+						<div data-ng-repeat="suitAnswer in suitQuestionResult[suitIndex].answerDataList "  style="padding: 15px !important;">
+							<!--<input type="checkbox" ng-model="suitAnswer.checked"  ng-value="suitAnswer.checked"    ng-click="setSelectedAnswer(suitAnswer)"> <a href="#"  ng-click="setSelectedAnswer(suitAnswer)"/>{{suitAnswer.description}}</a>-->
+							<ion-checkbox class="item-checkbox-right custom-checkbox" ng-model="suitAnswer.checked" ng-value="suitAnswer.checked" ng-click="setSelectedAnswer(suitAnswer)">
+								<div class="clearWhiteSpace">{{suitAnswer.description}}</div>
+								<i class="icon" ng-class="{'true':'ion-checkmark', 'false':''}[!!suitAnswer.checked]"></i>
+							</ion-checkbox>
+						</div>
+					</div>
+
+					
+
+				</div>
+			</ion-content>
+			<ion-footer-bar align-title="left" class="modal-footer" style = "height: 70px;">
+							
+										<button  ng-if = "!ngcheck" style="margin-left: 3vw;margin-right: 3vw; " class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" ng-disabled = "isDisabled" translate="label.next"    ng-click="onSubmit()">
+										</button>
+								
+										<button  ng-if = "ngcheck"  style="margin-left: 3vw;margin-right: 3vw; " class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" ng-disabled = "isDisabled"  translate="button.submit"    ng-click="onSubmit()">
+										</button>
+								
+					</ion-footer-bar>	
+		</form>
+		
+	
+ </ion-view>

@@ -1,0 +1,62 @@
+<ion-view title="" drag-content="false">
+	<ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true" >
+		<ion-nav-title>
+			 <img src="images/Bank_KK.png" class="appTitleIcon" />
+		</ion-nav-title>
+	</ion-nav-bar>
+ 	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="event.goBackPage()" translate="button.back" ng-if="event.isShowBack"></a>
+	    <h4 class="title" translate="header.userAuthentication"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" overflow-scroll="false" padding="false" has-bouncing="false" ng-class="fontHeader">
+		<div style="min-height: calc(90vh - 110px)">
+			<h2 class="title-content-bar" translate="button.authmypin"></h2>
+			<form class="paddingRightUnderline">
+				<h5 class="addMyAccountfont" translate="label.cardType"></h5>
+				<div class="row marginLeft20Px">
+					<div class="col"></div>
+					<div class="col-80">
+						<div class="row">
+							<div class="col-50 text-center" ng-repeat="data in cardList">
+								<div class="button-registerType icon-fontello icon-anyid-register-tumb icon-register-anyid-container marginClearBoth" ng-click="event.setCardType(data)" ng-class="data.icon + ' ' + ((data.value !== input.value.idType) ? 'inactive' : '')"></div>
+								<label class="label-registerType">{{data.name | translate}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="col"></div>
+				</div>
+				<h5 class="addMyAccountfont" translate="label.cidSlashPassport"></h5>
+				<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100">
+					<i class="icon ion-card placeholder-icon fontSize25px"></i>
+					<input bind-virtual-keyboard vkmodel="input.value.idNo" vkoption="virtualKeyboardIdNo.option" class="whiteBGColor" type="text" ng-model="input.value.idNo" maxlength="30">
+				</label>
+				<div ng-if="input.value.idType === 'P'">
+					<h5 class="addMyAccountfont" translate="label.issueCountry"></h5>
+					<div class="row txtCenterAlign fontSize12px marginLeft20Px  ">
+						<div class="col text-center">
+							<div class="styled-select styled-select-removepadding" data-tap-disabled="{{chromeview}}">
+								<select class="txtCenter" ng-model="country.selected"
+									ng-options="option[countryDescField] for option in country.options"  
+									ng-class="fontLabel"  
+									ng-change="event.setCountryCode(country.selected)">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h5 class="addMyAccountfont" translate="label.myPIN"></h5>
+				<label class="item item-input addotherAccountCustomBorder addMyAccountUnderLine widt100">
+					<i class="icon ion-folder placeholder-icon fontSize25px"></i>
+					<input bind-virtual-keyboard vkmodel="input.value.pin" vkoption="virtualKeyboardMyPIN.option" class="whiteBGColor" type="password" ng-model="input.value.pin" maxlength="6">
+				</label>
+				<div class="marginLeft20Px margin-top35 fontSize14px" translate="label.mypinRemark">
+				</div>
+			</form>
+		</div>
+		<div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="button.next"
+			ng-click="event.doSubmit(input)">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

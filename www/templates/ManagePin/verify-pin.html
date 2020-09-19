@@ -1,0 +1,40 @@
+<div ng-init="event.init()" class="pinTemplateContainer" >
+	<div class="sub-title padd-left10px themeDarkGreyTextColor" ng-class="fontMenuHeader">{{title | translate}}</div>
+	 
+    <div id="pinPanel" class="item item-input pin-pwd-label" >
+        <div class="row">
+            <div class="col" ng-repeat="n in [0, 1, 2, 3, 4, 5] track by $index">
+                    <div class="circle {{data.dotpins[n]}}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pin-btn-ctrl font-clanOt-pin-btn">
+	    <div class="row pin-login-padding padding1px">
+	        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r1 in [1, 2, 3] track by $index" >
+	            <button  class="button  button-stretch pinBtn " ng-click="event.add(r1)">{{r1}}<br></button>
+	        </div>
+	    </div>
+	    <div class="row pin-login-padding padding1px">
+	        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r2 in [4, 5, 6] track by $index" >
+	            <button  class="button  button-stretch pinBtn" ng-click="event.add(r2)">{{r2}}<br></button>
+	        </div>
+	    </div>
+	    <div class="row pin-login-padding padding1px" >
+	        <div class="col col-33 loginPinbtn padding1px" ng-repeat="r3 in [7, 8, 9] track by $index" >
+	            <button  class="button  button-stretch pinBtn" ng-click="event.add(r3)">{{r3}}<br></button>
+	        </div>
+	    </div>
+	    
+	    <div class="row padding1px">
+	        <div class="col col-33 padding1px ">
+	        	<button class="button  button-stretch pinBtn" ></button>
+	        </div>
+	        <div class="col col-33 padding1px">
+	            <button class="button  button-stretch pinBtn" ng-click="event.add(0)">0</button>
+	        </div>
+	        <div class="col col-33 padding1px">
+	            <button class="button ion-ios-close-outline button-stretch pinBtn" ng-click="event.del()"></button>
+	        </div>
+	    </div>
+	</div>
+</div>

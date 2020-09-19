@@ -1,0 +1,32 @@
+<ion-view>
+		<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader" >		 
+						<h4 class="title" translate="label.myMutualFund"></h4>
+					
+		</ion-header-bar>
+  
+    <ion-content>
+		<ion-item class="item-divider themeDarkBlackBGColor whiteTextColor fontHeader" >
+				<div class = "row font-clanOt-label fontSize18px">
+					<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"  translate="label.mutualFund">	</span>
+				</div>
+		</ion-item>
+		
+		<div ng-if="termAndCondText">
+				
+			<div class="row">
+				<div class="col" ng-bind-html="termAndCondText"></div>
+			</div>
+			
+			<div class = "row icon-row">
+				<div class = "col text-center scheduleBtns" ng-class="transFutureScheduleDate" id="TransFutureScheduleDate">
+					<button class = "button button-block button-custom" ng-class="fontLabel" translate="label.cancel" ng-click="selectClose()"></button>
+				</div>
+				<div class = "col text-center scheduleBtns " ng-class="transTodayScheduleDate" id="TransTodayScheduleDate">
+					<button class="button button-block button-custom" ng-class="fontLabel" translate="label.accept" ng-click="termsAndCondChecked()"></button>
+				</div>
+			</div> 	     
+				<!--</ion-item>-->
+				<div style="height:88px;"></div>
+		</div>
+  	</ion-content>
+</ion-view>

@@ -1,0 +1,41 @@
+<ion-modal-view id="funtransferModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">
+        <h4 class="title" translate="label.selectToAccount"></h4>
+        <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="closeFormListModal()"></a>
+    </ion-header-bar>
+    <ion-header-bar align-title="center" class="bar bar-subheader paddingNone selectBarBGColor" ng-if="getListSuccess&&!noResult">
+        <div class="headerDropdownBar">
+            <div 
+                dropdown-select="accountCategoryList" 
+                dropdown-model="selectedCategory" 
+                dropdown-item-label="categoryName" 
+                dropdown-onchange="onChangeCategory(selected)">
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false" class="has-header has-subheader" has-bouncing="false">
+        <div ng-if="noResult" class="col col-80 col-offset-10 txtCenterAlign" translate="lable.billerNotFound"></div>
+        <div ng-repeat="account in otherAccoutListFilter track by $index" class="paddingNone" ng-click="selectedOtherAnyIdAccount(account)">
+            <ion-list class="externalAccList paddingNone min-height50">
+                <ion-item 
+                    class="item-stable item-icon-right item-thumbnail-left paddingNone min-height50" 
+                    ng-style="{ 'border-bottom': '1px solid ' +''+ '#594F74'}">
+
+                    <div class="row paddingNone">
+                        <img 
+                            ng-src="{{ getAnyIDIcon(account.anyIDType) }}"
+                            class="externalMenuListImg" 
+                            style="background-color: #594F74"/>
+                            
+                        <div class="col-80 padd-left10px">
+                            <p class="padd-top5px">{{account.acctAliasName}}</p>
+                            <p>{{account.acctNo}}</p>
+                        </div>
+                    </div>
+                    
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="heightSpaceModal"></div>
+    </ion-content>
+</ion-modal-view>

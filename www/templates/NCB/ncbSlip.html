@@ -1,0 +1,108 @@
+<ion-modal-view id="reciept" class="ncbSlipModal" title="">
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7" hide-back-button="true">
+        <ion-nav-title>
+            <img src="images/Bank_KK.png" class="appTitleIcon" ng-click="closeReceiptModal()"/>
+        </ion-nav-title>
+    </ion-nav-bar>
+
+    <ion-content class="has-header fundTransferBgimage" scroll="false" overflow-scroll="false" ng-class="fontContent" has-bouncing="false">
+        <div class="has-header fundTransferReciept-height padd-left0px slipMarginTop" data-ng-init="">
+            <div scroll="false" class="fundTrfBGremove">
+
+                <div class="dasboardAccord-reciept padding10px boxOfSummitedStatus txtCenterAlign margin-Top5px z-index-2 center90Box">
+                    <span class="fontSize18px" translate="label.complete"></span>
+                </div>
+
+                <div class="row icon-row slipMarginTop center90Box padZero">
+                    <img ng-src="images/Bank_KK.png" class="billPayImgReceipt"/>
+                    <div class="col fundTrfRecieptBorderBlue " style="border-color: #594F74;">
+                        <div style="width: 67vw" class="text-ellipsis">
+                            <strong>{{response.myAccountName}}</strong>
+                        </div>
+                        <span>{{response.myAccountNumber}}</span>
+                        <div class ="fontSize11px">{{customerCache.account.bankName}}</div>
+                    </div>
+                </div>
+
+                <div class="row transferaccount-amount amount-reciept padd-top30px z-index-2 slipMarginTop center90Box">
+                    <div class="borderNone txtCenterAlign z-index-2" style="width:100%">
+                        <span class="whiteTextColor font-clanOt-header">{{response.payAmount | currency : ''}} </span>
+                        <span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+                    </div>
+                </div>
+
+                <div class="row icon-row center90Box slipMarginTopTo marginToAccount padZero" ng-class="fontDisplay">
+                    <div>
+                        <img
+                            class="billPayImgReceipt col blackTextColor"
+                            style="background-color: #594F74;"
+                            ng-src="{{defaultBillerLogo}}">
+                    </div>
+                    <div class=" item col fundTrfRecieptBorderBlue"
+                         style="background-color: transparent; border-color: rgb(209, 211, 212);">
+                        <div style="width: 67vw" class="text-ellipsis txt">
+                            <span class='fontSize16px fontFamilyQuark-bold'>{{lang === "th" ? response.billerNameTh : response.billerNameEn}}</span>
+                            <p class="fontSize12px"><span>{{lang === "th" ? response.ref1LabelTh : response.ref1LabelEn}}</span> : {{response.ref1Value}}</p>
+                            <p class="fontSize12px"><span>{{lang === "th" ? response.ref2LabelTh : response.ref2LabelEn}}</span> : {{response.ref2Value}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="padd-slip-left fontSize12px" ng-class="fontDisplay">
+                <div class="bankName-other-acc">
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.mailAddress"></div>
+                        <div class="col col-60 paddingNone marginNone">{{response.address}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.mobileECreditReport"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{response.mobileNo}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.emailECreditReport"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{response.email}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.txnDate"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{response.paymentDate}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.deductDate"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            {{response.paymentDate}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-40 paddingNone marginNone font-bold" translate="label.input.feeamount"></div>
+                        <div class="col col-60 paddingNone marginNone">
+                            <span class="">{{response.feeAmount | currency : ''}} </span>
+                            <span translate="label.currency"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-if="response.note" class="col col-40 paddingNone marginNone font-bold" translate="label.note"></div>
+                        <div class="col col-60 paddingNone marginNone">{{response.note}}</div>
+                    </div>
+                    <div class="row description">
+                        <div class="col paddingNone marginNone">
+					        <p class="marginNone errorLabelRed" translate="label.eCreditReportConfirm"></p>
+                            <p class="marginNone fontBold" translate="label.notDataInTime"></p>
+                            <p class="marginNone" translate="label.contactbureau"></p>
+                            <p class="marginNone fontBold" translate="label.NCBreportUnsuccessful"></p>
+                            <p class="marginNone" translate="label.NCBsendNewInfo"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

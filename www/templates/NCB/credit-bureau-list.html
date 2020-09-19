@@ -1,0 +1,40 @@
+<ion-view title="" drag-content="false" id="creditBureauList" ng-init="initialNCBRequestList()"> 
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<h4 class="title" translate="label.checkNCB"></h4>	    
+	</ion-header-bar> 
+	<ion-content class="has-header has-subheader" locking="false" padding="false" overflow-scroll="true" has-bouncing="false">
+		<div class="container">
+			<div ng-show="!isShown" class="ncbRequestList">
+				<div class="col col-80 col-offset-10 txtCenterAlign padd-top15px" translate="lbl.noBlockList"></div>
+			</div>
+			<ion-scroll ng-show="isShown" class='ncbRequestList'>
+				<ion-list>
+					<ion-item ng-repeat="item in ncbRequestList track by $index" class="item bordoerBottom">
+						<div ng-class="fontContent">
+							<p>{{lang==="th" ? item.titleTypePackageTh : item.titleTypePackageEn}}</p>
+							<p><span translate="label.requestId"></span>: {{item.requestId}}</p>
+							<p><span translate="label.biller.status"></span>: {{lang==="th" ? item.statusDescTh : item.statusDescEn}}</p>
+							<br />
+							<p><span translate="label.requestDate"></span>: {{item.requestDate}}</p>
+							<!-- expiredReport: "02" -->
+							<!-- expiredRequest: "03" -->
+							<!-- rejected: "04" -->
+							<i ng-if="!['02', '03', '04', '06'].includes(item.statusCode)" class="icon ion-chevron-right"></i>
+							<div ng-if="!['02', '03', '04', '06'].includes(item.statusCode)" class="bureauDetail"
+								ng-click="bureauDetail(
+									item.statusCode,
+									item.requestId,
+									lang==='th' ? item.statusErrDetailTh : item.statusErrDetailEn
+								)"></div>
+						</div>
+					</ion-item>
+				</ion-list>
+			</ion-scroll>
+			<div ng-class="fontLabelSmall" class="remarkNCB" translate="label.remarkNCB"></div>
+		</div>	
+		<div class="buttonContainer">
+			<button ng-class="fontLabel" class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.addRequest" ng-click="gotoRequestBureau()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

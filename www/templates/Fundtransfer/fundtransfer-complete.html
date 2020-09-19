@@ -1,0 +1,140 @@
+ <ion-view title="">
+     
+     <ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<a class="button button-clear" ng-click="addNewAccountScreen()" ng-if="!fundTransferTDShow && !existingTransferAccountNo"  translate="label.addaccount"></a>	 
+	    <h4 class="title" translate="label.transfer"></h4>
+	</ion-header-bar>
+	<ion-content class="has-header has-subheader" locking="false"  overflow-scroll="false" padding="false" ng-class="fontContent" has-bouncing="false">
+	 <div style="min-height: calc(85vh - 140px)">
+		<div class="dasboardAccord padding15px txtCenterAlign">
+			<span class="fontSize18px">{{transactionStatusDesc}}</span>
+		</div>
+		
+		<ion-item class="item-divider transConfirmHeadBlck " ng-class="fontDisplay">
+			<div class= "font-bold fontSize19px blackTextColor">{{fundTransferRequest.fromAccountAliasName}}</div>  
+			<div > {{fundTransferRequest.fromAccount}} </div>
+			<span  translate="label.availableBalance"></span>
+			<span>  {{fromAccountBalance | currency : ""}} </span>
+			<span  translate="label.currency"></span>
+					
+		</ion-item>
+				
+		<div class="transferaccount transConfrmAmoutDiv" >
+			<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+				<span class="whiteTextColor font-clanOt-header" >{{transferAmount}} </span>
+				<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+			</div>
+		</div>
+	
+		<ion-item class="padd-top0Px borderTop0Px padd-bottom padd-left20px" ng-class="fontDisplay">		  	   
+				<div class = "row icon-row">
+					<img class="tranCompImg" ng-src="{{isAnyID ? anyIDIcon : clientImgUrl}}" ng-style="{ 'background-color': isAnyID ? anyIDIconColor : getBankCodeImg(fundTransferRequest.toBankCode, 'color') }"/>	          
+				<div class = "col padd-top0Px padd-left10px text-ellipsis">
+					<strong>{{fundTransferRequest.toAccountName}}</strong> <br/>
+					{{fundTransferRequest.toAccount}} <br/>	
+					{{toBankName}}	  	  
+				</div>	          
+				</div>	                  
+		</ion-item>
+		
+		<div class = " marginNone list list-inset padd-left20px" ng-class="fontDisplay">
+			<div class="row">
+					<div class="col col-33 paddingNone   marginNone font-bold"  translate="label.fundTrfCnfm.ref"></div>
+					<div class="col col-67 paddingNone marginNone lineBreak">{{refNo}}</div>
+			</div> 
+			<div ng-if="fundTransferTDShow == false" class="row">
+					<div class="col col-33 paddingNone   marginNone font-bold" translate="label.txnDate"></div>
+					<div class="col col-67 paddingNone marginNone lineBreak">{{::tnxDateCASA.date}}&nbsp<span translate="">{{tnxDateCASA.month}}</span>&nbsp{{tnxDateCASA.year}}&nbsp{{tnxDateCASA.time}}</div>
+			</div>	   
+			<div ng-if="fundTransferTDShow == true" class="row">
+					<div class="col col-33 paddingNone   marginNone font-bold" translate="label.txnDate"></div>
+					<div class="col col-67 paddingNone marginNone lineBreak">{{::txnDateDisplay.date}}&nbsp<span translate="">{{txnDateDisplay.month}}</span>&nbsp{{txnDateDisplay.year}}&nbsp{{txnDateDisplay.time}}</div>
+			</div>	  
+			
+			<div class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.deductDate"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak">{{::deductedDate.date}}&nbsp<span translate="">{{deductedDate.month}}</span>&nbsp{{deductedDate.year}}</div> 
+			</div>	
+			<div class="row">
+				<div class="col  col-33 paddingNone   marginNone font-bold" translate="label.receiveDate"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak">{{::receiveDate.date}}&nbsp<span translate="">{{receiveDate.month}}</span>&nbsp{{receiveDate.year}}</div> 
+			</div>
+			<div ng-if="rtpReferenceNo" class="row">
+					<div class="col col-33 paddingNone marginNone font-bold" translate="label.PayAlertRef"></div>
+					<div class="col col-67 paddingNone marginNone">{{::rtpReferenceNo}}</div>
+			</div>	
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class=" col col-33 paddingNone marginNone font-bold" translate="label.fundTrfCnfm.feeAmount"></div>
+				<span class=" col col-67 paddingNone marginNone">{{tdObj.feeAmount}}&nbsp;<span translate="label.currency"></span></span>
+			</div>
+			
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.depositNo"></div>
+				<div class=" col col-67 paddingNone marginNone">{{tdObj.depositNo}}</div> 
+			</div>	 	     
+			<div ng-if="fundTransferTDShow == false" class="row">
+				<div class=" col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.sumfeeAmount"></div>
+				<span class=" col col-67 paddingNone marginNone">{{feeAmount}}&nbsp;<span translate="label.currency"></span> </span> 
+			</div>	
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.term"></div>
+				<div class=" col col-67 paddingNone marginNone">{{tdObj.term}}&nbsp;<span translate="label.tdstatement.month"></span></div> 
+			</div>	 
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.interestRate"></div>
+				<div class=" col col-67 paddingNone marginNone">{{tdObj.interestRate}}&nbsp;<span ng-show="tdObj.interestRate">%</span></div> 
+			</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.interestCon"></div>
+				<div class=" col col-67 paddingNone marginNone">{{tdObj.interestCon}}</div> 
+			</div>  
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.valueDate"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak">{{::valueDate.date}}&nbsp<span translate="">{{valueDate.month}}</span>&nbsp{{valueDate.year}}</div> 
+			</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="label.fundTrfCnfm.maturityDate"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak ">{{::maturityDateDisplay.date}}&nbsp<span translate="">{{maturityDateDisplay.month}}</span>&nbsp{{maturityDateDisplay.year}}</div> 
+			</div>
+			<div ng-if="fundTransferTDShow == true" class="row">
+				<div class="col col-33 paddingNone   marginNone font-bold" translate="lable.td.AccountInterest"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak ">{{tdObj.benefitAcc || ''}}</div> 
+			</div>   
+			<div class="row">	     
+				<div class=" col col-33 paddingNone marginNone font-bold" translate="label.fundTransferStatus"></div>
+				<div class=" col col-67 paddingNone   marginNone lineBreak">{{fundTransferStatusDesc}}</div>      		       
+			</div> 
+			
+			<div ng-if="fundTransferTDShow == false" class="row" ng-show="recurringType === 'Y'">
+				<div class="col  col-33 paddingNone   marginNone font-bold" translate="label.recurring"></div>
+				<div class=" col col-67 paddingNone marginNone lineBreak">{{recurring}}</div> 
+			</div>	
+					
+			<div class="row" ng-show="note">	     
+				<div class=" col col-33 paddingNone marginNone font-bold" translate="lable.fundtrfreciept.note"></div>
+				<div class=" col col-67 paddingNone   marginNone lineBreak">{{note}}</div>      		       
+			</div> 
+		</div>
+		<div class = " marginNone list list-inset padd-left20px " ng-class="fontDisplay">
+			<p ng-if="fundTransferRequest.alertSMS || fundTransferRequest.alertEmail" translate="label.alertTo" class="marginNone padd-left5px padd-top10px font-bold"></p>
+			<div class="row" ng-if="fundTransferRequest.alertSMS">	     
+				<div class=" col col-33 paddingNone   marginNone font-bold" translate="label.mobileNo"></div><div class=" col col-67 paddingNone   marginNone"> {{fundTransferRequest.alertSMS}}</div>      		       
+			</div>
+			
+			<div class="row" ng-if="fundTransferRequest.alertEmail">	     
+				<div class=" col col-33 paddingNone   marginNone font-bold" translate="label.email"></div><div class=" col col-67 paddingNone   marginNone breakWord"> {{fundTransferRequest.alertEmail}}</div>      		       
+			</div>
+		</div> 
+	 </div>
+	  <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" ng-if="transactionStatusCode !== 'PD' && canPrintSlip"
+					translate="btn.saveSlip"ng-click="showReceiptPage()" ng-disabled="isWaitToSaveSlip" style="opacity: 1;">
+			</button>
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor"
+					ng-if="transactionStatusCode !== 'PD' && canPrintSlip" translate="btn.share"ng-click="shareReceipt()">
+			</button>
+		</div>
+	</ion-content>
+</ion-view>
+ <!-- for save slip without show modal -->
+ <!--<div style="left: -9999px;position: relative;" ng-include="'templates/Fundtransfer/slipTemplate.html'"></div>-->

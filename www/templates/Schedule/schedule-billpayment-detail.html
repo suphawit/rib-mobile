@@ -1,0 +1,65 @@
+<ion-view>
+	<ion-header-bar align-title="center" class="bar bar-subheader bordoerBottom" ng-class="fontHeader">
+		<i class="button button-clear" ng-click="goBackPage()" translate="label.back" ></i>
+	    <h4 class="title" translate="menu.schedule"></h4>
+	    <!--<i class="button button-icon icon ion-ios-gear" ng-click="changeFTSchedule(bpBillerListSelects)"></i>-->
+	</ion-header-bar>
+	
+<ion-content class="has-header has-subheader" locking="false" overflow-scroll="false" padding="false" has-bouncing="false">
+	       <div style="min-height: calc(90vh - 110px)">
+			<ion-item class="item-divider transConfirmHeadBlck ">
+				<div class= "font-bold fontSize19px blackTextColor">{{::bpBillerListSelects.fromAliasName || ""}}</div>
+				<div >{{::bpBillerListSelects.fromAccountNumber || ""}}</div>
+				</ion-item>
+			
+			<div class="col transferaccount transConfrmAmoutDiv" >
+				<div class=" themeDarkBlueBGColor borderNone txtCenterAlign" >
+					<span class="whiteTextColor font-clanOt-header" >{{::bpBillerListSelects.payAmount | currency : ""}} </span>
+					<span class="currencySpan" ng-class="fontLabel" translate="label.currency"></span>
+				</div>
+			</div>
+			
+				<div class = "row padding schedulePadd-left">
+				<div  class="col-20 txtCenterAlign column20Tablet" >
+				<img class="bankImage"  style="background-color: #594F74;" ng-src="{{bpBillerListSelects.logoCompany || defaultBillerLogo}}" >
+				</div>
+				<div  class="col-80 padd-left5px column80Tablet">
+					<strong>{{::bpBillerListSelects.billerAliasName || ""}}</strong> <br/>
+					<strong>{{::bpBillerListSelects.billerName || ""}}</strong> 
+				</div>
+				</div>
+			<p class="scheduleFundTrfDetailLine padding5px">{{::bpBillerListSelects.recurringType || ""}}&nbsp;{{::bpBillerListSelects.recurringTimes || ""}}&nbsp;<span ng-if='bpBillerListSelects.recurringTimes' translate="label.schedule.times"></span></p>
+				<div class="divTable">
+					<div class="divRow">
+						<div class="divCell"translate="lable.fundschedule.ref"></div>
+						<div class="divCellValue themeGreyTextColor">{{bpBillerListSelects.transactionRef || bpBillerListSelects.referenceNO}}</div>
+						<div class="divCell" translate="label.transDate"></div>
+						<div class="divCellValue themeGreyTextColor">{{::bpBillerListSelects.transactionDate.date || ""}}&nbsp;<span translate="">{{::bpBillerListSelects.transactionDate.month || ""}}</span>&nbsp;{{::bpBillerListSelects.transactionDate.year || ""}}</div>
+						<div class="divCell" translate="label.paymentDate"></div>
+						<div class="divCellValue themeGreyTextColor">{{::bpBillerListSelects.paymentDate.date || ""}}&nbsp;<span translate="">{{::bpBillerListSelects.paymentDate.month || ""}}</span>&nbsp;{{::bpBillerListSelects.paymentDate.year || ""}}</div>
+						<div class="divCell" translate="label.input.feeamount"></div>
+						<div class="divCellValue themeGreyTextColor">{{::bpBillerListSelects.feeAmount | currency : ""}}&nbsp;<span translate="label.currency"></span></div>	                
+						
+						<div class="divCell" translate="label.referenece1" ng-if="bpBillerListSelects.reference1 !== null "></div>
+						<div class="divCellValue themeGreyTextColor"ng-if="bpBillerListSelects.reference1 !== null ">{{::bpBillerListSelects.reference1 || ""}}</div>
+					
+						<div class="divCell"  translate="label.referenece2" ng-if="bpBillerListSelects.reference2 !== null"></div>
+						<div class="divCellValue themeGreyTextColor" ng-if="bpBillerListSelects.reference2 !== null">{{::bpBillerListSelects.reference2 || ""}}</div>	   
+
+						<div class="divCell"  translate="label.referenece3" ng-if="bpBillerListSelects.reference3 !== null"></div>
+						<div class="divCellValue themeGreyTextColor" ng-if="bpBillerListSelects.reference3 !== null">{{::bpBillerListSelects.reference3 || ""}}</div>	               	            
+					
+						<div class="divCell" translate="label.input.Status"></div>
+						<div class="divCellValue themeGreyTextColor">{{::bpBillerListSelects.paymentStatus || ""}}</div>	               	
+						<div class="divCell" ng-if="bpBillerListSelects.memo" translate="lable.fundschedule.note"></div>
+						<div class="divCellValue themeGreyTextColor memoDivCellValue" ng-if="bpBillerListSelects.memo">{{::bpBillerListSelects.memo || ""}}</div>
+						<div class="divCell" ></div>
+					</div>
+				</div>
+	       </div>
+		   <div style="margin-left: 3vw;margin-right: 3vw;">
+			<button class="button button-block font-quark-header themeDarkBlueBGColor whiteTextColor" translate="btn.edit" ng-click="changeFTSchedule(bpBillerListSelects)">
+			</button>
+		</div>
+</ion-content>
+</ion-view>

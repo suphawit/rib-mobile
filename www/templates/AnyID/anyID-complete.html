@@ -1,0 +1,25 @@
+<ion-view title="" cache-view="false">
+	<ion-header-bar align-title="center" class="bar bar-subheader " ng-class="fontHeader">
+		<h3 class="title" translate="menu.registerPromptpay"></h3>
+		
+	</ion-header-bar>
+	<ion-content>
+	<div class="dasboardAccord padding15px txtCenterAlign">
+		<span class="fontSize18px fontBold" translate="label.promptpayRegisteredSuccess"></span>
+	 </div>
+		 <div class="marginNone list list-inset padd-left20px">
+	    	<div class="row">
+	        	<div class="col col-33 paddingNone marginNone font-bold" translate="label.connection"></div>
+	        	<div class="col col-67 paddingNone marginNone">: {{'label.register.'+registeredAnyIDResult.anyIDType | translate}} - {{registeredAnyIDResult.anyIDValue}}</div>
+	        </div>  	
+	      	<div  class="row">
+	         	<div class="col col-33 paddingNone marginNone font-bold" translate="label.selectedAcct"></div>
+	         	<div class="col col-67 paddingNone marginNone">: {{registeredAnyIDResult.accountName}} - {{registeredAnyIDResult.accountNumber}}</div>
+	      	</div> 
+	      	<div class="row">
+	         	<div class="col col-33 paddingNone marginNone font-bold" translate="label.biller.status"></div>
+	         	<div class="col col-67 paddingNone marginNone">: {{actionLabel | translate }}<span ng-if="isShowErrorDesc"> - {{ statusCode | translate: filterOption}}</span></div>
+	      	</div> 
+	      </div>		
+	</ion-content>
+</ion-view>

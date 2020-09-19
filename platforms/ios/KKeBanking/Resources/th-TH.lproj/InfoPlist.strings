@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  KKeBanking
+
+  Created by ChannelMacmini2 on 8/11/2562 BE.
+  
+*/
+NSFaceIDUsageDescription = "KK e-Banking จะใช้ Face ID ของคุณเพื่อยืนยันตัวตนในการเข้าใช้งานแทนรหัส MyPIN";

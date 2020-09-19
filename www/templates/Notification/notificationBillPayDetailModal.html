@@ -1,0 +1,89 @@
+<ion-modal-view id="accListModal" class="listModal">
+    <ion-header-bar class="darkHeadBar">		 
+	    <h4 class="title noneLeftRight" translate="label.billPaymentDetail"></h4>
+	    <a class="button button-icon icon ion-ios-close-outline msgIcon fontSize20px" side="right" ng-click="selectClose()"></a>
+	</ion-header-bar>
+    <ion-content >
+	
+		
+		<div class="row">
+
+			<div  style="margin: 0 auto;" class="col">
+				<div class="hist-trans-data item-divider fontSize12px" >
+					<div class="row padding2px">
+							<div class="col padding2px"><span translate="label.from"></span>&nbsp;:&nbsp;{{transaction.fromAliasName}} &nbsp;{{transaction.fromAccountNumber}}</div>
+					</div>
+					<div class="row padding2px">
+							<div class="col padding2px"><span translate="label.to"></span>&nbsp;:&nbsp;{{transaction.billerAliasName}}</div>
+					</div>
+					<div class="hist-trans-data-sub">
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span class="label"><span translate="label.history.bill.referenceNO"></span>&nbsp;:&nbsp;{{transaction.transactionRef || transaction.referenceNO}}</span>
+								</div>
+			
+								<div class="col col-30 text-right padding2px">
+									<span>{{transaction.payAmount | currency : ""}}&nbsp;<span  translate="label.currency"></span></span>
+								</div>
+							</div>
+							<div class="row padding2px">
+								<div class="col col-60 padding2px">
+									<span translate="label.transDate"></span>&nbsp;:&nbsp;{{transaction.transactionDate.date}}&nbsp;<span translate="">{{transaction.transactionDate.month | translate}}</span>&nbsp;{{transaction.transactionDate.year}}
+								</div>
+								<div class="col col-30 text-right padding2px">
+									<span translate="label.history.bill.fee"></span>&nbsp;:&nbsp;{{transaction.feeAmount | currency : ""}}&nbsp;<span translate="label.currency"></span>
+								</div>
+							</div>
+							
+							<div class="row padding2px" ng-if = "transaction.rtpRef != null">
+								<div class="col padding2px"><span translate="label.PayAlertRef"></span>&nbsp;:&nbsp;{{transaction.rtpRef}}</div>
+							</div>
+
+							<div class="row padding2px">
+								<div class="col padding2px"><span translate="label.deductDate"></span>&nbsp;:&nbsp;{{transaction.paymentDate.date}}&nbsp;<span>{{transaction.paymentDate.month | translate}}</span>&nbsp;{{transaction.paymentDate.year}}</div>
+							</div>
+							<div class="row padding2px">
+								<div class="label"><span translate="label.biller.billerName"></span>&nbsp;:&nbsp;{{transaction.billerName}}</div>
+							</div>
+							<!--<div class="row padding2px" ng-if = "transaction.reference1 !== null">-->
+								<!--<div class="col padding2px"><span translate="label.history.bill.ref1"></span>&nbsp;:&nbsp;{{transaction.reference1}}</div>-->
+							<!--</div> -->
+							<!---->
+							<!--<div class="row padding2px" ng-if = "transaction.reference2 !== null">-->
+								<!--<div class="col padding2px"><span translate="label.history.bill.ref2"></span>&nbsp;:&nbsp;{{transaction.reference2}}</div>-->
+							<!--</div>-->
+
+							<!--<div class="row padding2px" ng-if = "transaction.reference3 !== null">-->
+								<!--<div class="col padding2px"><span translate="label.history.bill.ref3"></span>&nbsp;:&nbsp;{{transaction.reference3}}</div>-->
+							<!--</div>-->
+
+
+							<div class="row padding2px" ng-if="ref.value!=null && ref.value!=''" ng-repeat="ref in transaction.refInfos">
+								<div class="col padding2px">
+									<span>{{displayRefName(ref)}}</span>&nbsp;:&nbsp;{{ref.value}}
+								</div>
+							</div>
+
+							<div class="row padding2px">
+								<div class="col padding2px" ng-if="!transaction.errorMsg"><span translate="lable.fundschedule.status"></span>&nbsp;:&nbsp;{{transaction.paymentStatusDesc}}</div>
+								<div class="col padding2px" ng-if="transaction.errorMsg"><span translate="lable.fundschedule.status"></span>&nbsp;:&nbsp;{{transaction.paymentStatusDesc + ' - '+ transaction.errorMsg}}</div>
+							</div>
+
+							<div class="row padding2px" ng-if = "transaction.memo !== null">
+								<div class="col padding2px"><span translate="lable.fundtrfreciept.note"></span>&nbsp;:&nbsp;{{transaction.memo}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+		<div style="height:88px;"></div>
+		
+
+
+
+
+
+    </ion-content>
+  </ion-modal-view>
